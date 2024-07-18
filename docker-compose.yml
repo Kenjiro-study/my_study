@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  pytorch_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: study-morimoto
+    container_name: pytorch_container
+    environment:
+      - TZ=Asia/Tokyo
+      - PYTHONPATH=/workspace/craigslistbargain
+    volumes:
+      - .:/workspace
+    ports:
+      - "5000:5000"
+    working_dir: /workspace
+    #command: ["/workspace/startup.sh"]
+    tty: true

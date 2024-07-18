@@ -1,0 +1,1171 @@
+[
+    {
+        "scenario_uuid": "S_To118PXuNicOd8SO", 
+        "events": 
+        [
+            {"agent": 0, "time": 1, "action": "message", "data": "intro", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 2, "action": "message", "data": "unknown", "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 3, "action": "message", "data": "inquiry", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 4, "action": "message", "data": "counter-price", "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 5, "action": "message", "data": "counter-price $248", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 6, "action": "offer", "data": {"price": 245}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 7, "action": "offer", "data": {"price": 242}, "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 8, "action": "offer", "data": {"price": 245}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 9, "action": "accept", "data": null, "start_time": null, "metadata": null}
+        ], 
+        "outcome": {"reward": 1, "offer": {"price": 245}}, 
+        "scenario": 
+        {
+            "uuid": "S_To118PXuNicOd8SO", 
+            "attributes": 
+            [
+                {"name": "Role", "value_type": "role", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Bottomline", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Target", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Title", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Category", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Price", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Images", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Description", "value_type": "text", "unique": false, "multivalued": false, "entity": false}
+            ], 
+            "kbs": 
+            [
+                {
+                    "personal": {"Bottomline": null, "Role": "buyer", "Target": 243}, 
+                    "item": 
+                    {
+                        "Category": "electronics", 
+                        "Images": ["electronics/6122134540_0.jpg"], 
+                        "Price": 265, 
+                        "Description": ["- HERO4 Black Camera", "- Standard Housing 131' (40m)", "- Rechargeable Battery", "- Flat Adhesive Mount", "- 3-Way Pivot Arm"], 
+                        "Title": "GoPro Hero4 Black + Battery BacPac"
+                    }
+                }, 
+                {
+                    "personal": {"Bottomline": null, "Role": "seller", "Target": 265}, 
+                    "item": 
+                    {
+                        "Category": "electronics", 
+                        "Images": ["electronics/6122134540_0.jpg"], 
+                        "Price": 265, 
+                        "Description": ["- HERO4 Black Camera", "- Standard Housing 131' (40m)", 
+                        "- Rechargeable Battery", "- Flat Adhesive Mount", "- 3-Way Pivot Arm", "- USB Cable", "- Battery BacPac", "- Battery BacPac case", "- Battery BackPac Backdoor", "NOTE: The only thing missing from a new GoPro Hero4 kit is the curved adhesive mount. Everything else is included (plus the BacPac kit) in new or like new condition."], 
+                        "Title": "GoPro Hero4 Black + Battery BacPac"
+                    }
+                }
+            ], 
+            "post_id": "6122134540", 
+            "category": "electronics"
+        }, 
+        "uuid": "E_SPM4g7vMsuFoOd6v", 
+        "agents": {"0": null, "1": null}, 
+        "agents_info": null
+    }, 
+    {
+        "scenario_uuid": "S_L7F3EuuCeGp3YW2v", 
+        "events": 
+        [
+            {"agent": 0, "time": 1, "action": "message", "data": "intro", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 2, "action": "message", "data": "unknown", "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 3, "action": "message", "data": "inquiry", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 4, "action": "message", "data": "counter-price", "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 5, "action": "message", "data": "counter-price $1736", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 6, "action": "offer", "data": {"price": 2315}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 7, "action": "offer", "data": {"price": 1497}, "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 8, "action": "offer", "data": {"price": 2315}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 9, "action": "accept", "data": null, "start_time": null, "metadata": null}
+        ], 
+        "outcome": {"reward": 1, "offer": {"price": 2315}}, 
+        "scenario": 
+        {
+            "uuid": "S_L7F3EuuCeGp3YW2v", 
+            "attributes": 
+            [
+                {"name": "Role", "value_type": "role", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Bottomline", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Target", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Title", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Category", "value_type": "text", "unique": false, "multivalued": false, "entity": false},                     {"name": "Price", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Images", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Description", "value_type": "text", "unique": false, "multivalued": false, "entity": false}
+            ], 
+            "kbs": 
+            [
+                {
+                    "personal": {"Bottomline": null, "Role": "buyer", "Target": 1497}, 
+                    "item": 
+                    {
+                        "Category": "housing", 
+                        "Images": ["housing/6132705525_0.jpg"], 
+                        "Price": 2495, 
+                        "Description": ["2131 Hearst Ave, #7", "No. of Units on Property: 8", "Heat: Steam/Radiator", "Windows: Blinds", "Laundry: Coin", "Pets: Sorry, no pets.", "Owner Pays: Hot & Cold Water, Garbage, Sewer, Heat"], 
+                        "Title": "MUST SEE!! Beautiful new kitchen and bathroom, Great neighborhood!!!"
+                    }
+                }, 
+                {
+                    "personal": {"Bottomline": null, "Role": "seller", "Target": 2495}, 
+                    "item": 
+                    {
+                        "Category": "housing", 
+                        "Images": ["housing/6132705525_0.jpg"], 
+                        "Price": 2495, 
+                        "Description": ["2131 Hearst Ave, #7", "No. of Units on Property: 8", "Heat: Steam/Radiator", "Windows: Blinds", "Laundry: Coin", "Pets: Sorry, no pets.", "Owner Pays: Hot & Cold Water, Garbage, Sewer, Heat", "Security Deposit: Equal to (1 &1/2) one and a half, month's rent", "Lease Term: lease ends 7/31/2018", "Needed to Move In: First Month, Security Deposit, Screening Fee", "Resident Manager: ***Available to view by appointment only For Viewing call Angela at", "**", "***Available to view by appointment only For Viewing call Angela at", "**"], 
+                        "Title": "MUST SEE!! Beautiful new kitchen and bathroom, Great neighborhood!!!"
+                    }
+                }
+            ], 
+            "post_id": "6132705525", 
+            "category": "housing"
+        }, 
+        "uuid": "E_RorCMN0IshKPeBY6", 
+        "agents": {"0": null, "1": null}, 
+        "agents_info": null
+    }, 
+    {
+        "scenario_uuid": "S_t0W0YsYtLJ8l2lSJ", 
+        "events": 
+        [
+            {"agent": 1, "time": 1, "action": "message", "data": "intro", "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 2, "action": "message", "data": "unknown", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 3, "action": "offer", "data": {"price": 644}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 4, "action": "accept", "data": null, "start_time": null, "metadata": null}
+        ], 
+        "outcome": {"reward": 1, "offer": {"price": 644}}, 
+        "scenario": 
+        {
+            "uuid": "S_t0W0YsYtLJ8l2lSJ", 
+            "attributes": 
+            [
+                {"name": "Role", "value_type": "role", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Bottomline", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Target", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Title", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Category", "value_type": "text", "unique": false, "multivalued": false, "entity": false},
+                {"name": "Price", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Images", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Description", "value_type": "text", "unique": false, "multivalued": false, "entity": false}
+            ], 
+            "kbs": 
+            [
+                {
+                    "personal": {"Bottomline": null, "Role": "buyer", "Target": 528}, 
+                    "item": 
+                    {
+                        "Category": "furniture", 
+                        "Images": ["furniture/6145208435_0.jpg"], 
+                        "Price": 695, 
+                        "Description": ["There is also a night table that matches the armoire. The night table has a hidden pull out jewelry drawer that is felt-lined and designed to be hidden, great for valuables (see pics)."], 
+                        "Title": "Extra Tall Beautiful Wood Armoire Chest Large Model Home Style"
+                    }
+                }, 
+                {
+                    "personal": {"Bottomline": null, "Role": "seller", "Target": 695}, 
+                    "item": 
+                    {
+                        "Category": "furniture", 
+                        "Images": ["furniture/6145208435_0.jpg"], 
+                        "Price": 695, 
+                        "Description": ["There is also a night table that matches the armoire. The night table has a hidden pull out jewelry drawer that is felt-lined and designed to be hidden, great for valuables (see pics).", "Night Table Measures: 27\"W x 16\"D x 27\"H", "CASH ONLY. Buyer must pick up."], 
+                        "Title": "Extra Tall Beautiful Wood Armoire Chest Large Model Home Style"
+                    }
+                }
+            ], 
+            "post_id": "6145208435", 
+            "category": "furniture"
+        }, 
+        "uuid": "E_111Fy0YUoHdrK1xe", 
+        "agents": {"0": null, "1": null}, 
+        "agents_info": null
+    }, 
+    {
+        "scenario_uuid": "S_tZmcOaISo6n80s7U", 
+        "events": 
+        [
+            {"agent": 1, "time": 1, "action": "message", "data": "intro", "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 2, "action": "message", "data": "unknown", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 3, "action": "offer", "data": {"price": 148}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 4, "action": "accept", "data": null, "start_time": null, "metadata": null}
+        ], 
+        "outcome": {"reward": 1, "offer": {"price": 148}}, 
+        "scenario": 
+        {
+            "uuid": "S_tZmcOaISo6n80s7U", 
+            "attributes": 
+            [
+                {"name": "Role", "value_type": "role", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Bottomline", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Target", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Title", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Category", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Price", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Images", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Description", "value_type": "text", "unique": false, "multivalued": false, "entity": false}
+            ], 
+            "kbs": 
+            [
+                {
+                    "personal": {"Bottomline": null, "Role": "buyer", "Target": 147}, 
+                    "item": 
+                    {
+                        "Category": "bike", 
+                        "Images": ["bike/6133036823_0.jpg"], 
+                        "Price": 160, 
+                        "Description": ["Great vintage 1970's Peugeot 10-speed made in France. Bike is in good condition, nice decals, good tires & tubes. 22\" frame on 27\" wheels"], 
+                        "Title": "Vintage Peugeot Road Bike"
+                    }
+                }, 
+                {
+                    "personal": {"Bottomline": null, "Role": "seller", "Target": 160}, 
+                    "item": 
+                    {
+                        "Category": "bike", 
+                        "Images": ["bike/6133036823_0.jpg"], 
+                        "Price": 160, 
+                        "Description": ["Great vintage 1970's Peugeot 10-speed made in France. Bike is in good condition, nice decals, good tires & tubes. 22\" frame on 27\" wheels", "old, Puegeot, Peugot, french, classic, old school, retro, rare"], 
+                        "Title": "Vintage Peugeot Road Bike"
+                    }
+                }
+            ], 
+            "post_id": "6133036823", 
+            "category": "bike"
+        }, 
+        "uuid": "E_YvzemeHeMtYiX1qR", 
+        "agents": {"0": null, "1": null}, 
+        "agents_info": null
+    }, 
+    {
+        "scenario_uuid": "S_h6subZNjuzO8GQX1", 
+        "events": 
+        [
+            {"agent": 1, "time": 1, "action": "message", "data": "intro", "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 2, "action": "message", "data": "unknown", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 3, "action": "offer", "data": {"price": 301}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 4, "action": "accept", "data": null, "start_time": null, "metadata": null}
+        ], 
+        "outcome": {"reward": 1, "offer": {"price": 301}}, 
+        "scenario": 
+        {
+            "uuid": "S_h6subZNjuzO8GQX1", 
+            "attributes": 
+            [
+                {"name": "Role", "value_type": "role", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Bottomline", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Target", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Title", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Category", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Price", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Images", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Description", "value_type": "text", "unique": false, "multivalued": false, "entity": false}
+            ], 
+            "kbs": 
+            [
+                {
+                    "personal": {"Bottomline": null, "Role": "buyer", "Target": 247}, 
+                    "item": 
+                    {
+                        "Category": "furniture", 
+                        "Images": ["furniture/6143811125_0.jpg"], 
+                        "Price": 325, 
+                        "Description": ["Moving child to the next size up.  It is in very good condition and it comes with the mattress.   Very Well Taken Care Of.", "Solid Natural Maple Wood.  STANLEY no longer makes it; or at least I cannot find it on their website.  https://www.stanleyfurniture.com"], 
+                        "Title": "STANLEY Young America - Twin Size - Maple Captain's Storage Bed"
+                    }
+                }, 
+                {
+                    "personal": {"Bottomline": null, "Role": "seller", "Target": 325}, 
+                    "item": 
+                    {
+                        "Category": "furniture", 
+                        "Images": ["furniture/6143811125_0.jpg"], 
+                        "Price": 325, 
+                        "Description": ["Moving child to the next size up.  It is in very good condition and it comes with the mattress.   Very Well Taken Care Of.", "Solid Natural Maple Wood.  STANLEY no longer makes it; or at least I cannot find it on their website.  https://www.stanleyfurniture.com", "Will consider all offers.", "NOTE:  Snowman & wreath are not included;  I placed them there to highlight the fact that you have storage available there.", "Dimensions:  82\" length x 42\" width x 39\u00bd\" height"], 
+                        "Title": "STANLEY Young America - Twin Size - Maple Captain's Storage Bed"
+                    }
+                }
+            ], 
+            "post_id": "6143811125", 
+            "category": "furniture"
+        }, 
+        "uuid": "E_XF6bEKTi7LlVKJwX", 
+        "agents": {"0": null, "1": null}, 
+        "agents_info": null
+    }, 
+    {
+        "scenario_uuid": "S_DtuUVBAOWTZiDnZ5", 
+        "events": 
+        [
+            {"agent": 1, "time": 1, "action": "message", "data": "intro", "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 2, "action": "message", "data": "unknown", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 3, "action": "offer", "data": {"price": 277}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 4, "action": "accept", "data": null, "start_time": null, "metadata": null}
+        ], 
+        "outcome": {"reward": 1, "offer": {"price": 277}}, 
+        "scenario": 
+        {
+            "uuid": "S_DtuUVBAOWTZiDnZ5", 
+            "attributes": 
+            [
+                {"name": "Role", "value_type": "role", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Bottomline", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Target", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Title", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Category", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Price", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Images", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Description", "value_type": "text", "unique": false, "multivalued": false, "entity": false}
+            ], 
+            "kbs": 
+            [
+                {
+                    "personal": {"Bottomline": null, "Role": "buyer", "Target": 275}, 
+                    "item": 
+                    {
+                        "Category": "furniture", 
+                        "Images": ["furniture/6108664848_0.jpg"], 
+                        "Price": 299, 
+                        "Description": ["Aeron chairs size C.", "This is the largest size for people 6 foot plus."], 
+                        "Title": "Aeron Chairs Size C"
+                    }
+                }, 
+                {
+                    "personal": {"Bottomline": null, "Role": "seller", "Target": 299}, 
+                    "item": 
+                    {
+                        "Category": "furniture", 
+                        "Images": ["furniture/6108664848_0.jpg"], 
+                        "Price": 299, 
+                        "Description": ["Aeron chairs size C.", "This is the largest size for people 6 foot plus.", "Fully loaded with lumbar pad. Very good condition.", "Yes it is \"still available\" if you are reading this."], 
+                        "Title": "Aeron Chairs Size C"
+                    }
+                }
+            ], 
+            "post_id": "6108664848", 
+            "category": "furniture"
+        }, 
+        "uuid": "E_wRWGcjiBUvSYwpBS", 
+        "agents": {"0": null, "1": null}, 
+        "agents_info": null
+    }, 
+    {
+        "scenario_uuid": "S_7cgp0U15ZvbnGdus", 
+        "events": 
+        [
+            {"agent": 0, "time": 1, "action": "message", "data": "intro", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 2, "action": "message", "data": "unknown", "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 3, "action": "message", "data": "inquiry", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 4, "action": "message", "data": "counter-price", "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 5, "action": "message", "data": "counter-price $40", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 6, "action": "offer", "data": {"price": 46}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 7, "action": "offer", "data": {"price": 38}, "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 8, "action": "offer", "data": {"price": 46}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 9, "action": "accept", "data": null, "start_time": null, "metadata": null}
+        ], 
+        "outcome": {"reward": 1, "offer": {"price": 46}}, 
+        "scenario": 
+        {
+            "uuid": "S_7cgp0U15ZvbnGdus", 
+            "attributes": 
+            [
+                {"name": "Role", "value_type": "role", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Bottomline", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Target", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Title", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Category", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Price", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Images", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Description", "value_type": "text", "unique": false, "multivalued": false, "entity": false}
+            ], 
+            "kbs": 
+            [
+                {
+                    "personal": {"Bottomline": null, "Role": "buyer", "Target": 38}, 
+                    "item": 
+                    {
+                        "Category": "furniture", 
+                        "Images": [], 
+                        "Price": 50, 
+                        "Description": ["Very comfy floral couch in excellent condition. Practically like new with no stains or rips. In a smoke free house. Cash only you pick up and haul."], 
+                        "Title": "Very comfy well maintained couch"
+                    }
+                }, 
+                {
+                    "personal": {"Bottomline": null, "Role": "seller", "Target": 50}, 
+                    "item": 
+                    {
+                        "Category": "furniture", 
+                        "Images": [], 
+                        "Price": 50, 
+                        "Description": ["Very comfy floral couch in excellent condition. Practically like new with no stains or rips. In a smoke free house. Cash only you pick up and haul."], 
+                        "Title": "Very comfy well maintained couch"
+                    }
+                }
+            ], 
+            "post_id": "6145291941", 
+            "category": "furniture"
+        }, 
+        "uuid": "E_fLPpqGbnzUINHLn5", 
+        "agents": {"0": null, "1": null}, 
+        "agents_info": null
+    }, 
+    {
+        "scenario_uuid": "S_V4KMfm8Ae4wa3x2Z", 
+        "events": 
+        [
+            {"agent": 0, "time": 1, "action": "message", "data": "intro", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 2, "action": "message", "data": "unknown", "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 3, "action": "message", "data": "inquiry", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 4, "action": "message", "data": "counter-price", "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 5, "action": "message", "data": "counter-price $1699", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 6, "action": "offer", "data": {"price": 1679}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 7, "action": "offer", "data": {"price": 1665}, "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 8, "action": "offer", "data": {"price": 1679}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 9, "action": "accept", "data": null, "start_time": null, "metadata": null}
+        ], 
+        "outcome": {"reward": 1, "offer": {"price": 1679}}, 
+        "scenario": 
+        {
+            "uuid": "S_V4KMfm8Ae4wa3x2Z", 
+            "attributes": 
+            [
+                {"name": "Role", "value_type": "role", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Bottomline", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Target", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Title", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Category", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Price", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Images", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Description", "value_type": "text", "unique": false, "multivalued": false, "entity": false}
+            ], 
+            "kbs": 
+            [
+                {
+                    "personal": {"Bottomline": null, "Role": "buyer", "Target": 1665}, 
+                    "item": 
+                    {
+                        "Category": "housing", 
+                        "Images": ["housing/6131731501_0.jpg"], 
+                        "Price": 1810, 
+                        "Description": ["Stop Looking Start Living", "Call Now:", "1701 Marshall Rd, Vacaville, CA, 95687", "Use this link for more information:", "http://live.fpimgt.com/85z1w6", "Baths:  2", "Hidden Creek in Vacaville provides you with a truly exceptional lifestyle. Beyond the gated entryway, you will find the tranquil atmosphere of our community. Nestled amidst our serene pond and alluring trees, this prestigious community offers 1 and 2 bedroom apartment homes with exceptional amenities for you to enjoy. Hidden Creek is just minutes away from freeway, shopping, excellent dining and Travis Air Force Base.", "- Window Coverings", "- Wood Burning Fireplace", "- Wheelchair Access", "- High Ceilings", "- Granite counter tops", "- Walk in Closets", "- Carpeting", "- Washer/Dryer", "- Dishwasher"], 
+                        "Title": "dont miss your chance with this offer!!"
+                    }
+                }, 
+                {
+                    "personal": {"Bottomline": null, "Role": "seller", "Target": 1810}, 
+                    "item": 
+                    {
+                        "Category": "housing", 
+                        "Images": ["housing/6131731501_0.jpg"], 
+                        "Price": 1810, 
+                        "Description": ["Stop Looking Start Living", "Call Now:", "1701 Marshall Rd, Vacaville, CA, 95687", "Use this link for more information:", "http://live.fpimgt.com/85z1w6", "Baths:  2", "Hidden Creek in Vacaville provides you with a truly exceptional lifestyle. Beyond the gated entryway, you will find the tranquil atmosphere of our community. Nestled amidst our serene pond and alluring trees, this prestigious community offers 1 and 2 bedroom apartment homes with exceptional amenities for you to enjoy. Hidden Creek is just minutes away from freeway, shopping, excellent dining and Travis Air Force Base.", "- Window Coverings", "- Wood Burning Fireplace", "- Wheelchair Access", "- High Ceilings", "- Granite counter tops", "- Walk in Closets", "- Carpeting", "- Washer/Dryer", "- Dishwasher", "- Tile Flooring", "- Cable Ready", "*Renovated Kitchen & Bathrooms!", "Community Amenities", "- Business Center", "- Fitness Center", "- Oversized Floor Plans", "- Controlled Access/Gated", "- Short Term Lease", "- Play Structure", "- Relaxing Spa", "*NEW Pool Lounge area coming SPRING 2017!", "3 Times the Monthly Rent (Gross Income)", "Office Hours", "Monday - Friday: 9:00AM - 6:00PM", "Equal Housing Opportunity", "rM4VgZQahf45"], 
+                        "Title": "dont miss your chance with this offer!!"
+                    }
+                }
+            ], 
+            "post_id": "6131731501", 
+            "category": "housing"
+        }, 
+        "uuid": "E_w6NaxRpnvK1u2jJS", 
+        "agents": {"0": null, "1": null}, 
+        "agents_info": null
+    }, 
+    {
+        "scenario_uuid": "S_3EYN8hWxzgEor0GV", 
+        "events": 
+        [
+            {"agent": 1, "time": 1, "action": "message", "data": "intro", "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 2, "action": "message", "data": "unknown", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 3, "action": "offer", "data": {"price": 16}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 4, "action": "message", "data": "unknown", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 5, "action": "offer", "data": {"price": 16}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 6, "action": "accept", "data": null, "start_time": null, "metadata": null}
+        ], 
+        "outcome": {"reward": 1, "offer": {"price": 16}}, 
+        "scenario": 
+        {
+            "uuid": "S_3EYN8hWxzgEor0GV", 
+            "attributes": 
+            [
+                {"name": "Role", "value_type": "role", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Bottomline", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Target", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Title", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Category", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Price", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Images", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Description", "value_type": "text", "unique": false, "multivalued": false, "entity": false}
+            ], 
+            "kbs": 
+            [
+                {
+                    "personal": {"Bottomline": null, "Role": "buyer", "Target": 16}, 
+                    "item": 
+                    {
+                        "Category": "electronics", 
+                        "Images": ["electronics/6140601964_0.jpg"], 
+                        "Price": 18, 
+                        "Description": ["Please include PHONE # in reply!", "NEW in box; color: Artic white, model#: TAD2014AW", "- Remote operation"], 
+                        "Title": "Digital answering machine Conairphone Callkeeper"
+                    }
+                }, 
+                {
+                    "personal": {"Bottomline": null, "Role": "seller", "Target": 18}, 
+                    "item": 
+                    {
+                        "Category": "electronics", 
+                        "Images": ["electronics/6140601964_0.jpg"], 
+                        "Price": 18, 
+                        "Description": ["Please include PHONE # in reply!", "NEW in box; color: Artic white, model#: TAD2014AW", "- Remote operation", "- Call Screening", "- Digital message counter, and many more features (seen on back of box photo)", "MUST include PHONE # in replies!"], 
+                        "Title": "Digital answering machine Conairphone Callkeeper"
+                    }
+                }
+            ], 
+            "post_id": "6120322018", 
+            "category": "electronics"
+        }, 
+        "uuid": "E_BBpFaawe0NcyWTze", 
+        "agents": {"0": null, "1": null}, 
+        "agents_info": null
+    }, 
+    {
+        "scenario_uuid": "S_F4Qj6oYFLPXSD3sG", 
+        "events": 
+        [
+            {"agent": 0, "time": 1, "action": "message", "data": "intro", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 2, "action": "message", "data": "unknown", "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 3, "action": "message", "data": "inquiry", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 4, "action": "message", "data": "counter-price", "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 5, "action": "message", "data": "counter-price $234", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 6, "action": "offer", "data": {"price": 232}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 7, "action": "offer", "data": {"price": 230}, "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 8, "action": "offer", "data": {"price": 232}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 9, "action": "accept", "data": null, "start_time": null, "metadata": null}
+        ], 
+        "outcome": {"reward": 1, "offer": {"price": 232}}, 
+        "scenario": 
+        {
+            "uuid": "S_F4Qj6oYFLPXSD3sG", 
+            "attributes": 
+            [
+                {"name": "Role", "value_type": "role", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Bottomline", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Target", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Title", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Category", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Price", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Images", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Description", "value_type": "text", "unique": false, "multivalued": false, "entity": false}
+            ], 
+            "kbs": 
+            [
+                {
+                    "personal": {"Bottomline": null, "Role": "buyer", "Target": 230}, 
+                    "item": 
+                    {
+                        "Category": "bike", 
+                        "Images": ["bike/6144651838_0.jpg"], 
+                        "Price": 250, 
+                        "Description": ["Nirve purple beach bike with flowers. I only rode it a few times it's too tall for me or I'm too short."], 
+                        "Title": "Nirve beach comber bike"
+                    }
+                }, 
+                {
+                    "personal": {"Bottomline": null, "Role": "seller", "Target": 250}, 
+                    "item": 
+                    {
+                        "Category": "bike", 
+                        "Images": ["bike/6144651838_0.jpg"], 
+                        "Price": 250, 
+                        "Description": ["Nirve purple beach bike with flowers. I only rode it a few times it's too tall for me or I'm too short.", "Great condition"], 
+                        "Title": "Nirve beach comber bike"
+                    }
+                }
+            ], 
+            "post_id": "6144651838", 
+            "category": "bike"
+        }, 
+        "uuid": "E_mYSAmtWhGzCZK0oO", 
+        "agents": {"0": null, "1": null}, 
+        "agents_info": null
+    }, 
+    {
+        "scenario_uuid": "S_1IyM3AM44weL6XmI", 
+        "events": 
+        [
+            {"agent": 1, "time": 1, "action": "message", "data": "intro", "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 2, "action": "message", "data": "unknown", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 3, "action": "offer", "data": {"price": 2180}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 4, "action": "message", "data": "inquiry", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 5, "action": "offer", "data": {"price": 2180}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 6, "action": "accept", "data": null, "start_time": null, "metadata": null}
+        ], 
+        "outcome": {"reward": 1, "offer": {"price": 2180}}, 
+        "scenario": 
+        {
+            "uuid": "S_1IyM3AM44weL6XmI", 
+            "attributes": 
+            [
+                {"name": "Role", "value_type": "role", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Bottomline", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Target", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Title", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Category", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Price", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Images", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Description", "value_type": "text", "unique": false, "multivalued": false, "entity": false}
+            ], 
+            "kbs": 
+            [
+                {
+                    "personal": {"Bottomline": null, "Role": "buyer", "Target": 1786}, 
+                    "item": 
+                    {
+                        "Category": "housing", 
+                        "Images": ["housing/6132485343_0.jpg"], 
+                        "Price": 2350, 
+                        "Description": ["This is the hotel B&B of your dreams! High-quality furniture! Washer and dryer ready for your free use inside the apartment! Large windows for light. End unit, ground floor! In beautiful Berkeley near everything! parking, cable TV & internet service are included! 2 car parking in assigned parking lot near your door! 3 months minimum stay", "Pics:  https://www.flickr.com/photos/garyluria/ then I clicked \"Albums\" and on the left-hand side I clicked on '2226-B 9 photos'. please let me know, thanks Gary"], 
+                        "Title": "Berkeley Furnished B&B style W Full Kit! W/D in! HW flr, End unit"
+                    }
+                }, 
+                {
+                    "personal": {"Bottomline": null, "Role": "seller", "Target": 2350}, 
+                    "item": 
+                    {
+                        "Category": "housing", 
+                        "Images": ["housing/6132485343_0.jpg"], 
+                        "Price": 2350, 
+                        "Description": ["This is the hotel B&B of your dreams! High-quality furniture! Washer and dryer ready for your free use inside the apartment! Large windows for light. End unit, ground floor! In beautiful Berkeley near everything! parking, cable TV & internet service are included! 2 car parking in assigned parking lot near your door! 3 months minimum stay", "Pics:  https://www.flickr.com/photos/garyluria/ then I clicked \"Albums\" and on the left-hand side I clicked on '2226-B 9 photos'. please let me know, thanks Gary", "Within one mile to West Berkeley Bowl (groceries), 4th St shops and many cafes and restaurants. There is an old industrial Sawtooth Building filled with artist studios a block away. The venerable Black Oak Books has relocated nearby. Close by Aquatic Park surrounds a 2 mile lake. Bay front parks and the marina are within strolling distance. Only a three min. walk to Rudramandir. The University is a short bus ride away. Berkeley is across the Bay from SF.", "The home is a few blocks to major bus lines. Ride to/from BART, (a mile and a half), or train station, (two miles), likely on arrival/departure."], 
+                        "Title": "Berkeley Furnished B&B style W Full Kit! W/D in! HW flr, End unit"
+                    }
+                }
+            ], 
+            "post_id": "6133201270", 
+            "category": "housing"
+        }, 
+        "uuid": "E_ZUYLwP8xNzdrY3uT", 
+        "agents": {"0": null, "1": null}, 
+        "agents_info": null
+    }, 
+    {
+        "scenario_uuid": "S_kR5Sr5tN3uGriBx7", 
+        "events": 
+        [
+            {"agent": 0, "time": 1, "action": "message", "data": "intro", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 2, "action": "message", "data": "unknown", "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 3, "action": "message", "data": "inquiry", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 4, "action": "message", "data": "counter-price", "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 5, "action": "message", "data": "counter-price $87", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 6, "action": "offer", "data": {"price": 116}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 7, "action": "offer", "data": {"price": 75}, "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 8, "action": "offer", "data": {"price": 116}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 9, "action": "accept", "data": null, "start_time": null, "metadata": null}
+        ], 
+        "outcome": {"reward": 1, "offer": {"price": 116}}, 
+        "scenario": 
+        {
+            "uuid": "S_kR5Sr5tN3uGriBx7", 
+            "attributes": 
+            [
+                {"name": "Role", "value_type": "role", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Bottomline", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Target", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Title", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Category", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Price", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Images", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Description", "value_type": "text", "unique": false, "multivalued": false, "entity": false}
+            ], 
+            "kbs": 
+            [
+                {
+                    "personal": {"Bottomline": null, "Role": "buyer", "Target": 75}, 
+                    "item": 
+                    {
+                        "Category": "furniture", 
+                        "Images": ["furniture/6102221564_0.jpg"], 
+                        "Price": 125, 
+                        "Description": ["Paris inspired solid wood shabby chic desk.", "Dimensions 17d x 30w x 30h."], 
+                        "Title": "Paris Inspired Desk"
+                    }
+                }, 
+                {
+                    "personal": {"Bottomline": null, "Role": "seller", "Target": 125}, 
+                    "item": 
+                    {
+                        "Category": "furniture", 
+                        "Images": ["furniture/6102221564_0.jpg"], 
+                        "Price": 125, 
+                        "Description": ["Paris inspired solid wood shabby chic desk.", "Dimensions 17d x 30w x 30h.", "Located at the Rancho Co-Op,  5685 Main Street,  Oakley.   Hours Tuesday-Saturday 10-5 and Sunday 11-5.  If you have any questions,  please call or text me at", "Visa and Mastercard accepted", "Key words - Home decor, chalk paint, shabby chic, furniture, upcycled, retro, french provincial, Paris, mid century modern, cottage, rustic, vintage, reclaimed, antique, Victorian, farmhouse, dresser, tall boy, desk, nightstand, white, black, pottery barn, tea cart, bar, entry table, hall table, credenza, hope chest, coffee table, dining table, hutch, end table, cabinet, vanity, bookcase, shelves, buffet, sideboard, sofa table, hall tree, drawers, accent table, rocking chair, garden art, china, tea cups, bridal, staging, photo props, wedding, photography, country, nautical, romantic"], 
+                        "Title": "Paris Inspired Desk"
+                    }
+                }
+            ], 
+            "post_id": "6102221564", 
+            "category": "furniture"
+        }, 
+        "uuid": "E_zcYwqvQmqm0yyDOD", 
+        "agents": {"0": null, "1": null}, 
+        "agents_info": null
+    }, 
+    {
+        "scenario_uuid": "S_kFVVzhQcTh81rlIR", 
+        "events": 
+        [
+            {"agent": 0, "time": 1, "action": "message", "data": "intro", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 2, "action": "message", "data": "unknown", "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 3, "action": "message", "data": "inquiry", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 4, "action": "message", "data": "counter-price", "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 5, "action": "message", "data": "counter-price $5568", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 6, "action": "offer", "data": {"price": 7424}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 7, "action": "offer", "data": {"price": 5568}, "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 8, "action": "offer", "data": {"price": 7424}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 9, "action": "accept", "data": null, "start_time": null, "metadata": null}
+        ], 
+        "outcome": {"reward": 1, "offer": {"price": 7424}}, 
+        "scenario": 
+        {
+            "uuid": "S_kFVVzhQcTh81rlIR", 
+            "attributes": 
+            [
+                {"name": "Role", "value_type": "role", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Bottomline", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Target", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Title", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Category", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Price", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Images", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Description", "value_type": "text", "unique": false, "multivalued": false, "entity": false}
+            ], 
+            "kbs": 
+            [
+                {
+                    "personal": {"Bottomline": null, "Role": "buyer", "Target": 4800}, 
+                    "item": 
+                    {
+                        "Category": "car", "Images": ["car/6103189039_0.jpg"], 
+                        "Price": 8000, 
+                        "Description": ["**Automatic 5-Spd. w/Overdrive Transmission,", "**Power steering, Tilt wheel, Security alarm system", "**CD DVD, MP3 player, AM/FM Stereo, Video player"], 
+                        "Title": "Toyota Camry 2009 LE."
+                    }
+                }, 
+                {
+                    "personal": {"Bottomline": null, "Role": "seller", "Target": 8000}, 
+                    "item": 
+                    {
+                        "Category": "car", 
+                        "Images": ["car/6103189039_0.jpg"], 
+                        "Price": 8000, 
+                        "Description": ["**Automatic 5-Spd. w/Overdrive Transmission,", "**Power steering, Tilt wheel, Security alarm system", "**CD DVD, MP3 player, AM/FM Stereo, Video player", "**AC/Heater,", "**ABS (4-wheel)", "**Clean interior and out,", "**Well maintained, Runs great! new rear bakes replaced 3/2017, Transmission oil replaced at 90,000, always use full synthetic mobile one oil"], 
+                        "Title": "Toyota Camry 2009 LE."
+                    }
+                }
+            ], 
+            "post_id": "6103189039", 
+            "category": "car"
+        }, 
+        "uuid": "E_C1PeEbzBbT5PzPSQ", 
+        "agents": {"0": null, "1": null}, 
+        "agents_info": null
+    }, 
+    {
+        "scenario_uuid": "S_8xNI8WVmYboQ5o0d", 
+        "events": 
+        [
+            {"agent": 1, "time": 1, "action": "message", "data": "intro", "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 2, "action": "message", "data": "unknown", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 3, "action": "offer", "data": {"price": 14848}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 4, "action": "accept", "data": null, "start_time": null, "metadata": null}
+        ], 
+        "outcome": {"reward": 1, "offer": {"price": 14848}}, 
+        "scenario": 
+        {
+            "uuid": "S_8xNI8WVmYboQ5o0d", 
+            "attributes": 
+            [
+                {"name": "Role", "value_type": "role", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Bottomline", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Target", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Title", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Category", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Price", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Images", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Description", "value_type": "text", "unique": false, "multivalued": false, "entity": false}
+            ], 
+            "kbs": 
+            [
+                {
+                    "personal": {"Bottomline": null, "Role": "buyer", "Target": 14720}, 
+                    "item": 
+                    {
+                        "Category": "car", 
+                        "Images": ["car/6116141079_0.jpg"], 
+                        "Price": 16000, 
+                        "Description": ["55 Chevy Belair, 2 door Sedan, Garaged over 25 years, California Car no rust. Extras: engines, transmission,  fenders,  hoods, grills to much to list."], 
+                        "Title": "1955 Chevy Belair"
+                    }
+                }, 
+                {
+                    "personal": {"Bottomline": null, "Role": "seller", "Target": 16000}, 
+                    "item": 
+                    {
+                        "Category": "car", 
+                        "Images": ["car/6116141079_0.jpg"], 
+                        "Price": 16000, 
+                        "Description": ["55 Chevy Belair, 2 door Sedan, Garaged over 25 years, California Car no rust. Extras: engines, transmission,  fenders,  hoods, grills to much to list."], 
+                        "Title": "1955 Chevy Belair"
+                    }
+                }
+            ], 
+            "post_id": "6116141079", 
+            "category": "car"
+        }, 
+        "uuid": "E_2RYH45T1s0MMhfh7", 
+        "agents": {"0": null, "1": null}, 
+        "agents_info": null
+    }, 
+    {
+        "scenario_uuid": "S_MltZPZ7WLWNU4Y3f", 
+        "events": 
+        [
+            {"agent": 1, "time": 1, "action": "message", "data": "intro", "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 2, "action": "message", "data": "unknown", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 3, "action": "offer", "data": {"price": 371}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 4, "action": "accept", "data": null, "start_time": null, "metadata": null}
+        ], 
+        "outcome": {"reward": 1, "offer": {"price": 371}}, 
+        "scenario": 
+        {
+            "uuid": "S_MltZPZ7WLWNU4Y3f", 
+            "attributes": 
+            [
+                {"name": "Role", "value_type": "role", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Bottomline", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Target", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Title", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Category", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Price", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Images", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Description", "value_type": "text", "unique": false, "multivalued": false, "entity": false}
+            ], 
+            "kbs": 
+            [
+                {
+                    "personal": {"Bottomline": null, "Role": "buyer", "Target": 304}, 
+                    "item": 
+                    {
+                        "Category": "furniture", 
+                        "Images": ["furniture/6145126742_0.jpg"], 
+                        "Price": 400, 
+                        "Description": ["This sofa bed with chaise was originally purchased from IKEA . Its dark brown in color and in very good condition. It has storage space as well. Refer to photos attached. If interested, please let me know and we can set up a day and time. If the deal works out, it is available to be picked up anytime after July 1, 2017."], 
+                        "Title": "Sofa bed with chaise (originally IKEA- Friheten)"
+                    }
+                }, 
+                {
+                    "personal": {"Bottomline": null, "Role": "seller", "Target": 400}, 
+                    "item": 
+                    {
+                        "Category": "furniture", 
+                        "Images": ["furniture/6145126742_0.jpg"], 
+                        "Price": 400, 
+                        "Description": ["This sofa bed with chaise was originally purchased from IKEA . Its dark brown in color and in very good condition. It has storage space as well. Refer to photos attached. If interested, please let me know and we can set up a day and time. If the deal works out, it is available to be picked up anytime after July 1, 2017."], 
+                        "Title": "Sofa bed with chaise (originally IKEA- Friheten)"
+                    }
+                }
+            ], 
+            "post_id": "6145126742", 
+            "category": "furniture"
+        }, 
+        "uuid": "E_bmi4aagxYaGhFJit", 
+        "agents": {"0": null, "1": null}, 
+        "agents_info": null
+    }, 
+    {
+        "scenario_uuid": "S_LttEEMIaAFlRkd77", 
+        "events": 
+        [
+            {"agent": 1, "time": 1, "action": "message", "data": "intro", "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 2, "action": "message", "data": "unknown", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 3, "action": "offer", "data": {"price": 16}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 4, "action": "accept", "data": null, "start_time": null, "metadata": null}
+        ], 
+        "outcome": {"reward": 1, "offer": {"price": 16}}, 
+        "scenario": 
+        {
+            "uuid": "S_LttEEMIaAFlRkd77", 
+            "attributes": 
+            [
+                {"name": "Role", "value_type": "role", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Bottomline", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Target", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Title", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Category", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Price", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Images", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Description", "value_type": "text", "unique": false, "multivalued": false, "entity": false}
+            ], 
+            "kbs": 
+            [
+                {
+                    "personal": {"Bottomline": null, "Role": "buyer", "Target": 10}, 
+                    "item": 
+                    {
+                        "Category": "electronics", 
+                        "Images": ["electronics/6140601964_0.jpg"], 
+                        "Price": 18, 
+                        "Description": ["Please include PHONE # in reply!", "NEW in box; color: Artic white, model#: TAD2014AW", "- Remote operation"], 
+                        "Title": "Digital answering machine Conairphone Callkeeper"
+                    }
+                }, 
+                {
+                    "personal": {"Bottomline": null, "Role": "seller", "Target": 18}, 
+                    "item": 
+                    {
+                        "Category": "electronics", 
+                        "Images": ["electronics/6140601964_0.jpg"], 
+                        "Price": 18, 
+                        "Description": ["Please include PHONE # in reply!", "NEW in box; color: Artic white, model#: TAD2014AW", "- Remote operation", "- Call Screening", "- Digital message counter, and many more features (seen on back of box photo)", "MUST include PHONE # in replies!"], 
+                        "Title": "Digital answering machine Conairphone Callkeeper"
+                    }
+                }
+            ], 
+            "post_id": "6120322018", 
+            "category": "electronics"
+        }, 
+        "uuid": "E_vu71jolqOcg6gVKw", 
+        "agents": {"0": null, "1": null}, 
+        "agents_info": null
+    }, 
+    {
+        "scenario_uuid": "S_tP9DLtDgQQK4AVZc", 
+        "events": 
+        [
+            {"agent": 1, "time": 1, "action": "message", "data": "intro", "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 2, "action": "message", "data": "unknown", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 3, "action": "offer", "data": {"price": 22}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 4, "action": "message", "data": "inquiry", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 5, "action": "offer", "data": {"price": 22}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 6, "action": "accept", "data": null, "start_time": null, "metadata": null}
+        ], 
+        "outcome": {"reward": 1, "offer": {"price": 22}}, 
+        "scenario": 
+        {
+            "uuid": "S_tP9DLtDgQQK4AVZc", 
+            "attributes": 
+            [
+                {"name": "Role", "value_type": "role", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Bottomline", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Target", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Title", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Category", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Price", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Images", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Description", "value_type": "text", "unique": false, "multivalued": false, "entity": false}
+            ], 
+            "kbs": 
+            [
+                {
+                    "personal": {"Bottomline": null, "Role": "buyer", "Target": 18}, 
+                    "item": 
+                    {
+                        "Category": "phone",
+                        "Images": [], 
+                        "Price": 24, 
+                        "Description": ["I am selling my T Mobile Samsung Galaxy S2 which is NOT working. Call"], 
+                        "Title": "T Mobile Samsung Galaxy S2 - For parts Not working"
+                    }
+                }, 
+                {
+                    "personal": {"Bottomline": null, "Role": "seller", "Target": 24}, 
+                    "item": 
+                    {
+                        "Category": "phone", 
+                        "Images": [], 
+                        "Price": 24, 
+                        "Description": ["I am selling my T Mobile Samsung Galaxy S2 which is NOT working. Call", "Black Color.", "The phone starts but wont go past boot screen for some reason. I think it can be easily fixed but dont have the time or expertise to do it."], 
+                        "Title": "T Mobile Samsung Galaxy S2 - For parts Not working"
+                    }
+                }
+            ], 
+            "post_id": "6123732747", 
+            "category": "phone"
+        }, 
+        "uuid": "E_ZCrQ1e1p92KZasJw", 
+        "agents": {"0": null, "1": null}, 
+        "agents_info": null
+    }, 
+    {
+        "scenario_uuid": "S_9AQaUjobUaxkxQX6", 
+        "events": 
+        [
+            {"agent": 1, "time": 1, "action": "message", "data": "intro", "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 2, "action": "message", "data": "unknown", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 3, "action": "offer", "data": {"price": 2041}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 4, "action": "message", "data": "inquiry", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 5, "action": "offer", "data": {"price": 2041}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 6, "action": "accept", "data": null, "start_time": null, "metadata": null}
+        ], 
+        "outcome": {"reward": 1, "offer": {"price": 2041}}, 
+        "scenario": 
+        {
+            "uuid": "S_9AQaUjobUaxkxQX6", 
+            "attributes": 
+            [
+                {"name": "Role", "value_type": "role", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Bottomline", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Target", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Title", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Category", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Price", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Images", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Description", "value_type": "text", "unique": false, "multivalued": false, "entity": false}
+            ], 
+            "kbs": 
+            [
+                {
+                    "personal": {"Bottomline": null, "Role": "buyer", "Target": 1672}, 
+                    "item": 
+                    {
+                        "Category": "housing", 
+                        "Images": [], 
+                        "Price": 2200, 
+                        "Description": ["For rent is a nice 2 bedroom 1 and half bath apartment townhouse located at 3004 Rockett Dr. in Fremont. This is a two story layout with the bedrooms and full bath upstairs, and downstairs you have the kitchen, living room and dining room and half bath. There is a front yard and back yard as well", "Deposit is one months rent", "You will need good credit or a co-signer with good credit", "There is coin laundry facility on the premises. No washer/dryer hookups", "No Pets Please", "Section 8 is ok", "Good credit or co signer with good credit is required"], 
+                        "Title": "2 BEDROOM 1 AND HALF BATH APT TOWNHOUSE WALK TO LAKE ELIZABETH*******"
+                    }
+                }, 
+                {
+                    "personal": {"Bottomline": null, "Role": "seller", "Target": 2200}, 
+                    "item": 
+                    {
+                        "Category": "housing", 
+                        "Images": [], 
+                        "Price": 2200, 
+                        "Description": ["For rent is a nice 2 bedroom 1 and half bath apartment townhouse located at 3004 Rockett Dr. in Fremont. This is a two story layout with the bedrooms and full bath upstairs, and downstairs you have the kitchen, living room and dining room and half bath. There is a front yard and back yard as well", "Deposit is one months rent", "You will need good credit or a co-signer with good credit", "There is coin laundry facility on the premises. No washer/dryer hookups", "No Pets Please", "Section 8 is ok", "Good credit or co signer with good credit is required", "Please use the google map link below to understand exactly where this unit is located and for directions. Address is", "Unit is available Now for immediate move in", "The number of occupants for the home ie family or roommates", "What type of income source ie Jobs and how long with employer", "Credit History and Rating", "or e-mail us information about yourself at our craigslist email", "applications for the apartment can be downloaded at www.jpproperties.webs.com"], 
+                        "Title": "2 BEDROOM 1 AND HALF BATH APT TOWNHOUSE WALK TO LAKE ELIZABETH*******"
+                    }
+                }
+            ], 
+            "post_id": "6131415768", 
+            "category": "housing"
+        }, 
+        "uuid": "E_yReEPIxsexF1pHAP", 
+        "agents": {"0": null, "1": null}, 
+        "agents_info": null
+    }, 
+    {
+        "scenario_uuid": "S_vjhBDKQnu1pkxghX", 
+        "events": 
+        [
+            {"agent": 0, "time": 1, "action": "message", "data": "intro", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 2, "action": "message", "data": "unknown", "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 3, "action": "message", "data": "inquiry", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 4, "action": "message", "data": "counter-price", "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 5, "action": "message", "data": "counter-price $2066", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 6, "action": "offer", "data": {"price": 2041}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 7, "action": "offer", "data": {"price": 2024}, "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 8, "action": "offer", "data": {"price": 2041}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 9, "action": "accept", "data": null, "start_time": null, "metadata": null}
+        ], 
+        "outcome": {"reward": 1, "offer": {"price": 2041}}, 
+        "scenario": 
+        {
+            "uuid": "S_vjhBDKQnu1pkxghX", 
+            "attributes": 
+            [
+                {"name": "Role", "value_type": "role", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Bottomline", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Target", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Title", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Category", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Price", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Images", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Description", "value_type": "text", "unique": false, "multivalued": false, "entity": false}
+            ], 
+            "kbs": 
+            [
+                {
+                    "personal": {"Bottomline": null, "Role": "buyer", "Target": 2024}, 
+                    "item": 
+                    {
+                        "Category": "housing", 
+                        "Images": [], 
+                        "Price": 2200, 
+                        "Description": ["For rent is a nice 2 bedroom 1 and half bath apartment townhouse located at 3004 Rockett Dr. in Fremont. This is a two story layout with the bedrooms and full bath upstairs, and downstairs you have the kitchen, living room and dining room and half bath. There is a front yard and back yard as well", "Deposit is one months rent", "You will need good credit or a co-signer with good credit", "There is coin laundry facility on the premises. No washer/dryer hookups", "No Pets Please", "Section 8 is ok", "Good credit or co signer with good credit is required"], 
+                        "Title": "2 BEDROOM 1 AND HALF BATH APT TOWNHOUSE WALK TO LAKE ELIZABETH*******"
+                    }
+                }, 
+                {
+                    "personal": {"Bottomline": null, "Role": "seller", "Target": 2200}, 
+                    "item": 
+                    {
+                        "Category": "housing", 
+                        "Images": [], 
+                        "Price": 2200, 
+                        "Description": ["For rent is a nice 2 bedroom 1 and half bath apartment townhouse located at 3004 Rockett Dr. in Fremont. This is a two story layout with the bedrooms and full bath upstairs, and downstairs you have the kitchen, living room and dining room and half bath. There is a front yard and back yard as well", "Deposit is one months rent", "You will need good credit or a co-signer with good credit", "There is coin laundry facility on the premises. No washer/dryer hookups", "No Pets Please", "Section 8 is ok", "Good credit or co signer with good credit is required", "Please use the google map link below to understand exactly where this unit is located and for directions. Address is", "Unit is available Now for immediate move in", "The number of occupants for the home ie family or roommates", "What type of income source ie Jobs and how long with employer", "Credit History and Rating", "or e-mail us information about yourself at our craigslist email", "applications for the apartment can be downloaded at www.jpproperties.webs.com"], 
+                        "Title": "2 BEDROOM 1 AND HALF BATH APT TOWNHOUSE WALK TO LAKE ELIZABETH*******"
+                    }
+                }
+            ], 
+            "post_id": "6131415768", 
+            "category": "housing"
+        }, 
+        "uuid": "E_Er3Lj8ZdU3j4S4jW", 
+        "agents": {"0": null, "1": null}, 
+        "agents_info": null
+    }, 
+    {
+        "scenario_uuid": "S_yzhe6WdnwvlRuJqB", 
+        "events": 
+        [
+            {"agent": 1, "time": 1, "action": "message", "data": "intro", "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 2, "action": "message", "data": "unknown", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 3, "action": "offer", "data": {"price": 22}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 4, "action": "message", "data": "inquiry", "start_time": null, "metadata": null}, 
+            {"agent": 1, "time": 5, "action": "offer", "data": {"price": 22}, "start_time": null, "metadata": null}, 
+            {"agent": 0, "time": 6, "action": "accept", "data": null, "start_time": null, "metadata": null}
+        ], 
+        "outcome": {"reward": 1, "offer": {"price": 22}}, 
+        "scenario": 
+        {
+            "uuid": "S_yzhe6WdnwvlRuJqB", 
+            "attributes": 
+            [
+                {"name": "Role", "value_type": "role", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Bottomline", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Target", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Title", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Category", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Price", "value_type": "price", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Images", "value_type": "text", "unique": false, "multivalued": false, "entity": false}, 
+                {"name": "Description", "value_type": "text", "unique": false, "multivalued": false, "entity": false}
+            ], 
+            "kbs": 
+            [
+                {
+                    "personal": {"Bottomline": null, "Role": "buyer", "Target": 22}, 
+                    "item": 
+                    {
+                        "Category": "phone", 
+                        "Images": [], 
+                        "Price": 24, 
+                        "Description": ["I am selling my T Mobile Samsung Galaxy S2 which is NOT working. Call"], 
+                        "Title": "T Mobile Samsung Galaxy S2 - For parts Not working"
+                    }
+                }, 
+                {
+                    "personal": {"Bottomline": null, "Role": "seller", "Target": 24}, 
+                    "item": 
+                    {
+                        "Category": "phone", 
+                        "Images": [], 
+                        "Price": 24, 
+                        "Description": ["I am selling my T Mobile Samsung Galaxy S2 which is NOT working. Call", "Black Color.", "The phone starts but wont go past boot screen for some reason. I think it can be easily fixed but dont have the time or expertise to do it."], 
+                        "Title": "T Mobile Samsung Galaxy S2 - For parts Not working"
+                    }
+                }
+            ], 
+            "post_id": "6123732747", 
+            "category": "phone"
+        }, 
+        "uuid": "E_LaqAg80zUS2BQdZV", 
+        "agents": {"0": null, "1": null}, 
+        "agents_info": null
+    }
+]
