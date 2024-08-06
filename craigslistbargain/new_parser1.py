@@ -10,29 +10,39 @@ from core.event import Event
 from core.scenario import Scenario
 from core.price_tracker import PriceTracker
 from neural.preprocess import Preprocessor
-from model.parser import Parser
+from model.new_parser2 import Parser ##### お試し用にparserをnew_parser2参照に変更
 from model.dialogue_state import DialogueState
 from model.generator import Templates, Generator
 
-def parse_example(example, lexicon, templates, flag, mname): # (example, price_tracker, templates, arg.neural-flag, arg.neural-parser)
+def parse_example(example, lexicon, templates, flag, path=None): # (example, price_tracker, templates, arg.neural-flag, arg.neural-parser)
     """exampleを解析し, templatesを収集する
     """
     kbs = example.scenario.kbs
-    # エージェントごとのパーサー(解析器)と状態を定義z
-    parsers = [Parser(agent, kbs[agent], lexicon, flag, mname) for agent in (0, 1)]
+    # エージェントごとのパーサー(解析器)と状態を定義
+    parsers = [Parser(agent, kbs[agent], lexicon, flag, path) for agent in (0, 1)]
     states = [DialogueState(agent, kbs[agent]) for agent in (0, 1)]
     # 最初の発話としてintent及び文に<start>を追加する
     parsed_utterances = [states[0].utterance[0], states[1].utterance[1]]
+
+    events = example.events
+
+    # textとpre_textをリストで取得
+    if flag == True:
+        text_list = two_text_get(events)
     
     # 発話を一つずつ解析する
-    for event in example.events:
-        writing_agent = event.agent  # 話し手
+    for i in range(len(events)):
+        writing_agent = events[i].agent  # 話し手
         reading_agent = 1 - writing_agent # 聞き手
         # print(event.agent)
 
-        received_utterance = parsers[reading_agent].parse(event, states[reading_agent]) # 発話文, ダイアログアクト, テンプレートの三つをまとめて作成
+        if flag == True:
+            received_utterance = parsers[reading_agent].parse(events[i], states[reading_agent], text_list[i]) # DLベースの方はtextと　pre_textの辞書を持っていく
+        else:
+            received_utterance = parsers[reading_agent].parse(events[i], states[reading_agent]) # 発話文, ダイアログアクト, テンプレートの三つをまとめて作成
+        
         if received_utterance:
-            event.metadata = received_utterance.lf # parseによって生成されたlf属性のものをmetadata(ダイアログアクト)にする
+            events[i].metadata = received_utterance.lf # parseによって生成されたlf属性のものをmetadata(ダイアログアクト)にする
             sent_utterance = copy.deepcopy(received_utterance) # received_utteranceのコピーをsent_utteranceに作成
             if sent_utterance.tokens:
                 sent_utterance.template = parsers[writing_agent].extract_template(sent_utterance.tokens, states[writing_agent]) # partner_priceとmy_priceを入れ替えて送る側と受け取る側のテンプレートを作る
@@ -48,28 +58,55 @@ def parse_example(example, lexicon, templates, flag, mname): # (example, price_t
             
     return parsed_utterances
 
+def two_text_get(events):
+    text_list = [] # textとpre_textの辞書を格納するリスト
+    for i in range(len(events)):
+        text = events[i].data # テキストを取り出す
+        if i == 0:
+            pre_text = "[PAD]"
+        else:
+            if type(events[i-1].data) is str:
+                pre_text = events[i-1].data # 一つ前の発話を取得
+            else:
+                if type(events[i-2].data) is str:
+                    pre_text = events[i-2].data
+                else:
+                    pre_text = "[PAD]"
+            
+        text_list.append({'text':text, 'pre_text':pre_text}) # リストに追加
+    
+    return text_list
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--transcripts', nargs='*', help='JSON transcripts to extract templates') # 学習・検証データ
     parser.add_argument('--transcripts-output', help='JSON transcripts of parsed dialogues') # 解析済み学習・検証データ
-    parser.add_argument('--price-tracker', help='The price tracker recognizes price mentions in an utterance')
+    parser.add_argument('--price-tracker', help='The price tracker recognizes price mentions in an utterance') # プライストラッカー
     parser.add_argument('--max-examples', default=-1, type=int) # -1で初期化
     parser.add_argument('--templates', help='Path to load templates') # なぜかあらかじめtemplatesを読み込むこともできる(まだ作ってないのに...)
-    parser.add_argument('--templates-output', help='Path to save templates')
-    parser.add_argument('--model-output', help='Path to save the dialogue manager model')
-    parser.add_argument('--neural-parser', help='Path of the deep learning-based parser you created') ##### new!! ディープラーニングベースパーサーのパス #####
-    parser.add_argument('--neural-flag', action='store_true', help='which parser do you use, neural-base or rule-base') ###### new!! ルールベース, ニューラルベースどちらのパーサーを使用するか #####
+    parser.add_argument('--templates-output', help='Path to save templates') # テンプレートの出力先
+    parser.add_argument('--model-output', help='Path to save the dialogue manager model') # モデルの出力先
+    parser.add_argument('--parserpath', help='Path of the deep learning-based parser you created') ##### new!! ディープラーニングベースパーサーのパス #####
+    parser.add_argument('--neuralflag', action='store_true', help='which parser do you use, neural-base or rule-base') ###### new!! ルールベース, ニューラルベースどちらのパーサーを使用するか #####
     args = parser.parse_args()
 
     price_tracker = PriceTracker(args.price_tracker)
     examples = read_examples(args.transcripts, args.max_examples, Scenario) # 学習・検証データを読み込む
     parsed_dialogues = [] # 解析した対話を格納するための配列
     templates = Templates() # テンプレートのインスタンスを作成
+    flag = args.neuralflag # ルールベース, DLベースどちらを使うかを判別するフラグ
 
     for example in examples:
         if Preprocessor.skip_example(example): # このスキップ文があるからNanがあったのか！
             continue
-        utterances = parse_example(example, price_tracker, templates, args.neural-flag, args.neural-parser) ##### flagとモデル名を追加 #####
+
+        # DLベースはモデル名が引数に必要なので一旦ここで分岐
+        if flag == True:
+            model_path = args.parserpath
+            utterances = parse_example(example, price_tracker, templates, flag, model_path) ##### flagとモデル名を追加 #####
+        else:
+            utterances = parse_example(example, price_tracker, templates, flag) ##### flag追加 #####
+        
         parsed_dialogues.append(utterances)
 
     #for d in parsed_dialogues[:2]: # parse_dialoguesの中身を2対話だけ確認

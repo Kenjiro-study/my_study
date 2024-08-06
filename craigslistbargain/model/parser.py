@@ -195,8 +195,13 @@ class Parser(BaseParser):
         template = self.extract_template(tokens, dialogue_state) # タイトルやprice-trackerを使用して発話の一部をプレースホルダに置き換えてテンプレートを作成
         utterance = Utterance(raw_text=event.data, tokens=tokens) # 正しい形の発話に成形
         tokens_with_parsed_price = self.parse_prices(tokens, dialogue_state) # 価格の部分をlisting_price(定価),my_price(自分の提案価格),partner_price(相手の提案価格),price(それ以外)に分ける
+        #print(tokens)
+        #print(template)
+        #print(utterance)
+        #print(tokens_with_parsed_price)
         #######
         intent = self.classify_intent(utterance, tokens_with_parsed_price, dialogue_state) # ダイアログアクトの決定(ここを置き換えよう!)
+        print(intent)
         #######
         proposed_price = self.get_proposed_price(tokens_with_parsed_price, dialogue_state) # 各発話で提案されている価格を取得
         utterance.lf = LF(intent, price=proposed_price) # LogicalForm形式でダイアログアクトを保存(intent=⚪︎⚪︎ price=××)

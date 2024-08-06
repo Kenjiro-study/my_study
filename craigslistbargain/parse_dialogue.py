@@ -23,9 +23,10 @@ def parse_example(example, lexicon, templates): # (example, price_tracker, templ
     states = [DialogueState(agent, kbs[agent]) for agent in (0, 1)]
     # 最初の発話としてintent及び文に<start>を追加する
     parsed_utterances = [states[0].utterance[0], states[1].utterance[1]]
-    
+    print(len(example.events))
     # 発話を一つずつ解析する
     for event in example.events:
+        print(event)
         writing_agent = event.agent  # 話し手
         reading_agent = 1 - writing_agent # 聞き手
         # print(event.agent)
@@ -52,11 +53,11 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--transcripts', nargs='*', help='JSON transcripts to extract templates') # 学習・検証データ
     parser.add_argument('--transcripts-output', help='JSON transcripts of parsed dialogues') # 解析済み学習・検証データ
-    parser.add_argument('--price-tracker', help='The price tracker recognizes price mentions in an utterance')
+    parser.add_argument('--price-tracker', help='The price tracker recognizes price mentions in an utterance') # プライストラッカー
     parser.add_argument('--max-examples', default=-1, type=int) # -1で初期化
     parser.add_argument('--templates', help='Path to load templates') # なぜかあらかじめtemplatesを読み込むこともできる(まだ作ってないのに...)
-    parser.add_argument('--templates-output', help='Path to save templates')
-    parser.add_argument('--model-output', help='Path to save the dialogue manager model')
+    parser.add_argument('--templates-output', help='Path to save templates') # テンプレートの出力先
+    parser.add_argument('--model-output', help='Path to save the dialogue manager model') # モデルの出力先
     args = parser.parse_args()
 
     price_tracker = PriceTracker(args.price_tracker)
@@ -69,7 +70,8 @@ if __name__ == '__main__':
             continue
         utterances = parse_example(example, price_tracker, templates)
         parsed_dialogues.append(utterances)
-
+        break ############# 一つの例を考えながら改良を進めよう
+"""
     #for d in parsed_dialogues[:2]: # parse_dialoguesの中身を2対話だけ確認
         #for u in d:
             #print(u)
@@ -95,5 +97,6 @@ if __name__ == '__main__':
     # modelとgeneratorのテストをする
     generator = Generator(templates)
     action = manager.choose_action(None, context=('intro', 'init-price'))
-    #print(action)
+    print(action)
     print(generator.retrieve('intro', context_tag='init-price', tag=action, category='car', role='seller').template)
+"""
