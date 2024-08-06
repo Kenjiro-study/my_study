@@ -1,0 +1,2543 @@
+,text,meta_text
+0,"hello , could i interest you in a 1999 bmw ? ",intro
+1,i'm actually selling a 1999 bmw . would you like to buy it ? ,intro
+2,"oops ! yes , i would love to buy it ! i am very interested . ",intro
+3,"great ! the wagon is a reliable car , and i have it priced at $3500 ",init-price
+4,"wow , thats really steep . its only a 1999 . i can really only go 3 , 000 . ",counter-price
+5,"i've kept the car up to date on oil changes , and regular routine maintenance . i have a small auto shop where i do oil changes and can give you a 1 year subscription to free changes every 3 months if we can agree on $3250 ",counter-price
+6,"wow , thats not bad at all . lets do it ! ",agree
+7,<end>,<end>
+8,"hi , i am interested in the sofa and loveseat if it's still available . ",intro
+9,yes they are still available ,intro
+10,does it come from a pet/smoke free home ? ,inquire
+11,yes ,inform
+12,great ! if you are willing to drop the price to $420 i could come pick it up now and pay cash . ,init-price
+13,make it $475 and they are yours ,counter-price
+14,can we meet at $445 ? ,counter-price
+15,$475 is as low as i feel i can go . ,insist
+16,$450 and i can be there as soon as you give me the address . ,counter-price
+17,i need to get rid of them so i will take that ,agree
+18,sold ! ,thanks
+19,<end>,<end>
+20,hi . interested in the phone ? ,intro
+21,"yes , but are you firm at 60$ ? ",init-price
+22,"as much as i'd like to be , we can work on a price . what are you thinking ? ",inquire
+23,i was thinking maybe around 30$ ,counter-price
+24,"oh wow . that's much lower than i anticipated . i am trying to get rid of it , but i'd also not like to lose out on it . how about $45 ? ",counter-price
+25,i could go 40$ and pick it up . ,counter-price
+26,$45 is the lowest i'm willing to go . it's a great phone and $45 is a steal ! ,counter-price
+27,does it come with the charger and any accessories ? ,inquire
+28,"yeah , i've got a wall charger , car charger , and headphones . ",inform
+29,"okay , i will do 45$ . ",agree
+30,<end>,<end>
+31,nice cables you have . ,intro
+32,can you tell me about them ? ,inquire
+33,"they are in good condition , 6 feet long , rca cables ",inform
+34,"i see they are used , hopefully you can go down to $14 ? ",insist
+35,would that be reasonable if i came to pick it up today ? ,inquire
+36,could you do an even 15 ? today would be great to pick them up ,counter-price
+37,and there is nothing wrong with them ? ,inquire
+38,"nothing , we've just downsized a bit ",agree
+39,ok thanks . $15 is the offer . that is fair . ,thanks
+40,<end>,<end>
+41,"hello , are you interested in the trek bike ? ",intro
+42,hey there ! i am very interested in your bike as i am a short person ! ,intro
+43,"you said it looks very scratched up , can you elaborate ? ",inquire
+44,"it appears scratched , but works great ! ",inform
+45,honestly i just need a bike to be able to get to work right now . someone stole my car which had my purse and all my stuff in it i have been down on my luck and this bike sounds perfect . ,supplemental
+46,how low are you willing to go ? ,inquire
+47,"oh , i'm so sorry ! it's such a great bike , that i have been re-building . could you buy it for $45 ? ",init-price
+48,"i could , but then i wouldn't have enough money for food this week since my purse was stolen too . would you mind accepting $35 i really wouldn't usually ask but considering my situation i could really use the help . ",counter-price
+49,"that is a bit too low , but , i'm willing to meet in the middle . how about 40 ? ",disagree
+50,what about one more offer at $35 and i can come pick it up ? ,counter-price
+51,"well , you seem like a nice person . let's say 38 and call it a deal ! ",counter-price
+52,<end>,<end>
+53,"hello , i'm looking to rent your apartment ",intro
+54,"okay , are the terms as listed in the advertisement acceptable to you ? ",inquire
+55,"it seems good , is it in a god neighborhood ? ",inquire
+56,"we like the neighborhood , yes . if you want we can schedule an appointment either during or outside of open house hours , and you can see for yourself . ",inform
+57,thats okay . i am busy today . can you lower the price a bit for the poor college student ? i can offer 1700 ,init-price
+58,we could probably go as low as $1850 . ,counter-price
+59,how about 1800 and i pay today ? ,counter-price
+60,we can do that . ,agree
+61,<end>,<end>
+62,hello . . . ,intro
+63,hi is the house still available ? ,inquire
+64,"it is still available , though have some other interested parties ",inform
+65,how far away is it from stores and what is the flooring like also does it come with any appliances ? ,inquire
+66,"it does come with washer and dryer . about 1 mile from supermarket , flooring is hardwood and new carpet . ",inform
+67,that's good . the house is kind of in a bad part of town so i think it's a little overpriced are you flexible at all when it comes to the price ? ,inquire
+68,"it is located in a good part of the neighborhood , and might give some consideration to price , though it is certainly comparable to other rates in this neighborhood . ",inform
+69,"will you take $2 , 000 that's kind of where my budget is right now ",init-price
+70,"sorry , bout couldn't go that low . could go down to 2450 . ",counter-price
+71,i can come up to 2400 if you throw in utilities that possible ? ,counter-price
+72,"i could go to 2400 and pay garbage , but other utilities would be yours . ",agree
+73,<end>,<end>
+74,"hi , i'm very interested ni the t-mobile lg g4 phone ",intro
+75,"ok great , i'm slightly flexible on the price . did you have an offer for me ? ",intro
+76,"yeah , how do you feel about $85 ? ",init-price
+77,that's a little too low for me . what about 100 ? ,counter-price
+78,"hmm . . okay , i could do $100 ",agree
+79,<end>,<end>
+80,hi there ! are you interested in the blackberry ? ,intro
+81,yes i am ! does the screen have any scratches ? and do all the keys work and light up ? ,inquire
+82,they do ! ,inform
+83,are you looking to buy or trade ? ,inquire
+84,<end>,<end>
+85,hello ,intro
+86,hi ,intro
+87,i am interested in your bike for sale ,intro
+88,it's a great bike ,supplemental
+89,"i dont really need all the accessories with it , so is $45 an offer youre willing to accept ? ",init-price
+90,without the accessories i would be able to do $70 ,counter-price
+91,"thats still a little high , how about $50 ? ",counter-price
+92,i can do $65 if you come and pick it up ,counter-price
+93,ok sounds good ,agree
+94,<end>,<end>
+95,would you be willing to sell the bike for $15 ? ,init-price
+96,how about $16 ? ,counter-price
+97,sure :) ,agree
+98,it's a deal ! ,thanks
+99,<end>,<end>
+100,"hi , what is the lowest you'll be able to sell it for ? ",inquire
+101,"this chair is an excellent addition to any room ! it is in perfect condition , and retails for around $450 . so the lowest i could go is $250 . ",init-price
+102,"would you be interested in lowering the price to , say $225 , if i were to able to get it today and pay all in cash ? ",counter-price
+103,deal . ,agree
+104,<end>,<end>
+105,greetings ! ,intro
+106,hello there . i would like to buy your bike ,intro
+107,i'm more than happy to sell it . how does the list price of 75% sound ? ,vague-price
+108,"i'd love to pay that , but i only have $65 i can spend this week . ",init-price
+109,"sorry for the % , a typo . however i could do 65 dollars . ",agree
+110,ok you've got a deal . ,agree
+111,<end>,<end>
+112,"hi , interested in the chair listed here ",intro
+113,hello would you like to buy by nice chair for 300 dollars ? ,init-price
+114,"i think it is nice , would you take $250 for it ? ",counter-price
+115,would you take 275 ? ,counter-price
+116,$270 ? ,counter-price
+117,<end>,<end>
+118,great price great bike ! ,intro
+119,hi ! ,intro
+120,it does look nice . ,intro
+121,"hello , how will you be purchasing this bike today ? ",inquire
+122,i was wondering if you would accept $65 cash ,init-price
+123,what bike would be willing to lose for that price ? ,inquire
+124,i'm not sure i understand . will you sell for $65 cash ? ,inquire
+125,"typing error , sorry . i meant to say what bike accesories are you willing to do without in order to get it for the 65$ cash ? ",inquire
+126,"oh , i see . i could do without the training wheels . ",unknown
+127,we have a deal then ,agree
+128,great ! ,thanks
+129,<end>,<end>
+130,"hello , i would like to purchase your chair ! it is everything i have been looking for . would you be willing to come down in price ? ",intro
+131,"thanks for your interest , it is a very nice piece , moving and we have no room for it , would be willing to go to 280 for a sale today . ",init-price
+132,if i can to you and picked it up would you be willing to do 200 ? ,counter-price
+133,"can't afford to i'm afraid , already losing money on it . tell you what , i'll deliver within 40 miles and final offer would be 270 ",counter-price
+134,"i will do 250 , that is my highest offer . ",counter-price
+135,"i paid 445 3 months ago and it is almost unused , certainly unmarked . 265 if you agree now , otherwise i'll just have to sell another day ",counter-price
+136,265 and free delivery ? ,inquire
+137,"that's right , all part of the service ",inform
+138,alright we have a deal . ,agree
+139,nice doing business with you ! ,thanks
+140,<end>,<end>
+141,"wow , this looks like a great bike ! ",intro
+142,it sure is ! excellent for kids and it's in excellent condition ,supplemental
+143,really ? is it new ? ,inquire
+144,it has been used but very lightly . ,inform
+145,very cool ! does it come with the helmet for the price ? ,inquire
+146,it sure does . ,inform
+147,"wow , this looks great ! ",unknown
+148,its an awesome bike ! ,supplemental
+149,does it come with the helmet ? ,inquire
+150,it sure does . ,inform
+151,how much ? ? ,inquire
+152,im asking for $75 ,init-price
+153,"wow , steep ! its old . how about 35 ",counter-price
+154,the bike is in excellent condition and it comes with a bunch of additional goodies . those make this an excellent deal . i also deliver within 25 miles of town at my expense . ,supplemental
+155,thats all great ! how about 50 and i pick it up ? ,counter-price
+156,"the add-on items make this a great deal . they are worth quite a bit alone . but i figured the deal would be sweeter as a package price . because i'm a nice guy , i'd be willing to deliver and knock $15 off the price to make it $60 for the bike and all the valuable goodies . ",counter-price
+157,deal ! ,thanks
+158,<end>,<end>
+159,hi there . are you interested in the sofa ? ,intro
+160,"yes , i would be willing to pay 100 for the sofa ",init-price
+161,"i was looking to get 150 for it , but i'd be willing to take 135 ",counter-price
+162,can you deliver ? ,inquire
+163,i can deliver it within 5 miles for 50 bucks . ,inform
+164,tell you what-- i'll sell you the sofa and deliver it for 175 ,counter-price
+165,i will pick up the sofa and pay 125 . ,counter-price
+166,it's in really good shape-- no pets and no smokers . i can't really accept less than 135 for it ,counter-price
+167,how about 130 ? ,counter-price
+168,alright i can do 130 ,agree
+169,<end>,<end>
+170,"hi , i'm very interested in this bike . are the tires in good shape ? brakes work well ? ",intro
+171,"everything is in rideable shape , it has been kept indoors so everything is rust free . ",supplemental
+172,"great , do you have any wiggle room on the price ? ",inquire
+173,"i feel $20 is pretty fair on the price , we could perhaps work out something . ",init-price
+174,is there any way you could come off a couple bucks ? i've got 18 bucks on me now and really don't want to go to the bank since i don't have a car . ,counter-price
+175,"alright , i could do $18 this time . this bike should get you there and back afterwards . best of luck to you ! ",agree
+176,<end>,<end>
+177,i'm interested in your couch . ,intro
+178,"i'll come pick it up right now , cash in hand , $125 ? ",insist
+179,"that's not a bad offer ! for an extra $50 , i can drop it off for you ! ? ",counter-price
+180,that's a higher listed price than the original . 135$ is all i can afford right now ,counter-price
+181,i can take the $135 ,agree
+182,<end>,<end>
+183,hi there . i'm interested in your bicycle . ,intro
+184,could you give me some details about it ? ,inquire
+185,"hi there . sure , its an orange huffy rock it bmx bike . its used but has been used only indoors . so its as new as it was . its a great thing for a lower price . ",inform
+186,hmm . okay . is there any chance you could do 10$ for it ? ,init-price
+187,that's too low . i can give it to you for $15 . but you will have to come get it yourself then . ,counter-price
+188,i can do that . ,agree
+189,great we can meet on friday and i will text you the address . please leave me your phone number and name and we can do the needful by the end of this week . ,supplemental
+190,"okay , sure . just accept the offer whenever you're ready . ",inform
+191,<end>,<end>
+192,"hello , i am curious about the bike , is there anything wrong with it ? ",inquire
+193,"other than being used , it is in great shape . i am selling it at a bargain price . ",inform
+194,"that is true , your price is not unreasonable , however i am on a budget . could i pick it up myself and pay 12 for it ? ",init-price
+195,how about 15 if you pick it up by yourself ? ,counter-price
+196,"lets split the difference , and call it 14 and i will see you in an hour . ",counter-price
+197,1 dollar should never keep two men from their drink . you have yourself a deal . ,agree
+198,<end>,<end>
+199,"hi i am interested in the sofa bed , what is the condition of this item ? ",inquire
+200,this item is in good condition it does have fading of fabrics ,inform
+201,"money is tight for me , but i really want this . would you take $50 and i can pick up now ",init-price
+202,overall the item is good no pets or smokers i would be happy to help you carry to your car . how bout $100 ,counter-price
+203,100 is still a little too high . would you take 75 ? ,counter-price
+204,yes send the offer . ,agree
+205,<end>,<end>
+206,hi . i need to get rid of this quick . do you have an offer ? ,intro
+207,could you first tell me how old the bike is ? ,inquire
+208,we bought it a few years back . i guess i'd say 2 or 3 years . ,inform
+209,i could do $52 for the bike ! ,init-price
+210,done ! ,agree
+211,<end>,<end>
+212,hi ! i am interested in your bike . ,intro
+213,what size is it ? ,inquire
+214,haha im actually not sure what size it is ,inform
+215,honest . . i like it . is it for adult or kids ? ,inquire
+216,could be a teens bike or adult ,inform
+217,"ok , is it in good condition ? ",inquire
+218,yes pretty good condition ,inform
+219,do you accept $14 ? ,init-price
+220,yes ,agree
+221,cool . . thank you ,thanks
+222,<end>,<end>
+223,hi ,intro
+224,hi ! i see you've found my couch ! ,intro
+225,yes . is it ion good condition ? i would like to buy it . ,inquire
+226,it is in great condition . very little wear and tear ! ,inform
+227,how much would you like for it ? ,inquire
+228,i would like $150 and can deliver it for another $50 ,init-price
+229,how about 140 with delivery ? that ten bucks would be much appreciated . ,counter-price
+230,that's not a bad deal at all ! i can do that ,agree
+231,thanks . i can pick it up myself too if you would like . ,thanks
+232,<end>,<end>
+233,hello ! i'm interested in your chair . i have 200 cash right now and i'm willing to come pick it up ! ,intro
+234,"awesome ! i can deliver it to you for $250 , its really clean and in nice condition . ",counter-price
+235,"its easy to clean so i clean it often , even if its not dirty . ",supplemental
+236,how about i throw in 10 more dollars . that's the most i can do . ,vague-price
+237,"alright dude , ill help you out if you help me out . ill do $210 and you come pick it up . ",agree
+238,done ! ,agree
+239,<end>,<end>
+240,do you still have the bike for sale ? ,inquire
+241,i have it now for $20 ,init-price
+242,it looks like a good bike . could you go any lower on the price ? say $10 ? ,counter-price
+243,"its all in good shape , tires and chain . no rust . i'll go $18 ",counter-price
+244,do you still have the bike for sale ? ,inquire
+245,yes ,inform
+246,so yes to $10 ? ,insist
+247,"$18 , no less ",insist
+248,it looks like a good bike . could you go any lower on the price ? say $10 ? ,insist
+249,sorry i think a message got in there by mistake . ,unknown
+250,so you'll buy for 18 ? ,insist
+251,so yes to $10 ? ,insist
+252,no i can't go $18 . if i come and pick it up today would you accept $14 ? ,counter-price
+253,"no , sorry . i've got to get at least $18 ",insist
+254,<end>,<end>
+255,"hello , i'm interested in your bike . ",intro
+256,what condition is it in ? ,inquire
+257,it is in good shape ! i am positive your kid will like it ! ,inform
+258,how does $15 sound ? ,init-price
+259,done ! ,agree
+260,"okay , thanks for negotiating . ",thanks
+261,<end>,<end>
+262,hello . i'm interested in buying the chair . ,intro
+263,is it in excellent condition ? how old is it ? ,inquire
+264,it is like new . i bought it 2 years ago . ,inform
+265,understood . would you be willing to accept $210 for the chair ? ,init-price
+266,$210 seems kind of low for this chair . i could accept $275 ,counter-price
+267,i can't pay out that much . would you be willing to accept $240 for it ? ,counter-price
+268,it is like new . i bought it 2 years ago . ,supplemental
+269,if you can pick it up today i will let it go for $260 . ,counter-price
+270,$255 and we have a deal . ,counter-price
+271,i can do $255 . ,counter-price
+272,<end>,<end>
+273,howdy nice sofa for a sale . 200 bucks i get it too ya . you don't even have to move a finger ,init-price
+274,hello im interested in the sofa but thats alittle high for me i could give you 100 and ill pick it up and load it so no inconvience for you . ,counter-price
+275,100 is too low . the lowest i can do is probably 140 . ,counter-price
+276,i could do 125 that is about i can afford for a used sofa bed . i am willing to pick it up and load it up on my own . ,counter-price
+277,"you know , just because i'm a nice guy . that's a deal ",agree
+278,<end>,<end>
+279,is the bike still available ? ,inquire
+280,yes . 75 is my bottom dollar ,init-price
+281,so there's no wiggle room ? no negotiation ? ,inquire
+282,is the bike still available ? ,inquire
+283,65 ? ,counter-price
+284,so there's no wiggle room ? no negotiation ? ,inquire
+285,well i don't really need the training wheels or knee pads . ,inform
+286,i can pick the bike up today for $40 . ,counter-price
+287,we can do 50 and i'll bring it to you . ,counter-price
+288,that's a pretty good deal . i'll take it . ,agree
+289,<end>,<end>
+290,this is a steal . i need to get rid of this bike $20 or best offer ,init-price
+291,will you take 15 ? ,counter-price
+292,"can you make it 18 , this thing was stored in doors . its in really good shape ",counter-price
+293,how about 17 ? ,counter-price
+294,that will work ,agree
+295,<end>,<end>
+296,hello . ,intro
+297,hi . would you do 10$ on the bike and i'll come pick it up right now . my child has been dying for a bike and money is a little tight . i can do 10 if that's okay with you . ,init-price
+298,"i'm sorry , i'm not moving from $20 . it's already too cheap as is . ",counter-price
+299,"15 is the most i can do , please . i'll come get it ! ",counter-price
+300,i'll meet you in the middle at $17 . 50 . that's as low as i'll go . ,counter-price
+301,"come on , that means i have to go get change to a store that's out of the way . ",vague-price
+302,i have change if that's an issue . ,unknown
+303,fine but you bring it to me . ,supplemental
+304,okay . ,inform
+305,<end>,<end>
+306,are you interested in the bike and accessories ? ,inquire
+307,yeah i guess how much are you selling it for ? ,inquire
+308,75$ ,init-price
+309,oh wow that's more than i was expecting . ,vague-price
+310,would you like to make an offer ? ,inquire
+311,i was thinking more around the 45$ range ,counter-price
+312,what if we do 50$ without the accessories ? ,counter-price
+313,i'll do 42$ for the bike and 10$ for the acssesories ,counter-price
+314,52$ then ,counter-price
+315,yeas ,agree
+316,<end>,<end>
+317,hi erica . i was interested in the bike you have for sale ! ,intro
+318,"this bike is in great condition , it was stored inside so it has hardly any wear and tear . i need to let go if because i'm moving . $20 and its yours ! ",init-price
+319,i'll come get it for 10$ . my child has been wanted this bike for a while now ! ,counter-price
+320,i want $20 . this bike is more than worth it . you won't find a bargain like this at a store . act now before someone else gets it ,insist
+321,"let's negotiate please , can we do 15 ? ",counter-price
+322,"how about $18 , if you come and pick it up ",counter-price
+323,come on 15 . ,insist
+324,thats just not worth it to me . i'm giving you a real bargain here . $18 ,insist
+325,fine 18 but you bring it to me . ,agree
+326,ok ,unknown
+327,<end>,<end>
+328,hows it going ? interested in the chair you have for sale ,intro
+329,good ! you have any questions ? ,inquire
+330,is it a comfy chair ? ,inquire
+331,it is very comfortable and classy . ,inform
+332,"ok great , i would be willing to pay $150 cash for it , and i can pick it up asap ",init-price
+333,"look , this is an expensive chair if you are willing to buy it somewhere else . i-m only selling it cause i'm moving out of the country . otherwise i'd keep it but i don't want to just give it away , you know ? how about 250 ? ",counter-price
+334,<end>,<end>
+335,i'm interested in your ikea sofa bed . ,intro
+336,"wonderful , it's a beautiful piece and is in great condition ! ",supplemental
+337,money is tight for me right now . are you willing to negotiate ? i'm looking to spend closer to $75 ,init-price
+338,"i'm willing to negotiate , i really would like to stick to the 100-125 price range though . ",counter-price
+339,can you do $90 ? i can come pick it up today . ,counter-price
+340,could you meet me in the middle at $95 ? i think that's fair i'll even help you load it into your vehicle . ,counter-price
+341,that works for me . thank you for working with me on the price . ,agree
+342,no problem ! ,thanks
+343,<end>,<end>
+344,hello ,intro
+345,"this bike is a totally sweet looking orange color , and is in great condition because it was stored indoors . ",supplemental
+346,you interested ? i'm asking $20 ,init-price
+347,i am interested . my son needs a new bike . is this one in great condition ? the tires are good and everything ? ,inquire
+348,"the bike is in good condition , i'm in antioch if you are interested in taking a look at it ",inform
+349,yes i would like to take a look at it . can you knock off a few bucks for the drive ? ,inquire
+350,"if you decide you want to buy it , i'll let you have it for $18 for making the trip out ",counter-price
+351,that sounds like a good deal . ,agree
+352,thanks a lot . ,thanks
+353,<end>,<end>
+354,"hi , are you interested in buying this bmx bike ? ",inquire
+355,this bike looks great ,intro
+356,"awesome , are you comfortable paying $20 for it ? ",init-price
+357,that is a little much because it is used . ,vague-price
+358,its used right ? ,inquire
+359,it is lightly used but has been well maintained and stored indoors to protect it from the elements . ,inform
+360,not bad at all . you're asking 20 . how about 12 ? ,counter-price
+361,i'd be willing to go down to 16 but not much lower . i can throw in delivery ! ,counter-price
+362,delivery and 15 and we have a deal ! ,counter-price
+363,alright ! ,agree
+364,deal ! ,agree
+365,<end>,<end>
+366,hi how can i help you ,intro
+367,"hi , i am interested in your listing . . . can you tell me a bit about the item ? ",inquire
+368,"it is a very nice chair , it has just been completely reupholstered . brand new condition for $300 ",init-price
+369,"it looks very nice , how soon could i see it in person ? ",inquire
+370,today at any time that works for you ,inform
+371,"great , if i come today and pay cash , would you consider accepting $270 for this chair ? ",counter-price
+372,<end>,<end>
+373,"hi , i'm interested in buying this sleeper sofa . ",intro
+374,how long has it been in use ? ,inquire
+375,i've used this for about a year and a half ,inform
+376,hmm . would you be willing to sell it to me for $135 ? i could come pick it up myself . ,init-price
+377,when would you be able to get it ? ,inquire
+378,i can come pick it up anytime this week . ,inform
+379,if you could pick it up today and give me cash i could do 135 ,agree
+380,sounds like a deal ! ,thanks
+381,<end>,<end>
+382,hi ! that is a cute bike ,intro
+383,hello i am glad you like it . it was my daughter's and now it can be all your for the cheap price of $75 ,init-price
+384,does it work fine ? ,inquire
+385,"it is in excellent condition . functions great and i am throwing in the helmet , knee pads , and training wheels . ",inform
+386,cool . will you accept $67 ? ,counter-price
+387,you got a deal ! ,agree
+388,thanks ,thanks
+389,<end>,<end>
+390,hi ,intro
+391,"hello ! i just saw your ad for the bike w/ the helmet knee pads , and training wheels . ",intro
+392,yes . it is my daughter's bike and now she is too big for that . works great and very cute ,supplemental
+393,oh great . do you mind if i ask how old the bike is ? ,inquire
+394,it is about 2 years old but very well taken care of . a little scratch but it is not noticeable ,inform
+395,"oh okay , so i wanted to make an offer . i don't have a lot to spend , but my daughters birthday is coming up and i know this would make her so happy ",unknown
+396,oh she will love this bike . how much do you have in mind/ ,inquire
+397,"i was hoping we could make a deal for something close to $35 . i'd be willing to come to your house or where ever you'd like to pick up the bike , ",init-price
+398,"how about $50 ? it includes helmet , knee pad , everything she needs to learn to bike ",counter-price
+399,"i could do $37 . i make wonderful pies too , and i'd be more than happy to bake one for you ! whatever kind you like ! :) ",counter-price
+400,that is no nice of you ! ok . . i think i can go with you . happy birthday little girl ! ,agree
+401,<end>,<end>
+402,hello . ,intro
+403,how old is the bike ? ,inquire
+404,"the bike is a few years old , my child grew out of it so i need a newer bike . i'm selling it for around $75 . ",init-price
+405,understood . would you accept $37 ? ,counter-price
+406,"i can accept $40 if you come and pick it up , if not i can deliver it to your place for $40 . ",counter-price
+407,$38 and we have a deal . i'll pick it up . ,counter-price
+408,okay that works for me thanks ! ,agree
+409,<end>,<end>
+410,hi . ,intro
+411,hi ,intro
+412,"i'm interested in your phone , but since it is an older version would you consider taking $45 for it ? ",init-price
+413,i could go 75 ,counter-price
+414,it's older and only has 16gb . . . . so how about 60 ,counter-price
+415,"okay , that would be good . ",agree
+416,great ! ,thanks
+417,<end>,<end>
+418,is this an authentic item ? ,inquire
+419,"yes , this is a genuine piece . ",inform
+420,how old is it ? ,inquire
+421,actually this is with my family from my childhood . may be some 40 years old . ,inform
+422,"i'm interested in this item , but the description says it is untested . how does $105 sound ? ",init-price
+423,untested also means unused . it is kept idle for years such as a new one . further this item is precious and available with only a few people as i know . i listed a nominal price only . ,supplemental
+424,<end>,<end>
+425,that bed is gorgeous . i would be willing to drive and pick it up for $320 . ,init-price
+426,the bed is in great condition an has no damage i would like to get $340 for it . ,counter-price
+427,how long ago did you purchase the bed ? ,inquire
+428,about a year ago it was in my guest room never really had people over so decided to sell it . ,inform
+429,"ok , i'd be willing to up my offer to $335 . ",counter-price
+430,that sounds like a good offer i will take it . ,agree
+431,<end>,<end>
+432,does the radio work ,inquire
+433,i actually do not know found it in a storage unit i bought . ,inform
+434,i would give 50 ,init-price
+435,there is no way that i can go that low . this thing is worth over $400 it is in great condition and even if it does not work its still worth over 200 . ,counter-price
+436,how about 100 cash ,counter-price
+437,how about $140 and i can deliver it ? ,counter-price
+438,thats great ,agree
+439,<end>,<end>
+440,hello ,intro
+441,"this apartment looks great , but it is a bit above my price range . would you accept $2400 ? ",init-price
+442,thank you . as i'm sure you are aware this is a pretty exclusive area . can we meet at $2500 ? ,counter-price
+443,"yeah , that's why i am interested in this apartment . i do not think i can make the open house , but i really want an apartment in this area . will you accept a bid around 2450 ? ",counter-price
+444,"sorry to hear you can't make it , perhaps we can schedule an alternative time for you to come by . $2450 should work . ",agree
+445,that would worl ,unknown
+446,please accept the agreed offer ,unknown
+447,<end>,<end>
+448,hey . i'm interested in the desk/table . is it in good condition ? ,intro
+449,"hi , yes it is . an ikea at 20 . . . dirt cheap i would say ",init-price
+450,that is pretty cheap . what color is it ? ,inquire
+451,"it's white , 20 and deal ? ",inform
+452,i like white . how about 17 ? ,counter-price
+453,"ok that works , but you would pick up right ? ",agree
+454,"awesome . yes , i'll pick it up . is tonight good for you ? ",unknown
+455,sure ,unknown
+456,thanks ,thanks
+457,<end>,<end>
+458,howdy partner . 349 is a great price for a queen bed . it won't last long i tell you ,init-price
+459,"it's a beautiful bed , but a little out of my price range . can you tell me more about this bed ? ",inquire
+460,"sure . italian design , asian rubberwood frame , comes with a headboard , footboard , and a set of rails . ",inform
+461,it doesn't come with the mattress ? ,inquire
+462,mattress comes with it . of course . ,inform
+463,that's just too low ,unknown
+464,<end>,<end>
+465,"hey , i am interested in this product . why are you selling it ? ",intro
+466,"hello , i am selling it to help me pay for schooling . they are limited edition and still wrapped in plastic . ",inform
+467,"ok , 220 is a but high for me at the moment . would $200 work ? is the color gold or am i seeing it wrong ? ",init-price
+468,"yes , the color is gold and they retail for around 300 . i could let them go for 200 , it's a deal . ",agree
+469,ok great . ,thanks
+470,<end>,<end>
+471,"hi , i love this bed and think it would go great with my bedroom decor . ",intro
+472,is it from a non smoking home ? ,inquire
+473,yes it is and it is beautiful ! ,inform
+474,"i could use this bed but am on a budget , would you consider 250 . 00 ",init-price
+475,i could do $300 (cash only) and i'll deliver it ,counter-price
+476,"ok sounds great , i can do that ! ",agree
+477,<end>,<end>
+478,hello ,intro
+479,"hi , i like your apartment , the photos are nice . your asking price is slightly over though , i can offer 1435 ",init-price
+480,"i'm willing to work with you a bit . but this place is in a great neighborhood , right near a park . lots of good public transportation right near by . can you do 1950 ? ",counter-price
+481,"how old is it ? and what all does it include ? refrigerator , dishwasher , bathtub ? ",inquire
+482,its fully furnished . its perfect for a couple to move in right away ,inform
+483,"great , i see it's close to a hospital too . . . helps with my wife's condition . i can do 1850 today , will pay in cash ",counter-price
+484,i would be willing to do 1850 if you sign a 1 year lease . do we have a deal ? ,agree
+485,"yes , i can do that ",agree
+486,great ,thanks
+487,<end>,<end>
+488,"hello , i am very interested in this apartment . ",intro
+489,i was wondering what the price included ? it seems very high ! are there any amenities ? ,inquire
+490,"it is very close to many different shops in the neighborhood , ",inform
+491,is there gym access for this apartment complex ? a pool ? ,inquire
+492,yes there is a pool located next to the club house with an adults only night on friday night . ,inform
+493,"okay awesome . i still would not be able to afford 2050 a month with having to keep my gym membership . but , i would be able to save on not going out every friday night so i could probably afford about 1500 . would you be will to go down in price ? ",init-price
+494,"no there is no way to lower the price that much , but if you go with the 2050 asking price i will be willing to pay for the water and trash pickup ",counter-price
+495,if you throw wifi in with it then i would be able to do 2050 . ,agree
+496,you drive a hard bargin but i will throw in wifi also for 2050 ,agree
+497,great ! we have a deal ! ,thanks
+498,<end>,<end>
+499,hi are you interested in the table ? ,inquire
+500,yes i am . how extensive is the chipping on them ? ,inquire
+501,the chipping is barely noticeable . they got chipped when my family moved last summer but it's something that can be easily repaired . ,inform
+502,"taking in to account the minor chipping , i could offer you $15 today . cash in hand , will pick up today . ",init-price
+503,ok i'll take $15 if you pick it up . ,agree
+504,<end>,<end>
+505,hi is the radio still for sale ? ,inquire
+506,it is ! it looks to be in excellent condition for its age ,inform
+507,"yeah the pictures looks great . so you said the radio isn't tested , do you know when it worked last ? ",inquire
+508,it was my aunt's she used it daily until she put it in storage 7 years ago . ,inform
+509,"ok no worries , i'm mostly isnterested in it as an antique for my collection . ",intro
+510,okay that is perfect ! do you have any other questions ? when could you pick up ? ,inquire
+511,no more questions and i can offer you $135 and pick it up from wherever you are today . ,init-price
+512,you have a deal if you are coming to me . 135 cash and its yours ! ,agree
+513,thanks ! ,thanks
+514,<end>,<end>
+515,"hi , i am interested in your phone . ",intro
+516,. what's your best offer ? ,inquire
+517,right now i'm asking 80$ for it . ,init-price
+518,tell me more about the condition ,inquire
+519,it's in generally good condition . ,inform
+520,i think 80 is a fair price . ,insist
+521,and what all is included ? ,inquire
+522,the phone and charger . i also have a case i could include . ,inform
+523,"ok , i can do 60 . . . i am slightly tight on budget ",counter-price
+524,60 is a touch too low . could you go to 70 ? ,counter-price
+525,"i could . . if you can pay one month's bill . . i don't use the phone much , so bill shouldn't be more than 10$ ",vague-price
+526,"that's still basically 60 . let's say just 65 , and you pay the bill . ",counter-price
+527,"ok , i will do 65 ",agree
+528,<end>,<end>
+529,hello are you interested in this vehicle ,intro
+530,howdy partner . ,intro
+531,nice wheels you got . ,inquire
+532,thank you ! do you have any questions ? ,intro
+533,what's the mileage on it ? i see it's loaded ,inquire
+534,"only 46 , 000 miles ",inform
+535,guess that's pretty good for a 9 year old car . the kbb for these are around 5k i believe ,init-price
+536,"kbb value is actually 6800 but , that is without it being loaded and everything else we have recently put into it . you are welcome to make an offer but , please do not low ball ",counter-price
+537,"i see . well i can do probably 7000 , but really that's my max . ",agree
+538,i will take 7000 if you are bringing cash and can meet me tonight ,agree
+539,that's a deal . ,agree
+540,<end>,<end>
+541,hello and how are you doing today ? ,intro
+542,do i have a deal for you . we are offering this vehicle for the low price of $8400 . ,init-price
+543,great looking car . i wonder if you'd entertain an offer of $7400 cash today ? willing to pick up myself ,counter-price
+544,i think that is a fair deal . you got yourself a car ! ,agree
+545,"wow thanks , it's a deal ! ! ",thanks
+546,<end>,<end>
+547,how long have you guys had the bike ? ,inquire
+548,hi for 3 years ,inform
+549,cool . is it red ? ,inquire
+550,yes same as lightning mcqueen in the movies ,inform
+551,that's what i was wondering . is there a mcqueen graphic on it ? ,inquire
+552,it was modelled similar to mcqueen just the smaller version it was a collection item brought from disney directly ,inform
+553,"ok , and i see the handle pads and the seat are torn . i can replace them if needed , but is there a seat at all or is the vinyl just ripped ? ",inquire
+554,seat is torn off a bit u can replace them ,inform
+555,"ok , can i get the bike for $5 ? ",init-price
+556,i quoted 10$ because of these damages 5$ is very low ,counter-price
+557,i was hoping to pay $5 so i could by a new seat and new handle bar pads . ,insist
+558,after spending soome 5$ i could sell 30$ but i cant use it thats why selling the item ,supplemental
+559,can you drop it off if i pay the $10 ? ,counter-price
+560,thats sound good ,agree
+561,<end>,<end>
+562,"hello , i am very interested in this motor home . ",intro
+563,great ! do you have any questions about the motor home ? ,inquire
+564,"i see that this was your sister's project and sadly she passed away before she could finish it . i would like to inform you that i also have a gift for refurbishing things and would finish up this project in a way that would make her very proud . i am even willing to send you photos when the project is complete . my budget is far lower than your asking price but , i could pick it up tonight if you would accept 1250 cash . i will come to you ",init-price
+565,"i'm sorry , but i can't let it go for that little . i would get more if i donated it and took it off my taxes . would $2000 work for you ? ",counter-price
+566,"i understand that . if you could bring it to me so i dont have to pay anyone to help me haul it then , i could give 2000 for it . did your sister leave behind her ideas or materials to finish the project ? ",agree
+567,"sure , i can bring it to you and give you some of the materials she had purchased for the motorhome for you to use . so we agree on $2000 ? ",insist
+568,deal ! ,agree
+569,<end>,<end>
+570,i love this phone would love to have it for 56 . 00 . ,init-price
+571,"$56 is a little low from what i am asking . it is unblocked , very clean and has a nice 16gig storage . i was asking 80 but i can go down to at least $70 . ",counter-price
+572,i will take the 70 . 00 deal if you throw in a pair of headphones . ,agree
+573,"i can toss in 2 , just for you ! ",unknown
+574,it's a deal . ,thanks
+575,<end>,<end>
+576,hello ,intro
+577,hi ! i am interested in this motorhome ,intro
+578,oh that's great ! what would you like to know ? ,inquire
+579,any damage to it ? ,inquire
+580,"well , no ""damage"" really , just wear and tear from age , the seats inside have tears here and there , paint outside could be redone ",inform
+581,i am looking to buy pretty quickly . what year is it ? ,inquire
+582,"it's a 1975 , and i'm looking to sell quickly , so it sounds like you found the right guy ! ",inform
+583,the year i was born ! what is the lowest you would be willing to go on this ? ,inquire
+584,"i mean , i need to get rid of it , but it's sentimental to me too , i think $2100 is fair , you ? ",init-price
+585,"i understand completely . if i was to come today , with cash in hand , would you take $2000 ? ",counter-price
+586,"if you promise to come today , we have a deal . ",agree
+587,you have a deal ! ,thanks
+588,<end>,<end>
+589,you still got the beats ? ,inquire
+590,i do ! still asking $220 for it as well . ,init-price
+591,i'd love to get them from you . i'm a little shy of $220 . i have $200 cash on me . would you be willing to negotiate ? ,counter-price
+592,my ad dd say or best offer and i am good for $200 . sold ! ,agree
+593,<end>,<end>
+594,that's a cute listing i must say ,intro
+595,"haha , the idea was to attract attention . ",unknown
+596,"i see , is it in all good condition or does it have some wear and tear that i have to take care of ? ",inquire
+597,"it has much wear and tear , it's a pretty beat up old thing . ",inform
+598,hmm . . i know 10$ is cheap but can you do 7 . 5 because of the condition ? ,init-price
+599,"i suppose so , but you would have to pick it up . ",disagree
+600,umm . . that's slightly inconvenient for me because of my physical condition . . . let's do 9 with you arranging for delivery ,counter-price
+601,sounds like a plan ! ,agree
+602,thanks a lot ! good to do business with you ,thanks
+603,<end>,<end>
+604,hi there ! are you interested in the vintage radio ? ,intro
+605,that is an awesome radio ! would you be willing to test it to see if it works ? ,inquire
+606,"i could do that , sure . give me a minute . ",inform
+607,no problem . i appreciate you taking the time to do that . ,thanks
+608,it does work . it is in excellent shape for it's age . the color and graphics are really nice on this . ,supplemental
+609,"i can imagine . i am into vintage items and would like to get this before someone else does . i really only want to spend $75 on it , but could offer a deposit on it if that is too low . ",init-price
+610,i am really looking to get this sold asap . could you do $130 on it ? ,counter-price
+611,"yes , i would be willing to buy for $130 . it is in excellent shape and feel that is a fair price . ",agree
+612,"okay , great . you got yourself a deal . ",thanks
+613,<end>,<end>
+614,you still have the beats ? ,inquire
+615,"yes i do , . ",inform
+616,they are nice i'd like to get them from you . ,intro
+617,great . they are $220 . $80 off retail ! ,init-price
+618,i am a little slack on $220 i do have $200 cash on me . your add says obo . . is that a reasonable offer ? ,counter-price
+619,<end>,<end>
+620,i'll give you 50 bucks for it . ,init-price
+621,"hmm i can't quite go that low , its in really good condition . i have one guy who offered me $60 already but he wont come and pick it up from my place , and i don't feel like delivering . would you be willing to offer $60 and come to my place to pick up the phone ? i'll gladly accept that . ",counter-price
+622,"eh , works for me . ",agree
+623,"okay thanks a lot , i'll see you tonight ! ",thanks
+624,<end>,<end>
+625,hi there . is the apartment still available ? ,inquire
+626,"hello , i see you are interested in my 1 br apartment in berkeley , ca ? ",inform
+627,yes . is it still available ? ,inquire
+628,it is still available though i have many currently interested . time is running for this lovely apartment . i am asking $2050 . do you have any questions ? ,init-price
+629,<end>,<end>
+630,hey there ! ,intro
+631,i'm in need of a deck . is this ikea deck/table good quality and sturdy wood ? ,inquire
+632,"hi , it is good quality sturdy wood , fully assembled . ",inform
+633,"awesome . would you be willing to sell it for $10 , i will come and pick it up today in about an hour with cash . does that work ? ",init-price
+634,i could do $15 ,counter-price
+635,okay thanks a lot dude . that works for me . i'll be over soon to pick it up ! ,agree
+636,<end>,<end>
+637,"hello , i am interested in the bike you have for sale . are the wheels in good shape ? ",inquire
+638,"yes , they are in great shape . like i said it is just the handel and the padded seat that we have fixed with tape . ",inform
+639,i am interested and would like to pick it up today . i think $10 is kind of high would you be willing to take $5 ? ,init-price
+640,"i can't take $5 , i need more than that . i would be willing to go down to $9 . ",counter-price
+641,how about $7 and i will be on my way now with cash ? ,counter-price
+642,"okay , that will work if you can come get it now . ",agree
+643,<end>,<end>
+644,hey there . i have been looking for an air stream for so long ! ,intro
+645,this one is ready to be restored ,supplemental
+646,looks like you will donate it if it doesn't sell quickly ? how about 2000 instead of that ? :d ,init-price
+647,"well , you haven't seen any pictures yet . i will get them on later today . if you still want it how about 2200 . 00 ",counter-price
+648,"yes , i am taking a bit of a gamble without the pictures because i don;t want you to donate it ! can you do 2100 ? i can swing by in a couple of hours to take a look and pay up in cash ! ",counter-price
+649,you know that sounds like a plan . i will give you my number to call for directions . it is 916-888-5555 ,agree
+650,thanks man ! great to do business with you ! ,thanks
+651,<end>,<end>
+652,hi there how are you ? ,intro
+653,hello ! would you like to look at the apartment ? ,inquire
+654,i would when can i come over for a showing ? or if you want you can just describe the interior and condition and we can make a deal right here right now . ,inquire
+655,we're having an open house on tuesday between 4 and 5 . i'm sure it will go quickly as there has been interest already for this trendy neighborhood . we're asking $2850 ,init-price
+656,i would be willing to take it off your hand right noow if you will accept 2565 . i will do all grounds keeping and shoveling in the winter as well . will you accept 2565 ? ,counter-price
+657,i can't do $2565 just to be fair to my other tenants . i'd be willing to do $2700 and not require a deposit . would that help ? ,counter-price
+658,that helps tremendously thank you for working with me . ,agree
+659,no problem . i think you'll love this place . ,thanks
+660,<end>,<end>
+661,"wow , its hard to come past one of these used . may i ask why you are selling it ? ",inquire
+662,"believe it or not , i got two for a birthday present ! ",inform
+663,"wow , you are lucky ! i am super interested in it . does it come with any warranty information ? ",inquire
+664,"well , that's all i got ! ;) it does come with a warranty . i don't think you'll be disappointed . and , you'll be the envy of your friends ! ",inform
+665,i hope that we can reach a price on such a rare item ! you can treat yourself to a new birthday present . i only have $160 in cash . ,init-price
+666,<end>,<end>
+667,hello ! ,intro
+668,hi i am very interested in your beats . ,intro
+669,i'm very glad to hear that ! i am trying to sell them for $220 since i have never used them and they are limited edition . ,init-price
+670,i understand that they are new and all but i was hoping that you would be willing to come down on the price . my son was just in a car accident with his dad and will be stuck in his bed for a while . he would love these . i can really only afford $120 though ,counter-price
+671,"definetely can't do that , it's way too low . sorry . ",disagree
+672,<end>,<end>
+673,hello are you interested in renting my apartment ? ,intro
+674,yes i am . i am relocating and am in need of an apartment . it is super cute . is the internet provided or do i pay for it myself ? ,inquire
+675,you would have to pay for it yourself but it is close to a park and close to starbucks and whole foods market ! ,inform
+676,ok that is fair enough . i work from home so would have to get that hooked up immediately . the starbucks is a perk of the neighborhood . would you be willing to negotiate on the price ? i need to move asap . ,inquire
+677,<end>,<end>
+678,i love your apartment . it is really a place i could call home . what amenities are included ? ,inquire
+679,it is in a prime location . close to public transportation . a great spot for a young professional or a young couple ,inform
+680,wonderful . does it allow pets ? i have a turtle i have had for 20 years that would be moving with me . ,inquire
+681,yes a turtle would be allowed with no fee . ,inform
+682,"wonderful , i appreciate that . i need to move asap . what would be the lowest you'd be willing to go on this property ? ",inquire
+683,if you could move in asap i can lower it to 2000 ,init-price
+684,i could put the deposit down today for $2000 . i wanted it a little lower but since i dont have to pay a pet fee i think that is fair . thank you so much ! ,agree
+685,<end>,<end>
+686,"hi , are you interested in the accord ? ",intro
+687,yes i interested . ,intro
+688,any questions ? ,inquire
+689,how is the engine ? ,inquire
+690,"it's in great shape , it hums quietly . my son says there aren't any major issues with it , the only minor issue is the airbag light comes one and stays on every once in a while . ",inform
+691,oh that's ok . my old car's engine light says on all the time even though the engine is fine . what year model is it ? ,inquire
+692,"yeah , i had a car like that and they could never find anything wrong with it . this is a 2008 . ",inform
+693,how is the air conditioner because it is so hot now and my current car's air don't work . ,inquire
+694,the air works great . it blows cold and cools the car quick . ,inform
+695,wonderful . how much are you asking ? is there room to negotiate ? ,inquire
+696,"well we're asking $8 , 400 . ",init-price
+697,how about $5000 ? ,counter-price
+698,"that's a bit low , how about $7500 ",counter-price
+699,ok . ,agree
+700,<end>,<end>
+701,hello ,intro
+702,hello i am very interested in your item . i can pay $198 for it . ,init-price
+703,"198 is a little too low for it . how bout we talk a bit more . it is in great condition and it was 300 dollars when i bought it . i need a bit more for it , if it is not too much trouble . ",counter-price
+704,i just sank myself in debt building this music studio . $200 is the highest i can go . ,counter-price
+705,"okay 200 can work , but you will need to pick it up as well . is that alright with you ? ",agree
+706,you've got a deal . ,thanks
+707,have a good day . thanks for doing business with me . ,thanks
+708,<end>,<end>
+709,hello . are you interested in the car ? ,intro
+710,"hi ! yep , is it in good condition ? ",inquire
+711,"yes , everything runs like new . i replaced everything specifically to sell it , so no need to fix or replace everything . i did an oil change , got the timing belt checked out , added new tires and rim , and a lot of other stuff . ",inform
+712,"that sounds great . but i see in the description that the airbag light is on , will probably cost me a few hundred to get that checked . would you be willing to come down on price a bit ? ",vague-price
+713,i can get that looked at and fixed for you if you'd like . ,inform
+714,"okay , so the listing is at $8400 . what do you say if i pay $7500 in cash today and pick up the car myself , no need to even check the airbag light ? ",counter-price
+715,alright sounds good to me . you've got a deal ,agree
+716,awesome ! ,thanks
+717,<end>,<end>
+718,hello- how old is the radio ? ,inquire
+719,"hello , i'm not certain of its age . it has been an heirloom in the family for over 25 years . ",inform
+720,id love to take it off your hands for $50 ,init-price
+721,that is a little lower than i would like to accept . right now the lowest i can take is $100 . ,counter-price
+722,argh . . . id really like this . . how about $75 ? ,counter-price
+723,"okay , $75 sounds good ! ",agree
+724,<end>,<end>
+725,can you tell me more about this iphone ? ,inquire
+726,"it comes with a bright pink 'my pretty pony' case . its clean , no cracks , dings or scratches .",inform
+727,i'm asking only $80 for it . a real deal . ,init-price
+728,and it is unlocked to any carrier correct ? ,inquire
+729,that it is . ,inform
+730,i will accept this phone since it comes with a case also ! ,agree
+731,<end>,<end>
+732,hello ,intro
+733,hi . can you tell me how you got this radio ? ,inquire
+734,this was my grandfathers ,inform
+735,does it have any scratches ? ,inquire
+736,"no , nothing major . ",inform
+737,how heavy is it ? ,inquire
+738,i would say around 30 pounds . ,init-price
+739,can i give you $135 for it ? ,counter-price
+740,i would need at least $140 ,counter-price
+741,yes that is fine . ,agree
+742,ok great ,thanks
+743,<end>,<end>
+744,hi ! i would like to make an offer of 100 dollars for the shortwave radio . ,init-price
+745,great would you like to know more information about the radio ? ,inquire
+746,"what else is there to know ? it's untested , i need to pick it up , and i need to pay cash . i can maybe go as high as 110 dollars . ",counter-price
+747,i will accept the $110 you have a deal ,agree
+748,<end>,<end>
+749,hey there ! ,intro
+750,"hello , i just moved here from colorado . i am starting my medical residency at the local hospital and i need a car desperately . i am very interested in your car and i am willing to pay $5880 cash and i can come right away with my mechanic and fill out the paper work . ",init-price
+751,"hmm . that actually sounds very reasonable , and i'm trying to get rid of this sooner rather than later . if we can call it an even $6000 then you have yourself a deal ! ",counter-price
+752,excellent you have a deal . ,agree
+753,thank you so much . i see that this car has a lot of sentimental value to you as well and i want you to know that it is in good hands . thanks again ! ,thanks
+754,awesome ! thanks for being reasonable ! ,thanks
+755,<end>,<end>
+756,hey there . ,intro
+757,i'm looking for an apartment and i saw your listing for this one . what can you tell me about this place ? ,inquire
+758,well it is a spacious 1200sqft apartment which is huge for the area . all utilities are included and it does have a washer and dryer in the unit . ,init-price
+759,"awesome ! that sounds great ! just what i need . lets talk about price . could you guys go down to $1800 ? i'd buy right now if so , this place is very attractive for me . ",counter-price
+760,<end>,<end>
+761,hello there ,intro
+762,hi i am very interested in your apartment is it still available ? ,inquire
+763,yes it is ! ,inform
+764,do you have any questions ? ,inquire
+765,"well does the price include any utilities , is there a washer and dryer and do you have any specials going on right now , the price is a bit much for me ",inquire
+766,"there is a laundry and it does include utilities , but there are no specials . sorry but this place is in high demand , so i don't have time for lowballing . i can help and drop the price a bit to $2850 . ",init-price
+767,<end>,<end>
+768,"howdy , so whatcha think-a my bike here ? ",inquire
+769,"i'm actually really interested in it , but i think it's a little pricey . would you be willing to knock it down a bit ? ",vague-price
+770,"so you think 600$ is a little too high ? i never used it for competition and this is one of the best japanese bikes every produced , not easy to find here in the us ",init-price
+771,"i can understand that , but my problem is that i'm on a really tight budget . would you be willing to go for ",vague-price
+772,<end>,<end>
+773,"hello , i would like to negoiate the price ",intro
+774,alright how low are you trying to go ? ,inquire
+775,my budget only allows me to do 1800 a month ,init-price
+776,i can do that . ,agree
+777,<end>,<end>
+778,hi are you interested in the item ? ,inquire
+779,"hello , i am interested in this item . what is the lowest you're willing to sell it for ? i can pick it up . ",inquire
+780,"hi there . thank you for your interest . well , i can bring it down to $550 ",init-price
+781,i was hoping for $540 . can you come down a little lower so i can come pick it up today ? ,counter-price
+782,okay i can give it to you for $540 but i will need some advance today itself ? ,agree
+783,okay . when did you want me to come get it ? ,inquire
+784,you could come today afternoon . i can text you my address and we can meet up and finalize the deal . how does that sound to you ? ,inquire
+785,great . just let me know the details . ,thanks
+786,sure thing ! thank you ! ,thanks
+787,<end>,<end>
+788,hello ,intro
+789,hi there . are you selling the car still ? ,inquire
+790,yes i am . are you interested ? it is in great condition . ,inform
+791,yes i am very much interested in it . how long has it been used ? ,inquire
+792,only a year . it does not have many miles on it at all . ,inform
+793,how much are you looking to pay for it ? ,inquire
+794,i am willing to pay $3600 ,init-price
+795,how about 3800 ? it is in great condition . i don't think 3600 is high enough for me . ,counter-price
+796,does $3700 work ? i really cant afford much just now as i have to pay off my student loans . i would appreciate you helping me out here . i mean i can give you the amount right away as that what i have saved for my car . ,counter-price
+797,that can work . wanna come by ans take a look at it today ? ,agree
+798,yes definitely . would appreciate that . thanks so much ! ,thanks
+799,no problem ,thanks
+800,<end>,<end>
+801,"hello , any utilities included ? ",inquire
+802,no utilities ,inform
+803,1950/month then ? ,init-price
+804,i can agree to that ,agree
+805,sold ! ,agree
+806,"great , thank you ",thanks
+807,<end>,<end>
+808,"hello , i saw your ad listed for the mercedes e350 . im wondering how many miles are on the vehicle ? are you the only owner ? ",inquire
+809,"it only has around 70 , 000 miles on it . i am the first owner with title in my name . are you interested ? ",inform
+810,i am very interested . are you willing to offer a lower price if i am able to come test drive the vehicle and bring cash or a certified check in person ? i can come as soon as today if the price is right ,inquire
+811,"i will let it go for 5 , 300 dollars if you are coming to me . however , if you want to negotiate any lower than that i will have to swap out the wheels for some base model mercedes wheels i have that aren't as nice as the ones in the photo . ",init-price
+812,<end>,<end>
+813,hi is the apartment still available for rent ? ,inquire
+814,hello . ,intro
+815,yes it is . are you interested in it ? ,inquire
+816,"yes ! my last apartment burned down a few days ago , so i'm desperate for a place . can you tell me about it ? ",inquire
+817,sorry to hear that . this apartment is in a great neighborhood . it has wide windows in the kitchen and it has all the major conveniences . ,inform
+818,yeah the pictures all look really good and that's great utilities are included . when's the soonest i could move in ? ,inquire
+819,next week ,inform
+820,ok can you negotiate on the price with me ? i'm willing to pay $1552 a month and i'll sign a 2 year lease . ,init-price
+821,that sounds good to me . i think that is fair . ,agree
+822,thanks ! ,thanks
+823,yep ,thanks
+824,<end>,<end>
+825,hi is the headphones still available ? ,inquire
+826,yes the headphones are still available . ,inform
+827,"they are sony brand wireless headphones with bluetooth . paid $149 . 99 plus tax a month ago for them , have no issues they are great headphones i just upgraded to a more expensive pair and got beats by dre wireless . ",supplemental
+828,asking $70 firm for the sony headphones ,init-price
+829,surely there is always negotiation room ? since they are used somewhat i would like to offer $30 for them . ,counter-price
+830,"i am sorry that is way to below my asking price , and no there is not much wiggle room for the new barely 4 week old headphones and because they are sony they are not cheap . ",vague-price
+831,best i could accept for this item would be $65 for pick up . i just posted this ad and have had many responses so these headphones wont be around long . ,counter-price
+832,"that's way too high for me . if you deliver them , i would pay $60 . ",counter-price
+833,<end>,<end>
+834,"hey , i'm interested in your twin sized bed . ",intro
+835,how firm is that price point ? ,inquire
+836,are you willing to pick it up ? i do have some flexibility . . . time value of money kinda stuff . ,inquire
+837,"yeah , i would definitely be willing to come scoop it up . it looks very well taken care of . i was thinking somewhere around 240 ? ",init-price
+838,great condition ! all in for 275 and i'll help load on my end and be there at the time of your convenience as well as throw in the snowman and wreath if you would like . ,counter-price
+839,wow that sounds like a great deal to me . consider it done ! ,agree
+840,<end>,<end>
+841,hello ,intro
+842,may i know the car millege ? ,inquire
+843,"yes of course , it has 45 , 000 ",init-price
+844,is there any accident history ? ,inquire
+845,no accidents just eben used for some long trips in the past but had had full maintenance done since then ,inform
+846,okay . where is car located ? ,inquire
+847,i am in downtown . ,inform
+848,what payment options do you have ? ,inquire
+849,"well i can take cash , cheque . . ",inform
+850,"can i offer $2 , 500 cash ? ",init-price
+851,i am willing to work with you but that is still too low . $3400 is the lowest i can take . ,counter-price
+852,"what about $2 , 800 ",counter-price
+853,"i want to get rid of it quickly but i don't want to loose that much money , $3100 lowest offeri will accept . ",counter-price
+854,i am willing to add additional $200 ,counter-price
+855,i am firm on the $3100 . ,counter-price
+856,deal for $3000 ? ,counter-price
+857,<end>,<end>
+858,hello ,intro
+859,hello . ,intro
+860,saw your post for a red bike . is it still available ? ,inquire
+861,yes it is . ,inform
+862,cool . where is the rust at on the bike ? want to make sure it's not is a serious place . ,inquire
+863,it has a little rust below the seat and the wheel guard . no rust near the welding points . ,inform
+864,"okay . the rust makes me a little nervous , but i'm willing to take a shot and see if i can repair it . how's $25 sound ? ",init-price
+865,i really wanted $30 but i'll accept your offer since you'll be doing the repairs yourself . ,agree
+866,awesome . thanks a lot ! ,thanks
+867,<end>,<end>
+868,"hello , are you interested in the car i have available ? ",intro
+869,"hello , yes i am interested . ",intro
+870,"great , do you have any questions ? i'm asking $4 , 000 . ",init-price
+871,yes i am wondering how bad the scratches are ? and could you take less ? ,inquire
+872,the scratches are really fine and not noticeable to anyone passing by . you would have to inspect the car closely to reveal them . ,inform
+873,how is the motor ? how many miles ? ,inquire
+874,"motor is in great condition . i just replaced the time belt , water pump and cam seals . this was mainly used as a family car so the mileage is a little higher , but mainly highway . ",inform
+875,would you offer any warranty ? ,inquire
+876,"car will be sold as is . what about $3 , 700 ? ",counter-price
+877,how about 2000 ? ,counter-price
+878,"a little low for what i'm needing . $3 , 300 ",counter-price
+879,the miles is high how about 2500 ? ,counter-price
+880,"i'll meet you at $3 , 000 . that would be my lowest . ",counter-price
+881,do you have receipts for all the parts you have replaced ? ,inquire
+882,yes ,inform
+883,ok i can do 3000 because i can see that you have done a lot of work to it . ,agree
+884,<end>,<end>
+885,"hi , how many miles does this car have ? ",inquire
+886,"hi , there . i'm selling my toyota avalon . it's in good shape and has 75 , 000 miles on it . i'm looking to sell it for $4000 , but i'm willing to negotiate a little bit . ",init-price
+887,"$75 , 000 isn't bad for a car this age . ",unknown
+888,do you have an offer on the price ? ,inquire
+889,"i meant just 75 , 000 . haha , not in dollars . well it is 16 (almost 17 years old) , i was thinking $3450 ? ",counter-price
+890,i accept your offer of $3450 if you can pay for it in the next 48 hours . ,agree
+891,<end>,<end>
+892,hi ,intro
+893,whats up partner ! ,intro
+894,are you interested in renting this unit ? ,inquire
+895,"looks nice , price is a bit steep though . if i do a 2 year lease can you bring it down to $1000 a month ? ",init-price
+896,absolutely that sounds very reasonable . ,agree
+897,1000 a month for a 2 year lease . perfect ! thank you ,thanks
+898,<end>,<end>
+899,hello ,intro
+900,hello there . ,intro
+901,do you still have the headphones for sale ? ,inquire
+902,i do ! ,inform
+903,how do they sound ? ,inquire
+904,<end>,<end>
+905,hello there . i am interested in this bike . ,intro
+906,is it in good condition ? ,inquire
+907,it is in a very good condition . if not that it will cost me a lot travelling with the bike i would have gone with it because its one of the best bike i have ever had to ride ,inform
+908,sounds good . can i come and take a look at it ? ,inquire
+909,it depends on how far you live i can ride to your place . ,inform
+910,are you willing to lower the price a bit ? ,inquire
+911,what are you will to offer . name your price ,inform
+912,i would like to pay 100 dollars . ,init-price
+913,the bike depreciation value is more than that but lets close it up at $130 ,counter-price
+914,sounds good ,agree
+915,<end>,<end>
+916,good afternoon . i'm interested in the storage bed you have for sale . ,intro
+917,great ! it is in very good condition and so is the mattress . my son has outgrown it . ,supplemental
+918,"excellent . i have done some pricing based on similar models , and i'm willing to offer you $292 for it . ",init-price
+919,"well , i was looking to get a bit more but if you come pick it up today it is yours for 292 . ",agree
+920,i'm happy to come pick it up today . ,thanks
+921,<end>,<end>
+922,nice dresser is it new ,inquire
+923,it is not new . however it is in good condition . it does have minor usage on top surface . ,inform
+924,what kind of wood is it ,inquire
+925,it is honey maple . ,inform
+926,i can offer you $30 ,init-price
+927,the lowest i can go is $50 and i will even deliver it to you and throw in a matching nightstand . ,counter-price
+928,is it in very good condition ,inquire
+929,yes . it is in good condition . ,inform
+930,ok i can do $47 if that works for you i'll pick it up no worries ,counter-price
+931,you have yourself a deal . ,agree
+932,thanks ,thanks
+933,<end>,<end>
+934,"hi , how long ago did you purchase the phone ? ",inquire
+935,i got the phone about a year and a half ago . ,inform
+936,"okay , that's great . i can meet you at your office for pick up , i trust that it's unlocked but i was really hoping to spend closer to $100 . do you think you could budge a little ? how about $135 ? ",init-price
+937,i can definitely budge if you're willing to pick the phone up . 135 is reasonable for me . how's five pm sound ? ,agree
+938,"that's perfect . i trust that it's working fine , but i do have any problems with it after trying to set it up , can i call you ? ",inquire
+939,absolutely . i will leave my number with you when you pick it up . feel free to call with any questions . ,inform
+940,<end>,<end>
+941,hi i am interested in this apartment please ,intro
+942,hello ! glad to see you're interested . the last tenant just moved out so we're in the process of laying new carpet and paint ,supplemental
+943,great and where is the location ? ,inquire
+944,only a couple minutes from bart ,inform
+945,great and is it fully furnished ? ,inquire
+946,<end>,<end>
+947,hello do you have anyway to haul this ? ,inquire
+948,i do have a truck to haul this and would be willing to come by this afternoon . ,inform
+949,are you prepared to pay 75 dollars ? ,init-price
+950,would you accept 50 dollars ? ,counter-price
+951,how about 60 dollars ? ,counter-price
+952,can we split the different at 55 dollars ? ,counter-price
+953,oh you are good . ok fine ! we got a deal . ,agree
+954,"sounds great , thank you ! ",thanks
+955,<end>,<end>
+956,hi were you interested in the listing ? ,inquire
+957,"yes , but i don't have much money . ",inform
+958,can you tell me more about it ? ,inquire
+959,"it's in a really highly sought after location . it's also a very nice unit that will be freshly painted . this is around the price you could expect in the area . if you're willing to sign a longer lease agreement i can come down a bit , though . ",inform
+960,"yes i could be willing to do that . how good is the area , and what condition is this property in ? ",inquire
+961,the area is very safe and very well kept . a lot of booming new businesses . you also have very nice views on this particular unit . ,inform
+962,would you be willing to sell for $1500 if i move in right away and sign a longer lease ? ,init-price
+963,i could do 1650 and a 2 year lease . i will throw in free parking for the term of the lease at that price . ,counter-price
+964,that sounds great to me . ,agree
+965,<end>,<end>
+966,what is your offer ? ,inquire
+967,1109,init-price
+968,that's too low . ,vague-price
+969,how much are you willing to negotiate ? ,inquire
+970,i'm thinking around 1500 ,counter-price
+971,that's too much for me . i can't afford that ,vague-price
+972,what is the highest ,inquire
+973,$1200 is the highest i can pay . ,counter-price
+974,it does include some nice appliances . ,supplemental
+975,are you willing to accept 1200 ? ,inquire
+976,meet me half way that is too low for me . ,vague-price
+977,1300 ? ,counter-price
+978,1400,counter-price
+979,sorry then i have to pass on this . i can't go beyond 1300 ,insist
+980,1300 it is then ,agree
+981,great thank you so much ! ,thanks
+982,<end>,<end>
+983,"hi ! i saw the post for the apartment . it looks good , but the location is not super convenient . would you accept $1400 because of the location ? ",init-price
+984,you mean the location is not super convenient for you ? are you willing to pay cash ? if you are willing to pay cash i can accept $1405 ,counter-price
+985,"yes , i will pay cash . so we have a deal . ",agree
+986,<end>,<end>
+987,"i like your place , can you tell me about it ? ",inquire
+988,"sure . its 1 bed/1 bath . the floors are new , and the kitchen has been upgraded with stainless steel appliances . its in a quiet neighborhood . ",inform
+989,would $1256 be a good offer not sure if you can go lower ? ,init-price
+990,"i can't really go much lower . but , for ease of budgeting , i can go to 1250 a month . deal ? ",counter-price
+991,that would be better . i appreciate the deal . ,agree
+992,<end>,<end>
+993,hi there . do you have any questions regarding this product ? ,inquire
+994,"hi , is their any rips or tears on the love seat ? ",inquire
+995,not at all . there is no rips or tears at all . its in a great condition . ,inform
+996,"okay great , do you have any animals or smoke ? ",inquire
+997,not at all . i have no pets nor do i smoke . i live alone so that's not an issue at all . ,inform
+998,would you be able to accept 55 . 00 ? i would be able to be there in 20 minutes i have the cash and can unload it with my friend and we have a truck ,init-price
+999,"okay since i wanna get rid of it , i will accept that . will be waiting for you then ! see you ",agree
+1000,sounds great thank you see you soon ,thanks
+1001,<end>,<end>
+1002,hi im interested in your studio apartment ,intro
+1003,"hi ! great ! it is completely redone inside with new carpet , updated bath and kitchen , all utilities included , and for only $1750 a month ! ",init-price
+1004,i would also need to sign a 1 year lease too . ,supplemental
+1005,"yes , that would be great . i won't charge any rental fee . ",supplemental
+1006,i could do 1500 per mont for 1 year . ,counter-price
+1007,"for this great location and all these amenities , i couldn't accept less that $1600 per month for one year . ",counter-price
+1008,i can do 1600 per month ,agree
+1009,<end>,<end>
+1010,"hello , you still have those headphones ? ",inquire
+1011,yes i do . ,inform
+1012,"well , i checked out the ad and i really need some wireless headphones like this and just in my color ! can you tell me are they brand new or used ? ",inquire
+1013,they're new and very much never used . ,inform
+1014,awesome . there was no picture included so i had to ask . you are listing them for $70 but unfortunately i am on a tight budget . will you take $49 for them ? ,init-price
+1015,"i can send you the picture wherever you want it like email or text message . i am sorry $49 is too low . i can accept $55 for it . the headphones are great , and are high tech usage . ",counter-price
+1016,does it come in their original packaging ? ,inquire
+1017,yes it does ,inform
+1018,will you accept $50 ? and i will come out today and pay in cash . ,counter-price
+1019,$55 is the last i can go ! ,insist
+1020,okay then $55 it is . text me your address when you can and i'll head out there and pick them up . ,agree
+1021,sure thing ! ,thanks
+1022,<end>,<end>
+1023,hello i am interested in this apartment for rent ,intro
+1024,"hi , it is a great apartment ! all utilities are included in the rent and it has new carpets . ",supplemental
+1025,"thats great ! i am by myself so money is somewhat of an issue , but i started a new job . how does 1150 sound ? ",init-price
+1026,"i can negotiate a bit , but i can't go that low on monthly rent . i could do $1400 and waive the one time rental fee . ",counter-price
+1027,oh wow that sounds awesome ! i will accept ! thank you so much ! ,agree
+1028,"great , hope you enjoy it ! ",thanks
+1029,<end>,<end>
+1030,"hello , are you interesting in buying my iphone 7 ? ",inquire
+1031,yes its brand new right ? ,inquire
+1032,yes . brand new and still in it's original box . ,inform
+1033,do you have a selection of colors or its just this one ? ,inquire
+1034,it's just this one . the black is a nice matte color . ,inform
+1035,great . how many years is the warranty/ ,inquire
+1036,1 year ,inform
+1037,does it work for any carrier ? ,inquire
+1038,yes . ,inform
+1039,great . will you accept $670 ? ,init-price
+1040,that sounds good . ,agree
+1041,thank you so much ! ,thanks
+1042,you're welcome and thanks ,thanks
+1043,<end>,<end>
+1044,hello ! ,intro
+1045,"hi , i seen your ad for these amazing corvette and it seems to be just the car i've been looking for to add to my collection . can you tell me a little more about it , as in what is the milage , etc ? ",inquire
+1046,"it is a beauty . my baby :) . i bought it brand new off the lot but i recently got married and had a kid so it's not very practical for a family . it only has 15k for the millage . it was my ""fun"" car and i mainly drive a sedan for work . ",inform
+1047,<end>,<end>
+1048,hello ,intro
+1049,"hi , oi'm interested in the bicycle . ",intro
+1050,"wonderful , i still have it ! ",supplemental
+1051,"your ad says there is a bit of rust , since there will need to be alot of clean up . could you take around 20$ . ",init-price
+1052,i actually have a spray kit thatll get the rust right out for you . i can even deliver it . how bout we do $30 ,counter-price
+1053,if you will hang out and show me how to ride then you have a deal at 30$ . i've never ridden a bike before . ,agree
+1054,how could i refuse that ! deal ! ,agree
+1055,<end>,<end>
+1056,"hello , how are you today ? you are interested in the apartment correct ? ",intro
+1057,hi ! i am very interested in this listing ! ,intro
+1058,it's a bit above my budget is there a way to decrease my monthly rent ? ,inquire
+1059,"i might be able to pull a little wiggle room in the monthly rent , how soon were you looking to move in ? ",inquire
+1060,i can move in as soon as this weekend if rent can be brought down to 2025 . i am willing to sign a lease today ! ,init-price
+1061,that is a bit too low for me as it is all freshly remodeled and such . the lowest i could possibly do for you today is say $2100 . how does that sound ? ,counter-price
+1062,is there a fitness center on site ? if i could cancel my gym membership i could swing 2100 ,counter-price
+1063,"that is part of the current remodeling , it will be ready in a month . ",supplemental
+1064,okay great ! you have a deal at 2100 ! ,agree
+1065,<end>,<end>
+1066,"hi , how many chairs are included in this set ? ",inquire
+1067,"it comes with 6 chairs , all matching to the set . and the fabric is in perfect condition ",inform
+1068,what fabric is the upholstery ? ,inquire
+1069,"its a solid cream color , it has been scotch guarded but i can throw in the plastic covers as well ! ",inform
+1070,"oh that's great . if i come pick it up , could you do 1100 ? ",init-price
+1071,"i would love to but my husband bough this set brand new , i cant take less then 1150 for the set , or if you would like i can give you the table and end tables for 1100 , so everything except the coffee table ",counter-price
+1072,i can do 1150 for the set ! let me know when's a good time to come pick it up ,agree
+1073,<end>,<end>
+1074,hello ,intro
+1075,are you the original owner any accidents any major work on the car about how many miles is this the original paint ion car do you have the title ,inquire
+1076,"i am the original owner , yes . no issues with vehicle; drives like a bird . clean title with carfax . no accidents with it . its been taken care of ",inform
+1077,how many miles on the 2009 fusion ,inquire
+1078,"only 65 , 000 ",inform
+1079,3779,init-price
+1080,"on kbb , it goes for 5 , 500 and up . the reason im selling it low is because im moving to ny , and i wont need a vehicle out there . meet me a notch up at 4199 ",counter-price
+1081,3801 not much detail offered and unbelievable 65000 miles on 2009 fusion ,counter-price
+1082,"the car was barely used . i usually ride my bike to work as its a 15 min trip for me . the mileage is low , the engine is great , no accidents , one owner . youre getting a vehicle thats gonna last you for several years . ",supplemental
+1083,<end>,<end>
+1084,hello ,intro
+1085,"hi - i'm interested and i would take it immediately , as is , for cash for $1200 ",init-price
+1086,"that is a bit too low . i will need more than that . also , this is a very desirable neighborhood . ",vague-price
+1087,how about $1300 and a 1980 signed poster from kiss ,counter-price
+1088,i prefer iron maiden . and 2200 is the lowest i could go for you . ,counter-price
+1089,too high - but if you like iron maiden i have their debut album and a signed guitar pick from the original bassist ,vague-price
+1090,"okay , but let's just talk price here . how about 200 even ? ",counter-price
+1091,200 ? i'll accept that was a miskey not going more than $1400 that album is worth a grand and that and anything steve harris is gold ,counter-price
+1092,1400 is great for me . let's do it . ,agree
+1093,<end>,<end>
+1094,here is some info on the home we require deposit of one months rent . you will need good credit ot a co-signer with good credit . we do not allow pets . ,supplemental
+1095,not even cats ? ,inquire
+1096,no sorry we have a no pets rule . ,inform
+1097,okay . my cat would have to stay with my mother . are there any schools in the area ? ,inquire
+1098,yes we have great schools in the area . ,inform
+1099,great . my daughters in elementary school but she'll be graduating soon . are there any jr . high schools in the area as well ? ,inquire
+1100,"yes , we have a elementary , jr . high and high school in the area . all are rated high for education and safety . ",inform
+1101,great . sometimes i like to soak in the tub as oppossed to just taking showers . does the bathroom come with a bath tub ? ,inquire
+1102,"oh yes , it has a huge tub that you should definitely enjoy if you like to soak . the house in total has full bath upstairs and a half downstairs . ",inform
+1103,sounds great . would you accept $1600 . ,init-price
+1104,"i have someone else wanting to come look that is offering more , i could take 1875 if you could come soon and place a deposit with me . ",counter-price
+1105,yes . i could come tomorrow . would that be okay ? ,agree
+1106,yes that is fine . sound great look forward to meeting with you . ,thanks
+1107,<end>,<end>
+1108,"hi , i'm interested in your cell phone accessories . ",intro
+1109,i need one for my daughter . i feel like $1 would be a better price . ,init-price
+1110,$1 is too low and i would be loosing money . the lowest i can go is $8 . ,counter-price
+1111,the ad says its available for $2 . ,counter-price
+1112,$1 . 50 is my final offer . ,counter-price
+1113,can you ship it to me ? ,inquire
+1114,absolutely ! ,inform
+1115,"great , i will submit my offer . ",agree
+1116,"wonderful , looking forward to doing business with you . ",thanks
+1117,there must be an error because it won't let me type anything into the offer box . ,unknown
+1118,<end>,<end>
+1119,hello ! ,intro
+1120,hi how are you today ? ,intro
+1121,i am well thanks . can you tell me about your cell phone accessories ? ,inquire
+1122,yes i have both selfie clickers and wall chargers available for both apple and android phones . these normally go for $5 a piece but i have closed my store so i have greatly discounted them to only $2 a piece ,init-price
+1123,"would you take $1 for them , since you wan to get rid of them fast ? ",counter-price
+1124,well as i said i have already discounted them by more than half . i could go down to 1 . 75 if that would be better for you . ,counter-price
+1125,how many of them are there ? ,inquire
+1126,"i actually have exactally what is in the pic , 5 of the wall chargers and 3 of the selfie clickers ",inform
+1127,ok sounds good . i will take the lot at 1 . 75 each . thanks ! ,agree
+1128,great thank you ,thanks
+1129,<end>,<end>
+1130,"hi , i am interested in your aeron chair . is it brand new ? ",inquire
+1131,it is in very good condition and fits tall people very well . ,inform
+1132,"okay , i am actually not that tall , but i really like the look of the chair , but since it is not brand new , i'd prefer to pay $200 . ",init-price
+1133,it is very lightly used since i barely set in it . i'll take $250 ,counter-price
+1134,"i am in the middle of renovating my home office , so i am unable to surpass my $230 budget for the chair . i will come pick it up if that works . ",counter-price
+1135,yes . $230 is fine . ,agree
+1136,<end>,<end>
+1137,hi how are you doing ? ,intro
+1138,great are you interested in the place ? ,intro
+1139,yes i am but i have some questions if that's okay ? ,inquire
+1140,ask away . ,inform
+1141,i am trying to get the cost down by 600 is it's possible too ? i was wondering how close is the place to shopping and stuff because my car is broken down right now and i might have to buy a new one and if so that will take me some time to replace it . ,init-price
+1142,"it is very close to shopping and to a bus stop . i can't go to 600 but i can do $750 . and keep the water , trash and internet in my name . ",counter-price
+1143,"hmm i think that would work for me since you're willing to keep those bills on for me , thank you . ",agree
+1144,i will wave the security deposit for you too . ,supplemental
+1145,"oh that's perfect , thank you for doing that . when can we get started ? ",inquire
+1146,the unit is ready so when ever you are ready . ,inform
+1147,"alright sounds great , please send me the offer and i will accept . ",thanks
+1148,<end>,<end>
+1149,hi ! ,intro
+1150,"hi , i'm really interested in the corvette . has she been in any accidents ? it talks about the seatsa re in good shape . are there any dents , dings or scratches on the body ? any door dings ? ",inquire
+1151,"its in great condition . no accidents , and very low miles . its always garaged , so the paint and everything is well maintained through the years . $30600 is the asking price . ",init-price
+1152,"great . i saw the asking and was wondering if you would accept $15 , 300 ",counter-price
+1153,haha no way man . i think you're looking at the wrong car if you think 1/2 of the asking price is acceptable . if you're actually interested in this car then the lowest i'll go is $25999 . i hope you can understand . ,counter-price
+1154,<end>,<end>
+1155,"hi , i am very interested in your bike ! ",intro
+1156,great ! it's almost new . 50 miles or less has been put on it and it's in great shape . i can do $1225 if you come pick it up ,init-price
+1157,"i was thinking more of 1100 ! you said you are accepting offers , usually that entails more than 25 off . ",counter-price
+1158,"yeah , but this is an $1800 dollar bike ! dual-shocks , fully accessorized . there is no way i can let it go for less than $1190 ",counter-price
+1159,"hmm , okay if you can drop it off to me i can swing 1190 . ",agree
+1160,agreed . i'll even throw in some cool riding gloves . you like hello kitty ? ,agree
+1161,okay great that sounds good ! i do actually like hello kitty ! ,thanks
+1162,<end>,<end>
+1163,"hi i see that the hutch is in fair condition , so it sounds like i will need to put some work in restoring it . also , i will have to borrow a truck to transport it , it i purchase it . would you take $175 ? ",init-price
+1164,that all sounds great . almost too quick and easy . . . . if you know what i mean . . . ,agree
+1165,gotcha ! thanks . deal . ,thanks
+1166,<end>,<end>
+1167,hi ! i would like to purchase your outdated iphone but your price is too high . i was thinking like $75 ? ,init-price
+1168,i just changed the battery on this which cost me a bit . ,supplemental
+1169,i understand . but i have concerns with the bright spot on the phone . i don't like disorder . how about $100 ? i will come to your office . ,counter-price
+1170,"ok , that sounds fair to me , i will take the 100 . ",agree
+1171,<end>,<end>
+1172,hi ,intro
+1173,"hello , i am interested in your headphones . about how many hours have they been used ",inquire
+1174,my son used them approximately 6 hours but he went off to basic in the army and can no longer use them so he wants to sell them ,inform
+1175,"oh ok , great ! are their any scratches or damage ",inquire
+1176,no they are in like new condition he took very good care of them in the short time that he used them ,inform
+1177,well i have a budget i have to stick in will you take 60 if i come and pick them up ! ,init-price
+1178,i can understand being on a budget if you can come soon to pickup i can do $60 for you . ,agree
+1179,<end>,<end>
+1180,hello ! ,intro
+1181,"greetings , i am interested in the 2bed 1 bath apartment ",intro
+1182,do you have any questions ? ,inquire
+1183,"can you tell me about the following ? neighbors , condition of interior , condition of appliances ? ",inquire
+1184,"this is in a wonderful neighborhood . very quit and low crime rate . the interior and appliances are all in top notch condition . there has only been one renter , a older couple that moved to arizona for retirement . ",inform
+1185,<end>,<end>
+1186,"hello , do you still have the cel phone accessories ? ",inquire
+1187,i sure do are you interested in just 1 or all of them ? ,inquire
+1188,i am looking for a charger for my t-mobile phone and a decent pair of headphones . ,inform
+1189,well i do have a charger but i do not have any headphones the only other thing i have are the selfie clickers ,supplemental
+1190,"selfie clickers ? that's interesting . i can use those . heck , i'll just take all that's listed . it says your asking $2 but will you take $1 . 50 ? ",init-price
+1191,well if you are taking them all i can lower the price a bit but these are normally $5 a piece . would $1 . 75 work for you ? ,counter-price
+1192,you seem to be giving me a great offer . i'll do $1 . 75 . can you send me your address and i'll be out to pick them up at your convenience . ,agree
+1193,sounds great ,thanks
+1194,<end>,<end>
+1195,"hi , i see you are interested in this chaise i have for sale . ",intro
+1196,"yes , i would like to pay $150 for it and can pick it asap ",init-price
+1197,$150 is going to be too low for me . it is a beautiful statement piece . i'd be willing to sell it for $200 with free delivery . ,counter-price
+1198,how about $160 . that's all the money i have right now ,counter-price
+1199,"can you pick it up today and pay in cash ? if so , deal . ",agree
+1200,deal ! ,agree
+1201,<end>,<end>
+1202,"hi , how are you ? i am extremely interested in this property . ",intro
+1203,hello ! and thank your for contacting me regarding this beautiful apartment . this one is a 2 br and 1 bath and i'm asking $2495 . it is upstairs and a handicap ramp is available . ,init-price
+1204,"it looks really beautiful . the rent price seems a bit high but , if utilities are included then it would be understandable ! are utilities included ? ",inquire
+1205,all utilities and cable tv are included in the rental lease . the lease ends 7/31/2018 and you have the option to renew . no pets allowed . ,inform
+1206,oh wow ! that is a steal ! is there also a fitness center on site ? id love to be able to cancel my gym membership ,inquire
+1207,"yes , in fact there is a gym on site , a swimming pool , laundry facility and it's a gated community . ",inform
+1208,oh wow ! you guys blow your competitors out of the water ! i will be by tonight to sign a lease . is that okay ? ,agree
+1209,that is great ! see you soon . ,thanks
+1210,<end>,<end>
+1211,hello ,intro
+1212,"hi , i am interested in the chair . what condition is this chair in ? ",inquire
+1213,"the chair is in excellent condition . if you dont know about the products aeron makes , they create some of the most luxurious leather chairs . ",inform
+1214,"that's great ! i am remodeling my home office and have a budget for $250 for a new chair . however , since this one seems so nice , i'd be willing to pay $26( ",init-price
+1215,"this chair values online for $849 . 99 . ive had it for roughly 6 months and im going to be moving to another state so i want to lug as little as possible back . whats really awesome about this chair is that its adjustable all the way to 6 4"" . it also has tremendous resale value if you decide you dont like it . unfortunately , ill have to stick to 299 as its a steal ",counter-price
+1216,i apologize for the previous typo . something startled me . that was supposed to read $269 . i will go up to $280 if you can deliver it . ,counter-price
+1217,<end>,<end>
+1218,"hey there , i noticed your interest in the sewing machine part . ",intro
+1219,looks to me like the item is kind of very old . how hold is the sewing machine ? ,inquire
+1220,"well , yeah , it is an old part , and has been used a little , which is why the price is so dramatically low . its to fit an older model . ",inform
+1221,how much does it weigh and how big is the sewing machine it can lift ,inquire
+1222,"it is for use with models: 15 , 66 , 28 , 27 , 15-91 , and 201 . the part itself weighs about 15 grams . ",inform
+1223,oh great thanks for the info . can i offer you $12 dollars for it . its really old you know ,init-price
+1224,"it is old , because it is for an older machine , as i said before . i am willing to negotiate , but 12 dollars is ignorantly low . ",disagree
+1225,how low can you go then . can i pay 13 . 50 . seems to me its okay at the price . ,counter-price
+1226,i just cant go that low . i could let it go for $15 if you come and get it yourself . ,counter-price
+1227,no . $14 is the highest i can go . its old . deal ? ,counter-price
+1228,$15 is the bottom line . ,insist
+1229,$14 deal ,insist
+1230,<end>,<end>
+1231,hi can you tell me about the schools in the area ,inquire
+1232,"such an amazing apartment , in the ideal location of east dublin , ca . ",inform
+1233,how are the schools ,inquire
+1234,"the schools are loacted next to lawrence livermore national labs , funded by the best paid engineers in southern california . they rank in the top 25% of all test scores in the region ",inform
+1235,will you allow me to have my cat ,inquire
+1236,"animals allowed , but i cannot lower the asking price due to the nature of cleaning and not having a deposit . ",inform
+1237,ok if i don't bring my cat and leave her with my mother would you be willing to accept 2587 ,init-price
+1238,2875,counter-price
+1239,so you will take 2587 ? ,insist
+1240,eys ,agree
+1241,great thanks ill come soon ,thanks
+1242,<end>,<end>
+1243,hello ,intro
+1244,"hello , i'm interested in buying the bike . ",intro
+1245,what type of condition is it in ? ,inquire
+1246,it is in very good condition . the tires are great and everything is pretty new on it . ,inform
+1247,how long did you have it ? ,inquire
+1248,i had it for about 1 month only . ,inform
+1249,so it's practically brand new . i'll pay $25 . ,init-price
+1250,"great , do you want to pick it up ? or , should i bring it to you ? ",inquire
+1251,it would be great if you could bring it to me . ,inform
+1252,would i have to pay extra ? ,inquire
+1253,"no , i will not charge anything to deliver it to you . ",inform
+1254,great . then please bring me the bike and i'll pay $25 cash . ,agree
+1255,<end>,<end>
+1256,i'm very interested in your mercedes cna you tell me more about it ? ,inquire
+1257,hey . it is a 2007 black e350 . great 3 . 5l naturally aspirated v6 engine . ,inform
+1258,im not really sure what that means but alright . how far do the back seats fold down ? ,inquire
+1259,it is a 4 door sedan so the back seats do not fold down . ,inform
+1260,oh they don't fold down to expand the trunk ? bummer . do you think you could take a little less for it then ? does it have a clean carfax report ? ,inquire
+1261,"i am willing to negotiate , however i can't accept offers that are too low . a carfax report can be provided upon request . ",vague-price
+1262,alright . i would like to do 5500 and i'll pay for a carfax report ,init-price
+1263,sounds great to me . thank you . ,agree
+1264,great i'll let you know my final decision after is ee the report ,thanks
+1265,<end>,<end>
+1266,hello ,intro
+1267,"hi are you interested in this item , ill be glad to answer any questions ",intro
+1268,yes i am . is it in good condition ? ,inquire
+1269,"it is in very good condtion , it has normal wear and tear from age and use . it has no significant chips or scratches . it should fit fine if you have model 15 , 66 , 28 , 27 , 15-91 , 201 . ",inform
+1270,sounds good . can i come by and take a look at it ? ,inquire
+1271,yes you may i am only asking $20 for it which is a great price ,inform
+1272,can you knock off a couple bucks since i am driving there ? ,vague-price
+1273,how about $17 and its yours ? ,counter-price
+1274,sounds great . ,agree
+1275,thanks a lot ,thanks
+1276,<end>,<end>
+1277,"hi , are you interested in getting the love seat ? ",inquire
+1278,i would definitely be interested . but i was wondering since the leather looks so worn if you'd bring the price down to $45 if i come pick it up and haul it out myself ,init-price
+1279,the leather isn't worn . what you're seaing are the wrinkles in the fabric with shadows because the lightening is poor . that's my fault . it's a great piece in great shape and only 1 . 5 years old . the $75 is a good price . ,counter-price
+1280,<end>,<end>
+1281,1 bed 1 bath apartment in oakland ? i'd like to be interested if we could agree to 1500/mo ,init-price
+1282,"that would be a fair price if it were missouri . this is west oakland and it's refurbished . i'll pay for your cleaning service , $1650 . ",counter-price
+1283,"1615 and we call it square , no service needed . ",counter-price
+1284,deal ,agree
+1285,<end>,<end>
+1286,hello how are you doing this evening/ ,intro
+1287,"hello , i'm doing good . is your love seat still available ? ",inquire
+1288,yes it is do you have any questions about it my friend ? ,inform
+1289,yes i do . are you the original owner ? ,inquire
+1290,i am the second owner and when it came to me it was in great condition like they had never even used it . the seat was then used by me in a spare bedroom (so lightly used) still in very nice condition and i am trying to get 75 for it ? ,inform
+1291,how old is the loveseat ? ,inquire
+1292,it is about 2 years for me and the last owner i'm not sure how long they had it ,inform
+1293,would you accept $50 for it if i pick it up ? ,init-price
+1294,"yes that is acceptable , i will send you the offer . ",agree
+1295,<end>,<end>
+1296,hello ,intro
+1297,hi are you interested in my car it is in great shape and good milage good tires and brakes . ,intro
+1298,has many other awesome features i am asking $5500 ,init-price
+1299,i am very interested . this seems like a great offer . is there anything wrong with the car at all ? ,inquire
+1300,"no it is in great shape , i have kept up good maintanence on the car and have smog and clean title in hand ",inform
+1301,can i come by and take a look at it ? ,inquire
+1302,yes i am availabel anytime ,inform
+1303,"great , can you lower the price at all ? ",vague-price
+1304,i am willing to negotiate some . ,inform
+1305,i would like to pay 3000 ,counter-price
+1306,"sorry that is very low , this car is in great condition and has power everything and moonroof everything it is loaded with features and has been upkept greatly . i can do 4750 ",counter-price
+1307,that works for me ,agree
+1308,great i will see you soon ,thanks
+1309,<end>,<end>
+1310,is this phone unlocked ? ,inquire
+1311,"hello , yes this phone is unlocked . ",inform
+1312,it is new in box also correct ? ,inquire
+1313,it is new but not in the original box . the phone has the protective film still all aound it so it's not getting scratched . ,inform
+1314,would you accept $650 cash can meet today since it is new and unlocked . i will pick it up myself ,init-price
+1315,<end>,<end>
+1316,hello ,intro
+1317,is the bookcase still available ? ,inquire
+1318,sure is . :) ,inform
+1319,can you tell me if there are scratches ? ,inquire
+1320,"nope the unit is only about 6 months old , came from ikea and is still in like new condition . i can even load it in my truck and deliver it directly to you for an even $40 cash ? :) ",init-price
+1321,that would be great . i live on the same side of town as you and that would be perfect . ,agree
+1322,<end>,<end>
+1323,hello ,intro
+1324,hello ! ,intro
+1325,i am interested in this apartment . is it in a nice area ? ,inquire
+1326,yes ! the area around the apartment complex is nice and the people who live in the apartments are great people . ,inform
+1327,great . can i come by and see it today ? ,inquire
+1328,absolutely ! ,inform
+1329,are you flexible on the price ? ,inquire
+1330,what were you thinking ? ,inquire
+1331,i was hoping to pay 1800 . is that alright with you ? ,init-price
+1332,"can we get closer to 2000 ? i'm paying for water , garbage , sewer and heat ",counter-price
+1333,that could work . i will pay the 2000 . thanks for lowering the price . ,agree
+1334,<end>,<end>
+1335,can you take $400 for it if i pick it up myself and throw in a free cat ? ,init-price
+1336,haha i do not want a cat but thank you for the offer . its a brand new iphone 7 . $745 is asking price ,counter-price
+1337,how about $500 plus an old iphone 6 in good condition ? ,counter-price
+1338,"cash only , no trades . how about $700 and you come pick it up ",counter-price
+1339,"how about $600 plus i pick it up , and give you the cat with cat food and litter box ? ",counter-price
+1340,i guess that works . $600 and you can pick up tomorrow ,agree
+1341,"perfect , thank you ! ",thanks
+1342,<end>,<end>
+1343,"hello , how old is the bike ? ",inquire
+1344,"the bike is a couple years old , it has been in storage and is in excellent condition . ",inform
+1345,i am looking to get $25 for this . ,init-price
+1346,i am trying to get a bike today for my son who recently had his stolen . all the cash i have on me is $18 . can you part with it for that if i come pick it up today ? ,counter-price
+1347,could you do 20 at all ? $25 is pretty low already . ,counter-price
+1348,"i can scrounge up another $2 , sure . ",agree
+1349,<end>,<end>
+1350,hello . is the hutch still available ? ,intro
+1351,"hello , yes it is available ? ",inquire
+1352,"great . if i decide to buy , are you willing to deliver ? ",inquire
+1353,"yes , i would be able to deliver this if you need it to be done . ",inform
+1354,thanks . i see you have it listed for $200 but would you accept $100 ? ,init-price
+1355,ouch that is a price difference . this is original wood and has been taken very good care of . i would be willing to do $175 but i wouldn't be able to deliever if that was the case . ,counter-price
+1356,i understand . i can't pay that much but would you accept $150 and i'll pick it up ? ,counter-price
+1357,"yes , i think i could go that low if this is a good home . ",agree
+1358,it will be going to a good home . thanks ! ,thanks
+1359,<end>,<end>
+1360,hi there is the item avaialble ? ,intro
+1361,"yes it is , its an amazing bike ",inform
+1362,is it used ? ,inquire
+1363,it is used but simpel road riding not for competition ,inform
+1364,how old is it ? ,inquire
+1365,its from the late 80s ,inform
+1366,and what color is it i cant see any picture here so just wondering ? ,inquire
+1367,"its black , it has a 55cm size aluminum frame ",inform
+1368,oh i see . the price is too high for me . is there any room for negotiation here ? ,vague-price
+1369,i can work with you . what is your best offer ? ,inquire
+1370,$540 ,init-price
+1371,how about $560 and i will deliver it myself ,counter-price
+1372,okay that is a plus for me since i don't have to come all the way to pick it up ! ,agree
+1373,"sounds good , $560 it is ",agree
+1374,<end>,<end>
+1375,hello ,intro
+1376,hi how are you ? ,intro
+1377,i'm well . are you interested in my chaise ? ,inquire
+1378,"yes i am is the condition very good , the photo looks like it might not be the best condition ? ",inquire
+1379,"it has been used yes , but it is in good condition . it's suede that is why it looks scuffed . ",inform
+1380,"great , so i see that you're asking 295 and was wondering if you could possible reduce to 265 ? ",init-price
+1381,would you be willing to pick this up or need it delivered ? ,inquire
+1382,<end>,<end>
+1383,hi there how are you ,intro
+1384,i am doing great how are you ? ,intro
+1385,very well thanks ! can you tell me a little about the property ? ,inquire
+1386,yes it is a very spacious studio apartment with around 850 sqft of living space . this unit was just recently remodeled so you get new carpet as well as granit counter tops . we include all utilites and all you have to sign is a 1 year lease and it is yours for only $1750 a month ,init-price
+1387,that all sounds wonderful but i have a very tight budget and a very high saving account because of it ! would you be willing to accept 1575 if i gave you security deposit and 6 months rent cash up front ? ,counter-price
+1388,well if you would be willing to do that i can lower the rent a bit to help you out but the lowest that i can go would be $1650 ,counter-price
+1389,ok that works thanks for working with me ! ,agree
+1390,<end>,<end>
+1391,hi ! i'm interested in your bookshelf . ,intro
+1392,are you willing to negotiate ? ,inquire
+1393,yes . i am willing to negotiate a little . ,inform
+1394,can the shelf support sound equipment ? ,inquire
+1395,"yes , the shelf would be able to support sound equipment and can be adjusted to whatever height is suitable . ",inform
+1396,"throw in those crates in the photo , i could offer as high as 28 dollars . ",init-price
+1397,if i threw in 4 crates instead of just the 3 in the photo i would take $30 if you were able to pick up . ,counter-price
+1398,i could only do $30 if you deliver . ,agree
+1399,i could do that if i could deliver today . ,supplemental
+1400,<end>,<end>
+1401,hi . is this car still for sale ? ,intro
+1402,hi how are you tonight ? ,intro
+1403,yes it sure is . ,inform
+1404,how clean is it on the inside ? has it been recently detailed ? ,inquire
+1405,it is in perfect shape . i never had kids pets or any smoking in it . i have not had it detailed recently but i keep this car in amazing shape . it has been my baby even since i bought it . ,inform
+1406,well i was only wanting to pay $9450 but i'm willing to pay your asking price of $13500 if you have it detailed and deliver it to me in person . ,init-price
+1407,i can do that no problem as long as you don't live on the other side of the country or anything . ,agree
+1408,nope . i live right across town . then we have a deal ? ,inquire
+1409,yes we do ,agree
+1410,<end>,<end>
+1411,are you interested in the chair i have ? ,intro
+1412,yes . what else can you tell me about it ? ,inquire
+1413,it is in great condition and is made to fit people over 6 feet and the lumbar padd is fully loaded . ,inform
+1414,i like it . i'll offer you $125 . ,init-price
+1415,i can come down but how about $160 and i will deliver it . ,counter-price
+1416,i accept at $160 delivered . ,agree
+1417,<end>,<end>
+1418,hi . are you interested in my home ? ,intro
+1419,"hi , yes , it's a beautiful property . i'm wondering if it includes any utilities ? ",inquire
+1420,it does not but it does have a big garage and it have a laundry room ! this place is amazing . ,inform
+1421,"hmm , $2875 seems a bit steep . i was hoping to find a 2 bedroom closer to the $2000 range per month if the unit doesn't include utilities . do you at least pay for water , sewer and trash removal ? ",init-price
+1422,i could pay for the sewer and trash removal if you willing to accept my offer of $2100 in i will pay your first light bill ! ,counter-price
+1423,that sounds like a fantastic deal ! thanks for your flexibility ! ,agree
+1424,<end>,<end>
+1425,hello . is the townhouse still available ? ,intro
+1426,"hello , yes it is ",inform
+1427,how old is it ? ,inquire
+1428,"the townhouse is only a few years old . it is in great , move-in ready condition . ",inform
+1429,"great . i know you have it listed as $2200 , but would you be willing to accept $1100 ? ",init-price
+1430,"i don't think i could go so low as half price , but yes the price is negotiable . ",vague-price
+1431,i understand . would $1800 work ? ,counter-price
+1432,that is still quite a discount and you haven't really justified such a price reduction . i could go as low as $2000 though . ,counter-price
+1433,$1980 and we have a deal . ,counter-price
+1434,<end>,<end>
+1435,i am very interested in buying your car ,intro
+1436,hello . i am glad to hear it . do you have any questions or concerns for me ? ,inquire
+1437,yes how many miles does it have ? are you the 1st owner ? ,inquire
+1438,"yes i am the original owner . it has 88 , 000 miles on it . ",inform
+1439,how about the interior ? is it in great condition ? does the radio/cd work ? ,inquire
+1440,it has a am/fm/hd radio with a cd/mp3 player with bluetooth . everything works . the interior is in good condition . ,inform
+1441,i can offer $6750 . how does that sound ? ,init-price
+1442,i am willing to negotiate some on price but i can't go that low . is there anything i can do for you to sweeten the deal ? ,vague-price
+1443,how about 9500 ? maybe thrown in a car wash ,counter-price
+1444,<end>,<end>
+1445,hey there are you interested in my car i have for sale ? ,intro
+1446,"i sure am , can you give me more specif details about the mileage ? ",inquire
+1447,"its in amazing condition . great tires and breaks , only 20k miles on it . just like the day i bought it pretty much ! the leather interior is pristine . ",inform
+1448,are you the only owner that it has ? ,inquire
+1449,yes i am . i am selling it for $5500 . what do you say ? ,init-price
+1450,"well i can offer you $4000 in cash and i can go pick it up tomorrow morning , what do you think ",counter-price
+1451,that will work for me if its cash and you're picking it up . ,agree
+1452,thanks a lot for the sale ! ,thanks
+1453,<end>,<end>
+1454,hello . thanks for viewing the listing . ,intro
+1455,hello how is the condition of your chaise ? ,inquire
+1456,it's in great condition . almost new . ,inform
+1457,awesome i see that you're asking 295 for it is that negotiable ? ,init-price
+1458,"yes i'm asking $295 , but what would you be willing to pay ? ",inquire
+1459,i would like to pay 265 if that's possible/ ,counter-price
+1460,that's a little low . would you be able to do $280 ? ,counter-price
+1461,yes but is it possible for you to help me move it for that price because my truck is not available right now ? ,agree
+1462,that's no problem at all . i'll even do it for $280 it is . ,agree
+1463,alright that works and thank you ! ,thanks
+1464,<end>,<end>
+1465,"hi . i have a few questions about the studio apartment . 1) it says it's a fourplex , how many are living there now ? 2) are the walls good and sound proofed ? ",inquire
+1466,it is a great little place that is well updated and is roomy . all utilities are included and you cannot hear your neighbors . ,inform
+1467,"that's good . i'm in a place right now , i know exactly what my neighbors are watching on tv . okay , i want the apartment but could we get the price down . i'm good at lawn maintenance . if i took care of lot , would you be willing to cut the price to say . . . $700 ? ",init-price
+1468,i cannot do $700 but can do $800 if you pay the utilities ,counter-price
+1469,"how about i pay $900 , i'll mow the grass , trim the hedges , even plant you a garden if you buy the plants , and utilities are included ? ",counter-price
+1470,okay you ahve yourself a deal . ,agree
+1471,excellent . ,thanks
+1472,<end>,<end>
+1473,hi ! are you interested in the upper unit ? ,intro
+1474,hi i am interested in your property could you tell me more about it please ? ,inquire
+1475,"sure ! it's a beautiful 1 bed 1 bath apartment with new flooring , great closet space , awesome shared yard . all utilities are included . ",inform
+1476,awesome that sounds nice is the price negotiable ? ,inquire
+1477,"sure , i'm asking $1725 . ",init-price
+1478,what makes sense for your budget ? ,inquire
+1479,"i would like to pay something like 850 but i understand that is way off from what you want , is there any middle ground here ? ",counter-price
+1480,could we meet at 1300 ? ,counter-price
+1481,yes i think that is very kind of you and i can afford that ,agree
+1482,<end>,<end>
+1483,"hello , i am interested in your love seat . ",intro
+1484,make an offer . ,unknown
+1485,$70 ? ,init-price
+1486,sold ! ,agree
+1487,thank you . ,thanks
+1488,<end>,<end>
+1489,hi how are you doing today ? ,intro
+1490,hi the house looks dilapidated in the picture . was the picture taken before or after the house was remodeled ? ,inquire
+1491,"it was taking before , i can send you new picture if you want me to ? ",inform
+1492,okay great . is the studio furnished ? ,inquire
+1493,"the studio is furnished in the kitchen but not anywhere else , the starting price is 1795 ",init-price
+1494,okay . can i offer you $100 ? ,counter-price
+1495,"that's way too low friend , the best deal i can do for you and be approved is something like 1450 with one month of free rent , how does that sound ? ",counter-price
+1496,sorry i meant $1000 . but i can add a 100 more . can we make a deal for $1100 ? ,counter-price
+1497,"yes that will work but i will not be able to include the free one month at that rate , did you still want the deal ? ",agree
+1498,yes will you accept cheque ? ,inquire
+1499,yes that is fine ! ,agree
+1500,<end>,<end>
+1501,hi ! i am interested in your hutch . ,intro
+1502,can you tell me a little bit about it's story ? ,inquire
+1503,bought this myself and it has sat in the same spot for twenty years . ,inform
+1504,any scratches ? ,inquire
+1505,"yes here and there , it's in fair condition though . ",inform
+1506,what else classifies it as fair ? ,inquire
+1507,<end>,<end>
+1508,hello ,intro
+1509,hello ,intro
+1510,"nice apartment , although too expensive , can i ask you a couple of questions about it ? ",inquire
+1511,"yes , please i will be glad to answer all of them . ",inform
+1512,thanks . this is a gated community ? are any playgrounds for kids nearby ? ,inquire
+1513,"yes , this is private gated community and we do have many amenities such a swimming pool , tennis court and most importantly , great playground for children . the playground is a minute away from this particular apartment . it is well worth the price . will you be interested to see it ? ",inform
+1514,"yes sure . but i am really concerned about the price , any special offers ? ",inquire
+1515,"i understand , we are willing to give you first month half off . ",vague-price
+1516,"hmm , i was hoping for something better , any chance you can give me a 30% discount for the first year ? i am willing to sig a 3-year contract and accept a raise of 20% for the last 2 years . what do you think ? ",vague-price
+1517,<end>,<end>
+1518,hello i am looking for a place in west oakland ! ,intro
+1519,this is a great place in a quiet area . on street paring and a patio in the rear . ,supplemental
+1520,"sounds wonderful , will you be able to come down on your price at all ? ",vague-price
+1521,what were you considering ? ,inquire
+1522,i was hoping to save at least 100-200 on the rent from your asking price is this possible ? ,vague-price
+1523,it may be possible . be aware there are no pets with this discount . it would be the $1795 plus an additional $200 per pet . ,init-price
+1524,oh i don't have any pets so that is no problem for me ! ,agree
+1525,great . did you want to see the place ? this weekend is good . ,inquire
+1526,yes that works for me ! ,thanks
+1527,<end>,<end>
+1528,hey there ! ,intro
+1529,hi . how big are the apartment ? how many bedrooms ? ,inquire
+1530,"its very big , 3 bedrooms . ",inform
+1531,"it sounds nice , although not a fan of steam radiators but . . it's gonna be me and a friend . we were hoping to stay under $2300 . can you do that ? ",init-price
+1532,"we could definitely do $2300 , you will love the place i assure you of it . be aware though , the deposit is equal to 1 . 5 months rent . ",agree
+1533,<end>,<end>
+1534,hi . are you interested in the dining room set ? ,intro
+1535,i am . can you tell me if there are any defects ? ,inquire
+1536,no . it's in perfect condition . it wasn't for everyday use . ,inform
+1537,perfect . what pieces come in the set ? ,inquire
+1538,six chairs and the table . i'm also throwing two end tables and a coffee table . ,inform
+1539,"nice ! if you're price is negotiable , i have $800 cash today and could come pick up the furniture at your convenience . ",init-price
+1540,the tables are in excellent condition . how about $1100 ? ,counter-price
+1541,i'm sure they are nice but that is just out of my budget right now . i can probably come up with $850 . ,counter-price
+1542,ok how about $900 for the table and chairs . i'll keep the coffee table and end tables . ,counter-price
+1543,<end>,<end>
+1544,hi there how are you ? ,intro
+1545,hello there ! i'd love to buy this bike ! what can you tell me about it ! ,inquire
+1546,the bike is in great condition and selling because i am moving and can't take it with me . the frame is smaller with 20'' wheels and asking 190 for it ! ,inform
+1547,okay sounds good ! would you be willing to take $150 for it if i swing by in about 30 minutes to pick it up with cash ? ,init-price
+1548,yes that is just fine ! hope to see you soon ! ,agree
+1549,sweet thanks a lot ! see you soon ! ,thanks
+1550,<end>,<end>
+1551,hey there are you interested in this car ? ,intro
+1552,hi ! yes i am ,intro
+1553,"it's got all of the state of the art features like bluetooth , heated mirrors , power moon roof , traction control , 6 airbags , 28 hw mpg . keyless ignition . selling for $13500 ",init-price
+1554,it is a beautiful car ! that's a little higher than i was looking to pay . . . ,vague-price
+1555,"well it's already an excellent deal . i'm afraid the lowest we can go is $11500 . i hope this is reasonable for you , as we believe you won't find a better deal for such a nice car . ",counter-price
+1556,<end>,<end>
+1557,"hi , i ahve a vintage singer cast iron machine and i think this will fit perfectly . ",intro
+1558,i wonder how much rust there is ? ,inquire
+1559,hello i have kept this in very good condition there are no scratches . it has a shiny black glossy finish ,inform
+1560,"it looks great , would you be willing to ship it . it's a bit far to drive for something so small . also would you take $10 for it ? ",init-price
+1561,i was thinking of $20 since it is in great condition . ,counter-price
+1562,split the difference at $15 ? ,counter-price
+1563,"ok , i will accept your offer for $15 ",agree
+1564,<end>,<end>
+1565,hi :-) what kind of shape is this in ? ,inquire
+1566,it's still in very good shape . i've only used it for basic road riding . no competitions or anything too intense . ,inform
+1567,"nice :-) so no rusty bits or problems with chains or gears ? i like why your're selling it , btw ",inquire
+1568,"thanks . yeah , no mechanical issues or worn out parts . it was a classic design , and i did my best to take care of it . ",inform
+1569,"i understand they have different sizes for these bikes ? i'm on the short side , would it work for me ? ",inquire
+1570,"it's a 55 cm frame , which is designed for people 5'6"" to 5'9"" , but of course you can adjust the handlebar and seat height to your preferences . ",inform
+1571,"perfect , sorry about the dumb question . its listed for 600 , but i only have a budget of 400 , could that work ? ",init-price
+1572,i think i could probably go $500 . would that work ? ,counter-price
+1573,"it's for such a good cause , i can't go as high as five though (i'm sorry) but i do have my mad money :-) it's not much , but i can get together 450 . . . ",counter-price
+1574,i think that'll work for me . you seem like you're going to give it a great home . ,agree
+1575,i'll try :-) thanks ! ,thanks
+1576,<end>,<end>
+1577,hi . i'm very much interested in your vette . ,intro
+1578,but the price is a bit high for my wallet . ,vague-price
+1579,could you go down to about 25000 ? ,init-price
+1580,i would have to get a bit more than that . it has low miles and lots of extras ! ,vague-price
+1581,i do see it has a lot of aftermarket additions . . . would you at least be able to meet me in the middle between your listing price and my offer ? ,inquire
+1582,how does 29000 sound ? it's really a very nice car and you won't be disappointed . ,counter-price
+1583,if you can do 28000 i'll come write you the check today and we'd have a deal . ,counter-price
+1584,you've got a deal ! ,agree
+1585,<end>,<end>
+1586,hi ! ,intro
+1587,i'm interested in your chaise lounge . is it in good condition ? ,inquire
+1588,"it is is good condition . i am a bigger person and since one of the cushions is attached it makes the seat a little smaller than i was wanting , so this is why i am selling . ",inform
+1589,"well , i'm happy you are . could you maybe come down a little on the price ? its a gift for my grandmother . is $225 acceptable ? ",init-price
+1590,i would love to be able to sell it for that but to replace this with another chair in my house i am needing at least $250 . i could deliver today . ,counter-price
+1591,would you consider $240 if i come get it ? ,counter-price
+1592,yes . i could do that . we have a deal . ,agree
+1593,<end>,<end>
+1594,hi there ! ,intro
+1595,"hi , are you interested in buying the bmx bike ? ",intro
+1596,yes i sure am ! what can you tell me about it ? ,inquire
+1597,"we have had it for about 5 years it was my sons before he got into girls and bands so now he no longer rides it . it's been in the garage a while . there is some slight rust on the frame where the front tire meets the bike , other than that its' in good shape ",inform
+1598,awesome ! i could pick it up later from your place if that works for you . i have $30 in cash . ,init-price
+1599,great . you have a deal . ,agree
+1600,thanks so much for the understanding ! i'll see you later today to pick it up ! ,thanks
+1601,<end>,<end>
+1602,hello . how long have you owned the dresser ? do you have any idea how old it is ? ,inquire
+1603,"we have had it for 7 years , it's 7 years old . we bought it brand new from a local artisan . it's very sturdy . they don't build them like this any more . ",inform
+1604,"it's a unique looking piece , which is part of why i'm so interested . i've never seen one like it before . has it ever been painted ? ",inquire
+1605,"no , this is the original stain there are only a few scratches on the top ",inform
+1606,excellent . i would have lost all interest if it had been painted . my mother always told me never to pay full price . $70 ? ,init-price
+1607,i can do $8 . ,counter-price
+1608,$8 ? ? ,inquire
+1609,"$80 , sorry , i can sell it for $80 ",counter-price
+1610,well you give in just a little more and go $75 ? ,counter-price
+1611,if you pick it up right away ,agree
+1612,we can be there in three hours . ,inform
+1613,<end>,<end>
+1614,i'm really interested in the bike . you say it has less than 50 miles on it . how long have you owned it ? ,inquire
+1615,"hi :-) it's an awesome bike , i've had it two years , i keep it in the garage and its in tip top shape ! ",inform
+1616,"i want the bike cut can't afford the 1250 , i can pay $625 ",init-price
+1617,"oh man , i am so sorry , i can't come down that low on it . i would maybe consider that a down payment , and we can do payments on it , if you're really serious . ",vague-price
+1618,i could do that . ,agree
+1619,"okay , so let's say the $625 is the first payment , and that leaves another $625 due . how about two hundred a month ? could you work that okay ? ",thanks
+1620,that works . ,agree
+1621,"cool , you're going to love this bike :-) ",thanks
+1622,<end>,<end>
+1623,hello there ! ,intro
+1624,hi you want to buy the iphone ? ,intro
+1625,yes i would love to ! is it in good condition ? not scratched or slow or anything ? ,inquire
+1626,"no scratches , there is one pixel that is bright and lit up , but it works fine even with that , and it doesn't obscure your view . it's in really good shape and has an otterbox case that comes with it . ",inform
+1627,awesome ! would you accept $157 for it in cash ? i can stop by today and pick it up . ,init-price
+1628,$160 even and you have a deal ,counter-price
+1629,okay that will work ! thanks ! ,agree
+1630,<end>,<end>
+1631,hi ! are you interested in my dining room set ? it's a beautiful set ! ,intro
+1632,yes i am ! can you tell me how many people it can sit ? ,inquire
+1633,it can sit 4 without the inserts but if you add them (there are 2) you could sit 8 comfortably . ,inform
+1634,"ok great , i need 6 so that will work ! $1250 is a little out of my price range . i'm assuming it is pretty heavy , i can come get it and load it myself tonight if you'd be willing to accept $850 . ",init-price
+1635,i could do $1100 ! it also comes with 2 end tables and a coffee table . they are all in beautiful shape and barely used . ,counter-price
+1636,"that is great ! i'm really not looking for a coffee table , but i'm sure they are also very nice . can we do $1000 ? i'm already over my budget i agreed on with my husband . . . ",counter-price
+1637,yes we can do $1000 ! you have a deal ,agree
+1638,perfect ! thanks ,thanks
+1639,<end>,<end>
+1640,hello ,intro
+1641,hi i am interested in your listing . ,intro
+1642,great ! the unit is available for immediate move in and it is in great condition . ,supplemental
+1643,is the neighborhood nice ? ,inquire
+1644,"it's very nice and quiet . there is a front yard and a back yard , so lots of space . ",inform
+1645,"cool , would you be able to move the price down a bit if i sign a longer lease ? i was thinking a year for 1980 . ",init-price
+1646,"if you have good references , can do security and first and last month , we could definitely negotiate the price . we could do $2000 for a one year lease . ",counter-price
+1647,that works for me . you've got a deal ! ,agree
+1648,<end>,<end>
+1649,hello . ,intro
+1650,"hi , i've always wanted an altron . i would love to buy this from you . are you he only to have owned it since the 80's ? ",inquire
+1651,"yeah , just me . i've only used it for simple road riding , never used it for competitions . it has been very well maintained and is in great condition . ",inform
+1652,would you accept $420 for it ? ,init-price
+1653,i don't think i could go that low . i am asking $600 and this is a really great piece of japanese worksmanship . ,counter-price
+1654,i understand . how about $500 ,counter-price
+1655,i mean . . . you're just throwing numbers at me . . . i am asking $600 . i can take $50 off if you come pick it up tonight and pay cash . but that's about all i can do . ,agree
+1656,well thanks anyway ,thanks
+1657,<end>,<end>
+1658,hello ,intro
+1659,"hi , is this bookcase in good condition ? ",inquire
+1660,yes it is . it is in great shape . i just don't have any need for it anymore . ,inform
+1661,it looks like you had it pretty weighted down . i didn't know ikea furniture could hold that much weight . i'd like to buy it for 25 ,init-price
+1662,how about 30 and i will bring it to you myself ? ,counter-price
+1663,sounds good ! ,agree
+1664,i think we should make sure we want to do this deal . do you want to come take a look at it first ? ,thanks
+1665,<end>,<end>
+1666,hello ,intro
+1667,"hello , so you just bought your bike . did you ride it a lot ? are the tires worn out ? ",inquire
+1668,i have not used it much . only a couple of times . the tires are pretty new . everything is on great condition on the bike . ,inform
+1669,"from the picture everything looks great , although i'd probably get a different saddle for it . would you take 150 ? ",init-price
+1670,i might . want to come by and take a look at it ? ,inquire
+1671,i'm going out of town tomorrow i can come pick it up today and pay cash ,inform
+1672,"that sounds good to me . i want to get rid of it quick , so i will accept your offer . ",agree
+1673,<end>,<end>
+1674,"hello , are there any issues with the dresser i should know about ? ",inquire
+1675,it is a beautiful honey maple color . it is in very good condition with just a few minor usage on the top . ,inform
+1676,"okay well the color is not good for me . since i'll have to restain it , how about 75 for it ? ",init-price
+1677,i can take $75 but it has to be cash and you have to come pick it up . ,agree
+1678,"well , i don't have a car so i'll give you $5 for gas . that'll be $80 from me . ",counter-price
+1679,you've got a deal . ,agree
+1680,<end>,<end>
+1681,hi how are you ? ,intro
+1682,"i'm good , how about yourself ? are you interested in my vette ? ",intro
+1683,"i'm great , and yes i am interested and hoping to reach an agreement with you . ",intro
+1684,"okay , what were you thinking ? ",inquire
+1685,i was hoping to give you 22000 and then i may have some items that you would like that i could throw in to make it a fairer deal for you . ,init-price
+1686,first i need to make sure that just because you won't pay a higher price you won't value it at a higher price . this car has to go to someone who will take good care of it and keep it in good condition ,disagree
+1687,oh i see the value and should say that i love cars and treat them very nicely ! ,supplemental
+1688,"okay , what else do you have to offer me ? ",inquire
+1689,"well i have a john boat and also some tools and i have some other things , is there anything in particular that you would want ? ",inquire
+1690,nothing that i can think of that's worth 8600 ,init-price
+1691,"okay i didn't really want to part with this but i see that you're looking for something very special and rare . i just so happen so have something that you may consider . these are special herbs from overseas and you cannot get them in usa . these are coming from an ancient culture of indigenous peoples . i met the shaman of the people and he gifted for me several pounds of this different types of herbs , i could part myself with 2lbs of this one that is very good for you and then give you 25000 ? will this work for you ? ",counter-price
+1692,"25000 and the tools , do you have a hydraulic jack or a welder ? ",inquire
+1693,i do i have both and am willing to also put these into the pile . ,supplemental
+1694,<end>,<end>
+1695,hello ,intro
+1696,"hello there , are you interested in the bed ? do you have any questions about it ? ",intro
+1697,i am very interested in it . is it in good condition ? ,inquire
+1698,it's in very good condition and very well taken care of . the mattress is also in good condition . ,inform
+1699,great . i would like to come by and take a look at it . can you lower the price at all ? ,vague-price
+1700,"i may be able to come down a bit for you , what do you have in mind ? ",vague-price
+1701,i would like to pay 162 for it . is that possible ? ,init-price
+1702,"that's a pretty low price for this bed . you can't find them anymore in solid wood . i could do 275 , ",counter-price
+1703,that works for me ,agree
+1704,great ,thanks
+1705,<end>,<end>
+1706,"hi , are you looking for a place in fairfield ? ",inquire
+1707,yes i am and this place looks awesome but over my budget . can you work with me ? ,vague-price
+1708,"yes i can , i am able to offer your some other perks as well that might even it out for you a bit , do you have any questions about the apartment ? ",vague-price
+1709,"yes , are utilities included and does it have washer and dryer hookups ? ",inquire
+1710,"the washer and dryer are included and the utilities is something that i am authorized to offer you as an extra , if you are willing to come in this week and start the process ? ",inform
+1711,"i can most definitely do that if the price is right . since the place is so small , i'm willing to offer $800 ",init-price
+1712,i understand your position with the minimum wage in ca being only 10 . 50 . do you have a good job here ? ,inquire
+1713,not yet which is why i can't pay too much until i have stable income . ,vague-price
+1714,"i see , well maybe this would help you out some . the difference between 800 and 1500 is about 700 . if you are good with maintenance type of work and can show some good work then i need some help around with some of my rentals . i can pay you at about 10 per hour and allow you to work for about 10-20 hours per week and we could put 500 towards that difference and then you can keep the extra and that will also give you time to look for a solid job . how does that sound to you ? ",counter-price
+1715,<end>,<end>
+1716,"cool beans , a bike for my kid ",intro
+1717,"yes , my son outgrew it so we had to purchase a new one . it is hot wheels red color and a 16"" . ",supplemental
+1718,"fantastic , would you be willing to take $15 ? ",init-price
+1719,i can do $20 . ,counter-price
+1720,"$20 is more than fair , thank you so much ! ",agree
+1721,your welcome . ,thanks
+1722,<end>,<end>
+1723,hi i am interested in your ford fusion . ,intro
+1724,how does the a/c work ? ,inquire
+1725,"it works perfectly , really great condition ! ",inform
+1726,"awesome , how many miles does this baby have on it ? ",inquire
+1727,"you won't believe this , but only 5 , 000 miles ! ",inform
+1728,"wow , that's incredible . how firm is that price ? ",inquire
+1729,"yeah i bought it for rap video shoots . so mostly women just sat on the hood of it . price is pretty firm , it's a steal though imo ",vague-price
+1730,awesome . i can only do around 3600 right now . is it cool if i pay you the rest in a month . we can draw up a contract ? ,init-price
+1731,hmmmmm . can you do 3900 right now and pick it up yourself ? i'm about 60 miles outside of the city . ,counter-price
+1732,okay sounds good to me . ,agree
+1733,<end>,<end>
+1734,hi how are you today ? ,intro
+1735,great ! hope you're doing well . ,intro
+1736,i am . so are you interested in my apartment ? ,intro
+1737,i am ! i was hoping for a lower price though . i was thinking $800 ,init-price
+1738,oh that is much too low . this apartment is in a very high demand area and does include all of the utilities . ,vague-price
+1739,"i see that , it looks great . what would you be willing to go down to ? ",vague-price
+1740,well if you are willing to sign a 2 year lease i can reduce the price by 200 which would make it $1385 a month . ,counter-price
+1741,i plan on staying in this area for quite awhile . what could you do for a 5 year lease with 2 months rent up front ? ,inquire
+1742,with a 5 year lease i could go down as low as 1185 a month but that is the lowest that i am able to go . would that work for you ? ,counter-price
+1743,"yes , that sounds great ! ",agree
+1744,<end>,<end>
+1745,hi i am interested in the bike you have listed is it still for sale ? ,intro
+1746,yes it is . it's ready to go today ,intro
+1747,is it in good shape ? and do you have any idea what the age recomendation is for this size ? ,inquire
+1748,this bike is the perfect size for a 7-10 year old . and it is in very good shape . my kid prefers to skate so he hardly used it . ,inform
+1749,perfect my 8 year old would love it . would you be willing to take $20 for it ? i can come right away . ,init-price
+1750,well i'd like to buy a pack of skittles so how about $23 ? ,counter-price
+1751,i can do 23 for it that sounds fair . thank you . ,agree
+1752,<end>,<end>
+1753,hi are you interested in my love seat it has no rips or tears its white still good condition i am sking $75 ,init-price
+1754,hi i really like it . do you know if anyone could help me load it if i was to come pick it up ? ,inquire
+1755,i would definitely be willing to help you and we have easy elevator access to get it from my apartment to the driveway ,inform
+1756,cool . i would be willing to pay the full 75 then . you got yourself a deal ! ,agree
+1757,great i will get you directions for pickup . ,thanks
+1758,<end>,<end>
+1759,"hello , are you interested in the 2br/1bath ? ",intro
+1760,i am ! would you be willing to go down if i signed a multi-year lease ? ,inquire
+1761,i require a one year lease to start then you have a month to month option or another year . ,inform
+1762,i was looking to pay around 1300 ,init-price
+1763,this is a newly renovated apartment . fully remodeled . it has new carpet and fresh paint . minute s from bart access . it's going for $2250 right now . that's a steal for the area . ,counter-price
+1764,<end>,<end>
+1765,hi ! i'm interested in your kitchen hutch . how worn is it ? ,inquire
+1766,it's not worn very much . it's 20 years old but the stain is still in great condition . ,inform
+1767,"its says fair condition , any scuffs or scratches in the wood ? ",inquire
+1768,there's just some wear on the bottom inside of the legs . it's not really scratches in the wood as much as it is small scratches in the stain . you can see them when the light hits it the right way . ,inform
+1769,i really like the hanging wine-glass rack . would you take $150 ? it is 20 years old after all . ,init-price
+1770,<end>,<end>
+1771,hi were you interested in my kitchen hutch ? ,intro
+1772,i am can you tell me a little more about the condition ,inquire
+1773,it's in fair condition . theres a bit of scratching in the coating . nothing has worn into the wood . nothing crazy . it's 20 years old . ,inform
+1774,i am actually wanting it for a project so i really don't want to spend too much . would you take $100 i mean it is rather old and dated . ,init-price
+1775,if you are willing to come pick it up i could let it go for 120 ,counter-price
+1776,i can come right now that is perfect thank you very much . ,agree
+1777,awesome ! enjoy ! ,thanks
+1778,<end>,<end>
+1779,what condition is this phone ? ,inquire
+1780,"hello , the iphone 7 is brand new , unlocked . i am asking $745 for it ",init-price
+1781,would you take $521 cash right now ? ,counter-price
+1782,"that is a bit out of my ballpark sorry , if you come pick it up i could perhaps go a bit lower since you would be saving me the time and gas but i don't see it going that low . ",vague-price
+1783,how about $690 and i will come right now to pick it up ? ,counter-price
+1784,make it an even $700 and we have ourself a deal . ,counter-price
+1785,<end>,<end>
+1786,"hello , how are you ? ",intro
+1787,"hello im good , youre interested in my apartment ? ",intro
+1788,"yes ! i love the location of it and the access to everything . my only problem though is that i think 2250 is a lot for what looks like a small space , would you consider lowering the price ? ",init-price
+1789,well the price is because of its amazing location and panoramic bay views . it is also fully remodeled and new carpet/new paint ,vague-price
+1790,"i do like all of that , like i said though i could only afford a reduced price , like 1500-1900 . ",counter-price
+1791,the lowest i'm allowed to offer is $2000 ,counter-price
+1792,"you know what , that's fine . i will do 2000 if thats fine with you since i'm so excited about your views and location . ",agree
+1793,<end>,<end>
+1794,"hello , i am interested in the cell phone accessories you have ",intro
+1795,hi . thanks for your interest . ,intro
+1796,will the charger work on any phone ? i have both a samsung and an iphone and it would be great if it worked on both ,inquire
+1797,"sure ! as i mentioned in the ad , the accessories are compatible with both android and apple ios . ",inform
+1798,"oh sorry , it doesn't say that on my end . could you tell me a little about the single item in the green box that says ""snap"" ? ",inquire
+1799,"to be honest , i purchased the item as a bulk deal and haven't used the item . it comes as a bonus along with the selfie clicker and wall chargers . ",inform
+1800,oh these are all sold together i thought they were individual . i was going to offer $2 for a selfie clicker and wall charger ,init-price
+1801,sounds good to me . thanks . ,counter-price
+1802,<end>,<end>
+1803,hey ! i see that you are interested in the apartment ! ,intro
+1804,"yes , i was wondering if you accept pets as well ? ",inquire
+1805,"we do allow pets , and the hardwood flooring helps clean after them easier as well . ",inform
+1806,is the yard fenced by chance . i like to let my dogs run wild . ,inquire
+1807,"im sorry , if you want to do these hits , you are going to have to be a little quicker , and actually try . i am not here to roleplay . ",inform
+1808,well . you clearly didnt read the directions . ,unknown
+1809,<end>,<end>
+1810,"hey there if you still have the bike , i am interested . ",intro
+1811,"yes ! i am , its $1250 ",init-price
+1812,why are you getting rid of it ? is it trashed ? ,inquire
+1813,"nope , im thinking of getting another bike and don't have space for 2 in my apartment ",inform
+1814,will you take $1000 for it ? ,counter-price
+1815,thats too low ! how about $1150 and i transfer the one year warranty it has on it ? ,counter-price
+1816,i can do that thank you man . so ready to get back out on the trails . ,agree
+1817,great ! ,thanks
+1818,<end>,<end>
+1819,"hello , are you interested in my bike ? ",intro
+1820,"i am , how firm on are on the $190 you are asking ? would you be willing to go lower on that price if i came soon with cash in hand ? ",init-price
+1821,"yes i would be willing to do that but this bike has a super rare peugot frame made in canada ! it can even be shortened , too , for smaller people to ride . what price were you thikning of ? ",vague-price
+1822,"ideally i would like to pay $95 for this . it is an older used bike , the fact that it is super rare makes it harder to get any parts for it and i will have to deal with possible tire dry rot and anything else wrong with it . ",counter-price
+1823,you raise some valid points . could we do an even $100 ? ,counter-price
+1824,i can swing $100 . ,agree
+1825,ill see you this evening ? ,inquire
+1826,<end>,<end>
+1827,"hello there , how can i help you ? ",intro
+1828,hello . is the hutch still available ? ,intro
+1829,"it is , were you looking for yourself or a friend ? ",inquire
+1830,for myself . ,inform
+1831,is there any major dents or scratches ? ,inquire
+1832,"nothing major , it is 20 years old but i've had it the whole time and just normal wear and tear . ",inform
+1833,i'm only asking $200 for it . ,init-price
+1834,"thanks for the information . i can't do $200 , but would you be willing to accept $180 for it ? ",counter-price
+1835,do you have a track and can come pick it up ? ,inquire
+1836,i don't have a truck so i would need it delivered . ,inform
+1837,if you need me to deliver i'm at $200 firm . do you have anything you can trade as well ? ,insist
+1838,i'm sorry but i have nothing else to trade . i'll rent a truck and pick it up if you can do $190 . ,counter-price
+1839,"you sound like a good person , i can do $180 for you . ",counter-price
+1840,<end>,<end>
+1841,your cell phone accessories look interesting . ,intro
+1842,how old are they ? ,inquire
+1843,"goodmorning , they are new in the box and unused ",inform
+1844,but what year did you buy them ? ,inquire
+1845,i just bought them last year . i intended on using them but they are just sitting on the shelf so i am going to sell them ,inform
+1846,"i can stop by in a few minutes and take them off your hands , but i'm only willing to give you $1 . ",init-price
+1847,"i'm willing to go lower but i can't take just $1 , i'm sorry ",disagree
+1848,$1 . 50 ? ,counter-price
+1849,"yes , $1 . 50 is fine . i am willing to accept that ",agree
+1850,<end>,<end>
+1851,"hey there , you interested in my phone ? ",intro
+1852,yes i most definitely am ,intro
+1853,it is brand new . i got it on a buy one get the 2nd one free . it is still in box and it is unlocked so can use with any network . ,supplemental
+1854,that was a great deal . can you tell me how long the warranty is for ? warranty is very important to me . ,inquire
+1855,it is a 2 year warranty and it covers breakage and theft . even covers if you get it wet . ,inform
+1856,awesome ! i wanted to ask if you were willing to negotiate the price on the phone ? ,intro
+1857,i definitely am willing to negotiate . ,intro
+1858,would you accept $372 ? ,init-price
+1859,i can't go quite that low but i could do $450 . and i can meet you some place near where you live . ,counter-price
+1860,"it's more then what i wanted to pay but considering it is brand new and unlocked , comes with a 2 year warranty , $450 is fine ",agree
+1861,great want to meet today ? ,thanks
+1862,yes sure ! ,thanks
+1863,<end>,<end>
+1864,hi ! is the convertible still available ? is this the original engine ? ,inquire
+1865,yes . it is still available and in a very good working condition . want to sell because we are relocating ,inform
+1866,this looks like the car i have been searching for ! i would like to come see it and look at the service records but i am so excited i would like to offer you $21500 cash this week with title trade ? ,init-price
+1867,"good but step up a bit . what about $28 , 000 ",counter-price
+1868,would you be willing to throw in a fresh oil change and tire rotation ? if so i could swing $27000 ? ,counter-price
+1869,will do . good deal i guess ,agree
+1870,great ! i will see you tomorrow ! ,thanks
+1871,<end>,<end>
+1872,hey there ,intro
+1873,hi ! i have unit #7 current available ! it has a deposit but we are having a special this month only . that deposit would be waved . all this for $2400 per month ! ,init-price
+1874,can you tell me how many sq the apartment is ? ,inquire
+1875,the apartment is 1495 sq feet and has a nice sized galley kitchen . it comes with blinds on the windows ,inform
+1876,how about $1800 a month ? ,counter-price
+1877,"well this unit is remodles in the kitchen and bathroom so that is why the price is a little higher than most . i could do $2100 and pay your cable , phone and security for the first year ? ",counter-price
+1878,that sounds perfect . ,agree
+1879,<end>,<end>
+1880,good afternoon . i'm interested in the mirror you have for sale . ,intro
+1881,what condition is it in ? ,inquire
+1882,great condition ,inform
+1883,"excellent . are you willing to work with me on the price ? money is tight for me right now , and i'm looking to spend closer to $80 . ",init-price
+1884,sorry the least i can do is 150 ,counter-price
+1885,"that's way higher than i can spend . i'm willing to come pick it up today for $104 , but that is all the money i have . ",counter-price
+1886,120 and its yours ,counter-price
+1887,"that's acceptable . a little more than i wanted to pay , but it is a beautiful piece . ",agree
+1888,<end>,<end>
+1889,"hi , i saw an add for this 6 bedroom apartment and i am interested in it . ",intro
+1890,"helo , thank you for the interest . let me know if you have any questions ",intro
+1891,i would like to offer $7696 for it ,init-price
+1892,i'm sorry that is 30% lower than the listing price ,vague-price
+1893,would you take $9000 ? ,counter-price
+1894,i'd be willing to offer about 10% off . . at $10000 per month ,init-price
+1895,can you do 15 % off ? ,counter-price
+1896,$9800 final offer ,counter-price
+1897,"ok , i can do that . ",agree
+1898,"great , thank you ",thanks
+1899,<end>,<end>
+1900,hi ,intro
+1901,"hi , i saw an add for the springy chairs and i am interested ",intro
+1902,i'm asking $50 for it . ,init-price
+1903,imwas thinking $25 ? ,counter-price
+1904,"sorry , i cannot go that low . if you're willing to come get it today though , i would do $40 . ",counter-price
+1905,they are not new and ,disagree
+1906,<end>,<end>
+1907,hi ! that is a nice bike ! ,intro
+1908,120 and its yours ,init-price
+1909,everything is great ? and is it for adult or kids ? ,inquire
+1910,yes it is a great bike for adults ,inform
+1911,any rust ? ,inquire
+1912,no ,inform
+1913,will you take $80 ? ,counter-price
+1914,how about 110 ? ,counter-price
+1915,i am sort of low in cash right now . how about $100 and i'll pick it up tomorrow ? ,counter-price
+1916,ok deal ,agree
+1917,thanks ,thanks
+1918,<end>,<end>
+1919,this bike is in great working condition . everything is in working order . i'm looking for $150 . its a nifty ride ,init-price
+1920,"well first let me give you a little bit of information about it , it's a vintage schinn colegiate bike . it's in very good condition , front and back brakes are good . it's the perfect bike to cruise around town in . ",supplemental
+1921,"awesome , i can give you $130 cash for it . i'll come and pick it up if you are ready ",counter-price
+1922,yes $130 is good ,agree
+1923,alright i'll be by at 5pm to pick it up ,agree
+1924,<end>,<end>
+1925,hello . i am interested in your iphone ! ,intro
+1926,thats great because it is available ,intro
+1927,great . is it locked to a network ? ,inquire
+1928,"no , it is unlocked ",inform
+1929,great . let's make a deal . ,unknown
+1930,sounds great i am asking $480 and i can deliver to you ,init-price
+1931,hmm . . what condition is the phone in $480 seems a bit much . ,disagree
+1932,"it is in perfect condition . no scratches , has always been in a case ",supplemental
+1933,i can offer $435 . cash ! ! i can come to you . and i can have a police escort if you feel uneasy ! ,counter-price
+1934,$450 and its a deal ,counter-price
+1935,can we agree on $440 ? ,counter-price
+1936,ok i can agree to $440 ,agree
+1937,ok . deal ! ,thanks
+1938,<end>,<end>
+1939,hello . i'm interested in the table you have for sale . ,intro
+1940,great do you have any questions about it ? ,intro
+1941,how long have you had it for ? ,inquire
+1942,oh i haven't had it for too long i would say about 3 months it's in a great condition ! ,inform
+1943,"it's a little more than i'm willing to pay . i've seen a few tables for a little less , and i'm looking or something cheap for my apartment . i'm looking to spend closer to $7 . ",init-price
+1944,would you be willing to pay 10 so that we sortof meet in the middle and i can help you with the loading this afternoon ? ,counter-price
+1945,that's acceptable . i accept your offer . ,agree
+1946,<end>,<end>
+1947,hey im interested in your truck that's for sale anything wrong with it ? ,inquire
+1948,hello would you like to make am offer ? ,inquire
+1949,is there anything wrong with the truck ? ,inquire
+1950,no issues with this truck its a great work truck ! ,inform
+1951,that is awesome . . i can't afford $5900 would you take any less ? ,init-price
+1952,well this truck is in great condition and has a work truck you are making an investment more than anything . ,supplemental
+1953,i don't wanna give it away but how much are you able to spend ? ,inquire
+1954,i'm able to afford $4000 cash today ,counter-price
+1955,the lowest i can go is 5500 ,counter-price
+1956,but the truck is over 10 years old . . . i could do 4200 and go right now to pick it up ,counter-price
+1957,its still a money making truck . its age aside you will make money with this truck ,supplemental
+1958,but im not looking to make money i need it to get to work otherwise i'll loose my job ,unknown
+1959,5200 ? ,counter-price
+1960,i can'rt afford that much how about $4800 right now ? ,counter-price
+1961,i have other offers right now so i am trying to be fair . 5250 cash is s low as i can go . ,counter-price
+1962,<end>,<end>
+1963,"hello , are you interested in my car ? ",intro
+1964,hi there . yes i am very much interested . how old is it ? ,inquire
+1965,"great , it's a 1970 nova . ",inform
+1966,yes but it says its sat for more than 10 years . does it still run well ? i mean ten years is a really really long time ! ,inquire
+1967,"yes , it hasn't been driven in 10 years but it works fine ! i drove it recently to update the tags and confirm the title , for a 1970 car it runs well . ",inform
+1968,when was the last service done ? ,inquire
+1969,"about 6 months ago , i can show you papers if you decide you want to come and check out the car . if you are seriously interested you can also test drive it around first . ",inform
+1970,great ! yes i am really interested but the price is high for me . is there any room for negotiation here ? i am ready to pay $7650 ,init-price
+1971,"hmm , well since it's so old i'm willing to drop the price down but since it's also in great condition i want to make sure it's sold for its value . i don't want to sell it for under $7800 . ",counter-price
+1972,well that's what i can afford . please if you can consider something i would appreciate it . i am a student and really desperate for a car at the moment and my budget is what i mentioned . ,insist
+1973,"im sorry but like i said i don't want to under sell the car , since you are a student and have a tight budget i will drop to $7750 but nothing below . ",counter-price
+1974,great that works thank you ! ,agree
+1975,<end>,<end>
+1976,will you take less since i have to buy a batterie ,intro
+1977,how much are you willing to pay ? ,inquire
+1978,105,init-price
+1979,<end>,<end>
+1980,"hello , i'm here to inquire what you're selling exactly ? ",intro
+1981,"hi , yeah the ad got really garbled and it doesn't make much sense now does it ? i'm selling an iphone 7 . it is brand new . ",supplemental
+1982,"thank you for clearing that up . i'm definitely interested in buying , is there anyway we could negotiate a price ? i have about $280 to spend . i would be willing to trade you my current phone as well if that would help any ? i'm also willing to drive to you to pick it up today . ",init-price
+1983,"well i don't really have use for a used phone . and $289 is considerably lower than the asking price , which is already very reduced for a brand new iphone 7 . . . ",vague-price
+1984,"what else does the phone come with ? i'm pretty tight on a budget and $280 is already more than i was willing to spend , but i was hoping to come to some sort of agreement . i'm definitely not here to waste your time and appreciate you talking to me . ",disagree
+1985,"well the phone comes with an accessories kit that includes a charger , a case , and that sort of thing ",supplemental
+1986,would you take $290 and my current phone ? you could sell it and make a profit close to what you're asking for . i'm also willing to come pick it up still . ,counter-price
+1987,no there is no way i can sell a brand new iphone 7 for $290 . ,disagree
+1988,i can do $400 if you are willing to pay cash and come get it right now . ,counter-price
+1989,<end>,<end>
+1990,how's it going today ? ,intro
+1991,i am doing well . how about yourself ? i'm interested in your chairs . how much were they again ? ,inquire
+1992,"$50 , but i'm in a good mood today , name a price . ",init-price
+1993,"well , i'm a college student , so i'm on a budget . i could give you 25 and a coupon for a free pizza . ",counter-price
+1994,that sounds good ! ,agree
+1995,<end>,<end>
+1996,what is the most you can do ? ,intro
+1997,can i ask some questions first ? ,inquire
+1998,sure ,inform
+1999,when was this unit builded ? ,inquire
+2000,spring 2017 ,inform
+2001,how are the neighbors ? loud or rude ? ,inquire
+2002,2 . they are fine ,inform
+2003,how many bathrooms ? ,inquire
+2004,3,inform
+2005,i have $1277 i can give you today for it . ,init-price
+2006,sorry . the lowest is $1800 ,counter-price
+2007,if i can give you that can you pay my first month of utilities ? ,inquire
+2008,yes ,inform
+2009,ok . it's a deal . ,agree
+2010,<end>,<end>
+2011,hi there ! ,intro
+2012,"hello ! i was just looking at your ad for the typing desk . i didn't see a photo , but was wondering if i might be able to ask a few questions about it . what are the dimensions ? can you tell me the condition ? ",inquire
+2013,"sure ! it's a wonderful vintage typing desk . it's 47"" long , 26 . 5"" high and has a depth of 18 . 5"" . it's in good condition with beveled wood drawers and chrome wheels . i hate to get rid of it but i'm downsizing and won't have room for it . ",inform
+2014,"i completely understand ! i think i saw one just like it at a flea market recently , but the price was a bit lower . . . would you be willing to take $70 . 00 cash if i come today to get it ? ",init-price
+2015,"oh , i don't know if the one you saw was like this . it's a danish vintage typing desk . i would be willing to go down to $100 if you paid in cash . ",counter-price
+2016,i can't go that high right now . . . i'm sorry . the best i can do would be $80 . ,counter-price
+2017,"you know , i have a chair that i use with this desk that i really won't need anymore . . . i can throw it in with the desk if we can go to $85 . would that work ? ",counter-price
+2018,"sure , sounds great ! ",agree
+2019,thank you so much ! it's a deal ! ,thanks
+2020,<end>,<end>
+2021,"hi , how are you ? ",intro
+2022,hi i'm great . do you have any questions ? ,intro
+2023,yes . . how many miles does this have on it ? any problems ? been up to date w/maintenance ? does it come from a smoke free home ? ,inquire
+2024,"well , i do smoke in my home . but , i have never smoked in this car . it only has 95 , 000 miles on it ! ",inform
+2025,ok . . anything wrong with the hardtop ? ,inquire
+2026,"nope , i just replaced it a few years ago . ",inform
+2027,awesome . . i have $2500 cash in hand and can come and get it now . ,init-price
+2028,deal ! ,agree
+2029,<end>,<end>
+2030,hi ! how are you today ? ,intro
+2031,good . how is your day going ? ,intro
+2032,great ! are you interested in my 1970 nova i'm selling ? ,inquire
+2033,"i have a few questions for you . first , what is the mileage ? ",inquire
+2034,"it has just over 100 , 000 miles on it . an older couple owned it before i did and they hardly ever drove it . they had it parked in their storage garage most of the year . they never drove it in the winter either . ",inform
+2035,"sitting for 10 years must have really hurt the car . i could use some parts , though . what's the asking price ? ",inform
+2036,i'm asking 800 for it ! it runs great ! ! the interior is in excellent condition . ,init-price
+2037,the parts wouldn't be worth that much to me ,agree
+2038,sorry i mistyped i'm asking 8500 for it ,counter-price
+2039,<end>,<end>
+2040,"hello , how are you ? ",intro
+2041,i am good . how are you ? ,intro
+2042,i am well . how may i help you today ? ,intro
+2043,do you have a iphone for sale ? ,inquire
+2044,i do . i have 7 and plus ,inform
+2045,what condition ? ,inquire
+2046,"used , but good condition . ",inform
+2047,is it unlocked ? ,inquire
+2048,"yes , it is ",inform
+2049,would you accept $336 i can pay today and pick it up myself ? ,init-price
+2050,"ok , i could do that . ",agree
+2051,thank you ! ,thanks
+2052,<end>,<end>
+2053,"hi , were you interested in this apartment ? ",intro
+2054,"hi i most certainly am , this looks absolutely beautiful ",intro
+2055,it is flawless . literally . do you have any questions ? ,intro
+2056,do you have certain days or times where people can come look at them ? ,inquire
+2057,mon-fri 8a-5p ,inform
+2058,are you also willing to go lower on the price ? ,vague-price
+2059,what price are you after ? i may be able to cut you a deal ,vague-price
+2060,well my sister is looking for a place to stay and she is on a budget ,vague-price
+2061,whats her budget ? ,inquire
+2062,she was looking to pay no more than $900 but if that is not possible then she can go a little higher ,init-price
+2063,"900 is way too low for a community like this . but , i can waive her deposit which is 1800 to help ease the burden and get her into a place . if she can sign an 18 month lease for a 1 bedroom i would be able to get the price down to 1200 ",counter-price
+2064,"okay i just talked it over with her , an she says she can sign the 18 month lease for $1200 . she is willing to do a 1 bedroom ",agree
+2065,sounds great tell her to come see me tomorrow . ask for connie ,thanks
+2066,thank you ,thanks
+2067,<end>,<end>
+2068,hello there ,intro
+2069,hi ! how are you ? i see you are selling a chevy work truck . i'm interested in it . ,intro
+2070,"i am well . and you . yes , i am selling my old work truck . ",intro
+2071,does it have any dents ? ,inquire
+2072,no cosmetic damage to the truck at all . ,inform
+2073,oh great ! does the a/c work ? my work truck i have now the a/c went out . i need a/c ! ! ,inquire
+2074,"yes , the a/c works well in the truck . ",inform
+2075,oh good ! ! it just gets too hot out ! would you be willing to take $2950 for it in cash ? i can get it this evening . ,init-price
+2076,i can offer 3000 even and this evening is great . ,counter-price
+2077,that would be great ! you have a deal ! ! i'll take it ! ! ,agree
+2078,awesome . thank you . ,thanks
+2079,<end>,<end>
+2080,"hi , i am interested in your 1970 nova ",intro
+2081,"hello , actually i saw a post that you are selling this car . ",intro
+2082,"sorry , im the seller . . . yes i am selling it . ",intro
+2083,. . . okay great . is there anything else i should know about the car ? it seems to be in great condition ! ,inquire
+2084,"it is , it has been on the road , but i garage it every night . ",inform
+2085,it is beautiful ! how low can you go ? i'm on a budget but i really want this car ,inquire
+2086,i am definitely negotiable . i was looking for around $8700 . ,init-price
+2087,is there anyway i can pay $6000 ? ,counter-price
+2088,"no way , this car is in excellent shape for how old it is . just considering the motor itself , i couldn't do less than $8500 ",counter-price
+2089,i was factoring in the rust spots . . . how much do you think it will cost me to get that repaired ? ,inquire
+2090,"i am not n expert at those things , but i would say maybe $500 dollars ",inform
+2091,"for older cars i know it usually is more expensive to get work done on them thats why i was asking . okay , is there anyway $7500 cash today will work i really want this car but my pockets aren't heavy . ",counter-price
+2092,"if you do cash today , i agree to $7500 ",agree
+2093,okay ! ,thanks
+2094,<end>,<end>
+2095,hello i am interested in the blade z ,intro
+2096,hello . do you have any questions about it ? ,intro
+2097,yes how old is it ? how long have you had it ? ,inquire
+2098,hello i am interested in the blade z ,intro
+2099,yes it is only 7 months old . ,inform
+2100,and problems with it ? ,inquire
+2101,yes how old is it ? how long have you had it ? ,inquire
+2102,nothing wrong with it just need new batteries charger is included . everything works perfectly . ,inform
+2103,well i would love to get this for my son . i would like to offer $120/ ,init-price
+2104,and problems with it ? ,inquire
+2105,no problems at all . could you pick it up today ? ,inquire
+2106,i could pick it up today . ,inform
+2107,<end>,<end>
+2108,hello ! are you interested in the phone ? ,intro
+2109,"hi , yes i am definitely interested in this phone . i'm looking to get this for a gift for my son's birthday ",intro
+2110,"oh great , how nice of you ! he will love it , it's a great phone and this is a great price for an unlocked iphone ",supplemental
+2111,yes he said he wanted an iphone for his birthday so i'm trying to see just how responsible he will be in taking care of it . is the price negotiable for this phone ? ,inquire
+2112,"ii could probably come down a little , what did you have in mind ",vague-price
+2113,i would like to pay $256 for it ,init-price
+2114,"yes that sounds reasonable , i would like to help you out for your sons birthday ",agree
+2115,thank you so much ,thanks
+2116,<end>,<end>
+2117,hi . i am interested in more details about your apartment ,intro
+2118,hello ! what else do you need to know ? ,inquire
+2119,is there any way you could consider coming down on the monthly costs ? i have 4 children and it is just a hair over my budget ,inquire
+2120,<end>,<end>
+2121,hi ! how are you ? are you interested in the mirror i'm selling ? ,intro
+2122,hi . i love the mirror ! can you tell me if cherry tree design practices sustainable harvesting methods for their trees ? ,inquire
+2123,from what i have read they do ! this is a beautiful mirror ! ,inform
+2124,"oh good . good . also , what size is this mirror ? any scratches or defects ? ",inquire
+2125,"its approx . 24"" x 12"" . it does have a tiny imperfection on the mirror about the size or a marker point . but it's really not noticeable unless you are really studying the mirror . ",inform
+2126,i do tend to study mirrors . narcissism mixed with ocd do not pair well . would you discount it some ? say $135 ? ,init-price
+2127,i could go as low as $145 . it's a beautiful mirror ! ,counter-price
+2128,i guess i can do that . i will just have to hang it in a darker room . deal ! ,agree
+2129,<end>,<end>
+2130,hi . i see you're checking out our beautiful apartment homes ,intro
+2131,"yes , they are nice but a bit expensive . could you come down on the price ? i would like to pay $2000 . ",init-price
+2132,that price is much too low . these do come with a load of amenities . we have modern unites with free internet access and brand new appliances . ,vague-price
+2133,"if i sign a 13 month lease , could you take $2500 ? ",counter-price
+2134,yes ! that would be great ,agree
+2135,<end>,<end>
+2136,hi is the bicycle still for sale ? ,intro
+2137,it sure is ! ,intro
+2138,ok great ! is anything wrong with it ? ,inquire
+2139,it is in great condition . it just had a tune up as well . ,inform
+2140,how long have you owned it ? ,inquire
+2141,i have had it about 10 years . ,inform
+2142,oh wow that's a long time . well i'd like to buy it from you today . would you $70 if i come and pick it up from later this afternoon ? ,init-price
+2143,it is a really great bike . if you are able to get it today then i can agree on $70 as i need this gone right away since i am moving . ,agree
+2144,ok thanks ,thanks
+2145,<end>,<end>
+2146,hello ,intro
+2147,hi there how are you ? ,intro
+2148,i am great and you ? ,intro
+2149,good thanks ! are you interested in this bike ? ,intro
+2150,"yes , i am . it will be a great bike for my daughter . ",intro
+2151,yes absolutely ! i have used it and its great and very comfortable . ,supplemental
+2152,great . we can pick it up tonight if that is okay ? could you possibly take $105 for it ? ,init-price
+2153,i can accept 120 for it just for you :) ,counter-price
+2154,"aww , thank you . that sounds great . see you later ",agree
+2155,okay then see you around later ! ,thanks
+2156,<end>,<end>
+2157,hi i was curious to know more about your scooter ! ,intro
+2158,how old is it ? ,inquire
+2159,it is about 5 months old it only needs new batteries . everything works great . ,inform
+2160,"any scratching or anything ? only 5 months old , may i ask why you're selling ? ",inquire
+2161,my son was no longer interested in it . no scratches or scuffs on the blade z ,inform
+2162,would you be willing to take $100 for it ? ,init-price
+2163,i can do $115 and throw a free helmet in . i can also deliver it free . ,counter-price
+2164,that would be awesome ! i can actually pick it up tomorrow if that works ? ,agree
+2165,great we can do tomorrow . that works fine . ,thanks
+2166,<end>,<end>
+2167,hi are you interested in the apartment ? ,intro
+2168,hello is the apartment still available ,intro
+2169,yes it is . do you have any questions i can answer about the property ? ,intro
+2170,is it pet friendly ,inquire
+2171,we do allow pets but they must be leashed at all times . ,inform
+2172,ok sounds good how far away is the mall ? ,inquire
+2173,the mall is only 2 blocks away from the apartment . within walking distance . ,inform
+2174,a dream come true ! i do not have the full amount of $3992 i can afford $2794 ,init-price
+2175,ok make it $2800 and you have a deal . ,counter-price
+2176,ok i can do that ,agree
+2177,<end>,<end>
+2178,omg ! please tell this house is still available ,intro
+2179,yes it is ! ,intro
+2180,how are the schools in that area ? ,inquire
+2181,they are great and pretty close by too do you have any other questions ? ,inform
+2182,how is the parking i have 3 cars ,inquire
+2183,"there is a regular size place you might have an issue with 3 cars but maybe not , i can setup appointments to come and look at the place ! ",inform
+2184,ok im in the process of selling the other car . so it will not be an issue for much longer . i see the listing price as $2695 ,init-price
+2185,"yes i can negotiate with the price but i can't go too low , do you have an offer ? ",vague-price
+2186,i was thinking $2425 ,counter-price
+2187,i think that will work out will you be able to come by this week ? i can send you the offer ? ,inquire
+2188,"yes , i will be there this week . ",agree
+2189,<end>,<end>
+2190,"hi , i see that you're interested in buying the mirror that i placed an ad for ? ",intro
+2191,"yes , i am/ what condition is it in ? ",inquire
+2192,"wonderful , the item is in really excellent condition . there's one very small imperfection on the mirror itself that's about the side of a sharpie point , but it's hardly noticeable . the frame is made from solid cherry wood and is quite sturdy . ",supplemental
+2193,"ah , that's good/ i see you have it for 160 but i can only afford to do 100 . would that work ? i can pick it up . ",init-price
+2194,"it's a really nice mirror and the frame is just tremendous craftsmanship . it's great that you can pick up the item yourself , i could let it go for $140 . ",counter-price
+2195,i understand . how about this . i can do 112 and i also have a $25 amazon gift card . would that work ? ,counter-price
+2196,"so it would be $137 , of which $112 in cash and $25 as an amazon gift card ? you would come and pick up the item yourself . i could agree to that deal . ",counter-price
+2197,<end>,<end>
+2198,hello is the bike still for sale ? ,intro
+2199,hello . how are you ? ,intro
+2200,yes the bike is still for sale . ,intro
+2201,ok great . is anything wrong with it ? ,inquire
+2202,no everything works great and the bike is still in good condition . ,inform
+2203,how long have you owned it for ? the pictures look great . ,inquire
+2204,only four months . ,inform
+2205,ok would you be willing to accept $90 if i come and pick it up from you later today ? ,init-price
+2206,can you do $100 and i will bring it for free ? ,counter-price
+2207,sure i can do that . ,agree
+2208,great ,thanks
+2209,<end>,<end>
+2210,"hello , i am interested in your ad for the garden furniture . ",intro
+2211,hi . it is a lovely season to buy outdoor furniture and i am offering a great deal on these chairs for only $50 ! ,init-price
+2212,"i see in your ad it says that the chairs are weathered some but still functional , about how old are they ? ",inquire
+2213,"i've used them for 2 summers . very comfortable , and quite fashionable if i do say so myself . ",inform
+2214,"ok , that sounds pretty good . i really could use a pair of chairs for my patio . would you accept $40 for them ? ",counter-price
+2215,"it is a great deal for you , but i no longer have room for these . so i will do $40 . ",agree
+2216,<end>,<end>
+2217,hi do you have the phone still available ? > ,intro
+2218,"hi , yes i do . it was a great phone , is in excellent condition , and unlocked . ",supplemental
+2219,and how old is it ? ,inquire
+2220,a year old ,inform
+2221,and any scratches or anything visible ? ,inquire
+2222,"nope , excellent condition ! i'm asking $285 and i will include the apple care service . ",init-price
+2223,that's too much for me . are you willing to agree on $199 ? ,counter-price
+2224,"hmm , that is slightly lower than i am willing to go . would you be willing to meet at $225 ? ",counter-price
+2225,does 200 work please ? ,counter-price
+2226,"sorry , that is only $1 more than your last offer , i cannot go that low . i will go $220 , final offer . ",counter-price
+2227,okay then i will accept that ,agree
+2228,thanks ! ,thanks
+2229,<end>,<end>
+2230,hello ! i saw your beautiful condo listed for rent and was curious if it was still available ? ,intro
+2231,"yes , the condo is still available . would you be interested ? ",intro
+2232,is it just the one bedroom ? all i saw was the master bedroom listed . ,inquire
+2233,"yes , it only has a master bedroom , but it is exceptional . ",inform
+2234,is there any wiggle room on the price ? i found another apartment close to this but it was about $600 cheaper . i'm trying to do some research . ,vague-price
+2235,"yeah , i could come down a bit , what are you thinking ? ",vague-price
+2236,i was hoping to do all in $1800 (water and trash included) . ,init-price
+2237,"that's a bit lower than i can go , everything is up to date and it's close to a lot of sites . i was originally looking to get $2450 . you seem like you would be a great fit for the apartment . how about $2150 ? ",counter-price
+2238,"sorry , that's a bit more than i can afford at this time . thank you though . ",disagree
+2239,"i could even go as low as $2000 , if that would help you out . ",counter-price
+2240,"thank you for the offer , i'd need to stay below $2000 a month with utilities , so unfortunately i don't think it will be a good fit . it's a beautiful place though ! ",disagree
+2241,"yeah , it is great . you really seem like you would be a great fit . how about $1950 and i'll pay the water , sewer , garbage , and cable . ",counter-price
+2242,<end>,<end>
+2243,hello sir ! thank you for responding to my ad . ,intro
+2244,is this still for sale ,intro
+2245,yes sir ! it's a great product ! . i have only used it a few times . i'm selling it for 150 . 00 ,init-price
+2246,how fast does it go ,inquire
+2247,very fast ! you only need a battery . ,inform
+2248,great i can afford $60 ,counter-price
+2249,"that's far too low . that's below market value for a bike of this size in this condition . i'm willing to sell it for 100 . plus , i will deliever it to your house at no additional charge . ",counter-price
+2250,i can afford $75 and i can pick it up ,counter-price
+2251,what about $80 . 00 ? that's the lowest i'm willing to go . i'm pretty sure you won't be able to find another bike like this . it's a classic . ,counter-price
+2252,that works for me ,agree
+2253,<end>,<end>
+2254,hi ! how are you today ? are you interested in the mountain bike i have for sale ? ,intro
+2255,"absolutely , can you tell me about it ? ",inquire
+2256,yes it's a 1995 gary fisher tasssajara . i just had it tuned up and it runs great ! ,inform
+2257,"it seems nice , but a little old . what are you asking for it ? ",inquire
+2258,i'm asking $120 cahsh ! ,init-price
+2259,"hmmm , i'll offer you $95 dollars since it is from '95 . that seems more than fair for this bike . ",counter-price
+2260,i can do $115 for it . it really does run great ! ,counter-price
+2261,will you meet me halfway at $105 . ,counter-price
+2262,i can . can you come get it before friday ! ,agree
+2263,<end>,<end>
+2264,hello are you interested in my mercedes ? ,intro
+2265,"hi , i see that you are selling your sl500 from 199 . it looks very old , i'd like it for an even $3000 ",init-price
+2266,"alright , do you have any questions about my car ? it has good tires and rack included ",agree
+2267,<end>,<end>
+2268,hello . i've seen your ad and interested in this car . ,intro
+2269,hi ,intro
+2270,"great , do you have any questions ? ",intro
+2271,yes . can you please provide additional information about this mercedes . do i need to do any additional repairs ? ,inquire
+2272,"no , actually there's nothing wrong with it , but i want to get a truck . ",inform
+2273,cool ! i see you are offering 3500 for this benz . are you willing to negogiate ? ,init-price
+2274,"i really think 35 is fair , but i'm open to a little bit of movement around that price . what did you have in mind ? ",vague-price
+2275,the book value for a car of this condition and make is only 1750 . i'm willing to offer that ? ,counter-price
+2276,"oh , i'm sorry . i could go lower , but not that much lower . ",vague-price
+2277,sorry sir . we won't be able to reach a deal . good luck in your in search for a prospective buyer . ,disagree
+2278,<end>,<end>
+2279,hello ! i saw your post about the apartment . ,intro
+2280,"good evening ! yes , it is still available . you're more than welcome to come see it . i'm asking $3992 . ",init-price
+2281,"i see . if i signed an 18 month lease , could i get it for $3592 ? ",counter-price
+2282,"if you can have 3 months up front , yes i could lock you in at $3592 . ",agree
+2283,"i have another potential renter coming tomorrow at 5pm if it's still open , so could you do the 3 months and make it by 5 tomorrow ? ",inquire
+2284,"yes , i can do that . ",inform
+2285,<end>,<end>
+2286,hi there ! ,intro
+2287,hi ! are you inquiring about my cell phone accessories ,intro
+2288,yes . i see you have a collection of them . do they look good on the cellphone ? ,inquire
+2289,yes they look great and they are compatible with both android and iphone ,inform
+2290,thats great . do you have them in various colors ? ,inquire
+2291,yes but at this time we only offer green and black ,inform
+2292,okay sounds good to me . they're new correct ? never used ? ,inquire
+2293,yes they are brand new in the box ,inform
+2294,would you accept $1 for them ? ,init-price
+2295,"i think that's a fair price , sure ! ",agree
+2296,great thanks ! ,thanks
+2297,<end>,<end>
+2298,hello ! so you are interested in this very desirable apartment ? ,intro
+2299,"hi ! yes i am , how close to the base is it ? ",inquire
+2300,it's just minutes away from the base . ,inform
+2301,great ! i need to be extremely close . can you go any lower on the rent price . i have about 6 months of payments saved up to sign a 6 month lease . i dont have any pets and i dont smoke and i have amazing credit . id be more in the range of 1640 . if thats an option ? ,init-price
+2302,i could go down to 1700 if you sign a 12 month lease . you don't have to pay 6 months up front ! ,counter-price
+2303,i could do $1700 . and ok i can buy the new car i want . ,agree
+2304,"one more question , is it gated ? ",inquire
+2305,"yes , it is gated . $1700 is a deal ! ",inform
+2306,great ! ,thanks
+2307,<end>,<end>
+2308,hi i am interested in your 1999 sl500 mercedes benz ,intro
+2309,great ! any questions ? ,intro
+2310,yes i do . how are the insides of the car ? is the interior in good shape ? ,inquire
+2311,the interior is tan leather and is in good shape considering that it hasn't been used much ,inform
+2312,i am looking to add an additional car and this benz looks like it would be good to have . how many miles does it have ? ,inquire
+2313,it has less than 3000 ,inform
+2314,are you willing to go lower with the price ? ,vague-price
+2315,"yes , at least 3300 ",init-price
+2316,i was wanting to offer you $3150 for it ,counter-price
+2317,i can do 3250 if you pay up front ,counter-price
+2318,"not too bad of a deal , sure , that will work ",agree
+2319,<end>,<end>
+2320,hello ! ,intro
+2321,"hello , is the apartment still available ? ",intro
+2322,"yes , it is . would you like to see it ? ",intro
+2323,"before i see it , i have a few questions . are any utilities included in the rent . $10995 is a bit much and are pets allowed ? ",init-price
+2324,"no , utilities are not included , and small pets are allowed with a pet deposit . keep in mind that you could have 18 or more people sharing the rent , depending on how you furnish the bedrooms , so that brings down the per-person price a lot ! ",inform
+2325,"yeah , more people equals less per person , but i don't want too big a crowd . some people just aren't clean . how about we start out at $5000 for 5 people and renegotiate later if i need to bring more people in ? ",counter-price
+2326,that's less than half price ! my boss would kill me ! i can't go lower than $8000 . how many people you share with is up to you . ,counter-price
+2327,"okay , i'm just trying to save you the eviction process if we can't pay . i think i can find 3 more people and get you $8000 but we'll need water and gas covered . ",agree
+2328,i could do that . ,agree
+2329,<end>,<end>
+2330,looks like you're in the market for a table today ! ,intro
+2331,"i sure am ! no picture though , bummer . i could come by and look at it tonight or tomorrow though . if i pick up and load myself , could you do $8 ? ",init-price
+2332,you can come and look at it for sure . i'd like $15 for it . you won't be disappointed . ,counter-price
+2333,"hey , $12 and you have a deal . ",counter-price
+2334,are you paying cash ? ,unknown
+2335,"yes , i am . ",unknown
+2336,then $12 will do it . do you need help loading it ? ,agree
+2337,i should be able to manage ! thanks though . :) ,thanks
+2338,you're welcome . ,thanks
+2339,<end>,<end>
+2340,hey i'll give you 5000 for the place ,init-price
+2341,"well , the asking price is 10 , 995 . i feel that 5000 is a little on the low side , but i'm willing to negotiate . ",counter-price
+2342,"fine , 9800 final offer . ",counter-price
+2343,that seems fair . agreed on price is 9800 ? ,agree
+2344,agree ,agree
+2345,nice chatting with you ! ,thanks
+2346,<end>,<end>
+2347,hi ! ,intro
+2348,you interested in the phone ? ,intro
+2349,"yes , how new is it ? ",inquire
+2350,it's brand new i just got it at the apple store ,inform
+2351,does it come with a case ? ,inquire
+2352,"no , unforutantely ",inform
+2353,"too bad , i'll pay 150 for it ",init-price
+2354,200 if you pick it up yourself ,counter-price
+2355,"deal , but only if you give me free headphones ",agree
+2356,sounds fair ,thanks
+2357,<end>,<end>
+2358,hi do you still have the chairs ? ,intro
+2359,hello there how are you today ,intro
+2360,pretty good thanks ! ,intro
+2361,i do still have charis ,supplemental
+2362,i am interested but i wanna know how old are these ? ,inquire
+2363,less than a year old and still in good shape ,inform
+2364,any stains or anything that makes it look used ? ,inquire
+2365,no in pristine condition ,inform
+2366,cool ! are you willing to accept 25 for it ? since they're used and only chairs ? ,init-price
+2367,25 for both ? ,unknown
+2368,yes please i am really tight on the budget . ,unknown
+2369,"cant do 25 for both , could you go 45 for the pair ? ",counter-price
+2370,that's too much . ,disagree
+2371,can we come middle ground ? maybe 35 ? ,counter-price
+2372,i can do 35 if you can come pick up the chairs by the end of the day ! ,agree
+2373,yes sure . i am off of work right now and will come get it immediately . thank you ! ,agree
+2374,see you soon ! ,thanks
+2375,<end>,<end>
+2376,hi i am very interested in this item ! ,intro
+2377,"great ! it's a fantastic piece in really fabulous condition , practically mint ! ",supplemental
+2378,there are no issues ? ,inquire
+2379,"no , none at all . i inherited it from my grandmother and we have both taken really good care of it . it's nearly 4 feet by a little over 2 feet , so a really nice size/ ",inform
+2380,wow that sounds great ! and perfect for what i want to use it for . would you be willing to take 100 ? i could pick it up today . ,init-price
+2381,"i appreciate the offer , but do you think you could do $110 ? ",counter-price
+2382,110 sounds perfect ! i will come pick it up tonight ! ,agree
+2383,great ! pleasure doing business with you ! ,thanks
+2384,<end>,<end>
+2385,"hi , i am very interested in this condo ",intro
+2386,"hi , any questions ? ",intro
+2387,great1 ,unknown
+2388,are utilities included ? ,inquire
+2389,yes they are ? ! ,inform
+2390,awesome ! if i were tosign an 18 month lease how much would the monthly rent go down ? ,inquire
+2391,by at least 2150 ,init-price
+2392,"okay , since utilities are included i could do 2150 . can i come by to sign a lease tomorrow ? ",agree
+2393,sure ,unknown
+2394,great ! ,thanks
+2395,<end>,<end>
+2396,hi ! how are you ? i'm interested in your 3 bedroom you have available ,intro
+2397,hi . i'm great ! it's still available . any questions ? i'm asking 2695 . ,init-price
+2398,yes can you have pets ? ,inquire
+2399,"yes , just no snakes or tigers . ",inform
+2400,ok well i'm all good there . just a small dog . is that a garage i see in the picture ? is it extra for it ? ,inquire
+2401,"that's great . yes , there is a garage . comes with 2 garage door openers , no extra fee . we have great security in place too . ",inform
+2402,sounds like a nice place ! would you be willing to take $1886 for it ? ,init-price
+2403,"if you can pay me 2 months up front , i can do $2200 . ",counter-price
+2404,i can do that . when is it available ? ,agree
+2405,<end>,<end>
+2406,"hello , im interested in your iphone se . ",intro
+2407,any scratches ? icloud locked ? ,inquire
+2408,the phone is unlocked . ready to go . ,intro
+2409,no scratches at all . ,inform
+2410,i'm asking $285 for it . ,init-price
+2411,"ok and you said it has the apple care , how much longer until it expires ? ",inquire
+2412,it's paid for another year . you can definitely extend it once it expires . ,inform
+2413,"ok , would you be willing to negotiate ? does it have any other accessories besides the apple care warranty ? ",inquire
+2414,it comes with the charger and a phone case . no other accessories . how much were you thinking about ? ,inform
+2415,"im thinking i want to be right at $200 . its for my son , and thats how much he has saved up to buy one . ",init-price
+2416,"unfortunately , i cannot discount it that much . can you do $260 ? ",counter-price
+2417,how about $240 ? ,counter-price
+2418,i can meet you in the middle and do $260 . final offer . ,counter-price
+2419,$250 is fine . thank you . ,agree
+2420,"sorry , meant $250 . ",unknown
+2421,<end>,<end>
+2422,"hi , i am very interested in this set ",intro
+2423,they will be great for your needs ! only $15 for the pair ! like new condition . ,init-price
+2424,"the size is what concerns me , i am willing to offer $10 ",counter-price
+2425,there are two sizes to choose from . you really can't beat $7 . 50 a desk ! the lowest i'd be willing to go is $13 . ,counter-price
+2426,i could meet you at $12 ,counter-price
+2427,"i'm sorry , i really can't go lower than $13 . how about i throw in a matching chair ? ",insist
+2428,that sounds great ! ,agree
+2429,<end>,<end>
+2430,hi ! i am interested in your house . ,intro
+2431,can you tell me more about it ? ,inquire
+2432,"awesome ! this is a fully remodeled single family home . there are 3 bedrooms and 1 bath . it offers hardwood floors , washer/dryer , and other renovations . ",inform
+2433,is it near restaurants and grocery store ? ,inquire
+2434,"yes , it is ideally located and i am only asking $2695 ! ",init-price
+2435,wow . . too bad i have a low budget . can you accept $1400 ? ,counter-price
+2436,"wow , you are looking in the wrong zip code with that kind of offer . i will entertain serious offers only . i can drop to $2499 . ",counter-price
+2437,i am sorry . how about if i offer $1900 and i'll lease it for at least 2 years . i am going to attend school nearby and it will take at least 2 years . ,counter-price
+2438,"that is at least more reasonable . however , it is still too low . if you lease for 2 years , i will drop to $2250 and that is a final offer . ",counter-price
+2439,i am sorry . $2000 is the most i can do . ,counter-price
+2440,i believe we are at an impass then . ,disagree
+2441,no worries . i'll keep finding the right house ,unknown
+2442,good luck ,unknown
+2443,<end>,<end>
+2444,hi ,intro
+2445,hi ! i'm very interested in your desk ! ,intro
+2446,glad to hear it is very nice and almost new condition ,supplemental
+2447,are there issues i need to be aware of ? ,inquire
+2448,none at all but i can only accept cash ,inform
+2449,i can definitely offer cash . how does $85 sound to you ? ,init-price
+2450,"would you be able to pay a little more , this is a very nice desk and you will not be dissapointed . can you give me 95 for it ? ",counter-price
+2451,i could do $95 if you can deliver the desk . is that possible ? ,agree
+2452,yes i can deliver ,inform
+2453,great ! you've got a deal ! ,thanks
+2454,<end>,<end>
+2455,hi ! how are you ? are you interested in the truck i have available ? ,intro
+2456,"i sure am , i seen you are asking $5900 , the mileage is a bit on the high end . would you be able to go a bit lower ? that truck is 13 years old now . ",init-price
+2457,yes i am . it's clean inside and out . it also comes with a ladder rack and spot light with remote control . ,inform
+2458,"i could do $5300 in the morning if it works good for you , i would like to come check it out . ",counter-price
+2459,i could do 5500 cash ,counter-price
+2460,"hmm , that seems fair . i can do $5500 cash , youve got yourself a deal . ",agree
+2461,<end>,<end>
+2462,hi there is this available ? ,inquire
+2463,the 2004 chevy 2500 truck ? yes it is . ,inform
+2464,yes ! how long has it been used ? ,inquire
+2465,"it is a 2004 , company truck , 175k miles clean title original paint , good condition ",inform
+2466,does it ride smooth ? ,inquire
+2467,"yes it does , it also has leather seats , clean inside and out , and comes equipped with a remote control flood/spot and ladder rack . ",inform
+2468,are you willing to lower the price ? ,vague-price
+2469,i can do 4900 ,init-price
+2470,that's perfect ! thank you so much ! ,agree
+2471,my pleasure ,thanks
+2472,<end>,<end>
+2473,hello ,intro
+2474,hello ,intro
+2475,i see that you are selling an ikea desk does it have any scratches ? ,inquire
+2476,"yes i am , no scratches it is like new im asking $15 ",init-price
+2477,ok are you able to deliver ? i have $13 cash right now that i can give you ,counter-price
+2478,yes i can deliver umm . . i can do $13 for the desk and since you are not to far from me $1 for delivery for a total of $14 sound good ? ,counter-price
+2479,<end>,<end>
+2480,"hello , i was interested in purchasing your cherry wood mirror . ",intro
+2481,great . it is very beautiful mirror . ,supplemental
+2482,i see you are asking $160 . ,init-price
+2483,does it have any scratches or anything ? i see it is used . ,inquire
+2484,it does not have any scratches on the wood there is a small imperfection on the mirror . it is very small about the size of a sharpee tip . it isn't noticable i just wanted to make sure you knew . ,inform
+2485,could i perhaps pick it up in the morning for $140 ? ,init-price
+2486,that is fair if you will be picking up . i will only accept cash is that okay ? ,agree
+2487,"that would be perfect , thank you . ",thanks
+2488,<end>,<end>
+2489,hi are you interested in this ? ,intro
+2490,yes i'm interested in the 2 bedroom ,intro
+2491,do you have any questions or concerns ? ,inquire
+2492,"i see you are asking for $1825 , do you have any move in specials or anything ? ",init-price
+2493,yes we do have specials which are elaborated when you sign the lease with us ! ,inform
+2494,"1825 is a little high for me , would you accept 1000 ? ",counter-price
+2495,"that's very low for me . i am sorry , i can only accept 1500 last ",counter-price
+2496,what is the security deposit ? ,inquire
+2497,$150 ,inform
+2498,i can do 1500 with the low deposit . ,counter-price
+2499,okay then you got a deal ! ,agree
+2500,<end>,<end>
+2501,hi there ! ,intro
+2502,hi ! ,intro
+2503,i'm interested in the chevy you have listed . can you tell me what you're asking for it ? ,inquire
+2504,$5900 for it ! ,init-price
+2505,"with 175k miles , i'm not sure it's worth quite that much . are you willing to come down at all ? ",vague-price
+2506,i can go down to 5000 ,counter-price
+2507,i budgeted $4500 for a new truck . any chance you're willing to come down a little more ? ,counter-price
+2508,4800 is the last price i can give you this truck for ! ,counter-price
+2509,i think that's fair . i'm willing to pay $4800 for the truck . ,agree
+2510,<end>,<end>
+2511,hello ,intro
+2512,hi ,intro
+2513,are you interested in the garden furniture i have for sale ? ,inquire
+2514,"i am , i see you're looking for $50 for it . . any chance you could go lower ? i was thinking $35 ",init-price
+2515,"they are in good functional conditioned , they are super comfortable and would look great on your patio . how about $40 ",counter-price
+2516,i am willing to spend $40 - thanks ! ,agree
+2517,<end>,<end>
+2518,hello . ,intro
+2519,hello is the apartment still available ? ,intro
+2520,yes it is . i am surprised that it is . it is an amazing 6 bedroom apt ,supplemental
+2521,how would you rate the safety of the neighborhood ? ,inquire
+2522,on a scale of 1-10 . i find it is a 10 . they are no issues in this area . ,inform
+2523,when would i be able to move in ? ,inquire
+2524,you will be able to move in aug . 1st . ,inform
+2525,what floor is the apartment on ? ,inquire
+2526,the first floor . ,inform
+2527,is cable included in the rent ? ,inquire
+2528,"yes , cable and dsl are included . ",inform
+2529,ok i'm interested but it's a little out of my price range . could you do 7000 ? ,init-price
+2530,i could do that . do you have anymore questions about the apt ? you can come in the morning to fill out paperwork . ,agree
+2531,i will be there in the morning . thank you ! ,thanks
+2532,you are welcome . ,thanks
+2533,<end>,<end>
+2534,hello im very interested in your springy chairs . why are you selling them ? are they in good condition ? ,intro
+2535,"hi , i am going to be moving in a couple weeks , they are in decent shape . the weather over the years have gotten to them a bit . nothing a tiny bit of tlc couldn't fix up though . ",inform
+2536,how about the cushions ? are they in good shape ? do they have any smell ? ,inquire
+2537,they have been cleaned . they are in good shape .,inform
+2538, i am asking $50 for the pair . ive washed everything all up . its mostly just the sun that has gotten to them a bit . ,init-price
+2539,ok well how about 45 for them and i can pick them up ? ,counter-price
+2540,45 seems fair . could you bring cash ? that would be great . ,agree
+2541,<end>,<end>
