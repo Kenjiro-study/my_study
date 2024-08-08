@@ -35,7 +35,7 @@ tokenizer = AutoTokenizer.from_pretrained(checkpoint)
 data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
 
 #---------アノテーションしたcbデータセットをDataframeで読み込み---------#
-df = pd.read_csv("model/data/cb_dataset_dia.csv") #データによってここを変更
+df = pd.read_csv("data/cb_dataset_dia.csv") #データによってここを変更
 df.drop("Unnamed: 0", axis=1, inplace=True)
 #print(df)
 
@@ -129,7 +129,7 @@ for fold, (train_index, test_index) in enumerate(skf.split(dataset_packed, datas
 
     # -----------------ファインチューニング------------------ #
     training_args = TrainingArguments(
-        output_dir = f"roberta_fold_{fold + 1}",
+        output_dir = f"model/fold_{fold + 1}",
         evaluation_strategy = 'epoch',
         logging_strategy = 'epoch',
         save_strategy = 'epoch',
@@ -193,7 +193,7 @@ for fold, (train_index, test_index) in enumerate(skf.split(dataset_packed, datas
     elif (fold + 1) == 5:
         fold5_result = report_df
 
-    report_df.to_csv(f"fold_{fold + 1}/report_roberta.csv") # モデルごとに名前変更
+    report_df.to_csv(f"model/fold_{fold + 1}/report_roberta.csv") # モデルごとに名前変更
 
 # 各foldの性能を表示
 for fold, accuracy in enumerate(fold_accuracies):
@@ -207,4 +207,4 @@ fold1_result['f1-score'] = (fold1_result['f1-score'] + fold2_result['f1-score'] 
 average_accuracy = sum(fold_accuracies) / num_splits
 print(f"Average Accuracy: {average_accuracy:.4f}")
 print(fold1_result)
-fold1_result.to_csv("report_roberta_test.csv") # モデルごとに名前変更
+fold1_result.to_csv("model/report_roberta_test.csv") # モデルごとに名前変更

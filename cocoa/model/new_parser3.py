@@ -48,13 +48,12 @@ class Parser(object):
     neg_words = set(['no', 'not', "n't"])
 
     ##### DLベースパーサー用のflag,model属性を追加 #####
-    def __init__(self, agent, kb, lexicon, flag="False", path=None):
+    def __init__(self, agent, kb, lexicon, flag="False"):
         self.agent = agent
         self.partner = 1 - agent
         self.kb = kb
         self.lexicon = lexicon
         self.flag = flag
-        self.path = path
 
     @classmethod
     def is_negative(cls, utterance):

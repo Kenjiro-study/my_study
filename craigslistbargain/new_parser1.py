@@ -5,6 +5,7 @@ from cocoa.core.dataset import read_examples
 from cocoa.model.manager import Manager
 from cocoa.analysis.utils import intent_breakdown
 from cocoa.io.utils import write_json
+from cocoa.model.inference import classify_intent_neural
 
 from core.event import Event
 from core.scenario import Scenario
@@ -14,21 +15,17 @@ from model.new_parser2 import Parser ##### お試し用にparserをnew_parser2�
 from model.dialogue_state import DialogueState
 from model.generator import Templates, Generator
 
-def parse_example(example, lexicon, templates, flag, path=None): # (example, price_tracker, templates, arg.neural-flag, arg.neural-parser)
+def parse_example(example, lexicon, templates, flag, intents=None): # (example, price_tracker, templates, arg.neural-flag, intent_dic[f"dialogue{i+1}"])
     """exampleを解析し, templatesを収集する
     """
     kbs = example.scenario.kbs
     # エージェントごとのパーサー(解析器)と状態を定義
-    parsers = [Parser(agent, kbs[agent], lexicon, flag, path) for agent in (0, 1)]
+    parsers = [Parser(agent, kbs[agent], lexicon, flag) for agent in (0, 1)]
     states = [DialogueState(agent, kbs[agent]) for agent in (0, 1)]
     # 最初の発話としてintent及び文に<start>を追加する
     parsed_utterances = [states[0].utterance[0], states[1].utterance[1]]
 
     events = example.events
-
-    # textとpre_textをリストで取得
-    if flag == True:
-        text_list = two_text_get(events)
     
     # 発話を一つずつ解析する
     for i in range(len(events)):
@@ -37,7 +34,7 @@ def parse_example(example, lexicon, templates, flag, path=None): # (example, pri
         # print(event.agent)
 
         if flag == True:
-            received_utterance = parsers[reading_agent].parse(events[i], states[reading_agent], text_list[i]) # DLベースの方はtextと　pre_textの辞書を持っていく
+            received_utterance = parsers[reading_agent].parse(events[i], states[reading_agent], intents[i]) # 予測したintentを持っていってしまう
         else:
             received_utterance = parsers[reading_agent].parse(events[i], states[reading_agent]) # 発話文, ダイアログアクト, テンプレートの三つをまとめて作成
         
@@ -58,25 +55,6 @@ def parse_example(example, lexicon, templates, flag, path=None): # (example, pri
             
     return parsed_utterances
 
-def two_text_get(events):
-    text_list = [] # textとpre_textの辞書を格納するリスト
-    for i in range(len(events)):
-        text = events[i].data # テキストを取り出す
-        if i == 0:
-            pre_text = "[PAD]"
-        else:
-            if type(events[i-1].data) is str:
-                pre_text = events[i-1].data # 一つ前の発話を取得
-            else:
-                if type(events[i-2].data) is str:
-                    pre_text = events[i-2].data
-                else:
-                    pre_text = "[PAD]"
-            
-        text_list.append({'text':text, 'pre_text':pre_text}) # リストに追加
-    
-    return text_list
-
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--transcripts', nargs='*', help='JSON transcripts to extract templates') # 学習・検証データ
@@ -96,14 +74,16 @@ if __name__ == '__main__':
     templates = Templates() # テンプレートのインスタンスを作成
     flag = args.neuralflag # ルールベース, DLベースどちらを使うかを判別するフラグ
 
-    for example in examples:
+    if flag == True:
+        intent_dic = classify_intent_neural(examples, args.parserpath)
+
+    for i in range(len(examples)):
+        example = examples[i]
         if Preprocessor.skip_example(example): # このスキップ文があるからNanがあったのか！
             continue
 
-        # DLベースはモデル名が引数に必要なので一旦ここで分岐
         if flag == True:
-            model_path = args.parserpath
-            utterances = parse_example(example, price_tracker, templates, flag, model_path) ##### flagとモデル名を追加 #####
+            utterances = parse_example(example, price_tracker, templates, flag, intent_dic[f"dialogue{i+1}"]) ##### flagとintentを追加 #####
         else:
             utterances = parse_example(example, price_tracker, templates, flag) ##### flag追加 #####
         

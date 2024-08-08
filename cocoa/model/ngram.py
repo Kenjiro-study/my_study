@@ -15,10 +15,11 @@ NEG_INF = float("-inf")
 
 
 class BaseNgramModel(object):
-    """An example of how to consume NgramCounter to create a language model.
+    """
+    NgramCounterを使用して言語モデルを作成する方法の例
 
-    This class isn't intended to be used directly, folks should inherit from it
-    when writing their own ngram models.
+    このクラスは直接使用することはできない
+    独自のngramモデルを作成するときに継承して使用する
     """
 
     def __init__(self, ngram_counter):
@@ -37,7 +38,7 @@ class BaseNgramModel(object):
         return self._order
 
     def check_context(self, context):
-        """Makes sure context not longer than model's ngram order and is a tuple."""
+        """コンテキストがモデルのngramよりも長くなく、タプルであることを確認"""
         if len(context) >= self._order:
             raise ValueError("Context is too long for this ngram order: {0}".format(context))
         # ensures the context argument is a tuple
@@ -45,26 +46,26 @@ class BaseNgramModel(object):
 
     def score(self, word, context):
         """
-        This is a dummy implementation. Child classes should define their own
-        implementations.
+        これはダミー実装
+        子クラスは独自の実装を定義する必要がある
 
-        :param word: the word to get the probability of
+        :param word: 確率を取得する単語
         :type word: str
-        :param context: the context the word is in
+        :param context: 単語が含まれるコンテキスト
         :type context: Tuple[str]
         """
         return 0.5
 
     def logscore(self, word, context):
         """
-        Evaluate the log probability of this word in this context.
+        このコンテキストでのこの単語のlog確率を評価する
 
-        This implementation actually works, child classes don't have to
-        redefine it.
+        この実装はこのままで機能する
+        子クラスで再定義する必要はない
 
-        :param word: the word to get the probability of
+        :param word: 確率を取得する単語
         :type word: str
-        :param context: the context the word is in
+        :param context: 単語が含まれるコンテキスト
         :type context: Tuple[str]
         """
         score = self.score(word, context)
@@ -74,11 +75,10 @@ class BaseNgramModel(object):
 
     def entropy(self, text, average=True):
         """
-        Calculate the approximate cross-entropy of the n-gram model for a
-        given evaluation text.
-        This is the average log probability of each word in the text.
+        与えられた評価テキストのn-gramモデルの近似クロスエントロピーを計算する
+        これはテキスト内の各単語の平均対数確率である
 
-        :param text: words to use for evaluation
+        :param text: 評価に使用する単語
         :type text: Iterable[str]
         """
 
@@ -98,10 +98,10 @@ class BaseNgramModel(object):
 
     def perplexity(self, text):
         """
-        Calculates the perplexity of the given text.
-        This is simply 2 ** cross-entropy for the text.
+        指定されたテキストのperplexityを計算する
+        これは単純にテキストの 2 ** cross-entropy である
 
-        :param text: words to calculate perplexity of
+        :param text: perplexityを計算する単語
         :type text: Iterable[str]
         """
 
@@ -131,13 +131,11 @@ class MLENgramModel(BaseNgramModel):
         dist = self._ngrams[len(context)+1][context]
         return dist.items()
 
-
-#@compat.python_2_unicode_compatible
 class LidstoneNgramModel(BaseNgramModel):
-    """Provides Lidstone-smoothed scores.
+    """
+    Lidstone-smoothedスコアを算出する
 
-    In addition to initialization arguments from BaseNgramModel also requires
-    a number by which to increase the counts, gamma.
+    BaseNgramModelから初期化引数に加えて、カウントを増やす数値、ガンマが必要
     """
 
     def __init__(self, gamma, *args):
@@ -156,9 +154,10 @@ class LidstoneNgramModel(BaseNgramModel):
 
 #@compat.python_2_unicode_compatible
 class LaplaceNgramModel(LidstoneNgramModel):
-    """Implements Laplace (add one) smoothing.
+    """
+    ラプラス(1を加算)平滑化を実装
 
-    Initialization identical to BaseNgramModel because gamma is always 1.
+    ガンマは常に1なので初期化はBaseNgramModelと同じ
     """
 
     def __init__(self, *args):

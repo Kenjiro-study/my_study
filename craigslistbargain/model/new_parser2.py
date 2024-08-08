@@ -190,15 +190,15 @@ class Parser(BaseParser):
             intent = 'unknown'
         return intent
 
-    def parse_message(self, event, dialogue_state, texts=None):
+    def parse_message(self, event, dialogue_state, intents=None):
         tokens = self.lexicon.link_entity(tokenize(event.data), kb=self.kb, scale=False) # craigslistbargain/core/price-tracker.pyで価格を検出してトークナイズ
         template = self.extract_template(tokens, dialogue_state) # タイトルやprice-trackerを使用して発話の一部をプレースホルダに置き換えてテンプレートを作成
         utterance = Utterance(raw_text=event.data, tokens=tokens) # 正しい形の発話に成形
         tokens_with_parsed_price = self.parse_prices(tokens, dialogue_state) # 価格の部分をlisting_price(定価),my_price(自分の提案価格),partner_price(相手の提案価格),price(それ以外)に分ける
         #######
         if self.flag == True: ##### DLベースパーサーの使用
-            intent = classify_intent_neural(texts, self.path)
-            print(intent)
+            intent = intents
+            #print(intent)
         else: ##### ルールベースパーサーの使用
             intent = self.classify_intent(utterance, tokens_with_parsed_price, dialogue_state) # ダイアログアクトの決定(ここを置き換えよう!)
         #######
@@ -207,13 +207,13 @@ class Parser(BaseParser):
         utterance.template = template # プレースホルダに置き換えたテンプレートを格納
         return utterance
 
-    def parse(self, event, dialogue_state, texts=None):
+    def parse(self, event, dialogue_state, intents=None):
         # パートナーの発話を解析する
         assert event.agent == 1 - self.agent # パートナーの発話を確認するため, agent番号が自分と同じ場合はエラーにする
         if event.action == 'offer':
             u = self.parse_offer(event) # offerの場合はintent=offerで価格を追加
         elif event.action == 'message':
-            u = self.parse_message(event, dialogue_state, texts) # messageの場合はパーサーで解析
+            u = self.parse_message(event, dialogue_state, intents) # messageの場合はパーサーで解析
         elif event.action in ('reject', 'accept', 'quit'):
             u = self.parse_action(event) # この三つの場合はactionをそのままintentにする
         else:
