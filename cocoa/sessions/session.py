@@ -31,6 +31,9 @@ class Session(object):
         """
         raise NotImplementedError
 
+    # 表示可能な文字のみの文字列に変更する(漢字かなや非表示文字を含まない)
+    # 表示可能な(string.printableに定義されている)文字は次の通り
+    # 0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
     @staticmethod
     def remove_nonprintable(raw_tokens):
         tokens = []

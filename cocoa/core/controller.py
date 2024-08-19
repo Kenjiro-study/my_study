@@ -57,7 +57,10 @@ class Controller(object):
         else:
             first_speaker = 1
         while not game_over:
+            # hybrid は craigslistbargain/sessions/hybrid_session.py の SellerHybridSessionクラス or BuyerHybridSessionクラス
+            # cmd は craigslistbargain/sessions/cmd_session.py の CmdSessionクラス
             for agent, session in enumerate(self.sessions):
+                print(session)
                 if num_turns == 0 and agent != first_speaker: # first_speakerに選ばれたエージェントから対話開始
                     continue
                 event = session.send() # ここでevent(発話やダイアログアクト等)が決定されている
@@ -102,11 +105,10 @@ class Controller(object):
         Webのバックエンドによって呼び出される
         '''
         with self.lock:
-            # try to send messages from one session to the other(s)
+            # あるセッションから他のセッションにメッセージを送信しようとする
             for agent, session in enumerate(self.sessions):
                 if session is None:
-                    # fail silently, this means that the session has been reset and the controller is effectively
-                    # inactive
+                    # 無言で失敗した場合、セッションがリセットされ、コントローラが事実上非アクティブになっていることを意味する
                     continue
                 if (not self.allow_cross_talk) and self.session_status[agent] != 'received':
                     continue

@@ -24,7 +24,7 @@ def generate_examples(num_examples, scenario_db, examples_path, max_examples, re
     #scenarios = [scenario_db.scenarios_map['S_8COuPdjZZkYgrzhb']]
     #random.shuffle(scenarios)
 
-    for i in range(max_examples): # max_exampleは20っぽい この数だけ対話をシミュレート
+    for i in range(max_examples): # max_exampleはデフォルトで20 この数だけ対話をシミュレート
         scenario = scenarios[num_examples % len(scenarios)]
         sessions = [agents[0].new_session(0, scenario.kbs[0]), agents[1].new_session(1, scenario.kbs[1])]       
         controller = Controller(scenario, sessions)
@@ -65,14 +65,21 @@ if __name__ == '__main__':
         random.seed(args.random_seed)
         np.random.seed(args.random_seed)
 
-    schema = Schema(args.schema_path)
-    scenario_db = ScenarioDB.from_dict(schema, read_json(args.scenarios_path), Scenario)
+    schema = Schema(args.schema_path) # craigslistbargain/data/craigslist-schema.json
+    scenario_db = ScenarioDB.from_dict(schema, read_json(args.scenarios_path), Scenario) # craigslistbargain/data/train-scenarios.json
 
-    assert len(args.agent_checkpoints) == len(args.agents)
+    assert len(args.agent_checkpoints) == len(args.agents) # 指定したエージェント名の個数と, チェックポイントの個数が一致しているかの確認
 
     # craigslistbargain/systems/__init__.pyのget_system関数によりエージェントを定義する. 使えるエージェントはrulebased, hybrid, cmd, pt-neuralの4種(それ以外はエラー)
     agents = [get_system(name, args, schema, model_path=model_path) for name, model_path in zip(args.agents, args.agent_checkpoints)]
     
-    num_examples = args.scenario_offset
+    num_examples = args.scenario_offset # 開始時にスキップするシナリオ数でデフォルトの0を使っている
 
     generate_examples(num_examples, scenario_db, args.results_path, args.max_examples, args.remove_fail, args.max_turns)
+    # 引数の詳細
+    # 1. num_example → 開始時にスキップするシナリオ数=0
+    # 2. scenario_db → craigslist-schema.jsonとtrain-scenarios.jsonの内容を読み込んだシナリオのデータベース
+    # 3. args.results_path → 結果を出力するパス=bot-chat-transcripts.json
+    # 4. args.max_examples → 予測するテストexamplesの数=20
+    # 5. args.remove_fail → 失敗した対話を削除するかどうか=False
+    # 6. args.max_turns → 最大ターン数=20

@@ -3,7 +3,7 @@ from sessions.session import Session
 
 class CmdSession(Session):
     def __init__(self, agent, kb):
-        super(CmdSession, self).__init__(agent)
+        super().__init__(agent) # 3系Ver.
         self.kb = kb
 
     def send(self):
@@ -18,7 +18,7 @@ class CmdSession(Session):
         Returns: Event
         """
         raw_tokens = message.split()
-        tokens = self.remove_nonprintable(raw_tokens)
+        tokens = self.remove_nonprintable(raw_tokens) # 英数字+一部の表示可能文字のみの文章に変更する
 
         if len(tokens) >= 2 and tokens[0] == '<offer>':
             return self.offer({'price': int(tokens[1]), 'sides': ''})

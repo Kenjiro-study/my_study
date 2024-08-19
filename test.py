@@ -103,5 +103,7 @@ print(dia_df)
 dia_df.to_csv('offer.csv')
 """
 
-import torch
-print(torch.cuda.is_available())
+#import torch
+#print(torch.cuda.is_available())
+import string
+print(string.printable)

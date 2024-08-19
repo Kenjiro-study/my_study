@@ -68,7 +68,7 @@ class TimedSessionWrapper(Session):
             delay = self.SELECTION_DELAY + random.uniform(0, self.EPSILON)
             if self.prev_action == 'select':
                 delay += self.REPEATED_SELECTION_DELAY
-        # TODO: refactor this
+        # TODO: これをリファクタリングする
         elif event.action in ('offer', 'accept', 'reject', 'done', 'quit'):
             delay = self.SELECTION_DELAY + random.uniform(0, self.EPSILON)
         elif event.action == 'join':
@@ -77,7 +77,7 @@ class TimedSessionWrapper(Session):
             raise ValueError('Unknown event type: %s' % event.action)
 
         if self.last_message_timestamp + delay > time.time():
-            # Add reading time before start typing
+            # 入力を始める前に読む時間を追加する
             reading_time = 0 if self.prev_action == 'join' else random.uniform(0.5, 1)
             if event.action == 'message' and self.start_typing is False and \
                     self.last_message_timestamp + reading_time < time.time():
