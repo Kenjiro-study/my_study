@@ -37,7 +37,7 @@ class RLTrainer(Trainer):
         model.generator.train()
 
         nll = []
-        # batch_iter gives a dialogue
+        # batch_iteragreeは対話を与える
         dec_state = None
         for batch in batch_iter:
             if not model.stateful:
@@ -48,7 +48,7 @@ class RLTrainer(Trainer):
             loss, _ = self.train_loss.compute_loss(batch.targets, outputs)  # (seq_len, batch_size)
             nll.append(loss)
 
-            # Don't backprop fully.
+            # 完全にバックプロパゲーションしないこと
             if dec_state is not None:
                 dec_state.detach()
 
@@ -154,7 +154,7 @@ class RLTrainer(Trainer):
                 special_actions[event.action] += 1
                 if special_actions[event.action] > 1:
                     return False
-                # Cannot accept or reject before offer
+                # オファー前に accept または reject することはできない
                 if event.action in ('accept', 'reject') and special_actions['offer'] == 0:
                     return False
         return True
@@ -163,9 +163,10 @@ class RLTrainer(Trainer):
         if example.outcome['reward'] == 0 or example.outcome['offer'] is None:
             return False
         return True
-
+    
+    # marginを報酬関数とした最適化
     def _margin_reward(self, example):
-        # No agreement
+        # 非合意
         if not self._is_agreed(example):
             print('No agreement')
             return {'seller': -0.5, 'buyer': -0.5}
@@ -182,22 +183,24 @@ class RLTrainer(Trainer):
         price = example.outcome['offer']['price']
         norm_factor = abs(midpoint - targets['seller'])
         rewards['seller'] = (price - midpoint) / norm_factor
-        # Zero sum
+        # ゼロサム
         rewards['buyer'] = -1. * rewards['seller']
         return rewards
-
+    
+    # lengthを報酬関数とした最適化
     def _length_reward(self, example):
-        # No agreement
+        # 非合意
         if not self._is_agreed(example):
             print('No agreement')
             return {'seller': -0.5, 'buyer': -0.5}
 
-        # Encourage long dialogue
+        # 長い対話を目指す
         rewards = {}
         for role in ('buyer', 'seller'):
             rewards[role] = len(example.events) / 10.
         return rewards
 
+    # fairを報酬関数とした最適化
     def _fair_reward(self, example):
         # No agreement
         if not self._is_agreed(example):
@@ -209,7 +212,8 @@ class RLTrainer(Trainer):
         for role in ('buyer', 'seller'):
             rewards[role] = -1. * abs(margin_rewards[role]) + 2.
         return rewards
-
+    
+    # 報酬使用する報酬関数を選択して最適化
     def get_reward(self, example, session):
         if not self._is_valid_dialogue(example):
             print('Invalid')

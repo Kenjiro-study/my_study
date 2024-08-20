@@ -60,7 +60,6 @@ class Controller(object):
             # hybrid は craigslistbargain/sessions/hybrid_session.py の SellerHybridSessionクラス or BuyerHybridSessionクラス
             # cmd は craigslistbargain/sessions/cmd_session.py の CmdSessionクラス
             for agent, session in enumerate(self.sessions):
-                print(session)
                 if num_turns == 0 and agent != first_speaker: # first_speakerに選ばれたエージェントから対話開始
                     continue
                 event = session.send() # ここでevent(発話やダイアログアクト等)が決定されている
@@ -73,14 +72,13 @@ class Controller(object):
                 self.events.append(event)
                 
                 if verbose:
-                    # この時点でdataにintentが入り, metadataはNoneになってしまっている
                     print('agent=%s: session=%s, event=%s' % (agent, type(session).__name__, event.to_dict()))
                 else:
                     action = event.action
                     data = event.data
                     event_output = data if action == 'message' else "Action: {0}, Data: {1}".format(action, data)
                     print('agent=%s, event=%s' % (agent, event_output))
-                print("---------------------------------") #####
+                print('---------------------------------') #####
                 num_turns += 1
                 if self.game_over() or (max_turns and num_turns >= max_turns):
                     game_over = True
@@ -89,12 +87,15 @@ class Controller(object):
                 for partner, other_session in enumerate(self.sessions):
                     if agent != partner:
                         other_session.receive(event)
-
+        
         uuid = generate_uuid('E')
         outcome = self.get_outcome()
-        if verbose:
-            print('outcome: %s' % outcome)
-            print('----------------')
+
+        # {'reward': reward, 'offer': offer}の辞書
+        # rewardは1で合意, 0で非合意を表す, offerは合意時の価格を表す
+        print('outcome: %s' % outcome)
+        print('---------------------------------')
+        
         # TODO: 構成可能な名前をシステムとセッションに追加するべき
         agent_names = {'0': self.session_names[0], '1': self.session_names[1]}
         return Example(self.scenario, uuid, self.events, outcome, uuid, agent_names)

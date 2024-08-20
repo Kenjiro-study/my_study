@@ -23,18 +23,32 @@ def generate_examples(num_examples, scenario_db, examples_path, max_examples, re
     scenarios = scenario_db.scenarios_list
     #scenarios = [scenario_db.scenarios_map['S_8COuPdjZZkYgrzhb']]
     #random.shuffle(scenarios)
+    ag_sum = ut_sum = fa_sum = leng_sum = 0
 
     for i in range(max_examples): # max_exampleはデフォルトで20 この数だけ対話をシミュレート
         scenario = scenarios[num_examples % len(scenarios)]
         sessions = [agents[0].new_session(0, scenario.kbs[0]), agents[1].new_session(1, scenario.kbs[1])]       
         controller = Controller(scenario, sessions)
         ex = controller.simulate(max_turns, verbose=args.verbose)
+
+        ag, ut, fa, leng = controller.get_result(1) # 定量評価するエージェント番号が引数
+        ag_sum += ag
+        ut_sum += ut
+        fa_sum += fa
+        leng_sum += leng
+    
         if not controller.complete():
             num_failed += 1
             if remove_fail:
                 continue
         examples.append(ex)
         num_examples += 1 # num_examplesをインクリメント
+    
+    # 定量評価の表示
+    print('Agrrement late : {}'.format(ag_sum / max_examples))
+    print('Utility : {}'.format(ut_sum / max_examples))
+    print('Fairness : {}'.format(fa_sum / max_examples))
+    print('Length : {}'.format(leng_sum / max_examples))
 
     with open(examples_path, 'w') as out:
         print(json.dumps([e.to_dict() for e in examples]), file=out)

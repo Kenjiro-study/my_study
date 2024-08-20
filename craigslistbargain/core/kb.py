@@ -2,7 +2,7 @@ from cocoa.core.kb import KB as BaseKB
 
 class KB(BaseKB):
     def __init__(self, attributes, facts):
-        super(KB, self).__init__(attributes)
+        super().__init__(attributes) # 3系Ver.
         self.facts = facts
 
     @property
@@ -32,6 +32,7 @@ class KB(BaseKB):
     def from_dict(cls, attributes, raw):
         return cls(attributes, raw)
 
+    # 対話の詳細情報を表示するメソッド
     def dump(self):
         # NOTE: We no longer have a bottomline price
         price_range = (None, self.target)

@@ -1,6 +1,5 @@
 """
-Takes two agent (Session) implementations, generates the dialogues,
-and run REINFORCE.
+二つのエージェント(セッション)の実装を取得し, 対話を生成して, REINFORCEを実行する
 """
 
 import argparse
