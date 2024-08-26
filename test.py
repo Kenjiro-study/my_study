@@ -101,9 +101,22 @@ dia_df = pd.DataFrame(data=dict1)
 print(dia_df)
 
 dia_df.to_csv('offer.csv')
-"""
 
 #import torch
 #print(torch.cuda.is_available())
 import string
 print(string.printable)
+"""
+
+import pickle
+# pklファイルのパスを指定
+pkl_file_path = 'test/deep/mappings/lf2lf/vocab.pkl'
+
+# pklファイルを読み込む
+with open(pkl_file_path, 'rb') as file:
+    data = pickle.load(file)
+
+# 内容を表示
+print(data["utterance_vocab"].finished)
+
+#data.to_csv('rule-train-template.csv')
