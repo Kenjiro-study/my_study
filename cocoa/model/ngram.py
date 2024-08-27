@@ -25,7 +25,7 @@ class BaseNgramModel(object):
     def __init__(self, ngram_counter):
 
         self.ngram_counter = ngram_counter
-        # for convenient access save top-most ngram order ConditionalFreqDist
+        # 便利なアクセスのために最上位のngram順序を保存するConditionalFreqDist
         self.ngrams = ngram_counter.ngrams[ngram_counter.order]
         self._ngrams = ngram_counter.ngrams
         self._order = ngram_counter.order
@@ -109,13 +109,13 @@ class BaseNgramModel(object):
 
 
 class MLENgramModel(BaseNgramModel):
-    """MLEngramModelのスコアを提供するクラス
+    """MLENgramModelのスコアを提供するクラス
 
     BaseNgramModelから初期化方法を継承している
     """
 
     def score(self, word, context):
-        """Returns the MLE score for a word given a context.
+        """コンテキストが与えられた単語のMLEスコアを返す
 
         Args:
         - wordは文字列であることが期待される
@@ -141,7 +141,7 @@ class LidstoneNgramModel(BaseNgramModel):
     def __init__(self, gamma, *args):
         super(LidstoneNgramModel, self).__init__(*args)
         self.gamma = gamma
-        # This gets added to the denominator to normalize the effect of gamma
+        # これを分母に追加してgammaの効果を正規化する
         self.gamma_norm = len(self.ngram_counter.vocabulary) * gamma
 
     def score(self, word, context):
@@ -151,8 +151,6 @@ class LidstoneNgramModel(BaseNgramModel):
         ctx_count = context_freqdist.N()
         return (word_count + self.gamma) / (ctx_count + self.gamma_norm)
 
-
-#@compat.python_2_unicode_compatible
 class LaplaceNgramModel(LidstoneNgramModel):
     """
     ラプラス(1を加算)平滑化を実装

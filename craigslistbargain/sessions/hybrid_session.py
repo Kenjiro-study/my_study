@@ -29,6 +29,12 @@ class BaseHybridSession(CraigslistRulebasedSession):
             return
         # ルールベースの部分を処理する
         utterance = self.parser.parse(event, self.state)
+        print("event.agent: ", event.agent) ########
+        print("event.time: ", event.time) ########
+        print("event.action: ", event.action) ########
+        print("event.data: ", event.data) ########
+        print("event.metadata: ", event.metadata) ########
+
         self.state.update(self.partner, utterance)
         # ニューラルベースの部分を処理する
         if event.action == "message":
@@ -49,7 +55,7 @@ class BaseHybridSession(CraigslistRulebasedSession):
         return True
 
     def send(self):
-        action_tokens = self.manager.generate()
+        action_tokens = self.manager.generate() # sessions.neural_session.PytorchNeuralSessionのgenerateメソッド
         if action_tokens is None:
             return None
         self.manager.dialogue.add_utterance(self.agent, list(action_tokens))

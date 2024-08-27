@@ -31,7 +31,7 @@ class CraigslistRulebasedSession(BaseRulebasedSession):
     def __init__(self, agent, kb, lexicon, config, generator, manager):
         parser = Parser(agent, kb, lexicon)
         state = DialogueState(agent, kb)
-        super(CraigslistRulebasedSession, self).__init__(agent, kb, parser, generator, manager, state, sample_temperature=10.)
+        super().__init__(agent, kb, parser, generator, manager, state, sample_temperature=10.) # 3系ver.
 
         self.kb = kb
         self.title = self.shorten_title(self.kb.facts['item']['Title'])
@@ -42,7 +42,7 @@ class CraigslistRulebasedSession(BaseRulebasedSession):
         self.listing_price = self.kb.listing_price
         self.category = self.kb.category
 
-        # Direction of desired price
+        # 希望価格の方向性
         self.inc = None
 
     def shorten_title(self, title):

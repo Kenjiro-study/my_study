@@ -46,7 +46,7 @@ class DatabaseReader(BaseDatabaseReader):
         agent_types = {}
 
         for survey in logged_surveys:
-            # todo this is pretty lazy - support variable # of questions per task eventually..
+            # TODO: これはかなり怠惰(よくない手法) - 最終的にはタスクごとに可変の質問数をサポートするようにしたい
             (userid, cid, _, q1, q2, q3, q4, q5, q6, comments) = survey
             responses = dict(zip(questions, [q1, q2, q3, q4, q5, q6, comments]))
             cursor.execute('''SELECT agent_types, agent_ids FROM chat WHERE chat_id=?''', (cid,))

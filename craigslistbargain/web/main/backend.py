@@ -86,9 +86,9 @@ class Backend(BaseBackend):
 
     def get_completion_messages(self, userid):
         """
-        Returns two completion messages: one for the current user and one for the user's partner. This function doesn't
-        check whether the user's partner is a bot or not. It just decides which user is the winner of the negotiation
-        and assigns completion messages accordingly.
+        二つの完了メッセージを返す: 1つは現在のユーザー用, もう一つはユーザーのパートナー用
+        この関数はユーザーのパートナーがbotかどうかをチェックしない
+        交渉における勝者がどちらかを決定し, それに応じて完了のメッセージを割り当てることだけをする
         :param userid:
         :return:
         """
@@ -158,7 +158,7 @@ class Backend(BaseBackend):
             self._update_user(cursor, userid, status=Status.Finished)
 
         def _update_scenario_db(chat_id, scenario_id, partner_type):
-            # make sure that the # of completed dialogues for the scenario is only updated once if both agents are human
+            # 両方のエージェントが人間の場合, シナリオの完了したダイアログの数が一度だけ更新されることを確認する
             cursor.execute('''SELECT complete FROM scenario WHERE scenario_id=? AND partner_type=?''',
                            (scenario_id, partner_type))
             complete_set = set(json.loads(cursor.fetchone()[0]))

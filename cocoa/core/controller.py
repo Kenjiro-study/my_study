@@ -50,7 +50,7 @@ class Controller(object):
         time = 0
         num_turns = 0
         game_over = False
-        self.describe_scenario()
+        self.describe_scenario() # 各エージェントの詳細をプリント
         # 乱数によって1/2で最初に話し始めるエージェントを決定
         if random.random() < 0.5: # seedが固定されているからいつも同じ値(変えたかったらseedを変える)
             first_speaker = 0
@@ -86,7 +86,7 @@ class Controller(object):
 
                 for partner, other_session in enumerate(self.sessions):
                     if agent != partner:
-                        other_session.receive(event)
+                        other_session.receive(event) # ここで相手の一つ前の発話が表示される
         
         uuid = generate_uuid('E')
         outcome = self.get_outcome()

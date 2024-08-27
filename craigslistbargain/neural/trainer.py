@@ -1,7 +1,7 @@
 from cocoa.neural.trainer import Trainer as BaseTrainer
 
 class Trainer(BaseTrainer):
-    ''' Class that controls the training process which inherits from Cocoa '''
+    ''' Cocoa から継承した訓練プロセスを制御するクラス '''
 
     def _run_batch(self, batch, dec_state=None, enc_state=None):
         encoder_inputs = batch.encoder_inputs
@@ -10,7 +10,7 @@ class Trainer(BaseTrainer):
         lengths = batch.lengths
         #tgt_lengths = batch.tgt_lengths
 
-        # running forward() method in the NegotiationModel
+        # NegotiationModel 内で forward() メソッドを実行する
         if hasattr(self.model, 'context_embedder'):
             context_inputs = batch.context_inputs
             title_inputs = batch.title_inputs
@@ -19,7 +19,7 @@ class Trainer(BaseTrainer):
             outputs, attns, dec_state = self.model(encoder_inputs,
                     decoder_inputs, context_inputs, title_inputs,
                     desc_inputs, lengths, dec_state, enc_state)
-        # running forward() method in NMT Model
+        # NMT Model 内で forward() メソッドを実行する
         else:
             outputs, attns, dec_state = self.model(encoder_inputs,
                   decoder_inputs, lengths, dec_state, enc_state)

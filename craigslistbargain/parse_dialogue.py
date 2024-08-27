@@ -5,6 +5,7 @@ from cocoa.core.dataset import read_examples
 from cocoa.model.manager import Manager
 from cocoa.analysis.utils import intent_breakdown
 from cocoa.io.utils import write_json
+from cocoa.model.inference import classify_intent_neural # DLモデルによるintentの予測メソッド
 
 from core.event import Event
 from core.scenario import Scenario
@@ -14,26 +15,29 @@ from model.parser import Parser
 from model.dialogue_state import DialogueState
 from model.generator import Templates, Generator
 
-def parse_example(example, lexicon, templates): # (example, price_tracker, templates)
+def parse_example(example, lexicon, templates, flag, intents = None): # (example, price_tracker, templates, arg.neural-flag, intent_dic[f"dialogue{i+1}"])
     """exampleを解析し, templatesを収集する
     """
     kbs = example.scenario.kbs
     # エージェントごとのパーサー(解析器)と状態を定義z
-    parsers = [Parser(agent, kbs[agent], lexicon) for agent in (0, 1)]
+    parsers = [Parser(agent, kbs[agent], lexicon, flag) for agent in (0, 1)]
     states = [DialogueState(agent, kbs[agent]) for agent in (0, 1)]
     # 最初の発話としてintent及び文に<start>を追加する
     parsed_utterances = [states[0].utterance[0], states[1].utterance[1]]
-    print(len(example.events))
+    events = example.events
     # 発話を一つずつ解析する
-    for event in example.events:
-        print(event)
-        writing_agent = event.agent  # 話し手
+    for i in range(len(events)):
+        writing_agent = events[i].agent  # 話し手
         reading_agent = 1 - writing_agent # 聞き手
         # print(event.agent)
 
-        received_utterance = parsers[reading_agent].parse(event, states[reading_agent]) # 発話文, ダイアログアクト, テンプレートの三つをまとめて作成
+        if flag == True:
+            received_utterance = parsers[reading_agent].parse(events[i], states[reading_agent], intents[i]) # 予測したintentを持っていってしまう
+        else:
+            received_utterance = parsers[reading_agent].parse(events[i], states[reading_agent]) # 発話文, ダイアログアクト, テンプレートの三つをまとめて作成
+        
         if received_utterance:
-            event.metadata = received_utterance.lf # parseによって生成されたlf属性のものをmetadata(ダイアログアクト)にする
+            events[i].metadata = received_utterance.lf # parseによって生成されたlf属性のものをmetadata(ダイアログアクト)にする
             sent_utterance = copy.deepcopy(received_utterance) # received_utteranceのコピーをsent_utteranceに作成
             if sent_utterance.tokens:
                 sent_utterance.template = parsers[writing_agent].extract_template(sent_utterance.tokens, states[writing_agent]) # partner_priceとmy_priceを入れ替えて送る側と受け取る側のテンプレートを作る
@@ -58,20 +62,31 @@ if __name__ == '__main__':
     parser.add_argument('--templates', help='Path to load templates') # なぜかあらかじめtemplatesを読み込むこともできる(まだ作ってないのに...)
     parser.add_argument('--templates-output', help='Path to save templates') # テンプレートの出力先
     parser.add_argument('--model-output', help='Path to save the dialogue manager model') # モデルの出力先
+    parser.add_argument('--parserpath', help='Path of the deep learning-based parser you created') ##### new!! ディープラーニングベースパーサーのパス #####
+    parser.add_argument('--neuralflag', action='store_true', help='which parser do you use, neural-base or rule-base') ###### new!! ルールベース, ニューラルベースどちらのパーサーを使用するか #####
     args = parser.parse_args()
 
     price_tracker = PriceTracker(args.price_tracker)
     examples = read_examples(args.transcripts, args.max_examples, Scenario) # 学習・検証データを読み込む
     parsed_dialogues = [] # 解析した対話を格納するための配列
     templates = Templates() # テンプレートのインスタンスを作成
+    flag = args.neuralflag # ルールベース, DLベースどちらを使うかを判別するフラグ
 
-    for example in examples:
+    if flag == True:
+        # DLベースが選ばれた場合, 先に解析するデータ全てのintentを予測してしまう(実行時間短縮のため)
+        intent_dic = classify_intent_neural(examples, args.parserpath)
+
+    for i in range(len(examples)):
+        example = examples[i]
         if Preprocessor.skip_example(example): # このスキップ文があるからNanがあったのか！
             continue
-        utterances = parse_example(example, price_tracker, templates)
+        if flag == True:
+            utterances = parse_example(example, price_tracker, templates, flag, intent_dic[f"dialogue{i+1}"]) ##### flagとintentを追加 #####
+        else:
+            utterances = parse_example(example, price_tracker, templates, flag) ##### flag追加 #####
+
         parsed_dialogues.append(utterances)
-        break ############# 一つの例を考えながら改良を進めよう
-"""
+
     #for d in parsed_dialogues[:2]: # parse_dialoguesの中身を2対話だけ確認
         #for u in d:
             #print(u)
@@ -97,6 +112,5 @@ if __name__ == '__main__':
     # modelとgeneratorのテストをする
     generator = Generator(templates)
     action = manager.choose_action(None, context=('intro', 'init-price'))
-    print(action)
+    #print(action)
     print(generator.retrieve('intro', context_tag='init-price', tag=action, category='car', role='seller').template)
-"""

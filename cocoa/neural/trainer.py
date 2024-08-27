@@ -15,13 +15,13 @@ from cocoa.io.utils import create_path
 
 class Statistics(BaseStatistics):
     def output(self, epoch, batch, n_batches, start):
-        """Write out statistics to stdout.
+        """統計情報を標準出力に書き出す
 
         Args:
-           epoch (int): current epoch
-           batch (int): current batch
-           n_batch (int): total batches
-           start (int): start time of epoch.
+           epoch (int): 現在のエポック数
+           batch (int): 現在のバッチ数
+           n_batch (int): 合計バッチ数
+           start (int): エポックのスタートタイム
         """
         t = self.elapsed_time()
         print(("Epoch %2d, %5d/%5d; loss: %6.2f; " +
@@ -36,26 +36,26 @@ class Statistics(BaseStatistics):
 
 class Trainer(object):
     """
-    Class that controls the training process.
+    トレーニングプロセスを制御するクラス
 
     Args:
-            model(:py:class:`onmt.Model.NMTModel`): translation model to train
+            model(:py:class:`onmt.Model.NMTModel`): トレーニングする翻訳モデル
 
             train_loss(:obj:`onmt.Loss.LossComputeBase`):
-               training loss computation
+               トレーニング loss 計算
             valid_loss(:obj:`onmt.Loss.LossComputeBase`):
-               training loss computation
+               評価 loss 計算
             optim(:obj:`onmt.Optim.Optim`):
-               the optimizer responsible for update
-            data_type(string): type of the source input: [text|img|audio]
-            norm_method(string): normalization methods: [sents|tokens]
-            grad_accum_count(int): accumulate gradients this many times.
+               更新を担当するオプティマイザー
+            data_type(string): ソース入力の種類: [text|img|audio]
+            norm_method(string): 正規化手法: [sents|tokens]
+            grad_accum_count(int): 勾配をこの回数だけ累積する
     """
 
     def __init__(self, model, train_loss, valid_loss, optim,
                  data_type='text', norm_method="sents",
                  grad_accum_count=1, utterance_builder=None):
-        # Basic attributes.
+        # 基本属性
         self.model = model
         self.train_loss = train_loss
         self.valid_loss = valid_loss
@@ -68,14 +68,14 @@ class Trainer(object):
 
         assert(grad_accum_count > 0)
 
-        # Set model in training mode.
+        # モデルをトレーニングモードに設定する
         self.model.train()
 
-        # For debugging
+        # デバッグ用
         self.utterance_builder = utterance_builder
 
     def learn(self, opt, data, report_func):
-        """Train model.
+        """モデルをトレーニングする
         Args:
             opt(namespace)
             model(Model)
@@ -88,17 +88,17 @@ class Trainer(object):
         for epoch in range(opt.epochs):
             print('')
 
-            # 1. Train for one epoch on the training set.
+            # 1. 訓練セットを用いて1エポックトレーニングする
             train_iter = data.generator('train', cuda=use_gpu(opt))
             train_stats = self.train_epoch(train_iter, opt, epoch, report_func)
             print('Train loss: %g' % train_stats.mean_loss())
 
-            # 2. Validate on the validation set.
+            # 2. 検証セットを用いて検証する
             valid_iter = data.generator('dev', cuda=use_gpu(opt))
             valid_stats = self.validate(valid_iter)
             print('Validation loss: %g' % valid_stats.mean_loss())
 
-            # 3. Log to remote server.
+            # 3. リモートサーバーにログを記録する
             #if opt.exp_host:
             #    train_stats.log("train", experiment, optim.lr)
             #    valid_stats.log("valid", experiment, optim.lr)
@@ -106,25 +106,25 @@ class Trainer(object):
             #    train_stats.log_tensorboard("train", writer, optim.lr, epoch)
             #    train_stats.log_tensorboard("valid", writer, optim.lr, epoch)
 
-            # 4. Update the learning rate
+            # 4. 学習率を更新する
             self.epoch_step(valid_stats.ppl(), epoch)
 
-            # 5. Drop a checkpoint if needed.
+            # 5. 必要に応じてチェックポイントを削除する
             if epoch >= opt.start_checkpoint_at:
                 self.drop_checkpoint(opt, epoch, valid_stats)
 
 
     def train_epoch(self, train_iter, opt, epoch, report_func=None):
-        """ Train next epoch.
+        """ 次のエポックのトレーニング
         Args:
-            train_iter: training data iterator
-            epoch(int): the epoch number
-            report_func(fn): function for logging
+            train_iter: トレーニングデータのイテレータ
+            epoch(int): エポック番号
+            report_func(fn): ログ機能
 
         Returns:
-            stats (:obj:`onmt.Statistics`): epoch loss statistics
+            stats (:obj:`onmt.Statistics`): エポックlossの統計情報
         """
-        # Set model back to training mode.
+        # モデルをトレーニングモードに戻す
         self.model.train()
 
         total_stats = Statistics()
@@ -148,9 +148,9 @@ class Trainer(object):
                 report_stats = report_func(opt, epoch, batch_idx, num_batches,
                     total_stats.start_time, report_stats)
 
-        # Accumulate gradients one last time if there are any leftover batches
-        # Should not run for us since we plan to accumulate gradients at every
-        # batch, so true_batches should always equal candidate batches
+        # 残りのバッチがある場合は, 最後にもう一度勾配を累積させる.
+        # バッチごとに勾配を累積させる予定なので, 実行する必要はない.
+        # そのため true_batches は常に候補バッチと等しくなる
         if len(true_batchs) > 0:
             self._gradient_accumulation(true_batchs, total_stats, report_stats)
             true_batchs = []
@@ -158,12 +158,12 @@ class Trainer(object):
         return total_stats
 
     def validate(self, valid_iter):
-        """ Validate model.
-            valid_iter: validate data iterator
+        """ 検証モデル
+            valid_iter: 検証データのイテレータ
         Returns:
-            :obj:`onmt.Statistics`: validation loss statistics
+            :obj:`onmt.Statistics`: 検証lossの統計情報
         """
-        # Set model in validating mode.
+        # モデルを検証モードに設定
         self.model.eval()
 
         stats = Statistics()
@@ -182,7 +182,7 @@ class Trainer(object):
             _, batch_stats = self.valid_loss.compute_loss(batch.targets, outputs)
             stats.update(batch_stats)
 
-        # Set model back to training mode
+        # モデルをトレーニングモードに戻す
         self.model.train()
 
         return stats
@@ -191,13 +191,13 @@ class Trainer(object):
         return self.optim.update_learning_rate(ppl, epoch)
 
     def drop_checkpoint(self, opt, epoch, valid_stats, model_opt=None):
-        """ Save a resumable checkpoint.
+        """ 再会可能なチェックポイントを保存する
 
         Args:
-            opt (dict): option object
-            epoch (int): epoch number
-            fields (dict): fields and vocabulary
-            valid_stats : statistics of last validation run
+            opt (dict): オプションのオブジェクト
+            epoch (int): エポック番号
+            fields (dict): 分野と語彙
+            valid_stats : 最後の検証実行の統計情報
         """
         real_model = (self.model.module
                       if isinstance(self.model, nn.DataParallel)
@@ -269,6 +269,6 @@ class Trainer(object):
             total_stats.update(batch_stats)
             report_stats.update(batch_stats)
 
-            # Don't backprop fully.
+            # 完全にバックプロパゲーションしないこと
             if dec_state is not None:
                 dec_state.detach()

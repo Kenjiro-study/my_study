@@ -7,7 +7,7 @@ class RulebasedSession(Session):
     """一般的なルールベースのシステムフレームワーク
     """
     def __init__(self, agent, kb, parser, generator, manager, state, sample_temperature=1.):
-        super(RulebasedSession, self).__init__(agent)
+        super().__init__(agent) # 3系ver.
         self.parser = parser
         self.generator = generator
         self.manager = manager

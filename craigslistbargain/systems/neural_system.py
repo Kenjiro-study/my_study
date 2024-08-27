@@ -23,7 +23,7 @@ class PytorchNeuralSystem(System):
     新しい対話エージェント(NeuralSessionオブジェクト)をインスタンス化する関数を提供する
     """
     def __init__(self, args, schema, price_tracker, model_path, timed):
-        super(PytorchNeuralSystem, self).__init__()
+        super().__init__() # 3系ver.
         self.schema = schema
         self.price_tracker = price_tracker
         self.timed_session = timed

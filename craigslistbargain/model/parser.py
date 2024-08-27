@@ -3,10 +3,10 @@ import numpy as np
 from nltk import ngrams
 from nltk.corpus import stopwords
 from collections import defaultdict
-#from itertools import ifilter
 
 from cocoa.core.entity import is_entity
 from cocoa.model.parser import Parser as BaseParser, LogicalForm as LF, Utterance
+from cocoa.model.inference import classify_intent_neural
 
 from core.tokenizer import tokenize
 
@@ -67,12 +67,11 @@ class Parser(BaseParser):
         return False
 
     def compare(self, x, y, inc):
-        """Compare two prices.
-
+        """二つの価格を比較する
         Args:
             x (float)
             y (float)
-            inc (float={1,-1}): 1 means higher is better and -1 mean lower is better.
+            inc (float={1,-1}): 1 は高いほど良いことを意味し, -1 は低いほど良いことを意味します
         """
         if x == y:
             r = 0
@@ -92,9 +91,9 @@ class Parser(BaseParser):
         return Utterance(logical_form=LF(intent, price=price), template=['<offer>'])
 
     def tag_utterance(self, utterance, tokens_with_parsed_price):
-        """Tag the utterance with basic speech acts.
+        """発話に基本的な発話行為のタグをつける
         """
-        tags = super(Parser, self).tag_utterance(utterance)
+        tags = super().tag_utterance(utterance) # 3系ver.
         if self.is_price(utterance):
             tags.append('vague-price')
         if self.is_agreement(utterance):
@@ -116,9 +115,9 @@ class Parser(BaseParser):
         for price in filter(lambda x: self.is_price_token(x), tokens):
             # priceは小数点第一位まで表示した価格, type_はlisting_price, partner_price, my_price, priceのいずれか
             price, type_ = price.canonical.value, price.canonical.type
-            # 1) New price doest repeat current price
-            # 2) One's latest price is worse than previous ones (compromise)
-            # 3) Seller might propose the listing price but the buyer won't
+            # 1) 新しい価格は現在の価格を繰り返さない
+            # 2) 最新の価格が以前の価格より悪い (妥協)
+            # 3) 売り手は出品価格を提案するかもしれないが, 買い手は提案しない
             if type_ != 'curr_price' and \
                 (partner_prev_price is None or self.compare(price, partner_prev_price, inc) <= 0) and \
                 (partner_role == 'seller' or type_ != 'listing_price'):
@@ -190,31 +189,29 @@ class Parser(BaseParser):
             intent = 'unknown'
         return intent
 
-    def parse_message(self, event, dialogue_state):
+    def parse_message(self, event, dialogue_state, intents=None):
         tokens = self.lexicon.link_entity(tokenize(event.data), kb=self.kb, scale=False) # craigslistbargain/core/price-tracker.pyで価格を検出してトークナイズ
         template = self.extract_template(tokens, dialogue_state) # タイトルやprice-trackerを使用して発話の一部をプレースホルダに置き換えてテンプレートを作成
         utterance = Utterance(raw_text=event.data, tokens=tokens) # 正しい形の発話に成形
         tokens_with_parsed_price = self.parse_prices(tokens, dialogue_state) # 価格の部分をlisting_price(定価),my_price(自分の提案価格),partner_price(相手の提案価格),price(それ以外)に分ける
-        #print(tokens)
-        #print(template)
-        #print(utterance)
-        #print(tokens_with_parsed_price)
         #######
-        intent = self.classify_intent(utterance, tokens_with_parsed_price, dialogue_state) # ダイアログアクトの決定(ここを置き換えよう!)
-        print(intent)
+        if self.flag == True: ##### DLベースパーサーの使用
+            intent = intents
+        else: ##### ルールベースパーサーの使用
+            intent = self.classify_intent(utterance, tokens_with_parsed_price, dialogue_state) # ダイアログアクトの決定(ここを置き換えよう!)
         #######
         proposed_price = self.get_proposed_price(tokens_with_parsed_price, dialogue_state) # 各発話で提案されている価格を取得
         utterance.lf = LF(intent, price=proposed_price) # LogicalForm形式でダイアログアクトを保存(intent=⚪︎⚪︎ price=××)
         utterance.template = template # プレースホルダに置き換えたテンプレートを格納
         return utterance
 
-    def parse(self, event, dialogue_state):
+    def parse(self, event, dialogue_state, intents=None):
         # パートナーの発話を解析する
         assert event.agent == 1 - self.agent # パートナーの発話を確認するため, agent番号が自分と同じ場合はエラーにする
         if event.action == 'offer':
             u = self.parse_offer(event) # offerの場合はintent=offerで価格を追加
         elif event.action == 'message':
-            u = self.parse_message(event, dialogue_state) # messageの場合はパーサーで解析
+            u = self.parse_message(event, dialogue_state, intents) # messageの場合はパーサーで解析
         elif event.action in ('reject', 'accept', 'quit'):
             u = self.parse_action(event) # この三つの場合はactionをそのままintentにする
         else:

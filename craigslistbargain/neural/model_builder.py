@@ -144,7 +144,10 @@ def load_test_model(model_path, opt, dummy_opt):
     if model_opt.stateful and not opt.sample:
         raise ValueError('Beam search generator does not work with stateful models yet')
 
-    mappings = read_pickle('{}/vocab.pkl'.format(model_opt.mappings))
+    #####################
+    #mappings = read_pickle('{}/vocab.pkl'.format(model_opt.mappings)) # こっちが本物!
+    mappings = read_pickle('test/rule/mappings/lf2lf/vocab.pkl')
+    ##################### 実験の都合上変えてるので注意！
 
     # mappings = read_pickle('{0}/{1}/vocab.pkl'.format(model_opt.mappings, model_opt.model))
     mappings = make_model_mappings(model_opt.model, mappings)
@@ -215,8 +218,7 @@ def make_base_model(model_opt, mappings, gpu, checkpoint=None):
         if model_opt.share_decoder_embeddings:
             generator[0].weight = decoder.embeddings.word_lut.weight
     else:
-        generator = CopyGenerator(model_opt.rnn_size,
-                                  fields["tgt"].vocab)
+        generator = CopyGenerator(model_opt.rnn_size, fields["tgt"].vocab)
 
     # モデルの状態をチェックポイントからロードするか, 初期化する
     if checkpoint is not None:

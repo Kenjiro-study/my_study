@@ -10,7 +10,7 @@ def get_data_generator(args, model_args, schema, test=False):
     from .preprocess import DataGenerator, Preprocessor
     import os.path
 
-    # TODO: move this to dataset
+    # TODO: これをデータセットに移動する
     dataset = read_dataset(args, Scenario)
 
     mappings_path = model_args.mappings

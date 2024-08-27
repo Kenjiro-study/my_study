@@ -46,7 +46,7 @@ def close_connection(exception):
 
 
 def create_app(debug=False, templates_dir='templates'):
-    """Create an application."""
+    """アプリケーションの作成"""
 
     app = Flask(__name__, template_folder=os.path.abspath(templates_dir))
     app.debug = debug
@@ -67,13 +67,13 @@ def create_app(debug=False, templates_dir='templates'):
 def add_systems(args, config_dict, schema, debug=False):
     """
     Params:
-    config_dict: A dictionary that maps the bot name to a dictionary containing configs for the bot. The
-        dictionary should contain the bot type (key 'type') and. for bots that use an underlying model for generation,
-        the path to the directory containing the parameters, vocab, etc. for the model.
+    config_dict: bot名をbotの設定(config)を含む辞書にマッピングする辞書
+        辞書にはbotのタイプ(key 'type')が含まれている必要があり、生成に基礎モデルを使用するbotの場合は, 
+        モデルのパラメータ、語彙などを含むディレクトリへのパスが含まれる
     Returns:
-    agents: A dict mapping from the bot name to the System object for that bot.
-    pairing_probabilities: A dict mapping from the bot name to the probability that a user is paired with that
-        bot. Also includes the pairing probability for humans (backend.Partner.Human)
+    agents: bot名からそのbotのシステムオブジェクトへのマッピングを行う辞書
+    pairing_probabilities: bot名からユーザーがそのbotとペアになる確率にマッピングする辞書
+        そこには人間とペアになる確率文字含まれる (backend.Partner.Human)
     """
 
     total_probs = 0.0
@@ -101,7 +101,7 @@ def add_systems(args, config_dict, schema, debug=False):
     for name in systems:
         print(name)
 
-    # TODO: clean up pairing probabilities (obsolete)
+    # TODO: ペアリング確率をクリーンアップする (obsolete(廃止))
     if total_probs > 1.0:
         raise ValueError("Probabilities for active bots can't exceed 1.0.")
     if len(pairing_probabilities.keys()) != 0 and len(pairing_probabilities.keys()) != len(systems.keys()):
@@ -140,7 +140,7 @@ def init(output_dir, reuse=False):
     log_file = os.path.join(output_dir, LOG_FILE_NAME)
     error_log_file = os.path.join(output_dir, ERROR_LOG_FILE_NAME)
     transcripts_dir = os.path.join(output_dir, TRANSCRIPTS_DIR)
-    # TODO: don't remove everything
+    # TODO: 全て削除するな
     if not reuse:
         if os.path.exists(output_dir):
             shutil.rmtree(output_dir)

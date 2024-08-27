@@ -3,7 +3,7 @@ from cocoa.sessions.timed_session import TimedSessionWrapper
 
 class RulebasedSystem(System):
     def __init__(self, lexicon, generator, manager, timed_session):
-        super(RulebasedSystem, self).__init__()
+        super().__init__() # 3系ver.
         self.timed_session = timed_session
         self.lexicon = lexicon
         self.generator = generator

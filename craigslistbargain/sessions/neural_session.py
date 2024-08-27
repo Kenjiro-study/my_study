@@ -14,7 +14,7 @@ from neural.batcher import Batch
 
 class NeuralSession(Session):
     def __init__(self, agent, kb, env):
-        super(NeuralSession, self).__init__(agent)
+        super().__init__(agent) # 3系ver.
         self.env = env
         self.kb = kb
         self.builder = env.utterance_builder
@@ -107,7 +107,7 @@ class NeuralSession(Session):
 
 class PytorchNeuralSession(NeuralSession):
     def __init__(self, agent, kb, env):
-        super(PytorchNeuralSession, self).__init__(agent, kb, env)
+        super().__init__(agent, kb, env) # 3系ver.
         self.vocab = env.vocab
         self.gt_prefix = env.gt_prefix
 

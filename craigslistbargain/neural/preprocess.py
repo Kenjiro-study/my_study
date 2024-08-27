@@ -412,7 +412,7 @@ class DataGenerator(object):
         self.cache = cache
         self.ignore_cache = ignore_cache
         if (not os.path.exists(cache)) or ignore_cache:
-            # NOTE: each dialogue is made into two examples from each agent's perspective
+            # NOTE: 各対話は各エージェントの視点から2つのexamplesにまとめられる
             self.dialogues = {k: preprocessor.preprocess(v)  for k, v in examples.items() if v}
 
             for fold, dialogues in self.dialogues.items():
