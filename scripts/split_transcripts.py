@@ -22,7 +22,7 @@ for chat in chats:
     scenario_id = chat['scenario_uuid']
     scenario_agents[scenario_id].add(agents)
 
-# Only keep scenarios with all 4 agents
+# 4人のエージェント全員を含むシナリオのみ保存する
 scenario_subset = set([s for s, a in scenario_agents.iteritems() if len(a) == 4])
 print("Number of scenarios: ", len(scenario_subset))
 

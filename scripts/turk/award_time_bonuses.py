@@ -23,7 +23,7 @@ def assign_bonus(duration):
     elif 13 < duration <= 25:
         return 0.75
     elif duration > 25:
-        print "t>25"
+        print("t>25")
         return 2
     else:
         return 0.
@@ -46,33 +46,33 @@ def grant_bonuses():
         if response.startswith("I") or response.startswith("C"):
             response = "MTURK_TASK_" + response
         if response == "{}":
-            print "Empty response; feedback: {:s}".format(feedback)
+            print("Empty response; feedback: {:s}".format(feedback))
             if feedback != "{}" and "MTURK_TASK_" not in feedback:
                 total_bonus += 0.25
-                print "Based on feedback: Granting bonus 0.25 to worker {:s}".format(worker_id)
+                print("Based on feedback: Granting bonus 0.25 to worker {:s}".format(worker_id))
                 if not debug:
                     mturk_connection.grant_bonus(worker_id, hit_id, Price(amount=0.25),
                                                  reason='For the trouble you experienced with our negotiation platform')
             elif "MTURK_TASK_" in feedback:
-                print "Survey code was entered in feedback? {:s} Trying..".format(feedback)
+                print("Survey code was entered in feedback? {:s} Trying..".format(feedback))
                 response = feedback
         if response not in mturk_codes.keys():
-            print "No userid associated with code {:s}".format(response)
+            print("No userid associated with code {:s}".format(response))
             continue
         uid = mturk_codes[response]
         if uid not in bonuses.keys():
-            print "No chats for user {:s} with code {:s}".format(uid, response)
+            print("No chats for user {:s} with code {:s}".format(uid, response))
             continue
 
         bonus = bonuses[uid]
         if bonus > 0.:
             total_bonus += bonus
-            print "Granting bonus {:.2f} to worker {:s}".format(bonus, worker_id)
+            print("Granting bonus {:.2f} to worker {:s}".format(bonus, worker_id))
             if not debug:
                 mturk_connection.grant_bonus(worker_id, hit_id, Price(amount=bonus),
                                              reason='For having to spend extra time on our negotiation platform')
 
-    print "Total bonus awarded: {:.2f}".format(total_bonus)
+    print("Total bonus awarded: {:.2f}".format(total_bonus))
 
 
 def get_last_event(cid):
@@ -122,13 +122,13 @@ def get_bonuses():
         times.append(t)
         bonuses[uid] = assign_bonus(t)
 
-    print "Avg time taken: {:.2f}".format(np.mean(times))
-    print "Std: {:.2f}".format(np.std(times))
-    print "Average number of chats: {:.2f}".format(np.mean(num_chats))
-    print "Std: {:.2f}".format(np.std(num_chats))
-    print "Total bonus: ${:.2f}".format(np.sum(bonuses.values()))
+    print("Avg time taken: {:.2f}".format(np.mean(times)))
+    print("Std: {:.2f}".format(np.std(times)))
+    print("Average number of chats: {:.2f}".format(np.mean(num_chats)))
+    print("Std: {:.2f}".format(np.std(num_chats)))
+    print("Total bonus: ${:.2f}".format(np.sum(bonuses.values())))
     hist, bins = np.histogram(times)
-    print bins
+    print(bins)
 
     # width = np.diff(bins)
     # center = (bins[:-1] + bins[1:]) / 2
@@ -162,7 +162,7 @@ if __name__ == "__main__":
     bonuses = get_bonuses()
 
     if debug:
-        print "Running script in debug mode."
+        print("Running script in debug mode.")
         host = 'mechanicalturk.sandbox.amazonaws.com'
     else:
         host = 'mechanicalturk.amazonaws.com'

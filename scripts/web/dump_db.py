@@ -14,7 +14,7 @@ from core.scenario import Scenario
 
 def read_results_csv(csv_file):
     '''
-    Return a dict from mturk_code to worker_id.
+    mturk_code から worker_id に辞書を返す
     '''
     import csv
     reader = csv.reader(open(csv_file, 'r'))
@@ -31,7 +31,7 @@ def read_results_csv(csv_file):
 def chat_to_worker_id(cursor, code_to_wid):
     '''
     chat_id: {'0': workder_id, '1': worker_id}
-    workder_id is None means it's a bot
+    workder_id が None の場合は botであることを意味する
     '''
     d = {}
     cursor.execute('SELECT chat_id, agent_ids FROM chat')
@@ -83,6 +83,6 @@ if __name__ == "__main__":
     DatabaseReader.dump_chats(cursor, scenario_db, args.output, args.uid)
     if args.surveys:
         DatabaseReader.dump_surveys(cursor, args.surveys)
-    # TODO: move this to db_reader
+    # TODO: これを db_reader に移動する
     if args.batch_results:
         log_worker_id_to_json(args.db, args.batch_results)

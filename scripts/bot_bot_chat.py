@@ -61,5 +61,5 @@ if __name__ == '__main__':
                 examples.extend(generate_examples(agents, agent_names, scenarios, args.num_examples, args.max_turns))
 
     with open(args.examples_path, 'w') as out:
-        print >>out, json.dumps([e.to_dict() for e in examples])
+        print(json.dumps([e.to_dict() for e in examples]), file=out)
 

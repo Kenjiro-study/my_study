@@ -22,7 +22,7 @@ class DBCleaner():
     @staticmethod
     def cleanup(db_file, chat_timeout, user_timeout, cleaned_chats, sleep_time, q):
         def _cleanup_corrupt_counts():
-            # this should never happen!
+            # これは絶対に起きてはならない！
             cursor.execute('''UPDATE scenario SET active=0 WHERE active < 0''')
 
         def _update_inactive_chats(chats):
@@ -30,24 +30,19 @@ class DBCleaner():
                 chat_id, sid, outcome, _, agent_types, start_time = chat_info
 
                 if chat_id not in cleaned_chats:
-                    # if it's been longer than chat_timeout seconds since the chat started, and the chat
-                    # wasn't previously cleaned up, update the scenario DB
+                    # チャットが始まってからchat_timeout秒以上経過し, チャットが以前にクリーンアップされていない場合は, シナリオDBを更新する
 
                     agent_types = json.loads(agent_types)
                     partner_type = agent_types['0'] if agent_types['1'] == HumanSystem.name() else agent_types['1']
-                    print "[Cleaner] Cleaned up chat with ID={}, partner_type={}, scenario_id={}".format(
-                        chat_id, partner_type, sid
-                    )
-                    cursor.execute('''
-                    UPDATE scenario SET active=active-1 WHERE partner_type=? AND scenario_id=?
-                    ''', (partner_type, sid))
+                    print("[Cleaner] Cleaned up chat with ID={}, partner_type={}, scenario_id={}".format(chat_id, partner_type, sid))
+                    cursor.execute('''UPDATE scenario SET active=active-1 WHERE partner_type=? AND scenario_id=?''', (partner_type, sid))
 
                     cleaned_chats.add(chat_id)
 
         def _find_incomplete_chats():
-            # print 'Finding timed out chats with no outcome'
+            # print('Finding timed out chats with no outcome')
             cursor.execute('''SELECT * FROM chat WHERE outcome="" AND start_time <?''', (now-chat_timeout,))
-            # Select all incomplete chats (with empty outcomes) that have timed out
+            # タイムアウトした未完了のチャット(outputがempty)を全て選択する
             return cursor.fetchall()
 
         def _is_connection_timed_out(userid):
@@ -60,11 +55,10 @@ class DBCleaner():
 
         def _find_disconnected_user_chats():
             """
-            Find chats with no outcome where at least one human agent has been disconnected longer
-            than user_timeout seconds
+            少なくとも一人の人間のエージェントがuser_timeout秒以上切断された結果のないチャットを検索する
             :return:
             """
-            # print 'Finding chats with no outcome and users with timed out connections'
+            # print('Finding chats with no outcome and users with timed out connections')
             cursor.execute('''SELECT * FROM chat WHERE outcome=""''')
             inc_chats = cursor.fetchall()
 
@@ -78,7 +72,7 @@ class DBCleaner():
                 for idx in human_idxes:
                     userid = agent_ids[idx]
                     if _is_connection_timed_out(userid):
-                        # print "User %s connection timeout" % userid
+                        # print("User %s connection timeout" % userid)
                         clean = True
 
                 if clean:
@@ -99,7 +93,7 @@ class DBCleaner():
                 _cleanup_corrupt_counts()
                 q.put(cleaned_chats)
 
-                # print "[Cleaner] Sleeping for %d seconds" % sleep_time
+                # print("[Cleaner] Sleeping for %d seconds" % sleep_time)
             time.sleep(sleep_time)
 
         except sqlite3.IntegrityError:
@@ -109,14 +103,14 @@ class DBCleaner():
                 q.put(cleaned_chats)
 
     def cancel(self):
-        print "[Cleaner] Stopping execution"
+        print("[Cleaner] Stopping execution")
         self._stop = True
 
     def stopped(self):
         return self._stop
 
     def start(self):
-        print "[Cleaner] Starting execution"
+        print("[Cleaner] Starting execution")
         while not self.stopped():
             q = multiprocessing.Queue()
             p = multiprocessing.Process(target=self.cleanup, args=(self.db_file, self.chat_timeout, self.user_timeout, self.cleaned_chats, self.SLEEP_TIME, q))
@@ -124,22 +118,22 @@ class DBCleaner():
                 p.start()
                 p.join()
                 self.cleaned_chats = q.get()
-                # print "[Cleaner] Awoke from sleep"
-                # print "[Cleaner] Cleaned chats from queue:", self.cleaned_chats
+                # print("[Cleaner] Awoke from sleep")
+                # print("[Cleaner] Cleaned chats from queue:", self.cleaned_chats)
 
             except KeyboardInterrupt:
-                # If program is killed, try to run cleanup one last time in case past run was interrupted
+                # プログラムが強制終了された場合, 前回の実行が中断された場合に備えて最後にもう一度クリーンアップを実行してみること！
                 p.join()
                 self.cancel()
                 if not q.empty():
-                    # print "[Cleaner] Got item from queue from killed process"
+                    # print("[Cleaner] Got item from queue from killed process")
                     self.cleaned_chats = q.get()
-                    # print self.cleaned_chats
+                    # print(self.cleaned_chats)
                 p = multiprocessing.Process(target=self.cleanup, args=(self.db_file, self.chat_timeout, self.user_timeout, self.cleaned_chats, 0, q))
                 p.start()
                 p.join()
 
-        print "[Cleaner] Stopped execution"
+        print("[Cleaner] Stopped execution")
 
 
 def stop_cleanup(handler):

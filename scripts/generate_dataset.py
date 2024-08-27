@@ -31,7 +31,7 @@ def generate_examples(num_examples, scenario_db, examples_path, max_examples, re
         controller = Controller(scenario, sessions)
         ex = controller.simulate(max_turns, verbose=args.verbose)
 
-        ag, ut, fa, leng = controller.get_result(1) # 定量評価するエージェント番号が引数
+        ag, ut, fa, leng = controller.get_result(0) # 定量評価するエージェント番号が引数
         ag_sum += ag
         ut_sum += ut
         fa_sum += fa

@@ -27,7 +27,7 @@ def get_winner(transcript):
             return -1
     except KeyError:
         return -1
-    # TODO: once we finalized the scenarios we should just have one case
+    # TODO: シナリオが完成したらケースは一つだけになるはず
     refs = {0: kbs[0]['personal']['Bottomline'],
             1: kbs[1]['personal']['Bottomline']}
     ref_price = 'bottomline'
@@ -42,22 +42,22 @@ def get_winner(transcript):
 
     diffs = {}
 
-    # for seller, offer is probably lower than target
+    # 売り手にとって, オファーはおそらく目標より低い
     seller_idx = roles['seller']
     diffs[seller_idx] = abs(offer - refs[seller_idx])
 
-    # for buyer, offer is probably
+    # 買い手にとって, オファーはおそらく
     buyer_idx = roles['buyer']
     diffs[buyer_idx] = abs(refs[buyer_idx] - offer)
 
     if ref_price == 'bottomline':
-        # Winner if farther from bottomline
+        # ボトムライン価格から遠いほうが勝者
         if diffs[0] < diffs[1]:
             return 1
         elif diffs[1] < diffs[0]:
             return 0
     else:
-        # Winner is closer to target
+        # 勝者はより目標価格に近い
         if diffs[0] < diffs[1]:
             return 0
         elif diffs[1] < diffs[0]:
@@ -78,10 +78,10 @@ def get_stats(chat, survey):
     turns = get_turns_per_agent(chat)
     win_rates = get_win_rate_per_agent(chat)
     for name, data in izip(('num_tokens', 'num_turns', 'win_rate'), (tokens, turns, win_rates)):
-        for i in xrange(2):
+        for i in range(2):
             stats[i][name] = data[i]
     for q in ('fluent', 'persuasive', 'negotiator'):
-        for i in xrange(2):
+        for i in range(2):
             s = survey[str(i)]
             if q not in s:
                 stats[i][q] = 3
@@ -91,7 +91,7 @@ def get_stats(chat, survey):
 
 def is_valid(agent_stats):
     '''
-    Don't count chats where there is only one person talking.
+    一人だけが話しているチャットはカウントしない！
     '''
     if agent_stats[1]['num_turns'] < 3 or agent_stats[0]['num_turns'] < 3:
         return False
@@ -112,7 +112,7 @@ def update_stats(chat_workers, chats, surveys, worker_stats, worker_chats):
                     workers.add(agent_wid)
                     update_summary_map(worker_stats[agent_wid], agent_stats[int(agent_id)])
                     worker_chats[agent_wid].append((agent_id, chat))
-    print 'Update for %d workers' % len(workers)
+    print('Update for %d workers' % len(workers))
 
 def update_worker_stats(result_path, worker_stats, worker_chats):
     db_path = os.path.join(result_path, 'chat_state.db')
@@ -122,7 +122,7 @@ def update_worker_stats(result_path, worker_stats, worker_chats):
     transcripts = os.path.join(result_path, 'transcripts/transcripts.json')
     chats = read_json(transcripts)
     chats = {chat['uuid']: chat for chat in chats}
-    print 'Number of chats:', len(chats)
+    print('Number of chats:', len(chats))
 
     survey_path = os.path.join(result_path, 'transcripts/surveys.json')
     surveys = read_json(survey_path)[1]
@@ -136,7 +136,7 @@ def update_worker_stats(result_path, worker_stats, worker_chats):
 def print_chat(chat):
     for event in chat['events']:
         if event['action'] in ('message', 'offer'):
-            print event['agent'], event['data']
+            print(event['agent'], event['data'])
 
 def normalize_stats(worker_stats):
     keys = ('num_turns', 'num_tokens', 'win_rate', 'negotiator', 'fluent', 'persuasive')
@@ -167,23 +167,23 @@ def assign_qualification(mturk_conn, worker_scores, qual_type, threshold=None, d
             qual = qual_type['good']
         else:
             qual = qual_type['bad']
-        # Remove old qual
+        # 古い qual を削除する
         if worker_id in worker_quals:
             old_qual = worker_quals[worker_id]
             if old_qual == qual:
-                print 'Keep qual {qual_type} of worker {worker_id}'.format(qual_type=old_qual, worker_id=worker_id)
+                print('Keep qual {qual_type} of worker {worker_id}'.format(qual_type=old_qual, worker_id=worker_id))
                 continue
             else:
-                print 'Revoke qual {qual_type} of worker {worker_id}'.format(qual_type=old_qual, worker_id=worker_id)
+                print('Revoke qual {qual_type} of worker {worker_id}'.format(qual_type=old_qual, worker_id=worker_id))
                 if not debug:
                     try:
                         mturk_conn.revoke_qualification(worker_id, old_qual)
                     except MTurkRequestError as e:
-                        print "FAILED:", e.reason
+                        print("FAILED:", e.reason)
 
         # Only assign bad quals
         if qual == qual_type['bad']:
-            print 'Assign {qual_type} to worker {worker_id}'.format(qual_type=qual, worker_id=worker_id)
+            print('Assign {qual_type} to worker {worker_id}'.format(qual_type=qual, worker_id=worker_id))
             if not debug:
                 worker_quals[worker_id] = qual
                 mturk_conn.assign_qualification(qual, worker_id, send_notification=False)
@@ -192,10 +192,10 @@ def assign_qualification(mturk_conn, worker_scores, qual_type, threshold=None, d
 #    for worker_id, score in worker_scores.iteritems():
 #        # Update old qual
 #        if worker_id in worker_quals:
-#            print 'Update qual {qual_type} of worker {worker_id} from {old_score} to {new_score}'.format(qual_type=qual_type, worker_id=worker_id, old_score=worker_quals[worker_id], new_score=score)
+#            print('Update qual {qual_type} of worker {worker_id} from {old_score} to {new_score}'.format(qual_type=qual_type, worker_id=worker_id, old_score=worker_quals[worker_id], new_score=score))
 #            if not debug:
 #                mturk_conn.update_qualification_score(qual_type, worker_id, score)
-#        print 'Assign {qual_type} {score} to worker {worker_id}'.format(qual_type=qual_type, worker_id=worker_id, score=score)
+#        print('Assign {qual_type} {score} to worker {worker_id}'.format(qual_type=qual_type, worker_id=worker_id, score=score))
 #        if not debug:
 #            worker_quals[worker_id] = (qual_type, score)
 #            mturk_conn.assign_qualification(qual_type, worker_id, value=score, send_notification=False)
@@ -227,12 +227,12 @@ if __name__ == "__main__":
     #mturk_connection.revoke_qualification('AKVDY8OXNMQED', config['quals']['bad'])
     #import sys; sys.exit()
 
-    # Collect worker performance data
+    # worker のパフォーマンスデータを収集する
     worker_stats = defaultdict(dict)
     worker_chats = defaultdict(list)
     for batch in args.batches:
         result_path = os.path.join(args.result_dir, batch)
-        print 'Reading', result_path
+        print('Reading', result_path)
         update_worker_stats(result_path, worker_stats, worker_chats)
 
     def avg_num_chats(worker_ids):
@@ -243,23 +243,23 @@ if __name__ == "__main__":
 
     scores = [x[1] for x in sorted_workers]
     mean = np.mean(scores)
-    print 'Total #workers:', len(sorted_workers)
-    print 'Mean score:', mean, '#Qualified:', len([x for x in scores if x > mean])
-    print 'Median score:', np.median(scores), '#Qualified:', len(scores) / 2
+    print('Total #workers:', len(sorted_workers))
+    print('Mean score:', mean, '#Qualified:', len([x for x in scores if x > mean]))
+    print('Median score:', np.median(scores), '#Qualified:', len(scores) / 2)
     threshold = mean
 
     if args.verbose:
         for i, (worker_id, score) in enumerate(sorted_workers):
-            print '========================='
-            print '{} {} score={} #hits={}'.format(i, worker_id, score, len(worker_chats[worker_id]))
-            print worker_stats[worker_id]
+            print('=========================')
+            print('{} {} score={} #hits={}'.format(i, worker_id, score, len(worker_chats[worker_id])))
+            print(worker_stats[worker_id])
             for agent_id, chat in worker_chats[worker_id]:
-                print '==========chat %s==========' % agent_id
+                print('==========chat %s==========' % agent_id)
                 print_chat(chat)
 
     if debug:
-        print "Running script in debug mode; this won't actually assign any qualifications! " \
-              "To confirm these qualifications, run the script with --mode set to PROD"
+        print("Running script in debug mode; this won't actually assign any qualifications! " \
+              "To confirm these qualifications, run the script with --mode set to PROD")
 
     worker_quals = read_json(args.worker_quals)
 

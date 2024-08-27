@@ -12,7 +12,7 @@ parser.add_argument('--output', help='Output directory')
 args = parser.parse_args()
 
 all_chats = []
-# survey data structure: [{}, {}]
+# survey data の構造: [{}, {}]
 all_surveys = [{}, {}]
 
 for d in args.paths:
