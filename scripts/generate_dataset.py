@@ -11,13 +11,20 @@ from cocoa.core.util import read_json
 from cocoa.core.schema import Schema
 from cocoa.core.scenario_db import ScenarioDB
 import cocoa.options
+from sessions.hybrid_session import BuyerHybridSession, SellerHybridSession
 
 from core.scenario import Scenario
 from core.controller import Controller
 from systems import get_system
 import options
 
-def generate_examples(num_examples, scenario_db, examples_path, max_examples, remove_fail, max_turns):
+from transformers import AutoTokenizer
+from transformers import DataCollatorWithPadding
+from transformers import AutoModelForSequenceClassification, TrainingArguments, Trainer
+import torch
+from torch.nn.functional import softmax
+
+def generate_examples(num_examples, scenario_db, examples_path, max_examples, remove_fail, max_turns, parser_path=None, flag=False):
     examples = []
     num_failed = 0
     scenarios = scenario_db.scenarios_list
@@ -29,7 +36,18 @@ def generate_examples(num_examples, scenario_db, examples_path, max_examples, re
         scenario = scenarios[num_examples % len(scenarios)]
         sessions = [agents[0].new_session(0, scenario.kbs[0]), agents[1].new_session(1, scenario.kbs[1])]       
         controller = Controller(scenario, sessions)
-        ex = controller.simulate(max_turns, verbose=args.verbose)
+
+        # hybrid sessionの場合はflagがTureか否かを確認する(TODO: 本当はrulebase sessionの場合も)
+        for j in range(len(controller.sessions)):
+            if (type(controller.sessions[j]) == BuyerHybridSession or type(controller.sessions[j]) == SellerHybridSession) and flag:
+                controller.sessions[j].parser.flag = flag
+                device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+                checkpoint = parser_path # 使用したいモデルのパスを持ってくる
+                controller.sessions[j].tokenizer = AutoTokenizer.from_pretrained(checkpoint)
+                model = AutoModelForSequenceClassification.from_pretrained(checkpoint, num_labels=12)
+                controller.sessions[j].parser_model = model.to(device) # GPUにモデルを送る
+
+        ex = controller.simulate(max_turns, parser_path, verbose=args.verbose)
 
         ag, ut, fa, leng = controller.get_result(0) # 定量評価するエージェント番号が引数
         ag_sum += ag
@@ -69,6 +87,8 @@ if __name__ == '__main__':
     parser.add_argument('--results-path', default=None, help='json path to store the results of the chat examples') # チャットの例の結果を保存するためのjsonパス
     parser.add_argument('--max-examples', default=20, type=int, help='Number of test examples to predict') # 予測するテストexamplesの数
     parser.add_argument('-v', '--verbose', default=False, action='store_true', help='whether or not to have verbose prints') # 詳細を出力するかどうか
+    parser.add_argument('--parserpath', default=None, help='Path of the deep learning-based parser you created') ##### new!! ディープラーニングベースパーサーのパス #####
+    parser.add_argument('--neuralflag', default=False, action='store_true', help='which parser do you use, neural-base or rule-base') ###### new!! ルールベース, ニューラルベースどちらのパーサーを使用するか #####
     cocoa.options.add_scenario_arguments(parser) # --schema-path, --scenarios-path
     cocoa.options.add_dataset_arguments(parser) # --train-examples-paths, --test-examples-paths, --train-max-examples, --test-max-examples, --eval-examples-paths
     options.add_system_arguments(parser) # --templates, --policy, --price-tracker-model, --checkpoint, --beam-size, --min-length, --max-length, --n-best, --alpha, --sample, --temperature, --batch-size, --gpuid, --verbose
@@ -89,7 +109,7 @@ if __name__ == '__main__':
     
     num_examples = args.scenario_offset # 開始時にスキップするシナリオ数でデフォルトの0を使っている
 
-    generate_examples(num_examples, scenario_db, args.results_path, args.max_examples, args.remove_fail, args.max_turns)
+    generate_examples(num_examples, scenario_db, args.results_path, args.max_examples, args.remove_fail, args.max_turns, args.parserpath, args.neuralflag)
     # 引数の詳細
     # 1. num_example → 開始時にスキップするシナリオ数=0
     # 2. scenario_db → craigslist-schema.jsonとtrain-scenarios.jsonの内容を読み込んだシナリオのデータベース

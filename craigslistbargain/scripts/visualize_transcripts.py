@@ -32,7 +32,7 @@ if __name__ == '__main__':
 
     visualizer.compute_effectiveness()
 
-    # TODO: move summary and hist to analyzer
+    # TODO: summaryと履歴をanalyzerに移動する
     if args.hist:
         visualizer.hist(question_scores, args.outdir, partner=args.partner)
 

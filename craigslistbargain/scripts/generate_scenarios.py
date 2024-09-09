@@ -60,7 +60,7 @@ def generate_kbs(schema, listing):
             continue
         l = listing[attr.name.lower()]
         if attr.name == 'Description':
-            # NOTE: Buyer only sees the first half
+            # NOTE: 買い手は前半部分しか見ない
             N = max(1, len(l) / 2)
             buyer_item[attr.name] = l[:N]
         else:
@@ -79,14 +79,14 @@ def discretize(price, price_unit):
 
 def generate_price_range(base_price, price_unit, discounts):
     '''
-    base: a middle point to generate the range
-    intersections: percentage of intersection relative to the range
+    base: rangeを生成するための中間点
+    intersections: rangeに対するintersectionの割合
     '''
     base_price = discretize(base_price, price_unit)
     seller_target = base_price
     for i in discounts:
         buyer_target = i * seller_target
-        # Reverse discretization
+        # 逆離散化(Reverse discretization)
         seller_target = int(seller_target * price_unit)
         buyer_target = int(buyer_target * price_unit)
         if seller_target == 0 or buyer_target == 0:
@@ -130,12 +130,12 @@ if __name__ == '__main__':
     fractions = np.array([float(x) for x in args.fractions])
     fractions = fractions / np.sum(fractions)
 
-    # Sample listings
+    # サンプルのリスト
     sampled_listings = []
     N = sum([len(l) for l in listings])
     for listing, fraction in izip(listings, fractions):
         n = int(N * fraction)
-        print listing[0]['category'], len(listing), fraction, n
+        print(listing[0]['category'], len(listing), fraction, n)
         sampled_listings.append(listing[:n])
     listings = [x for l in sampled_listings for x in l]
     N = len(listings)
@@ -145,26 +145,26 @@ if __name__ == '__main__':
     base_price = None
 
     scenario_list = []
-    price_unit = 1  # Just use the real price
+    price_unit = 1  # 実際の価格を使用する
     scenario_generator = generate_scenario(schema, base_price, price_unit, args.discounts, listings)
     for i, s in enumerate(scenario_generator):
         if i % 100 == 0:
-            print i
+            print(i)
         if i < args.skip:
             continue
         if len(scenario_list) == args.num_scenarios:
             break
         scenario_list.append(s)
     if len(scenario_list) < args.num_scenarios:
-        print 'Not enough listings: {} scenarios generated.'.format(len(scenario_list))
+        print('Not enough listings: {} scenarios generated.'.format(len(scenario_list)))
     scenario_db = ScenarioDB(scenario_list)
     write_json(scenario_db.to_dict(), args.scenarios_path)
 
     for i in range(min(10, len(scenario_db.scenarios_list))):
-        print '---------------------------------------------------------------------------------------------'
-        print '---------------------------------------------------------------------------------------------'
+        print('---------------------------------------------------------------------------------------------')
+        print('---------------------------------------------------------------------------------------------')
         scenario = scenario_db.scenarios_list[i]
-        print "Scenario id: %s" % scenario.uuid
+        print("Scenario id: %s" % scenario.uuid)
         for agent in (0, 1):
             kb = scenario.kbs[agent]
             kb.dump()
@@ -174,5 +174,5 @@ if __name__ == '__main__':
         cat = s.kbs[0].facts['item']['Category']
         num_listings_per_category[cat] += 1
     for k, v in num_listings_per_category.iteritems():
-        print k, v
-    print '%d scenarios generated' % len(scenario_list)
+        print(k, v)
+    print('%d scenarios generated' % len(scenario_list))

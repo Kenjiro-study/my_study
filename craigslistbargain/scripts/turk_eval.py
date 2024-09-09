@@ -53,13 +53,13 @@ if __name__ == '__main__':
         task.get_reviewable_results()
     else:
         if args.eval_data:
-            print 'Load saved processed evaluation data'
+            print('Load saved processed evaluation data')
             data = EvalData.from_json(args.eval_data)
         else:
             assert len(args.system_outputs) % 2 == 0
             x = args.system_outputs
             eval_data = [(x[i], x[i+1]) for i in range(0, len(x), 2)]
-            print 'Read eval data from generate files'
+            print('Read eval data from generate files')
             data = EvalData.from_file(eval_data, args.num_context)
             data.dump(args.eval_data_output)
 
@@ -74,12 +74,12 @@ if __name__ == '__main__':
         num_questions_per_hit = args.num_questions_per_hit - args.num_test_questions
         assert num_questions_per_hit > 0
         if (args.num_eval * len(args.systems)) % num_questions_per_hit != 0:
-            print 'Evaluting {} contexts with {} questions per HIT - not divisible. Possible to get fewer questions in a HIT'.format(args.num_eval, args.num_questions_per_hit)
+            print('Evaluting {} contexts with {} questions per HIT - not divisible. Possible to get fewer questions in a HIT'.format(args.num_eval, args.num_questions_per_hit))
             raise ValueError
 
         batch_questions = []
         j = 0
-        for i in xrange(0, len(questions), num_questions_per_hit):
+        for i in range(0, len(questions), num_questions_per_hit):
             batch = questions[i: i+num_questions_per_hit]
             batch.extend(references[j: j+args.num_test_questions])
             j += args.num_test_questions
