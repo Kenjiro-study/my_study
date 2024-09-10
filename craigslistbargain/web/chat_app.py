@@ -167,7 +167,7 @@ if __name__ == "__main__":
 
     params_file = args.config
     with open(params_file) as fin:
-        params = json.load(fin)
+        params = json.load(fin) # app_param.jsonの内容をparamsに格納
 
     db, log_file, error_log_file, transcripts_dir = init(args.output, args.reuse)
     error_log_file = open(error_log_file, 'w')

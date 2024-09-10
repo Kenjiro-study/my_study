@@ -176,7 +176,7 @@
                 });
                 validCheckInterval = setInterval(pollServer, 3000);
 
-                // This part executes after the description is shown
+                // この部分は説明が表示された後に実行されます
                 setTimeout(function(){
 
                 $('#description').modal('hide')
@@ -579,7 +579,7 @@
         <div id="chat_container">
             <div id="instructions">
                 <h1 style="color:#004d00">{{ title}}</h1>
-                <button type="button" id="instructionCollapse" class="btn btn-info" data-toggle="collapse" data-target="#inner">Show/Hide Instructions</button>
+                <button type="button" id="instructionCollapse" class="btn btn-info" data-toggle="collapse" data-target="#inner">説明文の表示/非表示</button>
                 <div id="inner" class="collapse">
                     {{ instructions }}
                 </div>
@@ -608,28 +608,28 @@
                     
                 </div>
             </div> -->
-            <input id="text" placeholder="Enter your message here"><br><br>
+            <input id="text" placeholder="ここにメッセージを入力してください。"><br><br>
 
         </div>
 
         <div id="info_container">
             <div id="report">
-                <p style="text-align:right">Having trouble with this task? Click here to send us a report.</p>
+                <p style="text-align:right">問題が発生した場合は, こちらをクリックしてレポートを送信してください。</p>
                 <button onclick="report()" style="display: block; float:right;" id="report">Report</button>
             </div>
             <div id="facts">
-                <h3>Scenario</h3>
+                <h3>シナリオ</h3>
                 {% if kb['personal']['Role'] == 'buyer' %}
-                    <p>You are the potential <b>buyer</b>.
-                    The list price for this item is <b>{{ "$%d"|format(kb['item']['Price']) }}</b>.
-                    You would like to pay for <b>{{ "$%d"|format(kb['personal']['Target']) }}</b>.
-                    You can accept higher price though if the item is really good or there are other perks.</p>
+                    <p>あなたは <b>買い手</b> です。
+                    この商品の定価は <b>{{ "$%d"|format(kb['item']['Price']) }}</b> です。
+                    あなたは <b>{{ "$%d"|format(kb['personal']['Target']) }}</b> でこの商品を購入したいと考えています。
+                    パートナーと交渉を行い, できるだけ上記の目標価格に近い, 安い価格で商品を購入することを目指してください。</p>
                 {% else %}
-                    <p>You are the <b>seller</b>.
-                    Your listing price for this item is <b>{{ "$%d"|format(kb['item']['Price']) }}</b>.
-                    You are willing to negotiate but should not go too low.
+                    <p>あなたは <b>売り手</b> です。
+                    この商品の定価は <b>{{ "$%d"|format(kb['item']['Price']) }}</b> です。
+                    パートナーと交渉を行い, できるだけ定価に近い価格で売ることを目指してください。
                 {% endif %}
-                <h3>Basic facts</h3>
+                <h3>商品情報</h3>
                 <table>
                 <tbody>
                     {% for attr in attributes if not (attr == 'Role' or attr == 'Target' or attr == 'Bottomline' or attr == 'Price' or attr == 'Images' or attr == 'Category') %}
@@ -663,16 +663,16 @@
             </div>
             {% if partner_kb %}
                 <div id="facts">
-                    <h3>Partner Goal</h3>
+                    <h3>パートナーの目標価格</h3>
                     <p>
-                    Your listing price for this item is {{ "$%d"|format(kb['item']['Price']) }}.
+                    この商品の定価は {{ "$%d"|format(kb['item']['Price']) }}.
                     </p>
                 </div>
             {% endif %}
 
             <div id="offer">
                 <h4>Final agreement:</h4>
-                <p>Be careful. You can only enter the offer <b>once</b>.</p>
+                <p>最終的なオファーを送ります。この下の <b>price</b> の欄にオファーしたい価格の数値を記入し <b>Submit</b> をクリックしてください。オファーは一回のみ行うことができます。</p>
                 <label for="price">Price</label>
                 <input id="price" pattern="\d+"/>
                 <!-- <label for="side_offers">Additional Terms</label> -->
@@ -682,7 +682,7 @@
                 <button onclick="this.disabled=true;reject();" style="display:none" id="reject">Reject</button>
             </div>
             <div id="quit_option">
-                <h4>Quit: </h4><p> If you think that it will not be possible to negotiate a deal, you can choose to <b>quit</b> this dialogue.</p>
+                <h4>Quit: </h4><p> 交渉が不可能だと思われる場合には, この対話を終了することができます。終了する場合は, この下の <b>quit</b> をクリックしてください。</p>
                 <button onclick="this.disabled=true;quit();" style="display: block" id="quit">Quit</button>
             </div>
 
@@ -697,7 +697,7 @@
                     <b><p id="modal_instruction"></p></b>
                   </div>
                   <div class="modal-body" id="report-body">
-                    <p>Describe your issues in the box below, and then click 'Submit' to submit your feedback to us.<span style="color: #ff0000"><b>Please also include your Mechanical Turk worker ID in the feedback so that we can grant you a bonus if you have significant trouble.</b></span></p>
+                    <p>下のボックスに問題点を記入し, "Submit" をクリックしてフィードバックを送信してください。<span style="color: #ff0000"><b>Please also include your Mechanical Turk worker ID in the feedback so that we can grant you a bonus if you have significant trouble.</b></span></p>
                     <textarea id="report_feedback"></textarea>
                     <button onclick="report()" style="display: block;">Submit</button>
                   </div>

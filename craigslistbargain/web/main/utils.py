@@ -1,9 +1,9 @@
 from cocoa.web.main.utils import Messages as BaseMessages
 
 class Messages(BaseMessages):
-    ChatCompleted = "Great, you reached a final offer!"
-    ChatIncomplete = "Sorry, you weren't able to reach a deal. :("
-    Redirect = "Sorry, that chat did not meet our acceptance criteria."
-    #BetterDeal = "Congratulations, you got the better deal! We'll award you a bonus on Mechanical Turk."
-    #WorseDeal = "Sorry, your partner got the better deal. :("
+    ChatCompleted = "おめでとうございます, 最終オファーが成立しました!"
+    ChatIncomplete = "残念ですが, 交渉合意には至りませんでした。 :("
+    Redirect = "申し訳ありませんが, そのチャットは我々が想定している承認基準を満たしていません。"
+    #BetterDeal = "おめでとうございます! パートナーよりもお得な取引ができました!"
+    #WorseDeal = "残念ですが, パートナーの方がお得な取引でした。 :("
 

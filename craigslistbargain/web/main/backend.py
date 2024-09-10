@@ -20,7 +20,7 @@ class DatabaseManager(BaseDatabaseManager):
 
     @classmethod
     def init_database(cls, db_file):
-        super(DatabaseManager, cls).init_database(db_file)
+        super().init_database(db_file) # 3系ver.
         conn = sqlite3.connect(db_file)
         c = conn.cursor()
         c.execute(
@@ -35,16 +35,16 @@ class DatabaseManager(BaseDatabaseManager):
 class Backend(BaseBackend):
     def display_received_event(self, event):
         if event.action == 'offer':
-            message = format_message("Your partner made an offer. View it on the right and accept or reject it.", True)
+            message = format_message("パートナーがオファーを出しました。右側でオファーを確認し, accept または reject を選択してください。", True)
             return {'message': message, 'status': False, 'price': event.data['price']}
         elif event.action == 'accept':
-            message = format_message("Congrats, your partner accepted your offer!", True)
+            message = format_message("パートナーがあなたのオファーを受け入れました!", True)
             return {'message': message, 'status': False}
         elif event.action == 'reject':
-            message = format_message("Sorry, your partner rejected your offer.", True)
+            message = format_message("残念ですが, パートナーがあなたのオファーを拒否しました.", True)
             return {'message': message, 'status': False}
         else:
-            return super(Backend, self).display_received_event(event)
+            return super().display_received_event(event) # 3系ver.
 
     def should_reject_chat(self, userid, agent_idx, min_tokens):
         with self.conn:
@@ -113,7 +113,7 @@ class Backend(BaseBackend):
                                                    offer,
                                                    str(time.time())))
         except sqlite3.IntegrityError:
-            print("WARNING: Rolled back transaction")
+            print("注意!: Rolled back transaction")
             return None
 
     def accept_offer(self, userid):
@@ -125,7 +125,7 @@ class Backend(BaseBackend):
                 self.send(userid, Event.AcceptEvent(u.agent_index,
                                                    str(time.time())))
         except sqlite3.IntegrityError:
-            print("WARNING: Rolled back transaction")
+            print("注意!: Rolled back transaction")
             return None
 
     def reject_offer(self, userid):
@@ -137,7 +137,7 @@ class Backend(BaseBackend):
                 self.send(userid, Event.RejectEvent(u.agent_index,
                                                    str(time.time())))
         except sqlite3.IntegrityError:
-            print("WARNING: Rolled back transaction")
+            print("注意!: Rolled back transaction")
             return None
 
     def quit(self, userid):
@@ -150,7 +150,7 @@ class Backend(BaseBackend):
                                                   None,
                                                   str(time.time())))
         except sqlite3.IntegrityError:
-            print("WARNING: Rolled back transaction")
+            print("注意!: Rolled back transaction")
             return None
 
     def submit_survey(self, userid, data):
@@ -187,4 +187,4 @@ class Backend(BaseBackend):
                 self.logger.debug("User {:s} submitted survey for chat {:s}".format(userid, user_info.chat_id))
 
         except sqlite3.IntegrityError:
-            print("WARNING: Rolled back transaction")
+            print("注意!: Rolled back transaction")

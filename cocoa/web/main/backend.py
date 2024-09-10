@@ -3,7 +3,7 @@ import hashlib
 import sqlite3
 import time
 import numpy as np
-from flask import Markup
+from markupsafe import Markup
 from collections import defaultdict
 import json
 
@@ -18,14 +18,14 @@ from .logger import WebLogger
 
 
 class DatabaseManager(object):
-    """Update database with user/chat information.
+    """user/chat 情報でデータベースを更新する
     """
     def __init__(self, db_file):
         self.db_file = db_file
 
     @classmethod
     def init_database(cls, db_file):
-        """Create a database at `db_file` that records basic chat and user information.
+        """基本的なチャットとユーザー情報を記録するデータベースを'db_file'作成する
         """
         conn = sqlite3.connect(db_file)
         c = conn.cursor()
@@ -57,7 +57,7 @@ class DatabaseManager(object):
         return cls(db_file)
 
     def add_scenarios(self, scenario_db, systems, update=False):
-        """Add used scenarios to DB so that we don't collect data on duplicated scenarios.
+        """重複したシナリオを収集しないように, 使用されたシナリオをデータベースに追加する
         """
         conn = sqlite3.connect(self.db_file)
         c = conn.cursor()
@@ -72,8 +72,7 @@ class DatabaseManager(object):
         conn.close()
 
 
-
-# TODO: refactor to put database operations in the DBManager
+# TODO: データベース操作をDBManagerに配置するようにリファクタリングする
 class Backend(object):
     @classmethod
     def get_backend(cls):
@@ -103,11 +102,11 @@ class Backend(object):
 
         self.do_survey = True if "end_survey" in params.keys() and params["end_survey"] == 1 else False
         self.scenario_db = scenario_db
-        # TODO: hack for seller/buyer
+        # TODO: seller/buyerのためのハック
         self.scenario_int_id = {s.uuid: i for i, s in enumerate(scenario_db.scenarios_list)}
         self.schema = schema
         self.systems = systems
-        # Preselected partner type and scenario from URL
+        # URLから事前に選択されたパートナータイプとシナリオ
         self.active_system = active_system
         self.active_scenario = active_scenario
         self.sessions = sessions
@@ -117,26 +116,25 @@ class Backend(object):
         self.messages = messages
 
     def display_received_event(self, event):
-        """Convert a received event to string to be shown in the chat box.
-
-        See templates/chat.html ajax call /_check_inbox/ and views/chat.py.
+        """受信したイベントをチャットボックスに表示される文字列に変換する
+           templates/chat.html の ajax call /_check_inbox/ と views/chat.py を参照すること
 
         Returns:
             message (str)
-            status (bool): Whether the message should be displayed in the status bar
+            status (bool): メッセージをステータスバーに表示するかどうか
 
         """
         status = False
         if event.action == 'message':
             message = format_message(u"Partner: {}".format(event.data), False)
         elif event.action == 'join':
-            message = format_message("Your partner has joined the room.", True)
+            message = format_message("パートナーが入室しました!", True)
         elif event.action == 'leave':
-            message = format_message("Your partner has left the room.", True)
+            message = format_message("パートナーが退出しました!", True)
         elif event.action == 'typing':
             status = True
             if event.data == 'started':
-                message = "Your partner is typing..."
+                message = "パートナーが入力中です..."
             else:
                 message = ""
         #elif event.action == 'eval':
@@ -179,7 +177,7 @@ class Backend(object):
         outcome = controller.get_outcome()
         self.update_chat_reward(cursor, controller.get_chat_id(), outcome)
         _update_scenario_db()
-        self.logger.debug("Setting controller for chat {:s} to inactive".format(controller.get_chat_id()))
+        self.logger.debug("チャット {:s} のコントローラーを非アクティブに設定しています。to inactive".format(controller.get_chat_id()))
         controller.set_inactive()
         # self.controller_map[userid] = None
 
@@ -270,7 +268,7 @@ class Backend(object):
 
                 cursor.execute('''INSERT INTO event VALUES (?,?,?,?,?,?,?)''', row)
         except sqlite3.IntegrityError:
-            print("WARNING: Rolled back transaction")
+            print("注意!: Rolled back transaction")
 
     def attempt_join_chat(self, userid):
         def _init_controller(my_index, partner_type, scenario, chat_id):
@@ -289,10 +287,10 @@ class Backend(object):
             self.sessions[my_id] = my_session
             self.sessions[partner_id] = partner_session
 
-            # ensures that partner is actually in waiting state
+            # パートナーが実際に待ち状態にあるかどうかを確認する
             self._get_user_info(cursor, partner_id, assumed_status=Status.Waiting)
 
-            # Update partner
+            # パートナーを更新
             self._update_user(cursor, partner_id,
                               status=Status.Chat,
                               partner_id=my_id,
@@ -302,7 +300,7 @@ class Backend(object):
                               message="",
                               chat_id=chat_id)
 
-            # Update me
+            # 自分を更新
             self._update_user(cursor, my_id,
                               status=Status.Chat,
                               partner_id=partner_id,
@@ -344,7 +342,7 @@ class Backend(object):
             return userids
 
         def _choose_scenario_and_partner_type(cursor):
-            # for each scenario, get number of complete dialogues per agent type
+            # 各シナリオについて, エージェントタイプごとに完了した対話の数を取得する
             all_partners = self.systems.keys() if not self.active_system else [self.active_system]
 
             if self.active_scenario is not None:
@@ -357,28 +355,27 @@ class Backend(object):
             for (scenario_id, partner_type, complete, active) in db_scenarios:
                 complete = set(json.loads(complete))
                 active = set(json.loads(active))
-                # map from scenario ID -> partner type -> # of completed dialogues with that partner
+                # シナリオID -> パートナータイプ -> そのパートナーとの完了した対話の数のマップ
                 if scenario_id not in scenario_dialogues:
                     scenario_dialogues[scenario_id] = {}
 
                 scenario_dialogues[scenario_id][partner_type] = len(complete) + len(active)
 
-            # find "active" scenarios (scenarios for which at least one agent type has no completed or active dialogues)
+            # "active"なシナリオ(scenarios for which at least one agent type has no completed or active dialogues)を見つける
             active_scenarios = defaultdict(list)
             for sid in scenario_dialogues.keys():
                 for partner_type in all_partners:
                     if scenario_dialogues[sid][partner_type] < self.num_chats_per_scenario[partner_type]:
                         active_scenarios[sid].append(partner_type)
 
-            # if all scenarios have at least one dialogue per agent type (i.e. no active scenarios),
-            # just select a random scenario and agent type
+            # 全てのシナリオがエージェントタイプごとに少なくとも1つは対話を所持している場合, (i.e. アクティブなシナリオがない), ランダムなシナリオとエージェントタイプを選択するだけである
             if len(active_scenarios.keys()) == 0:
                 sid = np.random.choice(scenario_dialogues.keys())
                 p = np.random.choice(all_partners)
                 return self.scenario_db.get(sid), p
 
-            # otherwise, select a random active scenario and an agent type that it's missing
-            sid = np.random.choice(active_scenarios.keys())
+            # それ以外の場合は, ランダムにアクティブなシナリオと, 不足しているエージェントタイプを選択する
+            sid = np.random.choice(list(active_scenarios.keys()))
             p = np.random.choice(active_scenarios[sid])
             return self.scenario_db.get(sid), p
 
@@ -399,7 +396,7 @@ class Backend(object):
                 scenario, partner_type = _choose_scenario_and_partner_type(cursor)
                 scenario_id = scenario.uuid
                 #my_index = np.random.choice([0, 1])
-                # TODO: hack for buyer/seller
+                # TODO: buyer/sellerのためのハック
                 my_index = 0 if self.scenario_int_id[scenario_id] % 2 == 0 else 1
                 chat_id = self._generate_chat_id()
                 if partner_type == HumanSystem.name():
@@ -440,7 +437,7 @@ class Backend(object):
                     return _pair_with_bot(cursor, userid, my_index, partner_type, scenario, chat_id)
 
         except sqlite3.IntegrityError:
-            print("WARNING: Rolled back transaction")
+            print("注意!: Rolled back transaction")
 
     def decrement_active_chats(self, cursor, scenario_id, partner_type, chat_id):
         cursor.execute('''SELECT active FROM scenario WHERE scenario_id=? AND partner_type=?''',
@@ -531,7 +528,7 @@ class Backend(object):
                 self._update_user(cursor, userid,
                                   connected_status=1)
         except sqlite3.IntegrityError:
-            print("WARNING: Rolled back transaction")
+            print("注意!: Rolled back transaction")
 
     def create_user_if_not_exists(self, username):
         with self.conn:
@@ -548,7 +545,7 @@ class Backend(object):
                                   connected_status=0)
 
         except sqlite3.IntegrityError:
-            print("WARNING: Rolled back transaction")
+            print("注意!: Rolled back transaction")
 
     def get_chat_info(self, userid, peek=False):
         try:
@@ -566,7 +563,7 @@ class Backend(object):
                                          scenario.attributes, num_seconds_remaining)
 
         except sqlite3.IntegrityError:
-            print("WARNING: Rolled back transaction")
+            print("注意!: Rolled back transaction")
 
     def get_completion_messages(self, userid):
         """
@@ -590,7 +587,7 @@ class Backend(object):
                 ex = DatabaseReader.get_chat_example(cursor, chat_id, self.scenario_db).to_dict()
                 return ex
         except sqlite3.IntegrityError:
-            print("WARNING: Rolled back transaction")
+            print("注意!: Rolled back transaction")
 
     def get_finished_info(self, userid, from_mturk=False, current_status=Status.Finished):
         def _generate_mturk_code(completed=True):
@@ -637,7 +634,7 @@ class Backend(object):
                 return FinishedState(Markup(u.message), num_seconds, mturk_code)
 
         except sqlite3.IntegrityError:
-            print("WARNING: Rolled back transaction")
+            print("注意!: Rolled back transaction")
 
     def get_survey_info(self, userid):
         try:
@@ -651,7 +648,7 @@ class Backend(object):
                                    scenario.attributes, controller.get_result(u.agent_index))
 
         except sqlite3.IntegrityError:
-            print("WARNING: Rolled back transaction")
+            print("注意!: Rolled back transaction")
 
     def get_waiting_info(self, userid):
         try:
@@ -663,7 +660,7 @@ class Backend(object):
                 return WaitingState(u.message, num_seconds)
 
         except sqlite3.IntegrityError:
-            print("WARNING: Rolled back transaction")
+            print("注意!: Rolled back transaction")
 
     def get_schema(self):
         return self.schema
@@ -680,7 +677,7 @@ class Backend(object):
                         return Status.Waiting
                     return u.status
                 except (UnexpectedStatusException, ConnectionTimeoutException, StatusTimeoutException) as e:
-                    # Handle timeouts by performing the relevant update
+                    # 関連する更新を実行してタイムアウトを処理する
                     u = self._get_user_info_unchecked(cursor, userid)
 
                     if u.status == Status.Waiting:
@@ -722,7 +719,7 @@ class Backend(object):
                         raise Exception("Unknown status: {} for user: {}".format(u.status, userid))
 
         except sqlite3.IntegrityError:
-            print("WARNING: Rolled back transaction")
+            print("注意!: Rolled back transaction")
 
     def get_user_message(self, userid):
         with self.conn:
@@ -783,7 +780,7 @@ class Backend(object):
                 return True
 
         except sqlite3.IntegrityError:
-            print("WARNING: Rolled back transaction")
+            print("注意!: Rolled back transaction")
             return False
 
     def is_connected(self, userid):
@@ -797,15 +794,15 @@ class Backend(object):
                     return False
 
         except sqlite3.IntegrityError:
-            print("WARNING: Rolled back transaction")
+            print("注意!: Rolled back transaction")
 
     def is_game_over(self, userid):
         """
-        Checks whether the game that the user defined by userid is in is complete or not
+        ユーザーIDによって定義されたユーザーが参加しているゲームが完了しているかどうかをチェックする
         :param userid:
         :return:
-           finished: boolean to tell whether the game is over or not
-           complete: boolean to tell whether the game was completed or not. For some tasks these two values could be the same
+           finished: ゲームが終了したかどうかを示すブール値
+           complete: ゲームが完了したかどうかを示すブール値, 一部のタスクではfinishedと同じ値になる場合がある
         """
         controller = self.controller_map[userid]
         return controller.game_over(), controller.complete()
@@ -827,13 +824,13 @@ class Backend(object):
                 except (UnexpectedStatusException, ConnectionTimeoutException, StatusTimeoutException) as e:
                     return False
         except sqlite3.IntegrityError:
-            print("WARNING: Rolled back transaction")
+            print("注意!: Rolled back transaction")
 
     def receive(self, userid):
         controller = self.controller_map[userid]
         if controller is None:
-            # fail silently - this just means that receive is called between the time that the chat has ended and the
-            # time that the page is refreshed
+            # fail silently
+            # ↑これはチャットが終了してからページが更新されるまでの間に, receiveが呼び出されることを意味する
             return None
         controller.step(self)
         session = self._get_session(userid)
@@ -845,7 +842,7 @@ class Backend(object):
                 cursor = self.conn.cursor()
                 self._update_user(cursor, userid, status=Status.Reporting)
         except sqlite3.IntegrityError:
-            print("WARNING: Rolled back transaction")
+            print("注意!: Rolled back transaction")
 
     def report(self, userid, feedback):
         try:
@@ -853,7 +850,7 @@ class Backend(object):
                 cursor = self.conn.cursor()
                 cursor.execute('''INSERT INTO feedback VALUES (?,?)''', (userid, feedback))
         except sqlite3.IntegrityError:
-            print("WARNING: Rolled back transaction")
+            print("注意!: Rolled back transaction")
 
     def send(self, userid, event):
         session = self._get_session(userid)
@@ -863,8 +860,8 @@ class Backend(object):
             cursor = self.conn.cursor()
             self._update_user(cursor, userid, connected_status=1)
         if controller is None:
-            # fail silently because this just means that the user tries to send something after their partner has left
-            # (but before the chat has ended)
+            # これは, パートナーが交渉から去った後にユーザーが何かを送信しようとしていることを意味するため, fail silentlyとなる
+            # (ただしチャットが終了する前限定)
             return None
         controller.step(self)
         # self.add_event_to_db(controller.get_chat_id(), event)
@@ -876,7 +873,7 @@ class Backend(object):
         def _update_scenario_db(chat_id, partner_type):
             cursor.execute('''SELECT scenario_id FROM chat WHERE chat_id=?''', (chat_id,))
             scenario_id = cursor.fetchone()[0]
-            # make sure that the # of completed dialogues for the scenario is only updated once if both agents are human
+            # 両方のエージェントが人間である場合, シナリオの完了した対話の数が1回だけ更新されることを確認する
             cursor.execute('''SELECT complete FROM scenario WHERE scenario_id=? AND partner_type=?''',
                            (scenario_id, partner_type))
             complete_set = set(json.loads(cursor.fetchone()[0]))
@@ -899,7 +896,7 @@ class Backend(object):
                 _user_finished(userid)
                 self.logger.debug("User {:s} submitted survey for chat {:s}".format(userid, user_info.chat_id))
         except sqlite3.IntegrityError:
-            print("WARNING: Rolled back transaction")
+            print("注意!: Rolled back transaction")
 
     def update_chat_reward(self, cursor, chat_id, outcome):
         str_outcome = json.dumps(outcome)
@@ -917,7 +914,7 @@ class Backend(object):
                 return 0 if agent_ids[0] == userid else 1
 
         except sqlite3.IntegrityError:
-            print("WARNING: Rolled back transaction")
+            print("注意!: Rolled back transaction")
             return None
 
 #######################################

@@ -22,16 +22,16 @@ class DatabaseReader(object):
                 dt = datetime.fromtimestamp(float(time)) # make sure that time is a UNIX timestamp
                 return time
             except (ValueError, TypeError):
-                print('Unrecognized time format: %s' % time)
+                print('認識できない時間のフォーマットです。: %s' % time)
 
         return None
 
     @classmethod
     def process_event_data(cls, action, data):
-        """Construct structured data from strings.
+        """文字列から構造化データを構築する。
 
-        Data can be some json dict string that needs to be loaded,
-        e.g. "{'price': 10}".
+        データはロードする必要のあるJSON辞書文字列である。
+        例. "{'price': 10}".
 
         """
         if action == 'eval':
@@ -40,7 +40,7 @@ class DatabaseReader(object):
 
     @classmethod
     def get_chat_outcome(cls, cursor, chat_id):
-        """Get outcome of the chat specified by chat_id.
+        """chat_idで指定されたチャットの結果を返す。
 
         Returns:
             {}
@@ -56,7 +56,7 @@ class DatabaseReader(object):
 
     @classmethod
     def get_chat_agent_types(cls, cursor, chat_id):
-        """Get types of the two agents in the chat specified by chat_id.
+        """chat_idで指定されたチャット内の2人のエージェントのタイプを取得する。
 
         Returns:
             {0: agent_name (str), 1: agent_name (str)}
@@ -72,7 +72,7 @@ class DatabaseReader(object):
 
     @classmethod
     def get_chat_events(cls, cursor, chat_id):
-        """Read all events in the chat specified by chat_id.
+        """chat_idで指定されたチャット内の全てのイベントを読み取る。
 
         Returns:
             [Event]
@@ -84,7 +84,7 @@ class DatabaseReader(object):
         chat_events = []
         agent_chat = {0: False, 1: False}
         for row in logged_events:
-            # Compatible with older event structure
+            # 古いeventの構造と互換性あり
             agent, action, time, data = [row[k] for k in ('agent', 'action', 'time', 'data')]
             try:
                 start_time = row['start_time']
@@ -111,7 +111,7 @@ class DatabaseReader(object):
 
     @classmethod
     def has_chat(cls, cursor, chat_id):
-        """Check if a chat is in the DB.
+        """DBチャットがDBにあるかどうかを確認する。
         """
         cursor.execute('SELECT scenario_id, outcome FROM chat WHERE chat_id=?', (chat_id,))
         result = cursor.fetchone()
@@ -127,11 +127,11 @@ class DatabaseReader(object):
 
     @classmethod
     def get_chat_example(cls, cursor, chat_id, scenario_db):
-        """Read a dialogue from the DB.
+        """DBからダイアログを読み取る。
 
         Args:
             chat_id (str)
-            scenario_db (ScenarioDB): map scenario ids to Scenario
+            scenario_db (ScenarioDB): シナリオIDをScenarioにマッピングする
 
         Returns:
             Example
@@ -150,12 +150,12 @@ class DatabaseReader(object):
 
     @classmethod
     def dump_chats(cls, cursor, scenario_db, json_path, uids=None):
-        """Dump chat transcripts to a JSON file.
+        """チャットのトランスクリプトをJSONファイルにダンプする。
 
         Args:
-            scenario_db (ScenarioDB): retrieve Scenario by logged uuid.
-            json_path (str): output path.
-            uids (list): if provided, only log chats from these users.
+            scenario_db (ScenarioDB): 記録されたUUIDでシナリオを取得する
+            json_path (str): 出力保存先のパス
+            uids (list): 指定されている場合のみ, これらのユーザーからのチャットのみがログに記録される
 
         """
         if uids is None:

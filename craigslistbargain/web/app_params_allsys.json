@@ -27,9 +27,9 @@
     },
     "connection_timeout_num_seconds": 3,
     "idle_timeout_num_seconds": 210,
-    "templates_dir": "web/templates",
-    "images_base": "web/static/images",
-    "instructions": "web/templates/craigslist-instructions.html",
+    "templates_dir": "craigslistbargain/web/templates",
+    "images_base": "craigslistbargain/web/static/images",
+    "instructions": "craigslistbargain/web/templates/craigslist-instructions.html",
     "task_title": "Let's Negotiate!",
     "icon": "handshake.jpg",
     "end_survey": 1,
@@ -37,14 +37,14 @@
     "num_chats_per_scenario": {
         "rulebased": 1,
         "human": 1,
-        "sl-words": 1,
-        "rl-words-margin": 1,
-        "rl-words-length": 1,
-        "rl-words-fair": 1,
-        "sl-states": 1,
-        "rl-states-margin": 1,
-        "rl-states-length": 1,
-        "rl-states-fair": 1
+        "sl-rule": 1,
+        "rl-rule-margin": 1,
+        "rl-rule-length": 1,
+        "rl-rule-fair": 1,
+        "sl-deep": 1,
+        "rl-deep-margin": 1,
+        "rl-deep-length": 1,
+        "rl-deep-fair": 1
         },
     "debug": false,
     "models": {
@@ -52,45 +52,45 @@
             "active": true,
             "type": "rulebased"
         },
-        "sl-words": {
-            "active": true,
-            "type": "pt-neural",
-            "checkpoint": "scr/checkpoint/seq2seq/model_best.pt"
-        },
-        "rl-words-margin": {
-            "active": true,
-            "type": "pt-neural",
-            "checkpoint": "scr/checkpoint/seq2seq-margin/model_best.pt"
-        },
-        "rl-words-fair": {
-            "active": true,
-            "type": "pt-neural",
-            "checkpoint": "scr/checkpoint/seq2seq-fair/model_best.pt"
-        },
-        "rl-words-length": {
-            "active": true,
-            "type": "pt-neural",
-            "checkpoint": "scr/checkpoint/seq2seq-length/model_best.pt"
-        },
-        "sl-states": {
+        "sl-rule": {
             "active": true,
             "type": "hybrid",
-            "checkpoint": "scr/checkpoint/lf2lf/model_best.pt"
+            "checkpoint": "scr/rule/checkpoint/lf2lf/model_best.pt"
         },
-        "rl-states-margin": {
+        "rl-rule-margin": {
             "active": true,
             "type": "hybrid",
-            "checkpoint": "scr/checkpoint/lf2lf-margin/model_best.pt"
+            "checkpoint": "scr/rule/checkpoint/lf2lf-margin/model_best.pt"
         },
-        "rl-states-fair": {
+        "rl-rule-fair": {
             "active": true,
             "type": "hybrid",
-            "checkpoint": "scr/checkpoint/lf2lf-fair/model_best.pt"
+            "checkpoint": "scr/rule/checkpoint/lf2lf-fair/model_best.pt"
         },
-        "rl-states-length": {
+        "rl-rule-length": {
             "active": true,
             "type": "hybrid",
-            "checkpoint": "scr/checkpoint/lf2lf-length/model_best.pt"
+            "checkpoint": "scr/rule/checkpoint/lf2lf-length/model_best.pt"
+        },
+        "sl-deep": {
+            "active": true,
+            "type": "hybrid",
+            "checkpoint": "scr/deep/checkpoint/lf2lf/model_best.pt"
+        },
+        "rl-deep-margin": {
+            "active": true,
+            "type": "hybrid",
+            "checkpoint": "scr/deep/checkpoint/lf2lf-margin/model_best.pt"
+        },
+        "rl-deep-fair": {
+            "active": true,
+            "type": "hybrid",
+            "checkpoint": "scr/deep/checkpoint/lf2lf-fair/model_best.pt"
+        },
+        "rl-deep-length": {
+            "active": true,
+            "type": "hybrid",
+            "checkpoint": "scr/deep/checkpoint/lf2lf-length/model_best.pt"
         }
     }
 }

@@ -19,7 +19,7 @@ def close_connection(exception):
 
 # def dump_events_to_json():
 def create_app(debug=False, templates_dir='templates'):
-    """Create an application."""
+    """アプリケーションの作成"""
     global controller_process
 
     app = Flask(__name__, template_folder=templates_dir)

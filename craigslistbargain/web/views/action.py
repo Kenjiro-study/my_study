@@ -16,10 +16,10 @@ def offer():
              'sides': sides}
 
     if offer is None or price == -1:
-        return jsonify(message=format_message("You made an invalid offer. Please try again.", True))
+        return jsonify(message=format_message("無効なオファーです! 再度入力してください。", True))
     backend.make_offer(userid(), offer)
 
-    displayed_message = format_message("You made an offer!", True)
+    displayed_message = format_message("オファーを受け取りました!", True)
     return jsonify(message=displayed_message)
 
 
@@ -28,7 +28,7 @@ def accept_offer():
     backend = get_backend()
     backend.accept_offer(userid())
 
-    msg = format_message("You accepted the offer!", True)
+    msg = format_message("オファーを受け入れました!", True)
     return jsonify(message=msg)
 
 
@@ -37,7 +37,7 @@ def reject_offer():
     backend = get_backend()
     backend.reject_offer(userid())
 
-    msg = format_message("You rejected the offer.", True)
+    msg = format_message("オファーを拒否しました!", True)
     return jsonify(message=msg)
 
 
@@ -45,5 +45,5 @@ def reject_offer():
 def quit():
     backend = get_backend()
     backend.quit(userid())
-    displayed_message = format_message("You chose to quit this task.", True)
+    displayed_message = format_message("このタスクの終了を選択しました。", True)
     return jsonify(message=displayed_message)

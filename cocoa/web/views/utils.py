@@ -9,12 +9,11 @@ def userid():
     return request.args.get('uid')
 
 def format_message(message, status_message):
-    """Format the message string.
+    """メッセージの文字列のフォーマット
 
     Args:
         message (str)
-        status_message (bool): Whether the message is an action (e.g. select) or an utterance
-
+        status_message (bool): メッセージが action (例.select) なのか utterance なのか
     """
     timestamp = datetime.now().strftime(u'%x %X')
     left_delim = u"<" if status_message else u""

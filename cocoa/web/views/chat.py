@@ -1,6 +1,7 @@
 import time
-from flask import Blueprint, jsonify, render_template, request, redirect, url_for, Markup
+from flask import Blueprint, jsonify, render_template, request, redirect, url_for
 from flask import current_app as app
+from markupsafe import Markup
 
 from .utils import generate_userid, userid, format_message
 from cocoa.web.main.utils import Status
@@ -9,6 +10,8 @@ from cocoa.core.event import Event
 from web.main.backend import Backend
 get_backend = Backend.get_backend
 
+# Blueprintで機能ごとのWebページを作成
+# routeの引数で示される'/****/'の部分がURLとなり, 127.0.0.1/****となる
 chat = Blueprint('chat', __name__)
 
 @chat.route('/_connect/', methods=['GET'])
@@ -71,7 +74,7 @@ def typing_event():
 @chat.route('/_send_message/', methods=['GET'])
 def text():
     backend = get_backend()
-    message = unicode(request.args.get('message'))
+    message = str(request.args.get('message')) # unicode → strに変更 (2024年9月9日)
     displayed_message = format_message(u"You: {}".format(message), False)
     uid = userid()
     time_taken = float(request.args.get('time_taken'))
@@ -103,8 +106,8 @@ def send_eval():
 
 @chat.route('/_join_chat/', methods=['GET'])
 def join_chat():
-    """Sent by clients when they enter a room.
-    A status message is broadcast to all people in the room."""
+    """クライアントがルームに入ると送信される
+       ステータスメッセージはルーム内の全ての人にブロードキャストされる"""
     backend = get_backend()
     uid = userid()
     chat_info = backend.get_chat_info(uid)
@@ -138,8 +141,8 @@ def check_status_change():
 @chat.route('/index', methods=['GET', 'POST'])
 @chat.route('/', methods=['GET', 'POST'])
 def index():
-    """Chat room. The user's name and room must be stored in
-    the session."""
+    """チャットルーム
+       ユーザー名とルームはセッションに保存する必要がある"""
 
     if not request.args.get('uid'):
         prefix = "U_"

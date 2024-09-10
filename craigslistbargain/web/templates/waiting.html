@@ -110,12 +110,12 @@
                 <h3>{{ waiting_message }}</h3>
 
                 <!--<h4>Make sure you have read the instructions carefully, as the task is timed and the clock will start immediately once you are paired. </h4>-->
-                <h4>Make sure you have read the instructions carefully, as the task will start immediately once you are paired. </h4>
+                <h4>交渉相手とのペアリングが完了するとすぐにタスクが開始されます。必ず交渉手順をよくお読みください。 </h4>
             </div>
         </div>
 
         <div id="report" style="clear: both; margin: 0px 20px 0px 10px; display: block;">
-            <br><br><br><br><p style="text-align: right">Having trouble with this task? Click here to send us a report.</p>
+            <br><br><br><br><p style="text-align: right">問題が発生した場合は, こちらをクリックしてレポートを送信してください。</p>
             <button onclick="report()" style="display: block; float:right;" id="report">Report</button>
         </div>
         <div class="modal fade" id="report_box" role="dialog">
@@ -128,7 +128,7 @@
                 <b><p id="modal_instruction"></p></b>
               </div>
               <div class="modal-body" id="report-body">
-                <p>Describe your issues in the box below, and then click 'Submit' to submit your feedback to us.<span style="color: #ff0000"><b> Please also include your Mechanical Turk worker ID in the feedback so that we can grant you a bonus if you have significant trouble.</b></span></p>
+                <p>下のボックスに問題点を記入し "Submit" をクリックしてフィードバックを送信してください。<span style="color: #ff0000"><b> 重大な問題が発生した場合にボーナスを付与できるように, フィードバックにMechanical Turk worker IDも報告に含めるようにしてください。</b></span></p>
                 <textarea id="report_feedback"></textarea>
                 <button onclick="report()" style="display: block;">Submit</button>
               </div>

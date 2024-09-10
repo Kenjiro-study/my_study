@@ -37,17 +37,17 @@ class NoSuchUserException(Exception):
 
 
 class Messages(object):
-    ChatExpired = 'You ran out of time!'
-    PartnerConnectionTimeout = "Your partner's connection has timed out! Waiting for a new chat..."
-    ConnectionTimeout = "Your connection has timed out. Please reenter this website using the original URL provided to " \
-                        "you to start a new chat."
-    YouLeftRoom = 'You skipped the chat. '
-    PartnerLeftRoom = 'Your partner has left the chat!'
-    WaitingTimeExpired = "Sorry, no other users appear to be active at the moment. Please come back later!"
-    ChatCompleted = "Great, you've completed the chat!"
+    ChatExpired = '時間切れです!'
+    PartnerConnectionTimeout = "パートナーの接続がタイムアウトしました。 新しいチャットに接続します..."
+    ConnectionTimeout = "接続がタイムアウトしました。元のURLを使用してこのWebサイトに再度アクセスしてください。" \
+                        "新しいチャットを開始できます。"
+    YouLeftRoom = 'チャットをスキップしました!'
+    PartnerLeftRoom = 'パートナーがチャットから離れました!'
+    WaitingTimeExpired = "申し訳ありません。現在アクティブなユーザーが他にいないようです。しばらくしてから再度アクセスしてください。"
+    ChatCompleted = "チャットが全て完了しました!"
     ChatIncomplete = ConnectionTimeout
-    HITCompletionWarning = "Please note that you will only get credit for this HIT if you made a good attempt to complete the chat."
-    Waiting = 'Waiting for a new chat...'
+    HITCompletionWarning = "HITクレジットは意欲的に交渉を行った場合のみ付与されます。ご了承ください。"
+    Waiting = '新しいチャットが始まるまで今しばらくお待ちください...'
 
 
 def current_timestamp_in_seconds():
