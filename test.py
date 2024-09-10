@@ -108,6 +108,8 @@ import string
 print(string.printable)
 """
 
+"""
+# pklファイルの中身を覗く
 import pickle
 # pklファイルのパスを指定
 pkl_file_path = 'test/deep/mappings/lf2lf/vocab.pkl'
@@ -120,3 +122,21 @@ with open(pkl_file_path, 'rb') as file:
 print(data["utterance_vocab"].finished)
 
 #data.to_csv('rule-train-template.csv')
+"""
+
+from flask import Flask
+app = Flask(__name__)
+
+@app.route('/')
+def hello():
+    name = "Hello World"
+    return name
+
+@app.route('/good')
+def good():
+    name = "Good"
+    return name
+
+## おまじない
+if __name__ == "__main__":
+    app.run(debug=True)

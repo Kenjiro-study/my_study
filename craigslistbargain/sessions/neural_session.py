@@ -42,8 +42,7 @@ class NeuralSession(Session):
         # 空のメッセージ
         if utterance is None:
             return
-
-        #print('receive:', utterance)
+        
         self.dialogue.add_utterance(event.agent, utterance)
 
     def _has_entity(self, tokens):

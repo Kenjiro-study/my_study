@@ -4,7 +4,7 @@ from core.tokenizer import detokenize
 
 class Generator(BaseGenerator):
     def get_filter(self, used_templates=None, category=None, role=None, context_tag=None, tag=None, **kwargs):
-        locs = [super(Generator, self).get_filter(used_templates)]
+        locs = [super().get_filter(used_templates)]
         assert category and role
         self._add_filter(locs, self.templates.role == role)
         self._add_filter(locs, self.templates.category == category)

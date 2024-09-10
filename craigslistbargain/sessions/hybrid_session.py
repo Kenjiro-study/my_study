@@ -8,6 +8,7 @@ from cocoa.core.entity import is_entity
 from neural.symbols import markers
 from core.event import Event
 from sessions.rulebased_session import CraigslistRulebasedSession
+from cocoa.model.inference import oneshot_classify_intent
 
 class HybridSession(object):
     @classmethod
@@ -23,20 +24,23 @@ class BaseHybridSession(CraigslistRulebasedSession):
     def __init__(self, agent, kb, lexicon, config, generator, manager):
         super().__init__(agent, kb, lexicon, config, generator, manager) # 3系Ver.
         self.price_actions = ('init-price', 'counter-price', markers.OFFER)
+        self.parser_model = None # パーサーに使うDLモデル
+        self.tokenizer = None # DLモデルに対応するトークナイザ
 
-    def receive(self, event):
+    def receive(self, event, pre_text=None):
         if event.action in Event.decorative_events:
             return
-        # ルールベースの部分を処理する
-        utterance = self.parser.parse(event, self.state)
-        print("event.agent: ", event.agent) ########
-        print("event.time: ", event.time) ########
-        print("event.action: ", event.action) ########
-        print("event.data: ", event.data) ########
-        print("event.metadata: ", event.metadata) ########
+        # パーサーの部分を処理する
+        if self.parser.flag and (type(event.data) is str):
+            # DLベースパーサー
+            intent = oneshot_classify_intent(self.parser_model, self.tokenizer, pre_text, event.data)
+            utterance = self.parser.parse(event, self.state, intent)
+        else:
+            # ルールベースパーサー
+            utterance = self.parser.parse(event, self.state)
 
         self.state.update(self.partner, utterance)
-        # ニューラルベースの部分を処理する
+        # マネージャーの部分を処理する
         if event.action == "message":
             logical_form = {"intent": utterance.lf.intent, "price": utterance.lf.price}
             entity_tokens = self.manager.env.preprocessor.lf_to_tokens(self.kb, logical_form)
@@ -44,6 +48,7 @@ class BaseHybridSession(CraigslistRulebasedSession):
             entity_tokens = self.manager.env.preprocessor.process_event(event, self.kb)
         if entity_tokens:
             self.manager.dialogue.add_utterance(event.agent, entity_tokens)
+        print('【intent: {}, utterance: {}】'.format(utterance.lf.intent, utterance.text)) ######
 
     #ジェネレーターはアクションが有効であることを確認する
     def is_valid_action(self, action_tokens):
@@ -76,7 +81,7 @@ class BaseHybridSession(CraigslistRulebasedSession):
             return self.reject()
         elif action == markers.QUIT:
             return self.quit()
-
+        
         return self.template_message(action, price=price)
 
 

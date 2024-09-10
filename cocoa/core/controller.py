@@ -7,6 +7,7 @@ from .util import generate_uuid
 from .dataset import Example
 from .event import Event
 from threading import Lock
+from sessions.hybrid_session import BuyerHybridSession, SellerHybridSession
 
 class Controller(object):
     """
@@ -41,7 +42,7 @@ class Controller(object):
     def get_result(self, agent_idx):
         return None
 
-    def simulate(self, max_turns=None, verbose=False):
+    def simulate(self, max_turns=None, parser_path=None, verbose=False):
         '''
         対話をシミュレートする
         '''
@@ -62,6 +63,7 @@ class Controller(object):
             for agent, session in enumerate(self.sessions):
                 if num_turns == 0 and agent != first_speaker: # first_speakerに選ばれたエージェントから対話開始
                     continue
+
                 event = session.send() # ここでevent(発話やダイアログアクト等)が決定されている
                 time += 1 # timeのインクリメント
                 if not event:
@@ -85,8 +87,15 @@ class Controller(object):
                     break
 
                 for partner, other_session in enumerate(self.sessions):
-                    if agent != partner:
-                        other_session.receive(event) # ここで相手の一つ前の発話が表示される
+                    if agent != partner:                    
+                        if (type(other_session) == BuyerHybridSession or type(other_session) == SellerHybridSession) and other_session.parser.flag:
+                            if event.time == 1:
+                                pre_text = "[PAD]"
+                            else:
+                                pre_text = self.events[-2].data
+                            other_session.receive(event, pre_text)
+                        else:
+                            other_session.receive(event) # ここで相手の一つ前の発話が表示される
         
         uuid = generate_uuid('E')
         outcome = self.get_outcome()

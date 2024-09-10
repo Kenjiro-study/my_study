@@ -4,6 +4,20 @@ from transformers import AutoModelForSequenceClassification, TrainingArguments, 
 import torch
 from torch.nn.functional import softmax
 
+def oneshot_classify_intent(model, tokenizer, pre_text, text):
+    device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    inputs = tokenizer(pre_text, text, max_length=512, truncation=True, return_tensors="pt")
+    inputs = {key: tensor.to(device) for key, tensor in inputs.items()}
+    outputs = model(**inputs)
+
+    # 推論結果の取得
+    logits = outputs.logits # ロジットの取得
+    probabilities = softmax(logits, dim=1) # ロジットをソフトマックス関数で確率に変換
+    predicted_class = torch.argmax(probabilities, dim=1).item() # 確率が最も高いものを推定ラベルとして決定
+    predicted_class = model.config.id2label[predicted_class] # ラベル番号をダイアログアクトに変換
+
+    return predicted_class
+
 def classify_intent_neural(examples, path):
     # GPUの指定
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -42,9 +56,7 @@ def classify_intent_neural(examples, path):
                 logits = outputs.logits # ロジットの取得
                 probabilities = softmax(logits, dim=1) # ロジットをソフトマックス関数で確率に変換
                 predicted_class = torch.argmax(probabilities, dim=1).item() # 確率が最も高いものを推定ラベルとして決定
-                #print("a: ", predicted_class)
                 predicted_class = model.config.id2label[predicted_class] # ラベル番号をダイアログアクトに変換
-                #print("b: ", predicted_class)
 
                 intent_list.append(predicted_class)
             else:

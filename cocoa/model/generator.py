@@ -22,7 +22,7 @@ class Generator(object):
         locs.append(locs[-1] & cond)
 
     def _select_filter(self, locs):
-        print([np.sum(loc) for loc in locs])
+        #print([np.sum(loc) for loc in locs])
         for loc in locs[::-1]:
             if np.sum(loc) > 0:
                 return loc

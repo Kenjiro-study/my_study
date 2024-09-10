@@ -26,7 +26,7 @@ class RulebasedSession(Session):
     def retrieve_response_template(self, tag, **kwargs):
         context_tag = self.state.partner_act if self.state.partner_act != 'unknown' else None
         context = self.state.partner_template
-        print("retrieve: ", tag)
+        #print("retrieve: ", tag)
         template = self.generator.retrieve(context, tag=tag, context_tag=context_tag, used_templates=self.used_templates, T=self.sample_temperature, **kwargs)
         if template is None:
             return None

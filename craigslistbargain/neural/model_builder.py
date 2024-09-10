@@ -145,8 +145,8 @@ def load_test_model(model_path, opt, dummy_opt):
         raise ValueError('Beam search generator does not work with stateful models yet')
 
     #####################
-    #mappings = read_pickle('{}/vocab.pkl'.format(model_opt.mappings)) # こっちが本物!
-    mappings = read_pickle('test/rule/mappings/lf2lf/vocab.pkl')
+    mappings = read_pickle('{}/vocab.pkl'.format(model_opt.mappings)) # こっちが本物!
+    #mappings = read_pickle('test/rule/mappings/lf2lf/vocab.pkl')
     ##################### 実験の都合上変えてるので注意！
 
     # mappings = read_pickle('{0}/{1}/vocab.pkl'.format(model_opt.mappings, model_opt.model))

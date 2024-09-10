@@ -109,7 +109,7 @@ class CraigslistRulebasedSession(BaseRulebasedSession):
         return template.format(title=self.title, price=(price or ''), listing_price=self.listing_price, partner_price=(self.state.partner_price or ''), my_price=(self.state.my_price or ''))
 
     def template_message(self, intent, price=None):
-        print('template:', intent, price)
+        #print('template:', intent, price)
         template = self.retrieve_response_template(intent, category=self.kb.category, role=self.kb.role)
         if '{price}' in template['template']:
             price = price or self.state.my_price
@@ -227,7 +227,7 @@ class CraigslistRulebasedSession(BaseRulebasedSession):
                 return self.reject()
             return self.accept()
 
-        # if self.state.partner_act in ['init_price', 'counter-price']
+        # if self.state.partner_act in ['init_price', 'counter-price']:
         if self.state.partner_price is not None and self.deal(self.state.partner_price):
             return self.agree(self.state.partner_price)
 
@@ -250,7 +250,7 @@ class CraigslistRulebasedSession(BaseRulebasedSession):
 
 class SellerRulebasedSession(CraigslistRulebasedSession):
     def __init__(self, agent, kb, lexicon, config, generator, manager):
-        super(SellerRulebasedSession, self).__init__(agent, kb, lexicon, config, generator, manager)
+        super().__init__(agent, kb, lexicon, config, generator, manager) # 3系ver.
         # 希望価格の方向性
         self.inc = 1.
         self.init_price()
@@ -283,7 +283,7 @@ class SellerRulebasedSession(CraigslistRulebasedSession):
 
 class BuyerRulebasedSession(CraigslistRulebasedSession):
     def __init__(self, agent, kb, lexicon, config, generator, manager):
-        super(BuyerRulebasedSession, self).__init__(agent, kb, lexicon, config, generator, manager)
+        super().__init__(agent, kb, lexicon, config, generator, manager) # 3系ver.
         # Direction of desired price
         self.inc = -1.
         self.init_price()

@@ -1,4 +1,3 @@
-LICENSE.md
 README.md
 setup.py
 cocoa/__init__.py
@@ -34,8 +33,8 @@ cocoa/model/counter.py
 cocoa/model/dialogue_parser.py
 cocoa/model/dialogue_state.py
 cocoa/model/generator.py
+cocoa/model/inference.py
 cocoa/model/manager.py
-cocoa/model/new_parser3.py
 cocoa/model/ngram.py
 cocoa/model/parser.py
 cocoa/model/util.py
