@@ -144,7 +144,7 @@
             var eval_data = {};
             var utterance_regex = /(You|Partner): (.*)/;
             {% if not debug %}
-                var read_time = 20000; // milliseconds
+                var read_time = 1000; // milliseconds
             {% else %}
                 var read_time = 1000;  // In peek/debug mode, skip it
             {% endif %}
@@ -154,7 +154,7 @@
                 $("#instructionCollapse").click();
                 window.onbeforeunload = disconnect;
 
-                document.getElementById('modal_instruction').innerHTML = "(Please read carefully! This window will automatically collapse and the chat will start after " + read_time/1000 +" seconds).";
+                document.getElementById('modal_instruction').innerHTML = "(よくお読みください! このウィンドウは" + read_time/1000 +" 秒後に自動的に閉じられ, チャットが開始されます。).";
 
                 var deadline = new Date(Date.parse(new Date()) + ({{ num_seconds }}) * 1000);
 
@@ -543,20 +543,20 @@
             <!-- Modal content-->
             <div class="modal-content">
               <div class="modal-header">
-                <h4 class="modal-title">Negotiation scenario</h4>
+                <h4 class="modal-title">交渉シナリオ</h4>
                 <b><p id="modal_instruction"></p></b>
               </div>
               <div class="modal-body">
                 {% if kb['personal']['Role'] == 'buyer' %}
-                    <p> You just saw the following post: </p>
+                    <p> あなたは以下の商品の投稿を見ました: </p>
                 {% else %}
-                    <p> You have posted the following ad (note that the buyer may not see all information): </p>
+                    <p> あなたは以下の商品を出品しました(購入者には商品説明などの一部の情報のみが見えています): </p>
                 {% endif %}
                 <br>
                 <div id="modal_description">
                 <p><b>  {{ kb['item']['Title'] }} </b></p>
                 {% if kb['item']['Images']|length >= 1 %}
-                <img class="img-thumbnail" height="250" width="250" src="{{ url_for('static', filename='images/')}}{{kb['item']['Images'][0]}}"/>
+                <img class="img-thumbnail" height="250" width="250" src="{{ url_for('static', filename='craigslist-images/')}}{{kb['item']['Images'][0]}}"/>
                 {% endif %}
                 <p>
                     {% for s in kb['item']['Description'] %}
@@ -566,9 +566,9 @@
                 </div>
                 <br>
                 {% if kb['personal']['Role'] == 'buyer' %}
-                    <p>You are very interested in this item and decide to ask about its details and negotiate the price.</p>
+                    <p>あなたはこの商品に非常に興味があり, 詳細を尋ねて価格交渉することにしました。</p>
                 {% else %}
-                    <p>You want to get rid of this item soon and are willing to negotiate the price.</p>
+                    <p>あなたはこの商品を早く売りたいので, 価格交渉に応じるつもりです。</p>
                 {% endif %}
               </div>
             </div>
@@ -636,7 +636,7 @@
                         {% if attr == 'Title' %}
                             <p><b>{{ kb['item'][attr] }}</b></p>
                             {% if kb['item']['Images']|length >= 1 %}
-                <img class="img-thumbnail" height="250" width="250" src="{{ url_for('static', filename='images/')}}{{kb['item']['Images'][0]}}"/>
+                <img class="img-thumbnail" height="250" width="250" src="{{ url_for('static', filename='craigslist-images/')}}{{kb['item']['Images'][0]}}"/>
                 {% endif %}
                         {% elif attr == 'Description' %}
                             {% for s in kb['item'][attr] %}

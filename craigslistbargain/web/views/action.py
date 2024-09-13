@@ -19,7 +19,7 @@ def offer():
         return jsonify(message=format_message("無効なオファーです! 再度入力してください。", True))
     backend.make_offer(userid(), offer)
 
-    displayed_message = format_message("オファーを受け取りました!", True)
+    displayed_message = format_message("オファーを送信しました!", True)
     return jsonify(message=displayed_message)
 
 

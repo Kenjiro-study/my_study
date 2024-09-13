@@ -1,0 +1,73 @@
+{
+    "status_params": {
+	"waiting": {
+	    "num_seconds": 180
+	},
+
+	"chat": {
+	    "num_seconds": 1200
+	},
+
+	"finished": {
+	    "num_seconds": -1
+	},
+
+	"survey": {
+	    "num_seconds": -1
+	},
+	"redirected": {
+	    "num_seconds": -1
+	},
+	"incomplete": {
+	    "num_seconds": -1
+	},
+	"reporting": {
+	    "num_seconds": -1
+	}
+    },
+    "connection_timeout_num_seconds": 3,
+    "idle_timeout_num_seconds": 210,
+    "templates_dir": "craigslistbargain/web/templates",
+    "images_base": "craigslistbargain/web/static/images",
+    "instructions": "craigslistbargain/web/templates/craigslist-instructions.html",
+    "task_title": "Let's Negotiate!",
+    "icon": "handshake.jpg",
+    "end_survey": 1,
+    "skip_chat_enabled": false,
+    "num_chats_per_scenario": {
+        "rulebased": 1,
+        "human": 1,
+        "sl-deep": 1,
+        "rl-deep-margin": 1,
+        "rl-deep-length": 1,
+        "rl-deep-fair": 1
+        },
+    "debug": false,
+    "models": {
+        "rulebased": {
+            "active": true,
+            "type": "rulebased"
+        },
+        "sl-deep": {
+            "active": true,
+            "type": "hybrid",
+            "checkpoint": "src/deep/checkpoint/lf2lf/model_best.pt"
+        },
+        "rl-deep-margin": {
+            "active": true,
+            "type": "hybrid",
+            "checkpoint": "src/deep/checkpoint/lf2lf-margin/model_best.pt"
+        },
+        "rl-deep-fair": {
+            "active": true,
+            "type": "hybrid",
+            "checkpoint": "src/deep/checkpoint/lf2lf-fair/model_best.pt"
+        },
+        "rl-deep-length": {
+            "active": true,
+            "type": "hybrid",
+            "checkpoint": "src/deep/checkpoint/lf2lf-length/model_best.pt"
+        }
+    }
+}
+

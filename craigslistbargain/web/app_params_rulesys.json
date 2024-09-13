@@ -40,13 +40,9 @@
         "sl-rule": 1,
         "rl-rule-margin": 1,
         "rl-rule-length": 1,
-        "rl-rule-fair": 1,
-        "sl-deep": 1,
-        "rl-deep-margin": 1,
-        "rl-deep-length": 1,
-        "rl-deep-fair": 1
+        "rl-rule-fair": 1
         },
-    "debug": false,
+    "debug": true,
     "models": {
         "rulebased": {
             "active": true,
@@ -55,42 +51,22 @@
         "sl-rule": {
             "active": true,
             "type": "hybrid",
-            "checkpoint": "scr/rule/checkpoint/lf2lf/model_best.pt"
+            "checkpoint": "src/rule/checkpoint/lf2lf/model_best.pt"
         },
         "rl-rule-margin": {
             "active": true,
             "type": "hybrid",
-            "checkpoint": "scr/rule/checkpoint/lf2lf-margin/model_best.pt"
+            "checkpoint": "src/rule/checkpoint/lf2lf-margin/model_best.pt"
         },
         "rl-rule-fair": {
             "active": true,
             "type": "hybrid",
-            "checkpoint": "scr/rule/checkpoint/lf2lf-fair/model_best.pt"
+            "checkpoint": "src/rule/checkpoint/lf2lf-fair/model_best.pt"
         },
         "rl-rule-length": {
             "active": true,
             "type": "hybrid",
-            "checkpoint": "scr/rule/checkpoint/lf2lf-length/model_best.pt"
-        },
-        "sl-deep": {
-            "active": true,
-            "type": "hybrid",
-            "checkpoint": "scr/deep/checkpoint/lf2lf/model_best.pt"
-        },
-        "rl-deep-margin": {
-            "active": true,
-            "type": "hybrid",
-            "checkpoint": "scr/deep/checkpoint/lf2lf-margin/model_best.pt"
-        },
-        "rl-deep-fair": {
-            "active": true,
-            "type": "hybrid",
-            "checkpoint": "scr/deep/checkpoint/lf2lf-fair/model_best.pt"
-        },
-        "rl-deep-length": {
-            "active": true,
-            "type": "hybrid",
-            "checkpoint": "scr/deep/checkpoint/lf2lf-length/model_best.pt"
+            "checkpoint": "src/rule/checkpoint/lf2lf-length/model_best.pt"
         }
     }
 }

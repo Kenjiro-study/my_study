@@ -55,12 +55,12 @@ def create_app(debug=False, templates_dir='templates'):
 
     from web.views.action import action
     from cocoa.web.views.chat import chat
-    app.register_blueprint(chat)
-    app.register_blueprint(action)
+    app.register_blueprint(chat) # cocoa.web.views.chatのchat変数に登録された複数のページ(Blueprint)を登録
+    app.register_blueprint(action) # web.views.actionのaction変数に登録された複数のページ(Blueprint)を登録
 
-    app.teardown_appcontext_funcs = [close_connection]
+    app.teardown_appcontext_funcs = [close_connection] # データベースやファイルの解放, ログ記録などを行う設定のリスト
 
-    socketio.init_app(app)
+    socketio.init_app(app) # FlaskアプリにSocket.IOを統合し, リアルタイムチャットを可能にする
     return app
 
 
@@ -86,7 +86,7 @@ def add_systems(args, config_dict, schema, debug=False):
         if info["active"]:
             name = info["type"]
             try:
-                model = get_system(name, args, schema=schema, timed=timed, model_path=info.get('checkpoint'))
+                model = get_system(name, args, schema, timed, info.get('checkpoint')) # システムの取得
             except ValueError:
                 warnings.warn(
                     'Unrecognized model type in {} for configuration '
@@ -94,6 +94,7 @@ def add_systems(args, config_dict, schema, debug=False):
                 continue
             systems[sys_name] = model
             if 'prob' in info.keys():
+                # jsonファイルにあらかじめ各システムが選ばれる確率を定義しておけるみたい(今は定義していないのでここはするスルー)
                 prob = float(info['prob'])
                 pairing_probabilities[sys_name] = prob
                 total_probs += prob
@@ -101,13 +102,13 @@ def add_systems(args, config_dict, schema, debug=False):
     for name in systems:
         print(name)
 
-    # TODO: ペアリング確率をクリーンアップする (obsolete(廃止))
+    # ペアリング確率の設定
     if total_probs > 1.0:
         raise ValueError("Probabilities for active bots can't exceed 1.0.")
     if len(pairing_probabilities.keys()) != 0 and len(pairing_probabilities.keys()) != len(systems.keys()):
         remaining_prob = (1.0-total_probs)/(len(systems.keys()) - len(pairing_probabilities.keys()))
     else:
-        remaining_prob = 1.0 / len(systems.keys())
+        remaining_prob = 1.0 / len(systems.keys()) # 全てのシステムを等分の確率で選ばれるようにする
     inactive_bots = set()
     for system_name in systems.keys():
         if system_name not in pairing_probabilities.keys():
@@ -179,10 +180,12 @@ if __name__ == "__main__":
     params['logging']['app_log'] = log_file
     params['logging']['chat_dir'] = transcripts_dir
 
+    # "task_title" は "Let's Negotiate!" で設定されている
     if 'task_title' not in params.keys():
         raise ValueError("Title of task should be specified in config file with the key 'task_title'")
 
     instructions = None
+    # "instructions" は "craigslistbargain/web/templates/craigslist-instructions.html" で設定されている
     if 'instructions' in params.keys():
         instructions_file = open(params['instructions'], 'r')
         instructions = "".join(instructions_file.readlines())
@@ -192,22 +195,23 @@ if __name__ == "__main__":
                          "'instructions")
 
     templates_dir = None
+    # "templates_dir" は "craigslistbargain/web/templates" で設定されている
     if 'templates_dir' in params.keys():
         templates_dir = params['templates_dir']
     else:
         raise ValueError("Location of HTML templates should be specified in config with the key templates_dir")
     if not os.path.exists(templates_dir):
+            # "templates_dir" で指定したパスが存在するかどうかの確認
             raise ValueError("Specified HTML template location doesn't exist: %s" % templates_dir)
 
-    app = create_app(debug=False, templates_dir=templates_dir)
+    app = create_app(debug=False, templates_dir=templates_dir) # FlaskにSocket.IOを統合したリアルタイムチャットアプリを作成
 
-    schema_path = args.schema_path
-
+    schema_path = args.schema_path # スキーマはcraigslistbargain/data/craigslist-schema.jsonで設定
     if not os.path.exists(schema_path):
         raise ValueError("No schema file found at %s" % schema_path)
-
     schema = Schema(schema_path)
-    scenarios = read_json(args.scenarios_path)
+
+    scenarios = read_json(args.scenarios_path) # シナリオはcraigslistbargain/data/dev-scenarios.jsonで設定
     if args.num_scenarios is not None:
         scenarios = scenarios[:args.num_scenarios]
     scenario_db = ScenarioDB.from_dict(schema, scenarios, Scenario)
@@ -228,9 +232,11 @@ if __name__ == "__main__":
     if 'debug' not in params:
         params['debug'] = False
 
+    # systems → システム名とシステムそのものが辞書型で入っている (例: {'human': <cocoa.systems.human_system.HumanSystem object at 0x7f196d8ec5b0>})
+    # pairing_probabilities → システム名とそのシステムが選ばれる確率が辞書型で入っている (例: {'human': 0.16666666666666666})
     systems, pairing_probabilities = add_systems(args, params['models'], schema, debug=params['debug'])
 
-    db.add_scenarios(scenario_db, systems, update=args.reuse)
+    db.add_scenarios(scenario_db, systems, update=args.reuse) # cocoa/main/web/backend.pyのDatabaseManagerのadd_scenario
 
     app.config['systems'] = systems
     app.config['sessions'] = defaultdict(None)
@@ -253,5 +259,5 @@ if __name__ == "__main__":
     print("App setup complete")
 
     server = WSGIServer(('', args.port), app, log=WebLogger.get_logger(), error_log=error_log_file)
-    atexit.register(cleanup, flask_app=app)
-    server.serve_forever()
+    atexit.register(cleanup, flask_app=app) # 終了時のクリーンアップ
+    server.serve_forever() # サーバーを無限ループで実行!
