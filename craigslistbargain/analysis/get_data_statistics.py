@@ -134,9 +134,9 @@ def compute.core.statistics(transcripts, stats, surveyed_chats):
 
 
 def pretty_print_stats(stats, label):
-    print "{:s}".format(label)
+    print("{:s}".format(label))
     for key in sorted(stats.keys()):
-        print "\t{key: <20}: {val:2.3f}".format(key=key, val=stats[key])
+        print("\t{key: <20}: {val:2.3f}".format(key=key, val=stats[key]))
 
 
 def get_statistics(transcripts, survey_data, questions=("persuasive", "negotiator")):
@@ -237,7 +237,7 @@ if __name__ == "__main__":
     survey_data = json.load(open(os.path.join(out_dir, "transcripts", "surveys.json"), 'r'))
 
     stats_output = os.path.join(out_dir, "stats")
-    print stats_output
+    print(stats_output)
     if not os.path.exists(stats_output):
         os.makedirs(stats_output)
 
@@ -250,7 +250,7 @@ if __name__ == "__main__":
         tf_idf_dir = os.path.join(stats_output, 'tfidf')
         if not os.path.exists(tf_idf_dir):
             os.makedirs(tf_idf_dir)
-        n_range = xrange(2, 4)
+        n_range = range(2, 4)
         for i in n_range:
             analyze_tf_idf(transcripts,
                            grouping_fn=tf_idf.group_by_category_role_winner,

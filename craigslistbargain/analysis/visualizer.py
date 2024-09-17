@@ -5,19 +5,19 @@ from cocoa.core.dataset import Example
 from cocoa.analysis.visualizer import Visualizer as BaseVisualizer
 
 from core.scenario import Scenario
-from analyze_strategy import StrategyAnalyzer
+from .analyze_strategy import StrategyAnalyzer
 
 class Visualizer(BaseVisualizer):
     agents = ('human', 'rulebased', 'config-rule', 'neural-gen')
-    agent_labels = {'human': 'Human', 'rulebased': 'Rule-based',
-            'sl-words': 'SL-words',
-            'rl-words-margin': 'RL-words-margin',
-            'rl-words-length': 'RL-words-length',
-            'rl-words-fair': 'RL-words-fair',
-            'sl-states': 'SL-states',
-            'rl-states-margin': 'RL-states-margin',
-            'rl-states-length': 'RL-states-length',
-            'rl-states-fair': 'RL-states-fair',
+    agent_labels = {'human': 'Human',
+            'sl-rule': 'SL-rule',
+            'rl-rule-margin': 'RL-rule-margin',
+            'rl-rule-length': 'RL-rule-length',
+            'rl-rule-fair': 'RL-rule-fair',
+            'sl-deep': 'SL-deep',
+            'rl-deep-margin': 'RL-deep-margin',
+            'rl-deep-length': 'RL-deep-length',
+            'rl-deep-fair': 'RL-deep-fair',
             }
     #questions = ('fluent', 'negotiator', 'persuasive', 'fair', 'coherent')
     questions = ('negotiator',)
@@ -38,16 +38,16 @@ class Visualizer(BaseVisualizer):
 
     def print_results(self, results):
         systems = sorted(results.keys())
-        print '{:<20s} {:<10s} {:<10s} {:<10s} {:<10s}'.format('system', 'success', 'margin', 'length', '#examples')
+        print('{:<20s} {:<10s} {:<10s} {:<10s} {:<10s}'.format('system', 'success', 'margin', 'length', '#examples'))
         for system in systems:
             res = results[system]
-            print '{:<20s} {:<10.2f} {:<10.2f} {:<10.2f} {:<10d}'.format(
+            print('{:<20s} {:<10.2f} {:<10.2f} {:<10.2f} {:<10d}'.format(
                     system,
                     res['success rate'],
                     res['average margin'],
                     res['average length'],
                     res['num examples'],
-                    )
+                    ))
 
     def compute_effectiveness_for_system(self, examples, system):
         num_success = 0

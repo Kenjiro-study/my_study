@@ -1,6 +1,6 @@
 import numpy as np
 
-import utils
+from . import utils
 
 MAX_MARGIN = 2.4
 MIN_MARGIN = -2.0

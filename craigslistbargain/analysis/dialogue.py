@@ -2,7 +2,6 @@ import math
 import json
 import re
 from collections import defaultdict
-from itertools import izip, ifilter
 import nltk
 from nltk.corpus import stopwords
 from nltk import pos_tag
@@ -263,7 +262,7 @@ class Dialogue(object):
 
     def _treebank_to_liwc_token(self, tokens):
         '''
-        In LIWC dictinoary, "'re", "n't" etc are not separated.
+        LIWC辞書では 「're」, 「n't」などは分離されない
         '''
         new_tokens = []
         for token in tokens:
@@ -277,14 +276,14 @@ class Dialogue(object):
         for utterance in self.iter_utterances():
             if utterance.action == 'message':
                 tokens = self._treebank_to_liwc_token(utterance.tokens)
-                for token in ifilter(lambda x: not is_entity(x), tokens):
+                for token in filter(lambda x: not is_entity(x), tokens):
                     cats = liwc.lookup(token)
                     for cat in cats:
                         utterance.categories[cat][token] += 1
 
     def fig_dict(self):
         '''
-        Plot price trend and utterances by mpld3 and return the json dict for html rendering.
+        mpld3によって価格の動向と発言をプロットし, HTMLレンダリング用のjson辞書を返す
         '''
         import mpld3
         data = {k: [] for k in ('time_step', 'price', 'speech_acts', 'text', 'role')}
@@ -321,37 +320,37 @@ class Dialogue(object):
         y_max = max(max_price, seller_target) + 4*v_offset
         ax.set_ylim(y_min, y_max)
 
-        # Plot line
+        # プロットのライン
         ax.plot(data['time_step'], data['price'], zorder=10)
 
-        # Label points
+        # ラベルポイント
         offset = (y_max - y_min) / 20
-        for i, (t, p, a) in enumerate(izip(data['time_step'], data['price'], data['speech_acts'])):
+        for i, (t, p, a) in enumerate(zip(data['time_step'], data['price'], data['speech_acts'])):
             v = (1 if i % 2 == 0 else -1) * offset
             ax.text(t, p+v, '|'.join([x[0].abrv for x in a]), fontsize=15, horizontalalignment='center', verticalalignment='center')
 
-        # Draw turn boundary
+        # turn_boundaryを描く
         def hline(ax, pos, min_, max_, style, **kwargs):
             ax.plot([min_, max_], [pos, pos], style, **kwargs)
         def vline(ax, pos, min_, max_, style, **kwargs):
             ax.plot([pos, pos], [min_, max_], style, **kwargs)
         for b in turn_boundary:
             vline(ax, (b+0.5), y_min, y_max, 'b--', alpha=0.5, zorder=0)
-        # Draw stage boundary
+        # stage_boundaryを描く
         for b in stage_boundary:
             vline(ax, (b-0.5), y_min, y_max, 'k-')
-        # Draw target prices
+        # 目標価格を描く
         N = len(data['time_step'])
         for kb in self.kbs:
             target = kb.facts['personal']['Target']
             hline(ax, target, 0, N+1, 'r--')
 
-        # Scatter seller points
-        for role, color in izip(('seller', 'buyer'), ('r', 'b')):
-            time_step = [x for x, r in izip(data['time_step'], data['role']) if r == role]
-            price = [x for x, r in izip(data['price'], data['role']) if r == role]
+        # 売り手のポイントを分散する
+        for role, color in zip(('seller', 'buyer'), ('r', 'b')):
+            time_step = [x for x, r in zip(data['time_step'], data['role']) if r == role]
+            price = [x for x, r in zip(data['price'], data['role']) if r == role]
             points = ax.scatter(time_step, price, s=200, zorder=20)
-            labels = ['<div class="utterance">{}</div>'.format(u) for u, r in izip(data['text'], data['role']) if r == role]
+            labels = ['<div class="utterance">{}</div>'.format(u) for u, r in zip(data['text'], data['role']) if r == role]
             tooltip = mpld3.plugins.PointHTMLTooltip(points, labels=labels, voffset=10, hoffset=10, css=self.css)
             mpld3.plugins.connect(fig, tooltip)
 
@@ -371,8 +370,8 @@ if __name__ == '__main__':
     dialogue = Dialogue.from_dict(transcripts[0], price_tracker)
     dialogue.label_liwc(liwc)
     for u in dialogue.iter_utterances():
-        print u.text
-        print u.categories
+        print(u.text)
+        print(u.categories)
     #dialogue.extract_keywords()
     #dialogue.label_speech_acts()
     #dialogue.label_stage()

@@ -1,7 +1,6 @@
 import json
 from collections import defaultdict
 import numpy as np
-from itertools import izip, chain
 from scipy.stats import ttest_ind as ttest, sem
 import matplotlib
 matplotlib.use('Agg')
@@ -36,9 +35,9 @@ class Visualizer(object):
 
     def worker_stats(self):
         job_counts = defaultdict(int)
-        for chat_id, agent_wid in self.worker_ids.iteritems():
+        for chat_id, agent_wid in self.worker_ids.items():
             if len(agent_wid) == 2:
-                for agent_id, wid in agent_wid.iteritems():
+                for agent_id, wid in agent_wid.items():
                     # TODO: is_humanへのリファクタリング
                     if wid != 0:
                         job_counts[wid] += 1
@@ -65,7 +64,7 @@ class Visualizer(object):
         dialogue_agents = trans[0]
         dialogue_scores = trans[1]
         dialogue_setting_counts = defaultdict(int)
-        for dialogue_id, agent_dict in dialogue_agents.iteritems():
+        for dialogue_id, agent_dict in dialogue_agents.items():
             agent_key = tuple(sorted(agent_dict.values()))
             dialogue_setting_counts[agent_key] += 1
             if mask is not None and not dialogue_id in mask:
@@ -73,17 +72,17 @@ class Visualizer(object):
             scores = dialogue_scores[dialogue_id]
             if isinstance(agent_dict, basestring):
                 agent_dict = eval(agent_dict)
-            for agent_id, results in scores.iteritems():
+            for agent_id, results in scores.items():
                 agent_type = agent_dict[str(agent_id)]
                 agent_set.add(agent_type)
-                for question, ratings in results.iteritems():
+                for question, ratings in results.items():
                     if not isinstance(ratings, list):
                         ratings = (ratings,)
                     ratings = [3 if x == 'null' else x for x in ratings]
                     question_scores[question][agent_type].append((dialogue_id, agent_id, ratings))
         #print("-"*50)
         #print("# Dialogues for each system")
-        #for k, v in dialogue_setting_counts.iteritems():
+        #for k, v in dialogue_setting_counts.items():
         #    print(k, v)
         #print("-"*50)
 
@@ -91,8 +90,8 @@ class Visualizer(object):
         if not self.question_scores:
             return []
         ids = []
-        for question, agent_chats in self.question_scores.iteritems():
-            for agent, chats in agent_chats.iteritems():
+        for question, agent_chats in self.question_scores.items():
+            for agent, chats in agent_chats.items():
                 dialogue_ids = [x[0] for x in chats]
                 ids.extend(dialogue_ids)
         return set(ids)
@@ -132,10 +131,10 @@ class Visualizer(object):
         if not question_scores:
             question_scores = self.question_scores
         question_responses = defaultdict(lambda : defaultdict(lambda : defaultdict(int)))
-        for question, agent_scores in question_scores.iteritems():
+        for question, agent_scores in question_scores.items():
             if self.question_type(question) == 'str':
                 continue
-            for agent, scores in agent_scores.iteritems():
+            for agent, scores in agent_scores.items():
                 for dialogue_id, agent_id, response in scores:
                     for r in response:
                         question_responses[question][agent][r - 1] += 1.
@@ -146,9 +145,9 @@ class Visualizer(object):
         colors = self.colors
         ncol, nrow = 2, 2
         fig, axes = plt.subplots(nrows=nrow, ncols=ncol, sharey=True)
-        for i, (question, ax, title) in enumerate(izip(questions, axes.flat, titles)):
+        for i, (question, ax, title) in enumerate(zip(questions, axes.flat, titles)):
             responses_tuples = []
-            for agent, c in izip(agents, colors):
+            for agent, c in zip(agents, colors):
                 ratings = question_responses[question][agent]
                 ratings = {k: v/sum(ratings.values()) for (k, v) in ratings.items()}
                 sorted_ratings = [ratings[k] for k in sorted(ratings.keys())]
@@ -204,9 +203,9 @@ class Visualizer(object):
                         sent_intents[sent_intent] += 1
         received_total = float(sum(received_intents.values()))
         sent_total = float(sum(sent_intents.values()))
-        received_intents = {k: v / received_total for k, v in received_intents.iteritems()}
-        sent_intents = {k: v / sent_total for k, v in sent_intents.iteritems()}
-        for k, v in received_intents.iteritems():
+        received_intents = {k: v / received_total for k, v in received_intents.items()}
+        sent_intents = {k: v / sent_total for k, v in sent_intents.items()}
+        for k, v in received_intents.items():
             print("{:10s} {:.4f} {:.4f}".format(k, v, sent_intents.get(k, 0)))
         return received_intents, sent_intents
 
@@ -231,7 +230,7 @@ class Visualizer(object):
         #self.analyze_speech_acts(chats['rulebased'], 'rulebased')
 
         results = {}
-        for system, examples in chats.iteritems():
+        for system, examples in chats.items():
             results[system] = self.compute_effectiveness_for_system(examples, system)
         return results
 
@@ -241,12 +240,12 @@ class Visualizer(object):
         summary = defaultdict(lambda : defaultdict(lambda : defaultdict()))
         for summary_stat in summary_stats:
             print("="*15, summary_stat, "="*15)
-            for question, agent_scores in question_scores.iteritems():
+            for question, agent_scores in question_scores.items():
                 if self.question_type(question) == 'str' or question not in self.questions:
                     continue
-                #for agent, scores in agent_scores.iteritems():
+                #for agent, scores in agent_scores.items():
                 #    print agent, np.histogram([x[2] for x in scores], bins=5)[0]
-                results = [(agent, self.summarize_scores(scores, summary_stat), self.get_total(scores)) for agent, scores in agent_scores.iteritems()]
+                results = [(agent, self.summarize_scores(scores, summary_stat), self.get_total(scores)) for agent, scores in agent_scores.items()]
                 results = sorted(results, key=lambda x: x[1][0], reverse=True)
                 agent_ratings = {}
                 for i, (agent, stat, total) in enumerate(results):
@@ -272,7 +271,7 @@ class Visualizer(object):
                                 win_agent, lose_agent = agents[j], agents[i]
                             summary[question][win_agent]['ttest'].append(lose_agent)
             # Print
-            for question, agent_stats in summary.iteritems():
+            for question, agent_stats in summary.items():
                 print("="*30, self.question_labels[question], "="*30)
                 print("{:<20s} {:<10s} {:<10s} {:<10s} {:<10s}".format('agent', 'avg_score', 'error', '#score', 'win'))
                 print("-"*80)
@@ -290,8 +289,8 @@ class Visualizer(object):
         応答のキーとしてdialogue_idを使用する
         """
         dialogue_responses = defaultdict(lambda : defaultdict(lambda : defaultdict(list)))
-        for question, agent_scores in question_scores.iteritems():
-            for agent, scores in agent_scores.iteritems():
+        for question, agent_scores in question_scores.items():
+            for agent, scores in agent_scores.items():
                 for dialogue_id, agent_id, response in scores:
                     try:
                         chat = self.uuid_to_chat[dialogue_id]
@@ -310,7 +309,7 @@ class Visualizer(object):
 
             # チャットを応答順に並べる
             chats_with_survey = set()
-            for dialogue_id, agent_responses in dialogue_responses.iteritems():
+            for dialogue_id, agent_responses in dialogue_responses.items():
                 chat = self.uuid_to_chat[dialogue_id]
                 scenario_id = chat['scenario_uuid']
                 chats.append((scenario_id, chat))
@@ -318,11 +317,11 @@ class Visualizer(object):
                 scenario_to_chats[scenario_id].add(dialogue_id)
             chats = [x[1] for x in sorted(chats, key=lambda x: x[0])]
             # 不完全なチャット(リダイレクト, surveyなし)
-            for (dialogue_id, chat) in self.uuid_to_chat.iteritems():
+            for (dialogue_id, chat) in self.uuid_to_chat.items():
                 if dialogue_id not in chats_with_survey:
                     chats.append(chat)
         else:
-            for (dialogue_id, chat) in self.uuid_to_chat.iteritems():
+            for (dialogue_id, chat) in self.uuid_to_chat.items():
                 scenario_id = chat['scenario_uuid']
                 chats.append((scenario_id, chat))
                 scenario_to_chats[scenario_id].add(dialogue_id)

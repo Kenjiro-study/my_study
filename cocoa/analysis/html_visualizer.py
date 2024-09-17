@@ -2,7 +2,6 @@ import os
 import numpy as np
 import json
 import datetime
-from itertools import izip
 from collections import defaultdict
 from argparse import ArgumentParser
 
@@ -56,7 +55,7 @@ class HTMLVisualizer(object):
                 '<div class=\"divTitle\"> Chat Log: %s <br> Agent 0: %s Agent 1: %s </div>' % (chat['uuid'], get_worker_id(0), get_worker_id(1)),
                 '<table class=\"chat\">']
 
-        # Used for visualizing chat during debugging
+        # デバッグ中にチャットを視覚化するために使用される
         agent_str = {0: '', 1: ''}
         if agent is not None:
             agent_str[agent] = 'Agent %d (you)' % agent
@@ -144,7 +143,7 @@ class HTMLVisualizer(object):
 
             if just is not None:
                 n = len(scores)
-                for i, (s, j) in enumerate(izip(scores, just)):
+                for i, (s, j) in enumerate(zip(scores, just)):
                     html.append('<tr>')
                     if i == 0:
                         html.append('<td rowspan=\"%d\">%s</td>' % (n, question))
@@ -262,7 +261,7 @@ class HTMLVisualizer(object):
 
         outfile = open(html_output, 'w')
         for line in html_lines:
-            outfile.write(line.encode('utf8')+"\n")
+            outfile.write(line+"\n")
         outfile.close()
 
     @classmethod

@@ -72,8 +72,8 @@ class Analyzer(object):
         return np.power(2, H)
 
     def print_stats(self, stats, name):
-        print '='*5, name.upper(), '='*5
-        print json.dumps(stats, indent=2)
+        print('='*5, name.upper(), '='*5)
+        print(json.dumps(stats, indent=2))
 
     def parser_stats(self, parsed_dialogues, agent=None):
         stats = {}
@@ -120,7 +120,7 @@ class Analyzer(object):
 
         # Most likely sequence
         action_seq = [{'context': ('<start>', '<start>')}]
-        for i in xrange(10):
+        for i in range(10):
             state = action_seq[-1]
             context = state['context']
 

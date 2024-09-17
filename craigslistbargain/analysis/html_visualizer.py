@@ -5,15 +5,15 @@ from cocoa.analysis.html_visualizer import HTMLVisualizer as BaseHTMLVisualizer
 from cocoa.analysis.utils import reject_transcript
 
 class HTMLVisualizer(BaseHTMLVisualizer):
-    agent_labels = {'human': 'Human', 'rulebased': 'Rule-based',
-            'sl-words': 'SL-words',
-            'rl-words-margin': 'RL-words-margin',
-            'rl-words-length': 'RL-words-length',
-            'rl-words-fair': 'RL-words-fair',
-            'sl-states': 'SL-states',
-            'rl-states-margin': 'RL-states-margin',
-            'rl-states-length': 'RL-states-length',
-            'rl-states-fair': 'RL-states-fair',
+    agent_labels = {'human': 'Human',
+            'sl-rule': 'SL-rule',
+            'rl-rule-margin': 'RL-rule-margin',
+            'rl-rule-length': 'RL-rule-length',
+            'rl-rule-fair': 'RL-rule-fair',
+            'sl-deep': 'SL-deep',
+            'rl-deep-margin': 'RL-deep-margin',
+            'rl-deep-length': 'RL-deep-length',
+            'rl-deep-fair': 'RL-deep-fair',
             }
     #questions = ('fluent', 'negotiator', 'persuasive', 'fair', 'coherent')
     questions = ('negotiator',)
