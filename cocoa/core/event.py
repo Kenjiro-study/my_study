@@ -53,8 +53,8 @@ class Event(object):
         event_dict = {e.time: e for e in events if e.action != 'eval'}
         for e in events:
             if e.action == 'eval':
-                event_dict[e.time].tags = [k for k, v in e.data['labels'].iteritems() if v != 0]
+                event_dict[e.time].tags = [k for k, v in e.data['labels'].items() if v != 0]
             else:
                 event_dict[e.time].tags = []
-        events_with_eval = [v for k, v in sorted(event_dict.iteritems(), key=lambda x: x[0])]
+        events_with_eval = [v for k, v in sorted(event_dict.items(), key=lambda x: x[0])]
         return events_with_eval

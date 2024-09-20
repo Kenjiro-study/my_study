@@ -325,7 +325,7 @@ def _make_examples_nfeats_tpl(data_type, src_path, src_dir,
     return src_examples_iter, num_src_feats
 
 
-class OrderedIterator(torchtext.legacy.data.Iterator):
+class OrderedIterator:
     def create_batches(self):
         if self.train:
             self.batches = torchtext.data.pool(

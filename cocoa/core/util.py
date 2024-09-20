@@ -24,7 +24,6 @@ def read_json(path):
 def write_json(raw, path):
     with open(path, 'w') as out:
         print(json.dumps(raw), file=out)
-        #print >>out, json.dumps(raw) 2系
 
 def read_pickle(path):
     with open(path, 'rb') as fin:

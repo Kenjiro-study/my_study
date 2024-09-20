@@ -5,7 +5,7 @@ from cocoa.sessions.human_session import HumanSession
 
 class HumanSystem(System):
     def __init__(self):
-        super(HumanSystem, self).__init__()
+        super().__init__() # 3系ver.
 
     @classmethod
     def name(cls):

@@ -35,7 +35,6 @@
     "end_survey": 1,
     "skip_chat_enabled": false,
     "num_chats_per_scenario": {
-        "rulebased": 1,
         "human": 1,
         "sl-rule": 1,
         "rl-rule-margin": 1,
@@ -44,10 +43,6 @@
         },
     "debug": true,
     "models": {
-        "rulebased": {
-            "active": true,
-            "type": "rulebased"
-        },
         "sl-rule": {
             "active": true,
             "type": "hybrid",

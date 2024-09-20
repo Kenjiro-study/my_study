@@ -258,6 +258,6 @@ if __name__ == "__main__":
 
     print("App setup complete")
 
-    server = WSGIServer(('', args.port), app, log=WebLogger.get_logger(), error_log=error_log_file)
+    server = WSGIServer(('0.0.0.0', args.port), app, log=WebLogger.get_logger(), error_log=error_log_file)
     atexit.register(cleanup, flask_app=app) # 終了時のクリーンアップ
     server.serve_forever() # サーバーを無限ループで実行!

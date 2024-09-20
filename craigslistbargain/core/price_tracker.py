@@ -13,7 +13,7 @@ class PriceScaler(object):
     @classmethod
     def get_price_range(cls, kb):
         '''
-        Return the bottomline and the target
+        目標価格とボトムライン価格を返す
         '''
         t = kb.facts['personal']['Target']  # 1
         role = kb.facts['personal']['Role']
@@ -28,7 +28,7 @@ class PriceScaler(object):
     @classmethod
     def get_parameters(cls, b, t):
         '''
-        Return (slope, constant) parameters of the linear mapping.
+        線形マッピングのパラメータ(傾き, 定数)を返す
         '''
         assert (t - b) != 0
         w = 1. / (t - b)
@@ -36,7 +36,7 @@ class PriceScaler(object):
         return w, c
 
     @classmethod
-    # TODO: this is operated on canonical entities, need to be consistent!
+    # TODO: これは canonical entities に対して操作されるため, 一貫している必要がある
     def unscale_price(cls, kb, price):
         p = PriceTracker.get_price(price)
         b, t = cls.get_price_range(kb)
@@ -54,13 +54,13 @@ class PriceScaler(object):
         b, t = cls.get_price_range(kb)
         w, c = cls.get_parameters(b, t)
         p = w * p + c
-        # Discretize to two digits
+        # 2桁に離散化する
         p = float('{:.2f}'.format(p))
         return p
 
     @classmethod
     def scale_price(cls, kb, price):
-        """Scale the price such that bottomline=0 and target=1.
+        """bottomline=0 , target=1 となるように価格を調整する
 
         Args:
             price (Entity)
@@ -121,19 +121,19 @@ class PriceTracker(object):
             try:
                 number = float(self.process_string(token))
                 has_dollar = lambda token: token[0] == '$' or token[-1] == '$'
-                # Check context
+                # コンテキストの確認
                 if not has_dollar(token) and \
                         not self.is_price(tokens[i-1], tokens[i+1]):
                     number = None
-                # Avoid 'infinity' being recognized as a number
+                # "infinity" が数値として認識されないようにする
                 elif number == float('inf') or number == float('-inf'):
                     number = None
-                # Check if the price is reasonable
+                # 価格が妥当かどうか確認する
                 elif kb:
                     if not has_dollar(token):
                         if number > 1.5 * list_price:
                             number = None
-                        # Probably a spec number
+                        # おそらく spec number
                         if number != list_price and number in kb_numbers:
                             number = None
                     if number is not None and price_clip is not None:
@@ -157,8 +157,8 @@ class PriceTracker(object):
     @classmethod
     def train(cls, examples, output_path=None):
         '''
-        examples: json chats
-        Use "$xxx$ as ground truth, and record n-gram context before and after the price.
+        examples: json のチャット
+        "$xxx$" をグラウンドトゥルースとして使用し, 価格の前後のn-gramコンテキストを記録する
         '''
         context = {'left': defaultdict(int), 'right': defaultdict(int)}
         for ex in examples:

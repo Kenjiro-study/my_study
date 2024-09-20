@@ -42,10 +42,12 @@ def submit_survey():
     data = request.json['response']
     uid = request.json['uid']
     backend.submit_survey(uid, data)
+
     return jsonify(success=True)
 
 @chat.route('/_check_inbox/', methods=['GET'])
 def check_inbox():
+    # パートナーの行動や入力, 発話を制御する (check inbox → 受信トレイの確認)
     backend = get_backend()
     uid = userid()
     event = backend.receive(uid)
@@ -58,15 +60,16 @@ def check_inbox():
 
 @chat.route('/_typing_event/', methods=['GET'])
 def typing_event():
+    # タイピング開始に反応して情報を取得する
     backend = get_backend()
-    action = request.args.get('action')
+    action = request.args.get('action') # chat.htmlのstartedTyping()とstoppedTyping()からタイピングの状態(startedかstopped)を取得する
 
-    uid = userid()
-    chat_info = backend.get_chat_info(uid)
-    backend.send(uid,
-                 Event.TypingEvent(chat_info.agent_index,
-                                   action,
-                                   str(time.time())))
+    uid = userid() # よくわからん長いUserIDを取得する
+    chat_info = backend.get_chat_info(uid) # cocoa.web.main.states.pyのUserChatStateオブジェクトを取得
+    # chat_infoの中身
+    # agent_index, スキーマのattributes, chat_id, scenario_id, num_seconds(だんだん減る謎の文字列), kb, パートナーのkb(なぜかNone)
+    # kbにはスキーマのattributeの他にfactsとして目標価格, 役割, 商品の説明が入っている
+    backend.send(uid, Event.TypingEvent(chat_info.agent_index, action, str(time.time())))
 
     return jsonify(success=True)
 
@@ -81,12 +84,8 @@ def text():
     received_time = time.time()
     start_time = received_time - time_taken
     chat_info = backend.get_chat_info(uid)
-    backend.send(uid,
-                 Event.MessageEvent(chat_info.agent_index,
-                                    message,
-                                    str(received_time),
-                                    str(start_time))
-                 )
+    backend.send(uid, Event.MessageEvent(chat_info.agent_index, message, str(received_time), str(start_time)))
+
     return jsonify(message=displayed_message, timestamp=str(received_time))
 
 @chat.route('/_send_eval/', methods=['POST'])
@@ -97,11 +96,8 @@ def send_eval():
     uid = request.json['uid']
     chat_info = backend.get_chat_info(uid)
     data = {'utterance': eval_data['utterance'], 'labels': labels}
-    backend.send(uid,
-                 Event.EvalEvent(chat_info.agent_index,
-                                    data,
-                                    eval_data['timestamp'])
-                 )
+    backend.send(uid, Event.EvalEvent(chat_info.agent_index, data, eval_data['timestamp']))
+
     return jsonify(success=True)
 
 @chat.route('/_join_chat/', methods=['GET'])
@@ -111,10 +107,9 @@ def join_chat():
     backend = get_backend()
     uid = userid()
     chat_info = backend.get_chat_info(uid)
-    backend.send(uid, Event.JoinEvent(chat_info.agent_index,
-                                      uid,
-                                      str(time.time())))
-    return jsonify(message=format_message("You entered the room.", True))
+    backend.send(uid, Event.JoinEvent(chat_info.agent_index, uid, str(time.time())))
+
+    return jsonify(message=format_message("入室しました!.", True))
 
 
 @chat.route('/_leave_chat/', methods=['GET'])
@@ -122,9 +117,8 @@ def leave_chat():
     backend = get_backend()
     uid = userid()
     chat_info = backend.get_chat_info(uid)
-    backend.send(uid, Event.LeaveEvent(chat_info.agent_index,
-                                       uid,
-                                       str(time.time())))
+    backend.send(uid, Event.LeaveEvent(chat_info.agent_index, uid, str(time.time())))
+
     return jsonify(success=True)
 
 
@@ -141,7 +135,7 @@ def check_status_change():
 @chat.route('/index', methods=['GET', 'POST'])
 @chat.route('/', methods=['GET', 'POST'])
 def index():
-    """チャットルーム
+    """チャットルーム(※ 多分ここからアプリケーションスタート！)
        ユーザー名とルームはセッションに保存する必要がある"""
 
     if not request.args.get('uid'):
@@ -165,13 +159,18 @@ def index():
     #else:
     #    app.config['active_scenario'] = None
 
-    backend = get_backend()
+    backend = get_backend() # cocoa/web/main/backend.pyのbackendの呼び出し
 
     backend.create_user_if_not_exists(userid())
 
     status = backend.get_updated_status(userid())
 
     mturk = True if request.args.get('mturk') and int(request.args.get('mturk')) == 1 else None
+
+    """
+    if文を使用して, Statusの状態ごとにrender_templateで任意のHTMLのwebページへ遷移する
+    """
+    # 初期状態, パートナーとのマッチングを待つページ
     if status == Status.Waiting:
         waiting_info = backend.get_waiting_info(userid())
         return render_template('waiting.html',
@@ -180,6 +179,8 @@ def index():
                                uid=userid(),
                                title=app.config['task_title'],
                                icon=app.config['task_icon'])
+    
+    # 終了状態, 実験にご協力いただいた人への感謝の言葉を表示するページ
     elif status == Status.Finished:
         finished_info = backend.get_finished_info(userid(), from_mturk=mturk)
         mturk_code = finished_info.mturk_code if mturk else None
@@ -193,6 +194,8 @@ def index():
                                icon=app.config['task_icon'],
                                visualize=visualize_link,
                                uid=userid())
+    
+    # incompleteだから不完全に実験が終わった場合に表示されるページ？
     elif status == Status.Incomplete:
         finished_info = backend.get_finished_info(userid(), from_mturk=False, current_status=Status.Incomplete)
         mturk_code = finished_info.mturk_code if mturk else None
@@ -203,6 +206,8 @@ def index():
                                icon=app.config['task_icon'],
                                visualize=False,
                                uid=userid())
+    
+    # 実際にチャットを行うページ
     elif status == Status.Chat:
         debug = False
         partner_kb = None
@@ -222,6 +227,8 @@ def index():
                                quit_enabled=app.config['user_params']['skip_chat_enabled'],
                                quit_after=app.config['user_params']['status_params']['chat']['num_seconds'] -
                                           app.config['user_params']['quit_after'])
+    
+    # 実験に関する調査を行うページ
     elif status == Status.Survey:
         survey_info = backend.get_survey_info(userid())
         visualization = None
@@ -244,6 +251,7 @@ def index():
                                agent_idx=survey_info.agent_idx,
                                scenario_id=survey_info.scenario_id,
                                visualization=visualization)
+    # 問題の報告ページ
     elif status == Status.Reporting:
         return render_template('report.html',
                                title=app.config['task_title'],

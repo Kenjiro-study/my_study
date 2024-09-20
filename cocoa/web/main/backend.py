@@ -643,9 +643,12 @@ class Backend(object):
                 u = self._get_user_info(cursor, userid, assumed_status=Status.Survey)
                 scenario = self.scenario_db.get(u.scenario_id)
                 controller = self.controller_map[userid]
-                return SurveyState(u.message, u.agent_index, scenario.uuid, scenario.get_kb(u.agent_index),
-                                   scenario.get_kb(1 - u.agent_index),
-                                   scenario.attributes, controller.get_result(u.agent_index))
+
+                agent_kb = scenario.get_kb(u.agent_index)
+                partner_kb = scenario.get_kb(1 - u.agent_index)
+
+                return SurveyState(u.message, u.agent_index, scenario.uuid, agent_kb, partner_kb,
+                                   scenario.attributes, controller.get_result(u.agent_index, agent_kb.facts['personal'], partner_kb.facts['personal']))
 
         except sqlite3.IntegrityError:
             print("注意!: Rolled back transaction")
@@ -665,6 +668,7 @@ class Backend(object):
     def get_schema(self):
         return self.schema
 
+    # webページを遷移するための状態(Status)をアップデートする
     def get_updated_status(self, userid):
         try:
             with self.conn:

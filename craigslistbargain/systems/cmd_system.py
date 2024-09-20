@@ -3,7 +3,7 @@ from sessions.cmd_session import CmdSession
 
 class CmdSystem(BaseSystem):
     def __init__(self):
-        super(CmdSystem, self).__init__()
+        super().__init__() # 3系ver.
 
     @classmethod
     def name(cls):

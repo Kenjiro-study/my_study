@@ -22,7 +22,7 @@ def add_dataset_arguments(parser):
         help='Path to multi-response evaluation files')
 
 def add_scenario_arguments(parser):
-    #  ドメインのスキーマを説明する入力パス
+    # ドメインのスキーマを説明する入力パス
     parser.add_argument('--schema-path', help='Input path that describes the schema of the domain')
 
     # 生成されたシナリオのための出力パス

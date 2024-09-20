@@ -46,20 +46,24 @@ class Controller(BaseController):
                 (self.offers[1] is not None and self.outcomes[0] is not None) or
                  self.quit)
 
-    # 定量評価を行うメソッド
-    def get_result(self, agent_idx):
-        outcome = self.get_outcome() # 交渉対話の結果を取り出す {'reward': reward, 'offer': offer}の辞書
-        ag = outcome['reward'] # 合意か非合意か
-        leng = self.events[-1].time # 対話の長さ
-        partner_idx = 1 - agent_idx # 相手のインデックスを作成
-        agent_target = self.sessions[agent_idx].kb.target # 定量評価したいエージェントの目標価格を取得
-        partner_target = self.sessions[partner_idx].kb.target # 相手の目標価格を取得
-        if ag == 0:
-            ut = 0 # 非合意であれば効用は0
+    # 交渉の結果を取得するメソッド
+    def get_result(self, agent_idx, agent_data, partner_data):
+        if self.offers[agent_idx] is not None:
+            agent_dict = {'Target': agent_data['Target'], 'Bottomline': agent_data['Bottomline'], 'Offer': self.offers[agent_idx]['price']}
         else:
-            ut = (outcome['offer']['price'] - partner_target) / (agent_target - partner_target) # 合意であれば効用を計算
-        fa = 1 - (2 * abs(ut - 0.5)) # 対話の公平性
-        return ag, ut, fa, leng
+            agent_dict = {'Target': agent_data['Target'], 'Bottomline': agent_data['Bottomline'], 'Offer': None}
+
+        if self.offers[1 - agent_idx] is not None:
+            partner_dict = {'Target': partner_data['Target'], 'Bottomline': partner_data['Bottomline'], 'Offer': self.offers[1 - agent_idx]['price']}
+        else:
+            partner_dict = {'Target': partner_data['Target'], 'Bottomline': partner_data['Bottomline'], 'Offer': None}
+            
+        if agent_idx == 0:
+            results = [agent_dict, partner_dict]
+        else:
+            results = [partner_dict, agent_dict]
+        
+        return results
 
     def complete(self):
         return (self.offers[0] is not None and self.outcomes[1] is True) or (self.offers[1] is not None and self.outcomes[0] is True)
