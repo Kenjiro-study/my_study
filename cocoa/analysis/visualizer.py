@@ -70,7 +70,7 @@ class Visualizer(object):
             if mask is not None and not dialogue_id in mask:
                 continue
             scores = dialogue_scores[dialogue_id]
-            if isinstance(agent_dict, basestring):
+            if isinstance(agent_dict, str):
                 agent_dict = eval(agent_dict)
             for agent_id, results in scores.items():
                 agent_type = agent_dict[str(agent_id)]

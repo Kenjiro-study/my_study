@@ -37,6 +37,4 @@ if __name__ == '__main__':
         summary = visualizer.summarize()
         write_json(summary, args.stats)
     if args.html_output:
-        visualizer.html_visualize(args.viewer_mode, args.html_output,
-            css_file=args.css_file, img_path=args.img_path,
-            worker_ids=visualizer.worker_ids)
+        visualizer.html_visualize(args.viewer_mode, args.html_output, css_file=args.css_file, img_path=args.img_path, worker_ids=visualizer.worker_ids)

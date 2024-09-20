@@ -5,8 +5,10 @@ import os
 from argparse import ArgumentParser
 
 from cocoa.core.schema import Schema
-from cocoa.core.scenario_db import add_scenario_arguments, ScenarioDB
+from cocoa.core.scenario_db import ScenarioDB
 from cocoa.core.util import read_json, write_json
+
+import cocoa.options
 
 # Task-specific modules
 from web.main.db_reader import DatabaseReader
@@ -67,12 +69,12 @@ def log_worker_id_to_json(db_path, batch_results):
 
 if __name__ == "__main__":
     parser = ArgumentParser()
-    add_scenario_arguments(parser)
-    parser.add_argument('--db', type=str, required=True, help='Path to database file containing logged events')
-    parser.add_argument('--output', type=str, required=True, help='File to write JSON examples to.')
-    parser.add_argument('--uid', type=str, nargs='*', help='Only print chats from these uids')
-    parser.add_argument('--surveys', type=str, help='If provided, writes a file containing results from user surveys.')
-    parser.add_argument('--batch-results', type=str, help='If provided, write a mapping from chat_id to worker_id')
+    cocoa.options.add_scenario_arguments(parser)
+    parser.add_argument('--db', type=str, required=True, help='Path to database file containing logged events') # 記録されたイベントを含むDBファイルへのパス
+    parser.add_argument('--output', type=str, required=True, help='File to write JSON examples to.') # 出力であるJSONファイルの書き出し先
+    parser.add_argument('--uid', type=str, nargs='*', help='Only print chats from these uids') # 指定のuser IDによるチャットのみをプリントする
+    parser.add_argument('--surveys', type=str, help='If provided, writes a file containing results from user surveys.') # ユーザーによる調査の結果をファイルに出力するかどうか
+    parser.add_argument('--batch-results', type=str, help='If provided, write a mapping from chat_id to worker_id') # chat_idからworker_idへのマッピングを出力するかどうか
     args = parser.parse_args()
     schema = Schema(args.schema_path)
     scenario_db = ScenarioDB.from_dict(schema, read_json(args.scenarios_path), Scenario)
