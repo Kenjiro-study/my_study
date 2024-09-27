@@ -9,6 +9,7 @@ import json
 
 from cocoa.systems.human_system import HumanSystem
 from cocoa.web.views.utils import format_message
+from craigslistbargain.sessions.hybrid_session import BuyerHybridSession, SellerHybridSession
 
 from core.controller import Controller
 from .states import FinishedState, UserChatState, WaitingState, SurveyState
@@ -16,6 +17,9 @@ from .utils import Status, UnexpectedStatusException, ConnectionTimeoutException
 from .db_reader import DatabaseReader
 from .logger import WebLogger
 
+from transformers import AutoTokenizer
+from transformers import AutoModelForSequenceClassification
+import torch
 
 class DatabaseManager(object):
     """user/chat 情報でデータベースを更新する
@@ -830,13 +834,13 @@ class Backend(object):
         except sqlite3.IntegrityError:
             print("注意!: Rolled back transaction")
 
-    def receive(self, userid):
+    def receive(self, userid, model_path=None, flag=False):
         controller = self.controller_map[userid]
         if controller is None:
             # fail silently
             # ↑これはチャットが終了してからページが更新されるまでの間に, receiveが呼び出されることを意味する
             return None
-        controller.step(self)
+        controller.step(self, model_path, flag)
         session = self._get_session(userid)
         return session.poll_inbox()
 
@@ -856,7 +860,7 @@ class Backend(object):
         except sqlite3.IntegrityError:
             print("注意!: Rolled back transaction")
 
-    def send(self, userid, event):
+    def send(self, userid, event, model_path=None, flag=False):
         session = self._get_session(userid)
         session.enqueue(event)
         controller = self.controller_map[userid]
@@ -867,7 +871,7 @@ class Backend(object):
             # これは, パートナーが交渉から去った後にユーザーが何かを送信しようとしていることを意味するため, fail silentlyとなる
             # (ただしチャットが終了する前限定)
             return None
-        controller.step(self)
+        controller.step(self, model_path, flag)
         # self.add_event_to_db(controller.get_chat_id(), event)
 
     def submit_survey(self, userid, data):

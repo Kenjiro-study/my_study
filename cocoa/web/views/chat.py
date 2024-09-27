@@ -50,7 +50,7 @@ def check_inbox():
     # パートナーの行動や入力, 発話を制御する (check inbox → 受信トレイの確認)
     backend = get_backend()
     uid = userid()
-    event = backend.receive(uid)
+    event = backend.receive(uid, app.config['parserpath'], app.config['flag']) # new! flagとpathを追加
     if event is not None:
         data = backend.display_received_event(event)
         return jsonify(received=True, timestamp=event.time, **data)
@@ -84,7 +84,7 @@ def text():
     received_time = time.time()
     start_time = received_time - time_taken
     chat_info = backend.get_chat_info(uid)
-    backend.send(uid, Event.MessageEvent(chat_info.agent_index, message, str(received_time), str(start_time)))
+    backend.send(uid, Event.MessageEvent(chat_info.agent_index, message, str(received_time), str(start_time)), app.config['parserpath'], app.config['flag']) # new! flagとpathを追加)
 
     return jsonify(message=displayed_message, timestamp=str(received_time))
 

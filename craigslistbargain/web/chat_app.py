@@ -161,6 +161,8 @@ def init(output_dir, reuse=False):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--num-scenarios', type=int)
+    parser.add_argument('--parserpath', default=None, help='Path of the deep learning-based parser you created') ##### new!! ディープラーニングベースパーサーのパス #####
+    parser.add_argument('--neuralflag', default=False, action='store_true', help='which parser do you use, neural-base or rule-base') ###### new!! ルールベース, ニューラルベースどちらのパーサーを使用するか #####
     options.add_website_arguments(parser)
     cocoa.options.add_scenario_arguments(parser)
     options.add_system_arguments(parser)
@@ -250,7 +252,9 @@ if __name__ == "__main__":
     app.config['instructions'] = instructions
     app.config['task_title'] = params['task_title']
 
-
+    app.config['parserpath'] = args.parserpath ##### new! configにDLベースパーサーのパスを追加
+    app.config['flag'] = args.neuralflag ##### new! configにflagを追加
+    
     if 'icon' not in params.keys():
         app.config['task_icon'] = 'handshake.jpg'
     else:

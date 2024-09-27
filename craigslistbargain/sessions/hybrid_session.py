@@ -33,7 +33,12 @@ class BaseHybridSession(CraigslistRulebasedSession):
         # パーサーの部分を処理する
         if self.parser.flag and (type(event.data) is str):
             # DLベースパーサー
+            print("self.parser_model: ", self.parser_model)
+            print("self.tokenizer: ", self.tokenizer)
+            print("pre_text: ", pre_text)
+            print("event.data: ", event.data)
             intent = oneshot_classify_intent(self.parser_model, self.tokenizer, pre_text, event.data)
+            print("intent: ", intent)
             utterance = self.parser.parse(event, self.state, intent)
         else:
             # ルールベースパーサー

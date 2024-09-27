@@ -9,6 +9,10 @@ from .event import Event
 from threading import Lock
 from sessions.hybrid_session import BuyerHybridSession, SellerHybridSession
 
+from transformers import AutoTokenizer
+from transformers import AutoModelForSequenceClassification
+import torch
+
 class Controller(object):
     """
     Interface of the controller: 2つのシステムを使用し, それらを実行してダイアログを生成する
@@ -24,6 +28,8 @@ class Controller(object):
         self.max_turns = None
         self.allow_cross_talk = allow_cross_talk
         self.session_status = {agent: 'received' for agent, _ in enumerate(self.sessions)}
+        self.data_his = [] # new! 対話履歴保存用
+        self.times = 0 # new! 発話回数保存用
 
     def describe_scenario(self):
         print('='*50) # 見やすいように==を表示
@@ -42,7 +48,7 @@ class Controller(object):
     def get_result(self, agent_idx):
         return None
 
-    def simulate(self, max_turns=None, parser_path=None, verbose=False):
+    def simulate(self, max_turns=None, verbose=False):
         '''
         対話をシミュレートする
         '''
@@ -110,7 +116,7 @@ class Controller(object):
         return Example(self.scenario, uuid, self.events, outcome, uuid, agent_names)
 
 
-    def step(self, backend=None):
+    def step(self, backend=None, model_path=None, flag=False):
         '''
         Webのバックエンドによって呼び出される
         '''
@@ -135,7 +141,37 @@ class Controller(object):
 
                 for partner, other_session in enumerate(self.sessions):
                     if agent != partner:
-                        other_session.receive(event)
+                        if (type(other_session) == BuyerHybridSession or type(other_session) == SellerHybridSession) and flag:
+                            if event.action == "message":
+                                self.data_his.append(event.data) # actionがメッセージの場合履歴に追加
+                                self.times += 1 # 対話数も1増加
+                                print("self.data_his: ", self.data_his)
+                                print("self.times: ", self.times)
+                                if self.times == 1:
+                                    pre_text = "[PAD]"
+                                else:
+                                    pre_text = self.data_his[-2]
+                                
+                                device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+                                checkpoint = model_path # 使用したいモデルのパスを持ってくる
+                                other_session.tokenizer = AutoTokenizer.from_pretrained(checkpoint)
+                                model = AutoModelForSequenceClassification.from_pretrained(checkpoint, num_labels=12)
+                                other_session.parser_model = model.to(device) # GPUにモデルを送る
+                                print("other_session.tokenizer: ", other_session.tokenizer)
+                                print("other_session.parser_model: ", other_session.parser_model)
+
+                                other_session.parser.flag = flag
+                                other_session.receive(event, pre_text)
+                            else:
+                                other_session.receive(event)
+                        else:
+                            if event.action == "message":
+                                self.data_his.append(event.data) # actionがメッセージの場合履歴に追加
+                                self.times += 1 # 対話数も1増加
+                                print("self.data_his: ", self.data_his)
+                                print("self.times: ", self.times)
+                            other_session.receive(event)
+                        
                         if not event.action in Event.decorative_events:
                             self.session_status[partner] = 'received'
 
