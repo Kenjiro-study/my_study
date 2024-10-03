@@ -60,13 +60,12 @@ class Backend(BaseBackend):
         controller = self.controller_map[userid]
         chat_id = controller.get_chat_id()
 
-        def verify_chat(userid, agent_idx, is_partner, min_tokens=40):
+        def verify_chat(userid, agent_idx, is_partner, min_tokens=20):
             user_name = 'partner' if is_partner else 'user'
             if self.should_reject_chat(userid, agent_idx, min_tokens):
                 self.logger.debug("Rejecting chat with ID {:s} for {:s} {:s} (agent ID {:d}), and "
                                   "redirecting".format(chat_id, user_name, userid, agent_idx))
-                self.end_chat_and_redirect(cursor, userid,
-                                           message=self.messages.Redirect + " " + self.messages.Waiting)
+                self.end_chat_and_redirect(cursor, userid, message=self.messages.Redirect + " " + self.messages.Waiting)
             else:
                 msg, _ = self.get_completion_messages(userid)
                 self.logger.debug("Accepted chat with ID {:s} for {:s} {:s} (agent ID {:d}), and redirecting to "
@@ -75,10 +74,10 @@ class Backend(BaseBackend):
 
         if game_over:
             if not self.is_user_partner_bot(cursor, userid):
-                min_tokens = 40
+                min_tokens = 20
                 verify_chat(partner_id, 1 - agent_idx, True, min_tokens=min_tokens)
             else:
-                min_tokens = 30
+                min_tokens = 20
             verify_chat(userid, agent_idx, False, min_tokens=min_tokens)
             return True
 

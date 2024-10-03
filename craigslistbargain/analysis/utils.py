@@ -25,7 +25,7 @@ def bot_end_chat_first(transcript):
     return False
 
 
-def reject_transcript(transcript, agent_idx=None, min_tokens=40):
+def reject_transcript(transcript, agent_idx=None, min_tokens=20):
     if bot_end_chat_first(transcript):
         return False
     total_tokens = get_total_tokens_per_agent(transcript)

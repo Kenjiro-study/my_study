@@ -41,7 +41,7 @@
         "rl-deep-length": 1,
         "rl-deep-fair": 1
         },
-    "debug": false,
+    "debug": true,
     "models": {
         "sl-deep": {
             "active": true,

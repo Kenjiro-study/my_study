@@ -50,7 +50,7 @@ def get_total_tokens_per_agent(transcript):
 
     return tokens
 
-def reject_transcript(transcript, agent_idx=None, min_tokens=40):
+def reject_transcript(transcript, agent_idx=None, min_tokens=20):
     total_tokens = get_total_tokens_per_agent(transcript)
     if agent_idx is not None:
         if total_tokens[agent_idx] < min_tokens:

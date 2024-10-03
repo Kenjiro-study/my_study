@@ -47,9 +47,9 @@ def generate_examples(num_examples, scenario_db, examples_path, max_examples, re
                 model = AutoModelForSequenceClassification.from_pretrained(checkpoint, num_labels=12)
                 controller.sessions[j].parser_model = model.to(device) # GPUにモデルを送る
 
-        ex = controller.simulate(max_turns, parser_path, verbose=args.verbose)
+        ex = controller.simulate(max_turns, verbose=args.verbose)
 
-        ag, ut, fa, leng = controller.get_result(0) # 定量評価するエージェント番号が引数
+        ag, ut, fa, leng = controller.get_statistics(0) # 定量評価するエージェント番号が引数
         ag_sum += ag
         ut_sum += ut
         fa_sum += fa
@@ -63,10 +63,16 @@ def generate_examples(num_examples, scenario_db, examples_path, max_examples, re
         num_examples += 1 # num_examplesをインクリメント
     
     # 定量評価の表示
-    print('Agrrement late : {}'.format(ag_sum / max_examples))
-    print('Utility : {}'.format(ut_sum / max_examples))
-    print('Fairness : {}'.format(fa_sum / max_examples))
-    print('Length : {}'.format(leng_sum / max_examples))
+    if (max_examples - num_failed) == 0:
+        print('Agrrement late : {}'.format(ag_sum / max_examples))
+        print('Utility : None')
+        print('Fairness : None')
+        print('Length : None')
+    else:
+        print('Agrrement late : {}'.format(ag_sum / max_examples))
+        print('Utility : {}'.format(ut_sum / (max_examples - num_failed)))
+        print('Fairness : {}'.format(fa_sum /(max_examples - num_failed)))
+        print('Length : {}'.format(leng_sum / (max_examples - num_failed)))
 
     with open(examples_path, 'w') as out:
         print(json.dumps([e.to_dict() for e in examples]), file=out)

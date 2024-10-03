@@ -1,144 +1,147 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <title>MutualFriends Dataset Browser</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.13/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" type="text/css" href="css/my.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.12.4.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" src="js/my.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-
-<body>
-
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a class="navbar-brand" href="#">MutualFriends Dataset</a>
-    </div>
-    <ul class="nav navbar-nav">
-      <li class="active"><a href="https://stanfordnlp.github.io/cocoa/">Home</a></li>
-    </ul>
-  </div>
-</nav>
-
-<div class="container">
-    <div class="panel-group">
-    <div class="panel panel-default" id="filter">
-        <div class="panel-body">
-        <table id="filter"><tbody>
-        <tr id="items">
-            <td>Min #items:</td>
-            <td>
-                <select class="min" name="min">
-                    <option selected disabled value=''>--select--</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                </select>
-            </td>
-            <td>Max #items:</td>
-            <td>
-                <select class="max" name="max">
-                    <option selected disabled value=''>--select--</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
-                </select>
-            </td>
-        </tr>
-        <tr id="attrs">
-            <td>Min #attrs:</td>
-            <td>
-                <select class="min" name="min">
-                    <option selected disabled value=''>--select--</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
-            </td>
-            <td>Max #attrs:</td>
-            <td>
-                <select class="max" name="max">
-                    <option selected disabled value=''>--select--</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
-            </td>
-        </tr>
-        <tr id="agents">
-            <td>Agent 0:</td>
-            <td>
-                <select id="agent0">
-                    <option selected disabled value=''>--select--</option>
-                    <option value="human">human</option>
-                    <option value="rule-based">rule-based</option>
-                    <option value="StanoNet">StanoNet</option>
-                    <option value="DynoNet">DynoNet</option>
-                </select>
-            </td>
-            <td>Agent 1:</td>
-            <td>
-                <select id="agent1">
-                    <option selected disabled value=''>--select--</option>
-                    <option value="human">human</option>
-                    <option value="rule-based">rule-based</option>
-                    <option value="StanoNet">StanoNet</option>
-                    <option value="DynoNet">DynoNet</option>
-                </select>
-            </td>
-        </tr>
-        <tr>
-            <td>Outcome:</td>
-            <td colspan="3">
-                <select id="outcome">
-                    <option selected disabled value=''>--select--</option>
-                    <option value="fail">fail</option>
-                    <option value="success">success</option>
-            </td>
-        </tr>
-        <tr>
-            <td>Scenario ID:</td>
-            <td colspan="3">
-                <input type="text" id="inputScenarioId">
-            </td>
-        </tr>
-        <tr>
-            <td colspan="2">
-                <button id="filterButton" type="button">Filter</button> 
-            </td>
-            <td colspan="2">
-                <button id="resetButton" type="button">Reset</button> 
-            </td>
-        </tr>
-        </tbody></table>
-    </div>
-    </div>
-
-    <div class="panel panel-default" id="metadata-wrapper">
-        <div class="panel-body">
-        <table id="metadata" class="display" width="100%" cellspacing="0"></table>
-        </div>
-    </div>
-    <div class="panel panel-default" id="example-wrapper">
-        <div class="panel-body">
-        <div id="example" width="100%"></div> 
-        </div>
-    </div>
-    </div> <!-- panel group -->
-</div> <!-- container -->
-</body>
-
-</html>
+<head><style>table{ table-layout: fixed; width: 600px; border-collapse: collapse; } tr:nth-child(n) { border: solid thin;}</style></head><body>
+<style>
+* {
+font-size: 1em;
+font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+#filter td {
+padding: 0 20px 5px 0;
+}
+.scenario {
+width: 100%;
+display: inline-block;
+text-align: left;
+}
+.scenario table {
+border-collapse: collapse;
+text-align: left;
+}
+.survey {
+width: 100%;
+}
+.survey table {
+border-collapse: collapse;
+}
+.survey table td, .scenario table td {
+padding: 0 5px;
+}
+.survey .response {
+padding: 0 0 20px 0;
+}
+.agentLabel {
+padding: 10px;
+}
+.scenario td, .scenario th, .scenario tr, .survey td, .survey th, .survey tr {
+border-bottom: 1px solid #ddd;
+padding: 0 5px 0 0;
+}
+.divTitle {
+padding: 20px 0px 10px 0px;
+font-weight: bold;
+margin-bottom: 10px;
+}
+.count-title {
+margin: 5px 20px;
+width: 30px;
+display: inline;
+font-weight: bold;
+text-align: center;
+}
+.count {
+margin: 5px 20px;
+padding: 38px;
+display: inline;
+text-align: center;
+}
+.kb0 {
+width: 48%;
+float: left;
+}
+.kb1 {
+width: 48%;
+margin-left: 4%;
+float: left;
+}
+.chatLog .chat {
+width: auto;
+border-collapse: collapse;
+}
+.chat td {
+padding: 2px 15px 2px 15px;
+}
+.kb0 th {
+background-color: #80ced6;
+}
+.chatLog .agent0 {
+background-color: #80ced6;
+}
+.survey .response0 th {
+background-color: #80ced6;
+}
+.kb1 th {
+background-color: #ffef96;
+}
+.chatLog .agent1 {
+background-color: #ffef96;
+}
+.survey .response1 th {
+background-color: #ffef96;
+}
+</style>
+<h3>Total number of chats: 1</h3>
+<h3>Number of chats accepted: 1 (completed 1, incompleted 0)</h3>
+<h3>Number of chats rejected: 0 (completed 0, incompleted 0)</h3>
+<hr>
+<div class="scenario">
+<div class="divTitle">Scenario S_GFi5KmarPXzYau0e</div>
+<p><b>2008 Honda accord coupe  3.5 liter ($8400)</b></p>
+<p>Great looking, Loaded with Nav system, Moonroof, fast,a few mods, New rims, intake, new tires, exhaust.  Just did timing belt service, has amp and specially fit box with 2 10s in trunk. In pretty good shape .Timing belt service and tires a couple months ago were 2k alone..... My son just left for the marines, just dumped a bunch of money on this car right before he left. Is pretty much loaded, had it for about 2 years .I'm driving it now, Don't think there is anything wrong with it other than an airbag light on. Please email with your phone number. Not gonna entertain offers over the phone unless someone takes the time to look at it. Not gonna respond to low ballers.</p>
+<div class="kb0"><table><tr><td colspan="2" class="agentLabel">Agent 0</td></tr>
+<tr><th colspan="2">Personal Attributes</th></tr>
+<tr><td>Bottomline</td><td>None</td></tr>
+<tr><td>Role</td><td>buyer</td></tr>
+<tr><td>Target</td><td>6384</td></tr>
+</table></div>
+<div class="kb1"><table><tr><td colspan="2" class="agentLabel">Agent 1</td></tr>
+<tr><th colspan="2">Personal Attributes</th></tr>
+<tr><td>Bottomline</td><td>None</td></tr>
+<tr><td>Role</td><td>seller</td></tr>
+<tr><td>Target</td><td>8400</td></tr>
+</table></div>
+</div>
+<div class="chatLog">
+<div class="divTitle"> Chat Log: C_b1cfae461c8b488bb8ba29cdcd3eeb8e <br> Agent 0: N/A Agent 1: N/A </div>
+<table class="chat">
+<tr class="agent0">                        <td class="time"></td>                        <td class="agent"></td>                        <td class="tags"></td>                        <td class="act"><start></td>                        <td class="template"><start></td>                        <td class="message"></td>                       </tr>
+<tr class="agent0">                    <td class="time">2024-09-17 11:28:22</td>                    <td class="agent">Agent 0 (SL-rule)</td>                    <td class="tags"></td>                    <td class="act">intro</td>                    <td class="template">hello</td>                    <td class="message">hello</td>                   </tr>
+<tr class="agent1">                    <td class="time">2024-09-17 11:29:52</td>                    <td class="agent">Agent 1 (Human)</td>                    <td class="tags"></td>                    <td class="act"></td>                    <td class="template"></td>                    <td class="message">Hello! Are you interested in this car?</td>                   </tr>
+<tr class="agent0">                        <td class="time"></td>                        <td class="agent"></td>                        <td class="tags"></td>                        <td class="act">unknown</td>                        <td class="template">hello ! are you interested in this car ?</td>                        <td class="message"></td>                       </tr>
+<tr class="agent0">                    <td class="time">2024-09-17 11:29:52</td>                    <td class="agent">Agent 0 (SL-rule)</td>                    <td class="tags"></td>                    <td class="act">inquiry</td>                    <td class="template">yes i am. is it in good condition?</td>                    <td class="message">yes i am. is it in good condition?</td>                   </tr>
+<tr class="agent1">                    <td class="time">2024-09-17 11:31:58</td>                    <td class="agent">Agent 1 (Human)</td>                    <td class="tags"></td>                    <td class="act"></td>                    <td class="template"></td>                    <td class="message">Yes. The timing belt was serviced a few months ago and is in very good condition.</td>                   </tr>
+<tr class="agent0">                        <td class="time"></td>                        <td class="agent"></td>                        <td class="tags"></td>                        <td class="act">inform</td>                        <td class="template">yes . the timing belt was serviced a few months ago and is in very good condition .</td>                        <td class="message"></td>                       </tr>
+<tr class="agent0">                    <td class="time">2024-09-17 11:31:58</td>                    <td class="agent">Agent 0 (SL-rule)</td>                    <td class="tags"></td>                    <td class="act">unknown</td>                    <td class="template">okay then we've got it covered! thanks</td>                    <td class="message">okay then we've got it covered! thanks</td>                   </tr>
+<tr class="agent1">                    <td class="time">2024-09-17 11:33:09</td>                    <td class="agent">Agent 1 (Human)</td>                    <td class="tags"></td>                    <td class="act"></td>                    <td class="template"></td>                    <td class="message">So, what is your asking price? I'm open to a little negotiation.</td>                   </tr>
+<tr class="agent0">                        <td class="time"></td>                        <td class="agent"></td>                        <td class="tags"></td>                        <td class="act">unknown</td>                        <td class="template">so , what is your asking price ? i 'm open to a little negotiation .</td>                        <td class="message"></td>                       </tr>
+<tr class="agent0">                    <td class="time">2024-09-17 11:33:10</td>                    <td class="agent">Agent 0 (SL-rule)</td>                    <td class="tags"></td>                    <td class="act">inquiry</td>                    <td class="template">what condition is it in?</td>                    <td class="message">what condition is it in?</td>                   </tr>
+<tr class="agent1">                    <td class="time">2024-09-17 11:34:39</td>                    <td class="agent">Agent 1 (Human)</td>                    <td class="tags"></td>                    <td class="act"></td>                    <td class="template"></td>                    <td class="message">I bought this car two years ago, and as I said, it's in good condition.</td>                   </tr>
+<tr class="agent0">                        <td class="time"></td>                        <td class="agent"></td>                        <td class="tags"></td>                        <td class="act">inform</td>                        <td class="template">i bought this car two years ago , and as i said , it 's in good condition .</td>                        <td class="message"></td>                       </tr>
+<tr class="agent0">                    <td class="time">2024-09-17 11:34:39</td>                    <td class="agent">Agent 0 (SL-rule)</td>                    <td class="tags"></td>                    <td class="act">inquiry</td>                    <td class="template">that's good, is it in good condition?</td>                    <td class="message">that's good, is it in good condition?</td>                   </tr>
+<tr class="agent1">                    <td class="time">2024-09-17 11:35:57</td>                    <td class="agent">Agent 1 (Human)</td>                    <td class="tags"></td>                    <td class="act"></td>                    <td class="template"></td>                    <td class="message">Please don't ask the same question over and over again. The price is $8400. Buy it or not.</td>                   </tr>
+<tr class="agent0">                        <td class="time"></td>                        <td class="agent"></td>                        <td class="tags"></td>                        <td class="act">init-price</td>                        <td class="template">please do n't ask the same question over and over again . the price is {listing_price} . buy it or not .</td>                        <td class="message"></td>                       </tr>
+<tr class="agent0">                    <td class="time">2024-09-17 11:35:57</td>                    <td class="agent">Agent 0 (SL-rule)</td>                    <td class="tags"></td>                    <td class="act">inquiry</td>                    <td class="template">does it need any repairs?</td>                    <td class="message">does it need any repairs?</td>                   </tr>
+<tr class="agent1">                    <td class="time">2024-09-17 11:36:29</td>                    <td class="agent">Agent 1 (Human)</td>                    <td class="tags"></td>                    <td class="act"></td>                    <td class="template"></td>                    <td class="message">Can be used without repairs.</td>                   </tr>
+<tr class="agent0">                        <td class="time"></td>                        <td class="agent"></td>                        <td class="tags"></td>                        <td class="act">inquiry</td>                        <td class="template">can be used without repairs .</td>                        <td class="message"></td>                       </tr>
+<tr class="agent0">                    <td class="time">2024-09-17 11:36:29</td>                    <td class="agent">Agent 0 (SL-rule)</td>                    <td class="tags"></td>                    <td class="act">counter-price</td>                    <td class="template">yes. would you accept {price} for it?</td>                    <td class="message">yes. would you accept 8117 for it?</td>                   </tr>
+<tr class="agent1">                    <td class="time">2024-09-17 11:36:55</td>                    <td class="agent">Agent 1 (Human)</td>                    <td class="tags"></td>                    <td class="act"></td>                    <td class="template"></td>                    <td class="message">Good offer. I agree.</td>                   </tr>
+<tr class="agent0">                        <td class="time"></td>                        <td class="agent"></td>                        <td class="tags"></td>                        <td class="act">unknown</td>                        <td class="template">good offer . i agree .</td>                        <td class="message"></td>                       </tr>
+<tr class="agent0">                    <td class="time">2024-09-17 11:36:55</td>                    <td class="agent">Agent 0 (SL-rule)</td>                    <td class="tags"></td>                    <td class="act">unknown</td>                    <td class="template">fantastic!!!</td>                    <td class="message">fantastic!!!</td>                   </tr>
+<tr class="agent1">                    <td class="time">2024-09-17 11:37:04</td>                    <td class="agent">Agent 1 (Human)</td>                    <td class="tags"></td>                    <td class="act"></td>                    <td class="template"></td>                    <td class="message">OFFER {"price": 8117.0, "sides": ""}</td>                   </tr>
+<tr class="agent0">                    <td class="time">2024-09-17 11:37:04</td>                    <td class="agent">Agent 0 (SL-rule)</td>                    <td class="tags"></td>                    <td class="act"></td>                    <td class="template"></td>                    <td class="message">ACCEPT OFFER</td>                   </tr>
+</table>
+</div>
+<p>Bot config: [0.2, 0.5, 0.5, 0.7]</p>
+</div>
+<hr>
+</body></html>

@@ -33,4 +33,4 @@ class CmdSession(Session):
 
     def receive(self, event):
         print('【intent: {}, utterance: {}】'.format(event.metadata['sent']['logical_form']['intent'], event.data))
-        #print("intent":event.data)
+        #print("intent: ", event.data)

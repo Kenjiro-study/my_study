@@ -252,8 +252,22 @@ if __name__ == "__main__":
     app.config['instructions'] = instructions
     app.config['task_title'] = params['task_title']
 
-    app.config['parserpath'] = args.parserpath ##### new! configにDLベースパーサーのパスを追加
-    app.config['flag'] = args.neuralflag ##### new! configにflagを追加
+    ##### new! DLベースパーサーを使うための処理
+    if (args.parserpath is not None) and args.neuralflag:
+        from transformers import AutoTokenizer
+        from transformers import AutoModelForSequenceClassification
+        import torch
+        device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+        checkpoint = args.parserpath 
+        app.config["tokenizer"] = AutoTokenizer.from_pretrained(checkpoint) # configにトークナイザーを追加
+        model = AutoModelForSequenceClassification.from_pretrained(checkpoint, num_labels=12)
+        app.config['dlparser'] = model.to(device) # configにDLベースパーサーを追加
+        app.config['flag'] = args.neuralflag # configにflagを追加
+    else:
+        app.config["tokenizer"] = None
+        app.config["dlparser"] = None
+        app.config["flag"] = False
+
     
     if 'icon' not in params.keys():
         app.config['task_icon'] = 'handshake.jpg'

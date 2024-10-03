@@ -8,7 +8,7 @@ class HumanSession(Session):
     このクラスはエージェントによって送信されたメッセージをキューに入れ, 対話内の他のエージェントからのメッセージを取得するために使用できる
     """
     def __init__(self, agent):
-        super(HumanSession, self).__init__(agent)
+        super().__init__(agent) # 3系ver.
         self.outbox = []
         self.inbox = []
         self.cached_messages = []

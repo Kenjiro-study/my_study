@@ -26,6 +26,7 @@ class BaseHybridSession(CraigslistRulebasedSession):
         self.price_actions = ('init-price', 'counter-price', markers.OFFER)
         self.parser_model = None # パーサーに使うDLモデル
         self.tokenizer = None # DLモデルに対応するトークナイザ
+        self.action_his = [] # introが連続することを防ぐためのintentの履歴
 
     def receive(self, event, pre_text=None):
         if event.action in Event.decorative_events:
@@ -33,12 +34,10 @@ class BaseHybridSession(CraigslistRulebasedSession):
         # パーサーの部分を処理する
         if self.parser.flag and (type(event.data) is str):
             # DLベースパーサー
-            print("self.parser_model: ", self.parser_model)
-            print("self.tokenizer: ", self.tokenizer)
             print("pre_text: ", pre_text)
-            print("event.data: ", event.data)
+            print("text: ", event.data)
             intent = oneshot_classify_intent(self.parser_model, self.tokenizer, pre_text, event.data)
-            print("intent: ", intent)
+            #print("intent: ", intent)
             utterance = self.parser.parse(event, self.state, intent)
         else:
             # ルールベースパーサー
@@ -66,6 +65,12 @@ class BaseHybridSession(CraigslistRulebasedSession):
 
     def send(self):
         action_tokens = self.manager.generate() # sessions.neural_session.PytorchNeuralSessionのgenerateメソッド
+        self.action_his.append(action_tokens[0]) # intro連続防止のためにactionの履歴を作成
+        if len(self.action_his) == 3:
+            if self.action_his[0]=='intro' and self.action_his[1]=='intro' and self.action_his[2]=='intro':
+                # botが最初hの発話から3連続でintroを選択してしまったら他のintentが選ばれるまでmanagerの処理を繰り返す
+                while action_tokens[0] == 'intro':
+                    action_tokens = self.manager.generate()
         if action_tokens is None:
             return None
         self.manager.dialogue.add_utterance(self.agent, list(action_tokens))
@@ -87,7 +92,7 @@ class BaseHybridSession(CraigslistRulebasedSession):
         elif action == markers.QUIT:
             return self.quit()
         
-        return self.template_message(action, price=price)
+        return self.template_message(action, price=price) # ここでダイアログアクトを基にテンプレートから文章を生成する(actionがintent)
 
 
 class SellerHybridSession(BaseHybridSession):

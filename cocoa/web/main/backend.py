@@ -772,8 +772,7 @@ class Backend(object):
                         # self.end_chat_and_transition_to_waiting(cursor, userid, message=self.messages.ChatExpired)
                         return False
                     except ConnectionTimeoutException:
-                        self.end_chat_and_redirect(cursor, userid,
-                                                   message=self.messages.PartnerConnectionTimeout)
+                        self.end_chat_and_redirect(cursor, userid, message=self.messages.PartnerConnectionTimeout)
                         self.logger.debug("User {:s}: Partner connection timed out, redirecting to "
                                           "waiting".format(userid))
                         return False
@@ -834,13 +833,13 @@ class Backend(object):
         except sqlite3.IntegrityError:
             print("注意!: Rolled back transaction")
 
-    def receive(self, userid, model_path=None, flag=False):
+    def receive(self, userid, tokenizer=None, model=None, flag=False):
         controller = self.controller_map[userid]
         if controller is None:
             # fail silently
             # ↑これはチャットが終了してからページが更新されるまでの間に, receiveが呼び出されることを意味する
             return None
-        controller.step(self, model_path, flag)
+        controller.step(self, tokenizer, model, flag)
         session = self._get_session(userid)
         return session.poll_inbox()
 
@@ -860,7 +859,7 @@ class Backend(object):
         except sqlite3.IntegrityError:
             print("注意!: Rolled back transaction")
 
-    def send(self, userid, event, model_path=None, flag=False):
+    def send(self, userid, event, tokenizer=None, model=None, flag=False):
         session = self._get_session(userid)
         session.enqueue(event)
         controller = self.controller_map[userid]
@@ -871,7 +870,7 @@ class Backend(object):
             # これは, パートナーが交渉から去った後にユーザーが何かを送信しようとしていることを意味するため, fail silentlyとなる
             # (ただしチャットが終了する前限定)
             return None
-        controller.step(self, model_path, flag)
+        controller.step(self, tokenizer, model, flag)
         # self.add_event_to_db(controller.get_chat_id(), event)
 
     def submit_survey(self, userid, data):

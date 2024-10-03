@@ -5,7 +5,7 @@ import json
 
 # ファイルを読み込む
 #with open('transcripts1.json', 'r') as f1, open('transcripts2.json', 'r') as f2: # 実験用
-with open('rulechat_output/transcripts/transcripts1.json', 'r') as f1, open('deepchat_output/transcripts/transcripts2.json', 'r') as f2:
+with open('rulechat_output/transcripts/transcripts.json', 'r') as f1, open('deepchat_output/transcripts/transcripts.json', 'r') as f2:
     data1 = json.load(f1)
     data2 = json.load(f2)
 

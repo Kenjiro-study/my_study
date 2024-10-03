@@ -98,7 +98,13 @@ class Controller(object):
                             if event.time == 1:
                                 pre_text = "[PAD]"
                             else:
-                                pre_text = self.events[-2].data
+                                if type(self.events[-2].data) is str:
+                                    pre_text = self.events[-2].data
+                                else:
+                                    if type(self.events[-3].data) is str:
+                                        pre_text = self.events[-3].data
+                                    else:
+                                        pre_text = "[PAD]"
                             other_session.receive(event, pre_text)
                         else:
                             other_session.receive(event) # ここで相手の一つ前の発話が表示される
@@ -116,7 +122,7 @@ class Controller(object):
         return Example(self.scenario, uuid, self.events, outcome, uuid, agent_names)
 
 
-    def step(self, backend=None, model_path=None, flag=False):
+    def step(self, backend=None, tokenizer=None, model=None, flag=False):
         '''
         Webのバックエンドによって呼び出される
         '''
@@ -152,15 +158,10 @@ class Controller(object):
                                 else:
                                     pre_text = self.data_his[-2]
                                 
-                                device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-                                checkpoint = model_path # 使用したいモデルのパスを持ってくる
-                                other_session.tokenizer = AutoTokenizer.from_pretrained(checkpoint)
-                                model = AutoModelForSequenceClassification.from_pretrained(checkpoint, num_labels=12)
-                                other_session.parser_model = model.to(device) # GPUにモデルを送る
-                                print("other_session.tokenizer: ", other_session.tokenizer)
-                                print("other_session.parser_model: ", other_session.parser_model)
-
+                                other_session.tokenizer = tokenizer
+                                other_session.parser_model = model
                                 other_session.parser.flag = flag
+                                
                                 other_session.receive(event, pre_text)
                             else:
                                 other_session.receive(event)

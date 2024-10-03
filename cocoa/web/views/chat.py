@@ -50,7 +50,7 @@ def check_inbox():
     # パートナーの行動や入力, 発話を制御する (check inbox → 受信トレイの確認)
     backend = get_backend()
     uid = userid()
-    event = backend.receive(uid, app.config['parserpath'], app.config['flag']) # new! flagとpathを追加
+    event = backend.receive(uid, app.config['tokenizer'], app.config['dlparser'], app.config['flag']) # new! トークナイザ, モデル, flagを追加
     if event is not None:
         data = backend.display_received_event(event)
         return jsonify(received=True, timestamp=event.time, **data)
@@ -69,7 +69,7 @@ def typing_event():
     # chat_infoの中身
     # agent_index, スキーマのattributes, chat_id, scenario_id, num_seconds(だんだん減る謎の文字列), kb, パートナーのkb(なぜかNone)
     # kbにはスキーマのattributeの他にfactsとして目標価格, 役割, 商品の説明が入っている
-    backend.send(uid, Event.TypingEvent(chat_info.agent_index, action, str(time.time())))
+    backend.send(uid, Event.TypingEvent(chat_info.agent_index, action, str(time.time())), app.config['tokenizer'], app.config['dlparser'], app.config['flag'])
 
     return jsonify(success=True)
 
@@ -84,7 +84,7 @@ def text():
     received_time = time.time()
     start_time = received_time - time_taken
     chat_info = backend.get_chat_info(uid)
-    backend.send(uid, Event.MessageEvent(chat_info.agent_index, message, str(received_time), str(start_time)), app.config['parserpath'], app.config['flag']) # new! flagとpathを追加)
+    backend.send(uid, Event.MessageEvent(chat_info.agent_index, message, str(received_time), str(start_time)), app.config['tokenizer'], app.config['dlparser'], app.config['flag']) # new! トークナイザ, モデル, flagを追加)
 
     return jsonify(message=displayed_message, timestamp=str(received_time))
 
@@ -96,7 +96,7 @@ def send_eval():
     uid = request.json['uid']
     chat_info = backend.get_chat_info(uid)
     data = {'utterance': eval_data['utterance'], 'labels': labels}
-    backend.send(uid, Event.EvalEvent(chat_info.agent_index, data, eval_data['timestamp']))
+    backend.send(uid, Event.EvalEvent(chat_info.agent_index, data, eval_data['timestamp']), app.config['tokenizer'], app.config['dlparser'], app.config['flag'])
 
     return jsonify(success=True)
 
@@ -107,7 +107,7 @@ def join_chat():
     backend = get_backend()
     uid = userid()
     chat_info = backend.get_chat_info(uid)
-    backend.send(uid, Event.JoinEvent(chat_info.agent_index, uid, str(time.time())))
+    backend.send(uid, Event.JoinEvent(chat_info.agent_index, uid, str(time.time())), app.config['tokenizer'], app.config['dlparser'], app.config['flag'])
 
     return jsonify(message=format_message("入室しました!.", True))
 
@@ -117,7 +117,7 @@ def leave_chat():
     backend = get_backend()
     uid = userid()
     chat_info = backend.get_chat_info(uid)
-    backend.send(uid, Event.LeaveEvent(chat_info.agent_index, uid, str(time.time())))
+    backend.send(uid, Event.LeaveEvent(chat_info.agent_index, uid, str(time.time())), app.config['tokenizer'], app.config['dlparser'], app.config['flag'])
 
     return jsonify(success=True)
 

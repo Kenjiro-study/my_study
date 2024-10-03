@@ -107,7 +107,7 @@ dia_df.to_csv('offer.csv')
 import string
 print(string.printable)
 """
-
+"""
 # pklファイルの中身を覗く
 import pickle
 # pklファイルのパスを指定
@@ -121,3 +121,18 @@ with open(pkl_file_path, 'rb') as file:
 print(data["utterance_vocab"].finished)
 
 #data.to_csv('rule-train-template.csv')
+"""
+# 与えられた2つの点
+x1, y1 = 120, 1
+x2, y2 = 200, -1
+
+# 傾き a を計算
+a = (y2 - y1) / (x2 - x1)
+
+# 切片 b を計算
+b = y1 - a * x1
+
+# 新しい値 x3 に対して y3 を計算
+x3 = 160
+y3 = a * x3 + b
+print(y3)

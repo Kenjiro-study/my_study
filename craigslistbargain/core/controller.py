@@ -65,6 +65,27 @@ class Controller(BaseController):
         
         return results
 
+    def get_statistics(self, agent_idx):
+        outcome = self.get_outcome() # 交渉対話の結果を取り出す {'reward': reward, 'offer': offer}の辞書
+        ag = outcome['reward'] # 合意か非合意か
+        partner_idx = 1 - agent_idx # 相手のインデックスを作成
+        
+        agent_target = self.sessions[agent_idx].kb.target # 定量評価したいエージェントの目標価格を取得
+        partner_target = self.sessions[partner_idx].kb.target # 相手の目標価格を取得
+
+        if ag == 0:
+            ut = 0 # 非合意であれば効用は計算しない
+            leng = 0 # 非合意であれば対話の長さも計算しない
+        else:
+            slope = 2 / (agent_target - partner_target) # 2はagentの最大効用1から最小効用-1を引いたもの これで傾きを求める
+            intercept = 1 - (slope * agent_target) # 切片を求める
+            ut = (slope * outcome['offer']['price']) + intercept # 効用
+            leng = self.events[-1].time # 対話の長さ
+        
+        fa = (-2) * abs(ut) # 対話の公平性
+        return ag, ut, fa, leng
+
+
     def complete(self):
         return (self.offers[0] is not None and self.outcomes[1] is True) or (self.offers[1] is not None and self.outcomes[0] is True)
 
