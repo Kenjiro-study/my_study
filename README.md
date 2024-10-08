@@ -1,55 +1,77 @@
-# CoCoA (Collaborative Communicating Agents)
+# Let's Negotiate! (Craigslistbargainデータセットにおける交渉対話実験)
 
-**CoCoA** is a dialogue framework written in Python, providing tools for
-data collection through a text-based chat interface and
-model development in PyTorch (largely based on OpenNMT).
+このプロジェクトは商品の価格交渉に関するデータセットであるCRAIGSLISTBARGAINを使用した, 交渉対話システムとの対話実験を行うプロジェクトです。
+先行研究である[Decoupling Strategy and Generation in Negotiation Dialogues (He, 2018)](https://aclanthology.org/D18-1256/)にて提案された, 
+パーサー, マネージャー, ジェネレーターの3つのモジュールからなる交渉対話システムを基に, 新たに深層学習を使用したパーサーを提案し, 交渉対話システムを作成しました。
 
-This repo contains code for the following tasks:
-- **MutualFriends**: two agents, each with a private list of friends with multiple attributes (e.g. school, company), try to find their mutual friends through a conversation.
-- **CraigslistBargain**: a buyer and a seller negotiate the price of an item for sale on [Craigslist](https://sfbay.craigslist.org/).
-- **DealOrNoDeal**: two agents negotiate to split a group of items with different points among them.  The items are books, hats and balls.
+このプロジェクトで対話をすることができる交渉対話システムは以下の8種類です。
+**先行研究のBot**:
+- **SL-rule**: 強化学習なしのルールベースパーサー使用のBot
+- **RL-rule-margin**: 強化学習の報酬に目的効用を使用した, ルールベースパーサー使用のBot
+- **RL-rule-length**: 強化学習の報酬に対話の長さを使用した, ルールベースパーサー使用のBot
+- **RL-rule-fair**: 強化学習の報酬に公平性を使用した, ルールベースパーサー使用のBot
 
-**Papers**:
-- [Learning Symmetric Collaborative Dialogue Agents with Dynamic Knowledge Graph Embeddings](https://arxiv.org/pdf/1704.07130.pdf).
-He He, Anusha Balakrishnan, Mihail Eric and Percy Liang.
-Association for Computational Linguistics (ACL), 2017.
-- [Decoupling Strategy and Generation in Negotiation Dialogues](https://arxiv.org/abs/1808.09637).
-He He, Derek Chen, Anusha Balakrishnan and Percy Liang.
-Empirical Methods in Natural Language Processing (EMNLP), 2018.
+**本研究の提案手法を用いたBot**:
+- **SL-deep**: 強化学習なしのDLベースパーサー使用のBotです
+- **RL-deep-margin**: 強化学習の報酬に目的効用を使用した, DLベースパーサー使用のBot
+- **RL-deep-length**: 強化学習の報酬に対話の長さを使用した, DLベースパーサー使用のBot
+- **RL-deep-fair**: 強化学習の報酬に公平性を使用した, DLベースパーサー使用のBot
 
-**Note**:
-We have not fully integrated the MutualFriends task with the `cocoa` package.
-For now please refer to the `mutualfriends` branch for the ACL 2017 paper.
+掲載論文は以下の通りです.
+- [交渉対話システムにおける深層学習に基づくパーサーによるダイアログアクトの推定](https://www.jstage.jst.go.jp/article/pjsai/JSAI2024/0/JSAI2024_1G3GS605/_article/-char/ja).
+森本賢次郎, 藤田桂英.
+人工知能学会全国大会(第38回), 2024.
 
 ----------
-## Installation
-**Dependencies**: Python 2.7, PyTorch 0.4.1.
+## 環境構築
+1. まず, 作業ディレクトリ(ここでは例としてworkディレクトリとします)に本プロジェクトのディレクトリ及びファイルをインストールします.
+2. 次にworkディレクトリに移動し, 以下の順序でdockerのコンテナを作成します.
 
-**NOTE**: MutualFriends still depends on Tensorflow 1.2 and uses different leanring modules. See details on the `mutualfriends` branch.
+**None**: ポート番号を指定する「-p 5000:5000」は使用可能なポート番号に適宜変更してください
 
 ```
-pip install -r requirements.txt
+docker build --shm-size=4gb --force-rm=true -t <任意のdockerイメージ名> .
+docker run --gpus 1 -tid --ipc=host --name <任意のdockerコンテナ名> -p 5000:5000 -v <workディレクトリへの絶対パス>:/workspace <先ほど作成したdockerイメージ名>:latest
+```
+
+3. コンテナを作成したら, 以下の順序でコンテナを起動し, セットアップを行います.
+
+```
+docker exec -i -t 〈コンテナID〉 bash
 python setup.py develop
+python stopword_set.py
+pip install gevent
+```
+----------
+## 交渉対話システムとのチャット
+このプロジェクトにはすでに上記のBot8種類が用意されています.
+以下のコマンドを実行することで, Webアプリケーション上で交渉対話システムと商品の価格交渉を行うことができます.
+
+**先行研究のBotと交渉を行う場合**:
+```
+PYTHONPATH=craigslistbargain python craigslistbargain/web/chat_app.py --port 5000 --config craigslistbargain/web/app_params_rulesys.json --schema-path craigslistbargain/data/craigslist-schema.json --scenarios-path craigslistbargain/data/dev-scenarios.json --price-tracker craigslistbargain/data/price_tracker.pkl --templates src/rule/train-templates.pkl --policy src/rule/train-model.pkl --output rulechat_output --sample
 ```
 
-## Main concepts/classes
-### Schema and scenarios
-A **dialogue** is grounded in a **scenario**.
-A **schema** defines the structure of scenarios. For example, a simple scenario that specifies the dialogue topic is
-
-| Topic      | 
-| -------- | 
-| Artificial Intelligence  | 
-
-and its schema (in JSON) is
+**本研究のBotと交渉を行う場合**:
 ```
-{
-    "attributes": [
-        "value_type": "topic",
-        "name": "Topic"
-    ]
-}
+PYTHONPATH=craigslistbargain python craigslistbargain/web/chat_app.py --port 5000 --config craigslistbargain/web/app_params_deepsys.json --schema-path craigslistbargain/data/craigslist-schema.json --scenarios-path craigslistbargain/data/dev-scenarios.json --price-tracker craigslistbargain/data/price_tracker.pkl --templates src/deep/train-templates.pkl --policy src/deep/train-model.pkl --parserpath transformers/model/roberta_fold_1/checkpoint-82304 --output deepchat_output --sample --neuralflag
 ```
+
+上記のうち, どちらかのコマンドを実行すると, ターミナル上に **App setup complete** の文字が表示されたら準備完了です.
+URL: 「http://<プログラムを実行しているPCまたはサーバーのIPアドレス>:5000」にアクセスすると交渉が開始されます.
+交渉の詳しい説明に関しては, 本プロジェクト内の「nogotiation_instruction.pdf」をご確認ください
+
+----------
+## DLベースパーサーの作成
+
+今後追記します
+
+----------
+## チャットBotの作成
+上記の「交渉対話システムとのチャット」で使用したチャットbotの作成方法について説明します。
+
+
+
 ### Systems and sessions
 A dialogue **agent** is instantiated in a **session** which receives and sends messages. A **system** is used to create multiple sessions (that may run in parallel) of a specific agent type. For example, ```system = NeuralSystem(model)``` loads a trained model and ```system.new_session()``` is called to create a new session whenever a human user is available to chat.
 
