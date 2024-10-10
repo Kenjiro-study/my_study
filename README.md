@@ -1,17 +1,17 @@
 # Let's Negotiate! (Craigslistbargainデータセットにおける交渉対話実験)
 
-このプロジェクトは商品の価格交渉に関するデータセットであるCRAIGSLISTBARGAINを使用した, 交渉対話システムとの対話実験を行うプロジェクトです。
+このプロジェクトは商品の価格交渉に関するデータセットであるCRAIGSLISTBARGAINを使用した, 交渉対話システムとの対話実験を行うプロジェクトです.
 先行研究である[Decoupling Strategy and Generation in Negotiation Dialogues (He, 2018)](https://aclanthology.org/D18-1256/)にて提案された, 
-パーサー, マネージャー, ジェネレーターの3つのモジュールからなる交渉対話システムを基に, 新たに深層学習を使用したパーサーを提案し, 交渉対話システムを作成しました。
+パーサー, マネージャー, ジェネレーターの3つのモジュールからなる交渉対話システムを基に, 新たに深層学習を使用したパーサーを提案し, 交渉対話システムを作成しました.
 
-このプロジェクトで対話をすることができる交渉対話システムは以下の8種類です。
-**先行研究のBot**:
+このプロジェクトで対話をすることができる交渉対話システムは以下の8種類です.
+**先行研究のBot(Ruleと呼びます)**:
 - **SL-rule**: 強化学習なしのルールベースパーサー使用のBot
 - **RL-rule-margin**: 強化学習の報酬に目的効用を使用した, ルールベースパーサー使用のBot
 - **RL-rule-length**: 強化学習の報酬に対話の長さを使用した, ルールベースパーサー使用のBot
 - **RL-rule-fair**: 強化学習の報酬に公平性を使用した, ルールベースパーサー使用のBot
 
-**本研究の提案手法を用いたBot**:
+**本研究の提案手法を用いたBot(Deepと呼びます)**:
 - **SL-deep**: 強化学習なしのDLベースパーサー使用のBotです
 - **RL-deep-margin**: 強化学習の報酬に目的効用を使用した, DLベースパーサー使用のBot
 - **RL-deep-length**: 強化学習の報酬に対話の長さを使用した, DLベースパーサー使用のBot
@@ -22,7 +22,6 @@
 森本賢次郎, 藤田桂英.
 人工知能学会全国大会(第38回), 2024.
 
-----------
 ## 環境構築
 1. まず, 作業ディレクトリ(ここでは例としてworkディレクトリとします)に本プロジェクトのディレクトリ及びファイルをインストールします.
 2. 次にworkディレクトリに移動し, 以下の順序でdockerのコンテナを作成します.
@@ -59,108 +58,143 @@ PYTHONPATH=craigslistbargain python craigslistbargain/web/chat_app.py --port 500
 
 上記のうち, どちらかのコマンドを実行すると, ターミナル上に **App setup complete** の文字が表示されたら準備完了です.
 URL: 「http://<プログラムを実行しているPCまたはサーバーのIPアドレス>:5000」にアクセスすると交渉が開始されます.
-交渉の詳しい説明に関しては, 本プロジェクト内の「nogotiation_instruction.pdf」をご確認ください
+交渉の詳しい説明に関しては, 本プロジェクト内の「nogotiation_instruction.pdf」をご確認ください.
 
-----------
+なお, 何らかのエラーが原因でWebアプリケーション上でチャットができない場合は, 下記の**チャットBotの作成**における**5. コマンドラインインタフェース上でのBotとのチャット**に従ってコマンドを実行することにより, コマンドラインインタフェース上で簡易的に交渉対話システムとチャットを行うことができます.
+お試しください.
+
+**交渉結果の可視化**
+
+Webアプリケーション上で行った交渉は結果が記録されています.
+以下, 結果の確認方法について記述します.
+
+まず, 結果が保存されたSQLデータベースから, JSONファイルに交渉結果情報を移動します.
+```
+(Rule)
+PYTHONPATH=craigslistbargain python scripts/web/dump_db.py --db rulechat_output/chat_state.db --output rulechat_output/transcripts/transcripts.json --surveys rulechat_output/transcripts/surveys.json --schema craigslistbargain/data/craigslist-schema.json --scenarios-path craigslistbargain/data/dev-scenarios.json
+```
+```
+(Deep)
+PYTHONPATH=craigslistbargain python scripts/web/dump_db.py --db deepchat_output/chat_state.db --output deepchat_output/transcripts/transcripts.json --surveys deepchat_output/transcripts/surveys.json --schema craigslistbargain/data/craigslist-schema.json --scenarios-path craigslistbargain/data/dev-scenarios.json
+```
+
+次に作成したruleとdeepのjsonファイルを結合します.
+
+```
+python scripts/surveys_merge.py 
+python scripts/transcripts_merge.py 
+```
+
+最後にJSONファイルに保存された情報をコマンドライン上に表示します.
+```
+PYTHONPATH=craigslistbargain python scripts/visualize_transcripts.py --dialogue-transcripts scripts/transcripts_merge.json --survey-transcripts scripts/surveys_merge.json --summary --survey-only
+```
+
+
 ## DLベースパーサーの作成
 
 今後追記します
 
-----------
+
 ## チャットBotの作成
-上記の「交渉対話システムとのチャット」で使用したチャットbotの作成方法について説明します。
+上記の「交渉対話システムとのチャット」で使用したチャットbotの作成方法について説明します.
 
+先行研究(Rule)のBotを作成するコマンドには(Rule), 本研究の提案手法である深層学習ベースのパーサーを使用したBotを作成するコマンドには(Deep)の印を記載しています.
 
+**1. Price Trackerの作成**
 
-### Systems and sessions
-A dialogue **agent** is instantiated in a **session** which receives and sends messages. A **system** is used to create multiple sessions (that may run in parallel) of a specific agent type. For example, ```system = NeuralSystem(model)``` loads a trained model and ```system.new_session()``` is called to create a new session whenever a human user is available to chat.
+発話から価格の言及が行われているか否かを判別する Price Trackerを作成します.
 
-### Events and controllers
-A dialogue **controller** takes two sessions and have them send/receive **events** until the task is finished or terminated. The most common event is ```message```, which sends some text data. There are also task-related events, such as ```select``` in MutualFriends, which sends the selected item. 
-
-### Examples and datasets
-A dialogue is represented as an **example** which has a scenario, a series of events, and some metadata (e.g. example id). Examples can be read from / write to a JSON file in the following structure:
 ```
-examples.json
-|--[i]
-|  |--"uuid": "<uuid>"
-|  |--"scenario_uuid": "<uuid>"
-|  |--"scenario": "{scenario dict}"
-|  |--"agents": {0: "agent type", 1: "agent type"}
-|  |--"outcome": {"reward": R}
-|  |--"events"
-|     |--[j]
-|        |--"action": "action"
-|        |--"data": "event data"
-|        |--"agent": agent_id
-|        |--"time": "event sent time"
+PYTHONPATH=craigslistbargain python craigslistbargain/core/price_tracker.py --train-examples-path craigslistbargain/data/train.json --output craigslistbargain/data/price_tracker.pkl
 ```
-A **dataset** reads in training and testing examples from JSON files.
 
-## Code organization
-CoCoA is designed to be modular so that one can add their own task/modules easily.
-All tasks depend on the `cocoa` pacakge.
-See documentation in the task folder for task-specific details. 
+出力として**price_tracker.pkl**が得られます.
 
-### Data collection
-We provide basic infrastructure (see `cocoa.web`) to set up a website that pairs two users or a user and a bot to chat in a given scenario.
+**2. パーサーによる学習・検証データの解析**
 
-#### Generate scenarios
-The first step is to create a ```.json``` schema file and then (randomly) generate a set of scenarios that the dialogue will be situated in.
+学習データ**train.json**と検証データ**dev.json**の両方をパーサーによって解析します.
 
-#### <a name=web>Setup the web server</a>
-The website pairs a user with another user or a bot (if available). A dialogue scenario is displayed and the two agents can chat with each other.
-Users are then directed to a survey to rate their partners (optional).
-All dialogue events are logged in a SQL database.
-
-Our server is built by [Flask](http://flask.pocoo.org/).
-The backend (```cocoa/web/main/backend.py```) contains code for pairing, logging, dialogue quality check.
-The frontend code is in ```task/web/templates```.
-
-To deploy the web server, run
 ```
-cd <name-of-your-task>;
-PYTHONPATH=. python web/chat_app.py --port <port> --config web/app_params.json --schema-path <path-to-schema> --scenarios-path <path-to-scenarios> --output <output-dir>
-```
-- Data and log will be saved in `<output-dir>`. **Important**: note that this will delete everything in `<output-dir>` if it's not empty.
-- `--num-scenarios`: total number of scenarios to sample from. Each scenario will have `num_HITs / num_scenarios` chats.
-You can also specify ratios of number of chats for each system in the config file.
-Note that the final result will be an approximation of these numbers due to concurrent database calls.
+(Rule)
+PYTHONPATH=craigslistbargain python craigslistbargain/parse_dialogue.py --transcripts craigslistbargain/data/train.json --price-tracker craigslistbargain/data/price_tracker.pkl --max-examples -1 --templates-output src/rule/train-templates.pkl --model-output src/rule/train-model.pkl --transcripts-output src/rule/train-parsed.json
 
-To collect data from Amazon Mechanical Turk (AMT), workers should be directed to the link ```http://your-url:<port>/?mturk=1```.
-`?mturk=1` makes sure that workers will receive a Mturk code at the end of the task to submit the HIT.
+PYTHONPATH=craigslistbargain python craigslistbargain/parse_dialogue.py --transcripts craigslistbargain/data/dev.json --price-tracker craigslistbargain/data/price_tracker.pkl --max-examples -1 --templates-output src/rule/dev-templates.pkl --model-output src/rule/dev-model.pkl --transcripts-output src/rule/dev-parsed.json
+```
+```
+(Deep)
+PYTHONPATH=craigslistbargain python craigslistbargain/parse_dialogue.py --transcripts craigslistbargain/data/train.json --price-tracker craigslistbargain/data/price_tracker.pkl --max-examples -1 --templates-output src/deep/train-templates.pkl --model-output src/deep/train-model.pkl --transcripts-output src/deep/train-parsed.json --parserpath transformers/model/roberta_fold_1/checkpoint-82304 --neuralflag
 
-#### <a name=visualize>Dump the database</a>
-Dump data from the SQL database to a JSON file (see [Examples and datasets](#examples-and-datasets) for the JSON structure).
+PYTHONPATH=craigslistbargain python craigslistbargain/parse_dialogue.py --transcripts craigslistbargain/data/dev.json --price-tracker craigslistbargain/data/price_tracker.pkl --max-examples -1 --templates-output src/deep/dev-templates.pkl --model-output src/deep/dev-model.pkl --transcripts-output src/deep/dev-parsed.json --parserpath transformers/model/roberta_fold_1/checkpoint-82304 --neuralflag
 ```
-cd <name-of-your-task>;
-PYTHONPATH=. python ../scripts/web/dump_db.py --db <output-dir>/chat_state.db --output <output-dir>/transcripts/transcripts.json --surveys <output-dir>/transcripts/surveys.json --schema <path-to-schema> --scenarios-path <path-to-scenarios> 
-```
-Render JSON transcript to HTML:
-```
-PYTHONPATH=. python ../scripts/visualize_transcripts.py --dialogue-transcripts <path-to-json-transcript> --html-output <path-to-output-html-file> --css-file ../chat_viewer/css/my.css
-```
-Other options for HTML visualization:
-- `--survey-transcripts`: path to `survey.json` if survey is enabled during data collection.
-- `--survey-only`: only visualize dialgoues with submitted surveys.
-- `--summary`: statistics of the dialogues.
 
-### Dialogue agents
-To add an agent for a task, you need to implement a system ```<name-of-your-task>/systems/<agent-name>_system.py```
-and a session ```<name-of-your-task>/sessions/<agent-name>_session.py```.
+出力として次の3つのファイルが得られます
+- **train(dev)-parsed.json**: パーサーを用いて, データセット内の発話をダイアログアクト(発話の意図)に分類したデータ.
+- **train(dev)-model.pkl**: Botのマネージャーで使用するダイアログアクトについてn-gramモデルを学習したもの.
+- **train(dev)-templates.pkl**: 検索ベースのジェネレーターで使用する発話のテンプレート.
 
-### Model training and testing
-See documentation in the under each task (e.g., `./craigslistbargain`).
+**3. マネージャーの学習**
 
-### Evaluation
-To deploy bots to the web interface, add the `"models"` field in the website config file,
-e.g.
+パーサーによって解析したデータ**train(dev)-parsed.json**を使用し, ダイアログアクトを用いてseq2seqモデルをトレーニングします.
+
 ```
-"models": {
-    "rulebased": {
-        "active": true,
-        "type": "rulebased",
-    }
-}
+(Rule)
+PYTHONPATH=craigslistbargain python craigslistbargain/main.py --schema-path craigslistbargain/data/craigslist-schema.json --train-examples-paths src/rule/train-parsed.json --test-examples-paths src/rule/dev-parsed.json --price-tracker craigslistbargain/data/price_tracker.pkl --model lf2lf --model-path src/rule/checkpoint/lf2lf --mappings src/rule/mappings/lf2lf --word-vec-size 300 --pretrained-wordvec '' '' --rnn-size 300 --rnn-type LSTM --global-attention multibank_general --num-context 2 --stateful --batch-size 128 --gpuid 0 --optim adagrad --learning-rate 0.01 --epochs 20 --report-every 500 --cache src/cache/lf2lf --ignore-cache --verbose --best-only
 ```
-See also [set up the web server](#web).
+```
+(Deep)
+PYTHONPATH=craigslistbargain python craigslistbargain/main.py --schema-path craigslistbargain/data/craigslist-schema.json --train-examples-paths src/deep/train-parsed.json --test-examples-paths src/deep/dev-parsed.json --price-tracker craigslistbargain/data/price_tracker.pkl --model lf2lf --model-path src/deep/checkpoint/lf2lf --mappings src/deep/mappings/lf2lf --word-vec-size 300 --pretrained-wordvec '' '' --rnn-size 300 --rnn-type LSTM --global-attention multibank_general --num-context 2 --stateful --batch-size 128 --gpuid 0 --optim adagrad --learning-rate 0.01 --epochs 20 --report-every 500 --cache src/deep/cache/lf2lf --ignore-cache --verbose --best-only
+```
+
+出力として得られるcheckpoint/lf2lf/model_best.ptが強化学習なしのBot(SL-rule または SL-deep)となります.
+
+**4. 強化学習によるマネージャーのファインチューニング**
+
+3の「マネージャーの学習」で取得したmodel_best.ptを特定の報酬関数を用いたREINFORCEで強化学習します.
+まず, 学習・検証用のシナリオを生成します
+
+```
+PYTHONPATH=craigslistbargain python scripts/chat_to_scenarios.py --chats craigslistbargain/data/train.json --scenarios craigslistbargain/data/train-scenarios.json
+PYTHONPATH=craigslistbargain python scripts/chat_to_scenarios.py --chats craigslistbargain/data/dev.json --scenarios craigslistbargain/data/dev-scenarios.json
+```
+出力としてシナリオtrain-scenarios.jsonとdev-scenarios.jsonが得られます.
+
+その後, 3種類の報酬関数のもと, REINFORCEを実行します.
+使用する報酬関数は次の通りです.
+
+1. margin : **目的効用値**. 自分の目標価格を1, 相手の目標価格を-1, それらの中間価格を0とした線形関数で表現される.
+2. length : **対話の長さ**. 一つの対話中に何回発話がなされたかで表現される.
+3. fair : **取引の公平性**. 自分と相手の目的効用値の差で表現される.
+
+```
+PYTHONPATH=craigslistbargain python craigslistbargain/reinforce.py --schema-path craigslistbargain/data/craigslist-schema.json --scenarios-path craigslistbargain/data/train-scenarios.json --valid-scenarios-path craigslistbargain/data/dev-scenarios.json --price-tracker craigslistbargain/data/price_tracker.pkl --agent-checkpoints src/rule/checkpoint/lf2lf/model_best.pt src/rule/checkpoint/lf2lf/model_best.pt --model-path src/rule/checkpoint/lf2lf-margin --optim adagrad --learning-rate 0.001 --agents pt-neural pt-neural --report-every 500 --max-turns 20 --num-dialogues 5000 --sample --temperature 0.5 --max-length 20 --reward margin --best-only
+```
+
+```
+PYTHONPATH=craigslistbargain python craigslistbargain/reinforce.py --schema-path craigslistbargain/data/craigslist-schema.json --scenarios-path craigslistbargain/data/train-scenarios.json --valid-scenarios-path craigslistbargain/data/dev-scenarios.json --price-tracker craigslistbargain/data/price_tracker.pkl --agent-checkpoints src/deep/checkpoint/lf2lf/model_best.pt src/deep/checkpoint/lf2lf/model_best.pt --model-path src/deep/checkpoint/lf2lf-margin --optim adagrad --learning-rate 0.001 --agents pt-neural pt-neural --report-every 500 --max-turns 20 --num-dialogues 5000 --sample --temperature 0.5 --max-length 20 --reward margin --best-only
+```
+
+実行する際には, 上記のコマンドの「--model-path src/rule/checkpoint/lf2lf-margin」と「--reward margin」の**margin**の部分を任意の報酬関数名(margin, length, fair)に変更してください.
+
+**5. コマンドラインインタフェース上でのBotとのチャット**
+
+次のコマンドを実行することで, コマンドラインインタフェース上でBotとチャットを行うことができます.
+
+```
+(Rule)
+PYTHONPATH=craigslistbargain python scripts/generate_dataset.py --schema-path craigslistbargain/data/craigslist-schema.json --scenarios-path craigslistbargain/data/train-scenarios.json --results-path src/rule/checkpoint/bot-chat-transcripts-r.json --max-examples 100 --agents hybrid cmd --price-tracker craigslistbargain/data/price_tracker.pkl --agent-checkpoints src/rule/checkpoint/lf2lf-margin/model_best.pt "" --templates src/rule/train-templates.pkl --policy src/rule/train-model.pkl --max-turns 20 --random-seed 11 --sample --temperature 0.2
+```
+
+```
+(deep)
+PYTHONPATH=craigslistbargain python scripts/generate_dataset.py --schema-path craigslistbargain/data/craigslist-schema.json --scenarios-path craigslistbargain/data/train-scenarios.json --results-path src/deep/checkpoint/bot-chat-transcripts-d.json --max-examples 100 --agents hybrid cmd --price-tracker craigslistbargain/data/price_tracker.pkl --agent-checkpoints src/deep/checkpoint/lf2lf-margin/model_best.pt "" --templates src/deep/train-templates.pkl --policy src/deep/train-model.pkl --max-turns 20 --random-seed 11 --sample --temperature 0.2 --parserpath transformers/model/roberta_fold_1/checkpoint-82304 --neuralflag
+```
+実行する際には, 上記のコマンドの「--agent-checkpoints src/deep/checkpoint/lf2lf-margin/model_best.pt ""」の**lf2lf-margin**のところを任意のモデル(lf2lf, lf2lf-margin, lf2lf-length, lf2lf-fair)に変更してください.
+
+コマンドライン上で交渉を行う場合には, 以下の方法でチャットを行ってください.
+
+- **交渉メッセージを送る** : メッセージを英語で入力してEnterキーを押す.
+- **交渉に合意する** : 「&lt;accept&gt;」と入力してEnterキーを押す.
+- **交渉を断る** : 「&lt;reject&gt;」と入力してEnterキーを押す.
+- **交渉を止める** : 「&lt;quit&gt;」と入力してEnterキーを押す.
+- **価格オファーをする** : 「&lt;offer&gt; オファー価格」と入力してEnterキーを押す(例: &lt;offer&gt; 120).
