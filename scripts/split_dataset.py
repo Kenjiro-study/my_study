@@ -1,7 +1,6 @@
 import argparse
 from cocoa.core.util import read_json, write_json
 import numpy as np
-#from itertools import izip
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--example-paths', help='Transciprts paths', nargs='*', default=[])

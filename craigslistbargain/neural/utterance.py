@@ -10,7 +10,7 @@ class UtteranceBuilder(BaseUtteranceBuilder):
     word-basedの発話をジェネレータのバッチ出力と基となる辞書から作成する
     """
     def build_target_tokens(self, predictions, kb=None):
-        tokens = super(UtteranceBuilder, self).build_target_tokens(predictions, kb)
+        tokens = super().build_target_tokens(predictions, kb) # 3系ver.
         tokens = [x for x in tokens if not x in category_markers] # カテゴリー以外を抽出する(インテントだけが出てくるが本当はここで自然言語応答も欲しい?)
         return tokens # インテントだけが返っている
 

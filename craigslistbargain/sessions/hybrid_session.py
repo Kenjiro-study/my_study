@@ -2,6 +2,7 @@ from __future__ import print_function
 
 import random
 import numpy as np
+import time
 
 from cocoa.core.entity import is_entity
 
@@ -65,14 +66,21 @@ class BaseHybridSession(CraigslistRulebasedSession):
 
     def send(self):
         action_tokens = self.manager.generate() # sessions.neural_session.PytorchNeuralSessionのgenerateメソッド
-        self.action_his.append(action_tokens[0]) # intro連続防止のためにactionの履歴を作成
-        if len(self.action_his) == 3:
-            if self.action_his[0]=='intro' and self.action_his[1]=='intro' and self.action_his[2]=='intro':
-                # botが最初hの発話から3連続でintroを選択してしまったら他のintentが選ばれるまでmanagerの処理を繰り返す
-                while action_tokens[0] == 'intro':
-                    action_tokens = self.manager.generate()
+        self.action_his.append(action_tokens[0]) # intro連続防止のためにactionの履歴を作成 ##########################################
         if action_tokens is None:
             return None
+        if len(self.action_his) == 3:
+            if self.action_his[0]=='intro' and self.action_his[1]=='intro' and self.action_his[2]=='intro':
+                # botが最初の発話から3連続でintroを選択してしまったら他のintentが選ばれるまでmanagerの処理を繰り返す
+                # 10秒経ってもintroから変わらなければintentをunknownに指定する
+                start_time = time.time()
+                while action_tokens[0] == 'intro':
+                    action_tokens = self.manager.generate()
+                    current_time = time.time()
+                    if (current_time - start_time) > 10:
+                        action_tokens[0] = 'unknown'
+                        break
+        print("action_tokens[0]: ", action_tokens[0])
         self.manager.dialogue.add_utterance(self.agent, list(action_tokens))
 
         price = None

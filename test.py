@@ -122,17 +122,41 @@ print(data["utterance_vocab"].finished)
 
 #data.to_csv('rule-train-template.csv')
 """
-# 与えられた2つの点
-x1, y1 = 120, 1
-x2, y2 = 200, -1
+import json
 
-# 傾き a を計算
-a = (y2 - y1) / (x2 - x1)
+def extract_data(input_file, output_file):
+    # 入力JSONファイルを読み込む
+    with open(input_file, 'r') as f:
+        data = json.load(f)
+    
+    # データがリストの場合に備えて、適切なデータ構造にアクセス
+    if isinstance(data, list):
+        data = data[0]  # リストの最初の要素を使用
+    elif not isinstance(data, dict):
+        raise ValueError("Invalid JSON structure: expected a dictionary or a list of dictionaries.")
+    
+    # 新しいデータを格納するリストを初期化
+    extracted_data = []
+    
+    # eventsのリストからagent, action, data, intentを抽出
+    for event in data.get("events", []):
+        # intentの値を取得し、存在しない場合はNoneを設定
+        intent = (event.get("metadata", {})
+                      .get("sent", {})
+                      .get("logical_form", {})
+                      .get("intent", None) if event.get("metadata") else None)
+        
+        # 必要な情報を追加
+        extracted_data.append({
+            "agent": event.get("agent"),
+            "action": event.get("action"),
+            "data": event.get("data"),
+            "intent": intent
+        })
+    
+    # 抽出したデータを新しいJSONファイルに書き込む
+    with open(output_file, 'w') as f:
+        json.dump(extracted_data, f, ensure_ascii=False, indent=4)
 
-# 切片 b を計算
-b = y1 - a * x1
-
-# 新しい値 x3 に対して y3 を計算
-x3 = 160
-y3 = a * x3 + b
-print(y3)
+# 使用例
+extract_data("scripts/transcripts_m.json", "detail.json")

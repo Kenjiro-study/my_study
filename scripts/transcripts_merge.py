@@ -4,8 +4,8 @@
 import json
 
 # ファイルを読み込む
-#with open('transcripts1.json', 'r') as f1, open('transcripts2.json', 'r') as f2: # 実験用
-with open('rulechat_output/transcripts/transcripts.json', 'r') as f1, open('deepchat_output/transcripts/transcripts.json', 'r') as f2:
+with open('scripts/transcripts_m.json', 'r') as f1, open('scripts/transcripts_merge.json', 'r') as f2: # 作業用
+#with open('rulechat_output/transcripts/transcripts.json', 'r') as f1, open('deepchat_output/transcripts/transcripts.json', 'r') as f2:
     data1 = json.load(f1)
     data2 = json.load(f2)
 
@@ -35,7 +35,8 @@ for entry in merged_data:
 final_merged_data = list(uuid_to_entry.values())
 
 # 結果を新しいファイルに保存
-with open('scripts/transcripts_merge.json', 'w') as f_out:
+#with open('scripts/transcripts_merge.json', 'w') as f_out:
+with open('scripts/transcripts_M.json', 'w') as f_out: # 作業用
     json.dump(final_merged_data, f_out, indent=4, ensure_ascii=False)
 
 print("ファイルの結合が完了しました。")

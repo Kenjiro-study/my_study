@@ -26,20 +26,20 @@ class LFSampler(Sampler):
         self.actions = map(self.vocab.to_ind, actions)
 
     def generate_batch(self, batch, gt_prefix=1, enc_state=None):
-        # This is to ensure we can stop at EOS for stateful models
+        # stateful modelsでEOSで停止できるようにするためのassert
         assert batch.size == 1
 
-        # (1) Run the encoder on the src.
+        # (1) srcでエンコーダーを実行する
         lengths = batch.lengths
         dec_states, enc_memory_bank = self._run_encoder(batch, enc_state)
         memory_bank = self._run_attention_memory(batch, enc_memory_bank)
 
-        # (1.1) Go over forced prefix.
+        # (1.1) forced prefixを確認する
         inp = batch.decoder_inputs[:gt_prefix]
         dec_out, dec_states, _ = self.model.decoder(
             inp, memory_bank, dec_states, memory_lengths=lengths)
 
-        # (2) Sampling
+        # (2) サンプリング
         batch_size = batch.size
         preds = []
         for i in range(self.max_length):
