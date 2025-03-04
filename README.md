@@ -26,6 +26,10 @@
 森本賢次郎, 藤田桂英.
 人工知能学会全国大会(第38回), 2024.
 
+- [Negotiation Dialogue System Using a Deep Learning-based Parser](https://www.scitepress.org/Papers/2025/132452/132452.pdf).
+Kenjiro Morimoto, Katsuhide Fujita and Ken Watanabe
+17th International Conference on Agents and Artificial Intelligence(ICAART2025), 2025.
+
 ## 環境構築
 1. まず, 作業ディレクトリ(ここでは例としてworkディレクトリとします)に本プロジェクトのディレクトリ及びファイルをインストールします.
 2. 次にworkディレクトリに移動し, 以下の順序でdockerのコンテナを作成します.
